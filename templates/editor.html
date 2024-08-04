@@ -1,35 +1,66 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html> <head>
     <title>{{ lesson_nb }}</title>
-    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/styles.css?<?=time()?>') }}" rel="stylesheet">
 
 </head>
 
 <body>
     <h1>Edition de la leçon : {{ lesson_nb }}</a></h1>
     <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
-    <form method="post" onsubmit="copyContent()"> 
-      <div id="editeur" contentEditable>
+    <form method="post" id="myForm"> 
+      <div id="editor" contentEditable>
         {% for sentence in sentences %}
 
           <p> {{ sentence | safe }} </p>
 
         {% endfor %}
       </div>
-      <textarea id="resultat" name="ta"></textarea>
-      <hr>
       <input type="hidden" id="hiddenInput" name="da">
-      <input type="submit"/> 
+      <input type="button" value="Sauver" onclick="saveForm()">
+      <input type="button" onclick="updateForm();" value="Mettre &agrave; jour" />
       <br />
     </form>
-    <input type="button" onclick="resultat();" value="Obtenir le HTML" />
+    <div id="responseArea"></div>
     <script>
-      function resultat() {
-          document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
-      }
       function copyContent() {
-          var divHTML = document.getElementById("editeur").innerHTML;
+          var divHTML = document.getElementById("editor").innerHTML;
           document.getElementById("hiddenInput").value = divHTML;
+      }
+      function saveForm() {
+          copyContent()
+          var formElement = document.getElementById('myForm');
+          var data = new FormData(formElement);
+          fetch('/editor/save/' + {{ lesson_nb }}, {
+                method: 'POST',
+                body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("responseArea").innerHTML = data;
+              })
+              .catch(error => {
+                console.error(error);
+              });
+      }
+      function updateForm() {
+          copyContent()
+          var formElement = document.getElementById('myForm');
+          var data = new FormData(formElement);
+          fetch('/editor/update/' + {{ lesson_nb }}, {
+                method: 'POST',
+                body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("editor").innerHTML = data;
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          console.log("In updateForm");
+          console.log(document.getElementById("editor").innerHTML)
+    
       }
 
       function commande(nom, argument) {
@@ -48,12 +79,8 @@
         document.execCommand(nom, false, argument);
       }
 
-      function resultat() {
-        document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
-      }
-
     </script>
 <address></address>
-<!-- hhmts start -->Last modified: Sat Aug  3 10:52:52 CEST 2024 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sun Aug  4 20:44:20 CEST 2024 <!-- hhmts end -->
 </body> </html>
 

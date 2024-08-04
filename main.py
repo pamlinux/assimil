@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from tonic_accent import get_tonic_accent_word_dict, get_list_of_bold_sentences, store_lesson
+from tonic_accent import get_list_of_bold_sentences, store_lesson, update_lesson
 
 app = FastAPI()
 
@@ -17,8 +17,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 templates = Jinja2Templates(directory="templates")
-
-word_dict = get_tonic_accent_word_dict()
 
 def get_title(filename):
     audiofile = eyed3.load(filename)
@@ -95,13 +93,25 @@ class SimpleModel:
     da: str = Form(None)
 
 
-@app.post("/editor/{lesson_nb}")
-def form_post(lesson_nb, form_data: SimpleModel = Depends()):
+@app.post("/editor/save/{lesson_nb}")
+def form_save(lesson_nb, form_data: SimpleModel = Depends()):
     ta = form_data.ta
     lesson_html = form_data.da
-    store_lesson(lesson_nb, lesson_html)
+    print("numéro de la leçon : ", lesson_nb) 
+    print(lesson_html)
+    #store_lesson(lesson_nb, lesson_html)
     
-    return form_data
+    return "from the fastapi server save"
+
+@app.post("/editor/update/{lesson_nb}")
+def form_update(lesson_nb, form_data: SimpleModel = Depends()):
+    ta = form_data.ta
+    lesson_html = form_data.da
+    print("numéro de la leçon : ", lesson_nb) 
+    print(lesson_html)
+    pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
+    
+    return pretty_lesson_html
 
 @app.get("/")
 async def root():
