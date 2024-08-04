@@ -53,11 +53,6 @@ class MyHTMLParser(HTMLParser):
         for i, s in enumerate(self.sentences):
             wl = get_sentence_word_list(s, self.sentences_fragments[i])
             for w, aw in wl:
-                if w == "tengo":
-                    print("------------------------")
-                    print(s, self.sentences_fragments[i], aw)
-                    print("------------------------")
-
                 if not w.lower() in word_dict:
                     word_dict[w.lower()] = aw
         return word_dict

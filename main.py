@@ -99,9 +99,10 @@ def form_save(lesson_nb, form_data: SimpleModel = Depends()):
     lesson_html = form_data.da
     print("numéro de la leçon : ", lesson_nb) 
     print(lesson_html)
+    pretty_lesson_html = store_lesson(lesson_nb, lesson_html)
     #store_lesson(lesson_nb, lesson_html)
     
-    return "from the fastapi server save"
+    return pretty_lesson_html
 
 @app.post("/editor/update/{lesson_nb}")
 def form_update(lesson_nb, form_data: SimpleModel = Depends()):

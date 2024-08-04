@@ -118,22 +118,8 @@ def get_html_lesson(lesson_nb):
             lesson_html += "<p>" + sentence + "</p>"
     return lesson_html
 
-def store_lesson(lesson_nb, lesson_html):
-    filename = f"Sentences/html/L{str(lesson_nb).zfill(3)}.html"
-    pretty_lesson_html = ""
-    parser.analyze_lesson(lesson_html)
-    sentences = parser.get_sentences()
-    for sentence in sentences:
-        if sentence:
-            pretty_lesson_html += "<p>" + get_bold_sentence(sentence) + "</p>"
-
-    file = open(filename, "w")
-    file.write(pretty_lesson_html)
-    file.close()
-    return pretty_lesson_html
 
 def update_lesson(lesson_nb, lesson_html):
-    filename = f"Sentences/html/L{str(lesson_nb).zfill(3)}.html"
     pretty_lesson_html = ""
     parser.analyze_lesson(lesson_html)
     wd = parser.get_lesson_word_dict()
@@ -148,5 +134,12 @@ def update_lesson(lesson_nb, lesson_html):
             pretty_lesson_html += "<p>" + get_bold_sentence(sentence, local_word_dict) + "</p>"
     return pretty_lesson_html
         
-        
+def store_lesson(lesson_nb, lesson_html):
+    filename = f"Sentences/html/L{str(lesson_nb).zfill(3)}.html"
+    pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
+    file = open(filename, "w")
+    file.write(pretty_lesson_html)
+    file.close()
+    return pretty_lesson_html
+       
     
