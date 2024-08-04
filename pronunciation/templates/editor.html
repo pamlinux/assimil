@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+	<title>{{ lesson_nb }}</title>
+	<link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    <h1><a href="{{ url_for('edit', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
+    <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+    <input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
+    <input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
+    <input type="button" value="Lien" onclick="commande('createLink');" />
+    <input type="button" value="Image" onclick="commande('insertImage');" />
+    <select onchange="commande('heading', this.value); this.selectedIndex = 0;">
+      <option value="">Titre</option>
+      <option value="h1">Titre 1</option>
+      <option value="h2">Titre 2</option>
+      <option value="h3">Titre 3</option>
+      <option value="h4">Titre 4</option>
+      <option value="h5">Titre 5</option>
+      <option value="h6">Titre 6</option>
+    </select>
+    <div id="editeur" contentEditable></div>
+    <input type="button" onclick="resultat();" value="Obtenir le HTML" />
+    <br />
+    <textarea id="resultat"></textarea>
+    <hr>
+
+    <script>
+    function commande(nom, argument) {
+  if (typeof argument === 'undefined') {
+    argument = '';
+  }
+  switch (nom) {
+    case "createLink":
+      argument = prompt("Quelle est l'adresse du lien ?");
+      break;
+    case "insertImage":
+      argument = prompt("Quelle est l'adresse de l'image ?");
+      break;
+  }
+  // Exécuter la commande
+  document.execCommand(nom, false, argument);
+}
+
+function resultat() {
+  document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
+}
+
+    </script>
+<address></address>
+<!-- hhmts start -->Last modified: Sun Jul 28 21:05:09 CEST 2024 <!-- hhmts end -->
+</body> </html>
+

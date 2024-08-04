@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+    <title>{{ lesson_nb }}</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    <h1>Edition de la leçon : {{ lesson_nb }}</a></h1>
+    <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+    <form method="post" onsubmit="copyContent()"> 
+      <div id="editeur" contentEditable>
+        {% for sentence in sentences %}
+
+          <p> {{ sentence | safe }} </p>
+
+        {% endfor %}
+      </div>
+      <textarea id="resultat" name="ta"></textarea>
+      <hr>
+      <input type="hidden" id="hiddenInput" name="da">
+      <input type="submit"/> 
+      <br />
+    </form>
+    <input type="button" onclick="resultat();" value="Obtenir le HTML" />
+    <script>
+      function resultat() {
+          document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
+      }
+      function copyContent() {
+          var divHTML = document.getElementById("editeur").innerHTML;
+          document.getElementById("hiddenInput").value = divHTML;
+      }
+
+      function commande(nom, argument) {
+        if (typeof argument === 'undefined') {
+          argument = '';
+        }
+        switch (nom) {
+          case "createLink":
+            argument = prompt("Quelle est l'adresse du lien ?");
+            break;
+          case "insertImage":
+            argument = prompt("Quelle est l'adresse de l'image ?");
+            break;
+        }
+        // Exécuter la commande
+        document.execCommand(nom, false, argument);
+      }
+
+      function resultat() {
+        document.getElementById("resultat").value = document.getElementById("editeur").innerHTML;
+      }
+
+    </script>
+<address></address>
+<!-- hhmts start -->Last modified: Sat Aug  3 10:52:52 CEST 2024 <!-- hhmts end -->
+</body> </html>
+

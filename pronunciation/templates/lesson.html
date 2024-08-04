@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+	<head>
+		<title>{{ lesson_nb }}</title>
+		<link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+	</head>
+
+	<body>
+		<h1><a href="{{ url_for('display_lesson', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
+
+		{{ lesson | safe }}
+
+	</body>
+
+</html>

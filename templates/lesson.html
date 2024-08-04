@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Item Details</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1><a href="{{ url_for('display_lesson', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
+
+    <div id="div01">
+    {% for sentence in sentences %}
+
+      <p onClick="playSentence({{loop.index0}})" oncontextmenu="nextSentence({{loop.index}})"> {{ sentence | safe }} </p>
+
+    {% endfor %}
+    </div>
+
+    <audio id="audioTag" src=""/>
+ 
+    <script>
+
+      const div = document.getElementById("div01");
+      div.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
+      function playSentence(val) {
+        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+
+      }
+
+      function nextSentence(val) {
+        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+        e.stopPropagation();
+        e.preventDefault();
+        
+      }
+
+    </script>
+
+</body>
+</html>

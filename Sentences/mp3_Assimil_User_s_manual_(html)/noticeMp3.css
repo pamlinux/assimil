@@ -1,0 +1,305 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0;
+	padding:0;
+	color: black;
+	background: #ffffff;
+	font:  normal 90% Verdana,"Trebuchet MS", "Lucida Grande", Tahoma, Helvetica, Sans-Serif;
+	text-align:center;
+}
+
+p {
+	margin:0em 0em 0em 0em;
+}
+
+img {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+
+li {
+ 	margin: 0em 1em 0em 0em;
+} 
+#sommaire {
+    /* list-style-image : url(checkboxCocheRouge.png); */
+	 	margin: 0em 1em 0em 1em;
+		list-style:none;
+} 
+
+table {
+ border-width:0px;
+ border-style:solid; 
+ border-color:#ffffff;
+ border-collapse:collapse;
+ text-align:center;
+}
+ 
+td { 
+ border-width:1px;
+ border-style:solid; 
+ border-color:#CCE0F2;
+ text-align:center;
+}
+.tableau {
+	font-size: 9px;
+}
+#notice {
+	border-color:#0077C0;
+	font-size:24px;
+	margin: 1em 1em 1em 1em;
+	background-color:#ffffff;
+
+	text-align:center;
+}
+
+#global { /* largeur du document */
+	margin:0 auto;
+	width: 840px;
+	background-color:#ffffff;
+	text-align:justify
+}
+
+#logo {
+	text-align:center;
+	margin: 1em 1em 1em 1em;
+}
+#drap {
+	text-align:center;
+	margin: 0em 0em 0em 0em;
+	border-style:none;
+	
+	
+}
+
+#blocgauche {
+	float: left;
+	width: 320px;
+	background-color:#CCE0F2;
+	color: #0077C0;
+}
+
+#blocphoto_FR {
+	margin:0 auto;
+	height:1090px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_PO {
+	margin:0 auto;
+	height:970px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_ES {
+	margin:0 auto;
+	height:1040px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_PT {
+	margin:0 auto;
+	height:1170px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_IT {
+	margin:0 auto;
+	height:1140px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_NE {
+	margin:0 auto;
+	height:1100px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_AL {
+	margin:0 auto;
+	height:1285px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_RU {
+	margin:0 auto;
+	height:1120px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+#blocphoto_TR {
+	margin:0 auto;
+	height:985px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+
+#blocphoto_UK {
+	margin:0 auto;
+	height:1040px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+
+#blocphotosommaire {
+	margin:0 auto;
+	height:380px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+
+#blocphotosommaire2 {
+	margin:0 auto;
+	height:930px;
+	text-align:center;
+		margin: 1em 1em 1em 1em;
+}
+
+#blocdroit {
+	float: left;
+	width: 520px;
+	background-color:#ffffff;
+	color: #0077C0;
+}
+
+#argu {
+	border-width:thin;
+	border-style:solid;
+	border-color:#0077C0;
+	margin: 1em 0em 1em 1em;
+	background-color:#ffffff;
+}
+#argu li {
+	margin: 0em 1em 1em -1em;
+}
+#blocdroit p {
+	margin: 1em 1em 1em 1em;
+}
+
+#pied {
+	float: left;
+	width: 840px;
+	height:100px;
+	font-size:12px;
+	background-color: #0077C0;
+	color:white;
+	text-align:center;
+}
+#pied p {
+	margin: 1em 1em 1em 1em;
+}
+
+
+.mp3 {
+  color: #FF0000;
+}
+.sousliste {
+ 	font-size: 11px;
+	
+}
+
+#argutech {
+
+	margin: 3em 1em 1em 1em;
+		text-align:left;
+}
+
+
+.lien  {
+	text-align:center;
+	font-size:14px;
+	
+}
+.hlien  {
+	text-align:left;
+	font-size:16px;
+	
+}
+
+.argulien {
+	text-align:left;
+	font-size:14px;
+	
+}
+
+.argulien a {
+  color: #FF7800;
+}
+.argulien a:visited {
+  color: #EAA515;
+}
+.argulien a:hover, .argulien a:focus, .argulien a:active {
+  color: #eb5800;
+}
+.lien a {
+  color: #FF7800;
+}
+.lien a:visited {
+  color: #EAA515;
+}
+.lien a:hover, .lien a:focus, .lien a:active {
+  color: #eb5800;
+}
+
+.hlien a {
+  color: #FF0000;
+}
+.hlien a:visited {
+  color: #ff0000;
+}
+.hlien a:hover, .hlien a:focus, .hlien a:active {
+  text-decoration: underline;
+  color: #ff0000;
+}
+h2 a {
+  color: #FF7800;
+}
+h2 a:visited {
+  color: #EAA515;
+}
+h2 a:hover, h2 a:focus, h2 a:active {
+  text-decoration: none;
+  color: #eb5800;
+}
+h3 a {
+  color: white;
+  background-color: #0077C0;
+}
+h3 a:visited {
+  color: white;
+  background-color: #0077C0;
+}
+h3 a:hover, h2 a:focus, h2 a:active {
+  text-decoration: none;
+  color: #0077C0;
+  background-color: white;
+}
+
+.scontact {
+		font-size:18px;
+    list-style: none;
+  	color: #0077C0;
+  	text-align:left;
+  	text-decoration: none;	
+}
+
+
+.somm {
+    list-style: none;
+  	color: #0077C0;
+  	text-align:left;
+	font-size:24px;
+  	text-decoration: none;	
+}
+.somm a:visited {
+  color: black;
+}
+.somm a:hover, h2 a:focus, h2 a:active {
+  text-decoration: none;
+  color: #0077C0;
+  background: white;
+}
+
+
