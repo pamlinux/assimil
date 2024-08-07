@@ -7,7 +7,8 @@
 
 <body>
     <h1>Edition de la leçon : {{ lesson_nb }}</a></h1>
-    <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+    <input type="button" value="G" width="32" style="font-weight: bold; width: 32; height : 32" onclick="commande('bold');" />
+    <input type="image" src={{ url_for('static', path='/icons/correction.svg')}} alt="Correction" width="32" onclick="correct();" />
     <form method="post" id="myForm"> 
       <div id="editor" contentEditable>
         {% for sentence in sentences %}
@@ -63,6 +64,80 @@
     
       }
 
+      function correct() {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+        console.log("anchorOffset", userSelection.anchorOffset)
+        console.log("focusOffset", userSelection.focusOffset)
+        console.log("anchorNode", userSelection.anchorNode)
+        console.log("userSelection.anchorNode.nextSibling", userSelection.anchorNode.nextSibling)
+        console.log("focusNode", userSelection.focusNode)
+
+        anchorOffset = userSelection.anchorOffset;
+        focusOffset = userSelection.focusOffset;
+
+        if (userSelection.anchorNode === userSelection.focusNode) {
+          anchorNode = userSelection.anchorNode.textContent.substring(anchorOffset, focusOffset);
+          focusNode = anchorNode;
+          focusNodeIsAnchorNode = true;
+        } else {
+          anchorNode = userSelection.anchorNode.textContent;
+          anchorNode = anchorNode.substring(anchorOffset, anchorNode.length);
+          focusNode = userSelection.focusNode.textContent;
+          focusNode = focusNode.substring(0, focusOffset);
+          focusNodeIsAnchorNode = false;
+        }
+        anchorNodeTag = userSelection.anchorNode.parentNode.tagName;
+        focusNodeTag = userSelection.focusNode.parentNode.tagName;
+        var anchorNextSibling;
+        var anchorNextSiblingTag;
+        if (userSelection.anchorNode.nextSibling) {
+          anchorNextSibling = userSelection.anchorNode.nextSibling.textContent;
+          anchorNextSiblingTag = userSelection.anchorNode.nextElementSibling.tagName
+        } else {
+          anchorNextSibling = ""
+          anchorNextSiblingTag = ""
+        }
+
+        copyContent()
+        var divHTML = document.getElementById("editor").innerHTML;
+
+        item = {
+                 "focusNodeIsAnchorNode" : focusNodeIsAnchorNode,
+                 "anchorNode" : anchorNode,
+                 "anchorNodeTag" : anchorNodeTag,
+                 "focusNode" : focusNode,
+                 "focusNodeTag" : focusNodeTag,
+                 "anchorNextSibling" : anchorNextSibling,
+                 "anchorNextSiblingTag" : anchorNextSiblingTag,
+                 "lesson" : divHTML
+               }
+
+        var data = JSON.stringify(item);
+        fetch('/editor/correct/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("editor").innerHTML = data;
+              })
+              .catch(error => {
+              console.error(error);
+            });
+        let txt = ""
+        let i = 0;
+        let node = userSelection.anchorNode
+        do {
+             console.log(node);
+             node = node.nextSibling;
+            } while (node && !(node === userSelection.focusNode));
+      }
+    
       function commande(nom, argument) {
         if (typeof argument === 'undefined') {
           argument = '';
@@ -81,6 +156,6 @@
 
     </script>
 <address></address>
-<!-- hhmts start -->Last modified: Sun Aug  4 20:44:20 CEST 2024 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Tue Aug  6 23:34:10 CEST 2024 <!-- hhmts end -->
 </body> </html>
 

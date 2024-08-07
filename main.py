@@ -9,14 +9,49 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from tonic_accent import get_list_of_bold_sentences, store_lesson, update_lesson
+from tonic_accent import get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
 
+from pydantic import BaseModel
+
+@dataclass
+class SimpleModel:
+    ta: str = Form(None)
+    da: str = Form(None)
+
+
+class CorrectItem(BaseModel):
+    focusNodeIsAnchorNode : bool
+    anchorNode : str
+    anchorNodeTag : str
+    focusNode : str
+    focusNodeTag : str
+    anchorNextSibling : str
+    anchorNextSiblingTag : str
+    lesson : str
+    
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 templates = Jinja2Templates(directory="templates")
+
+def get_bold_word(item : CorrectItem):
+    if item.focusNodeIsAnchorNode:
+        syllables = [(item.focusNode, False)]
+        word = item.focusNode
+    elif item.anchorNodeTag == 'B':
+        syllables = [(item.anchorNode, True), (item.focusNode, False)]
+        word = item.anchorNode + item.focusNode
+    elif item.focusNodeTag == 'B':
+        syllables = [(item.anchorNode, False), (item.focusNode, True)]
+        word = item.anchorNode + item.focusNode
+    elif item.anchorNextSiblingTag == 'B':
+         syllables = [(item.anchorNode, False), (item.anchorNextSibling, True), (item.focusNode, False)]
+         word = item.anchorNode + item.anchorNextSibling + item.focusNode
+    else:
+        raise
+    return word, syllables
 
 def get_title(filename):
     audiofile = eyed3.load(filename)
@@ -87,12 +122,6 @@ async def edit(request: Request, lesson_nb : int = 3):
     return templates.TemplateResponse(
         request=request, name="editor.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
 
-@dataclass
-class SimpleModel:
-    ta: str = Form(None)
-    da: str = Form(None)
-
-
 @app.post("/editor/save/{lesson_nb}")
 def form_save(lesson_nb, form_data: SimpleModel = Depends()):
     ta = form_data.ta
@@ -112,6 +141,15 @@ def form_update(lesson_nb, form_data: SimpleModel = Depends()):
     print(lesson_html)
     pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
     
+    return pretty_lesson_html
+
+@app.post("/editor/correct/{lesson_nb}")
+def form_correct_word(lesson_nb,  item: CorrectItem):
+    word, syllabes = get_bold_word(item)
+    lesson_html = item.lesson
+    print(lesson_html)
+    print("word to correct", word, syllabes)
+    pretty_lesson_html = correct_word(lesson_nb, lesson_html, word, syllabes)
     return pretty_lesson_html
 
 @app.get("/")
