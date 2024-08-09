@@ -91,7 +91,7 @@ def get_bold_sentence(sentence, lesson_dict = {}):
             bold_sentence += ' '
     return bold_sentence        
     
-def get_sentences(lesson_nb : int):
+def get_sentences_from_audio_files(lesson_nb : int):
     lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
     w = os.walk(lesson_directory)
     sentences_with_path = []
@@ -105,6 +105,21 @@ def get_sentences(lesson_nb : int):
         pathes, titles = zip(*sorted(sentences_with_path))
     return titles
     
+def get_sentences(lesson_nb : int):
+    lesson_filename = f"Sentences/html/L{str(lesson_nb).zfill(3)}.html"
+    try:
+        f = open(lesson_filename, "r")
+        lines = f.readlines()
+        f.close()
+        lesson = ""
+        for line in lines:
+            lesson += line
+        parser.analyze_lesson(lesson)
+        sentences = parser.get_sentences()
+    except FileNotFoundError:
+        sentences = get_sentences_from_audio_files(lesson_nb)
+    return sentences
+
 def get_list_of_bold_sentences(lesson_nb):
     lesson_txt = get_sentences(lesson_nb)
     lesson_with_bold_sentences = []
