@@ -73,7 +73,7 @@ def get_html_of_token(token, lesson_dict = {}):
     return txt
 
 def get_bold_sentence(sentence, lesson_dict = {}):
-    tokens = re.findall(r"[\w']+|[.,¡!¿\-?;–]", sentence)
+    tokens = re.findall(r"[\w']+|[.,¡!¿:\-?;–]", sentence)
     bold_sentence = ""
     for index, token in enumerate(tokens):
         try:
@@ -82,8 +82,8 @@ def get_bold_sentence(sentence, lesson_dict = {}):
             next_token = ''
         bold_token = get_html_of_token(token, lesson_dict)
         bold_sentence += bold_token
-        if not token in ".,¡!¿-?;":
-            if not next_token in ".,;!?-":
+        if not token in ".,¡!¿-?;:":
+            if not next_token in ".,;!?-:":
                 bold_sentence += ' '
         elif token in "¡-¿":
             pass

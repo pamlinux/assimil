@@ -10,7 +10,7 @@
     <input type="button" value="G" width="32" style="font-weight: bold; width: 32; height : 32" onclick="commande('bold');" />
     <input type="image" src={{ url_for('static', path='/icons/correction.svg')}} alt="Correction" width="32" onclick="correct();" />
     <form method="post" id="myForm"> 
-      <div id="editor" contentEditable>
+      <div id="editor" contentEditable onmouseup="commande('bold');">
         {% for sentence in sentences %}
 
           <p> {{ sentence | safe }} </p>
@@ -156,6 +156,6 @@
 
     </script>
 <address></address>
-<!-- hhmts start -->Last modified: Tue Aug  6 23:34:10 CEST 2024 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Wed Aug 14 11:32:02 CEST 2024 <!-- hhmts end -->
 </body> </html>
 
