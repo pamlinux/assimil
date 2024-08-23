@@ -10,7 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
-
+from tonic_accent import SelectionItem, get_selection
 from pydantic import BaseModel
 
 @dataclass
@@ -28,7 +28,7 @@ class CorrectItem(BaseModel):
     anchorNextSibling : str
     anchorNextSiblingTag : str
     lesson : str
-    
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -126,6 +126,18 @@ def form_correct_word(lesson_nb,  item: CorrectItem):
     print("word to correct", word, syllabes)
     pretty_lesson_html = correct_word(lesson_nb, lesson_html, word, syllabes)
     return pretty_lesson_html
+
+@app.post("/test/{lesson_nb}")
+async def test_ranges(lesson_nb, item: SelectionItem):
+    return f" anchorOffset = {item.anchorOffset}\n focusOffset = {item.focusOffset}\n jsonDomString = {item.jsonDomString}"
+    #return get_selection(item)
+
+@app.get("/test/{lesson_nb}")
+async def test_edit(request: Request, lesson_nb : int = 3):
+    sentences = get_list_of_bold_sentences(lesson_nb)
+    return templates.TemplateResponse(
+        request=request, name="test.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+
 
 @app.get("/")
 async def root():

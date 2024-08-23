@@ -2,9 +2,10 @@ import os
 import re
 import eyed3
 import copy
-import shelve
 from pathlib import Path
+from pydantic import BaseModel
 from lesson_parser import MyHTMLParser
+
 lessons_directory = f"Sentences"
 db_directory = "db"
 
@@ -13,6 +14,14 @@ db_directory = "db"
 word_dict_filename = "tonic_accent_word_dict"
 word_dict_logfilename = "word_dict_logfile.log"
 parser = MyHTMLParser()
+
+
+class SelectionItem(BaseModel):
+    anchorOffset : int
+    focusOffset : int
+    jsonDomString : str
+
+
 
 def get_html_lesson_list():
     file_list = []
@@ -187,3 +196,23 @@ def correct_word(lesson_nb, lesson_html, word, syllabes):
         if sentence:
             pretty_lesson_html += "<p>" + get_bold_sentence(sentence, lesson_word_dict) + "</p>"
     return pretty_lesson_html
+
+def get_text(element):
+    txt = ""
+    if element['tagName'] == '' and element['isInSelection']:
+        print(element['isInSelection'], element['textContent'])
+        try:
+            txt += element['textContent']
+        except KeyError:
+            print(f"Error in element : {element}")
+    else:
+        for el in element['children']:
+            txt += get_text(el)
+    return txt
+
+def get_selection(item):
+
+    anchorOffset = item.anchorOffset
+    focusOffset = item.focusOffset
+    jsonDomString = item.jsonDomString
+
