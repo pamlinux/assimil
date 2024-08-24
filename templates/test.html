@@ -167,30 +167,33 @@
         console.log("anchorNode", anchorNode)
         console.log("focusNode", focusNode)
 
-        let isInSelection = false;
-
         function serializeDOMElement(element) {
+
           if (element.tagName) {
             tagName = element.tagName.toLowerCase();
           } else {
             tagName = "";
           }
-        
-          if(element === anchorNode) {
-            isInSelection = true;
-          }
+          
+          var status;
 
+          if (element === anchorNode && element === focusNode) {
+            status = "isAnchorAndFocus";
+          } else if (element === anchorNode) {
+            status = "isAnchor";
+          } else if (element === focusNode) {
+            status = "isFocus";
+          } else {
+            status = "";
+          }
+         
           const obj = {
             tagName: tagName,
-            isInSelection: isInSelection,
+            status: status,
             attributes: {},
             children: [],
             textContent: element.textContent
           };
-
-          if(element === focusNode) {
-            isInSelection = false;
-          }
           
           // Récupérer les attributs de l'élément
           if (element.attributes) {
