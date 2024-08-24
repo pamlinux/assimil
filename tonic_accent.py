@@ -50,9 +50,6 @@ def fill_word_dict_from_html_files(filenames, word_dict):
                 word_dict[word] = wd[word]
             else:
                 word_dict[word].index_ref.extend(wd[word].index_ref)
-                if word == "casa":
-                    print(f"word_dict.index_ref : {word_dict[word].index_ref}")
-
                 if wd[word].tonic_accent != word_dict[word].tonic_accent:
                     logfile.write(f"different tonic accent in lesson {lesson_nb} for word {word} {wd[word]} / {word_dict[word]} \n")
 
@@ -233,7 +230,7 @@ def get_html_with_selection(element, anchorOffset, focusOffset):
                 for child in element['children']:
                     child_text, mark_open = get_html_text(child, anchorOffset, focusOffset, mark_open, element['tagName'])
                     text += child_text
-            print(f"tag : {element['tagName']}, mark_open : {mark_open}, {element['textContent']}")
+            #print(f"tag : {element['tagName']}, mark_open : {mark_open}, {element['textContent']}")
             if element['tagName'] == 'p':
                 if mark_open:
                     text += '</mark></' + element['tagName'] + '>'
@@ -264,7 +261,7 @@ def get_html_with_selection(element, anchorOffset, focusOffset):
                 mark_open = False
             else:
                 text += element['textContent']
-            print(f"tag : {element['tagName']}, mark_open : {mark_open}, {element['textContent']}")
+            #print(f"tag : {element['tagName']}, mark_open : {mark_open}, {element['textContent']}")
         return text, mark_open
     text, mark_open = get_html_text(element, anchorOffset, focusOffset, mark_open)
     return text
@@ -272,8 +269,11 @@ def get_html_with_selection(element, anchorOffset, focusOffset):
 def marked_selection(item: SelectionItem):
 
     jsonDomString = jsonDomString = item.jsonDomString
-    editor = json.loads(jsonDomString)
-    return get_html_with_selection(editor, item.anchorOffset, item.focusOffset)
+    editor = json.loads(jsonDomString);
+    html_with_selection = get_html_with_selection(editor, item.anchorOffset, item.focusOffset)
+    html_with_selection = html_with_selection.replace("\n", "")
+    print(html_with_selection)
+    return html_with_selection
 
 
 
