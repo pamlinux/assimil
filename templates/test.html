@@ -62,7 +62,7 @@
               })
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
-                document.getElementById("editor").innerHTML = data;
+                document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
               })
               .catch(error => {
                 console.error(error);
@@ -236,7 +236,7 @@
               })
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
-                document.getElementById("responseArea").innerHTML = data;
+                document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
               })
               .catch(error => {
               console.error(error);

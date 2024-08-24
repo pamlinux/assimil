@@ -115,7 +115,7 @@ def form_update(lesson_nb, form_data: SimpleModel = Depends()):
     print("numéro de la leçon : ", lesson_nb) 
     print(lesson_html)
     pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
-    
+    print(f"pretty lesson : {pretty_lesson_html}")
     return pretty_lesson_html
 
 @app.post("/editor/correct/{lesson_nb}")
@@ -136,7 +136,7 @@ async def test_edit(request: Request, lesson_nb : int = 3):
 @app.post("/test/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
 
-    print(f" anchorOffset = {item.anchorOffset}\n focusOffset = {item.focusOffset}\n jsonDomString = {item.jsonDomString}")
+    #print(f" anchorOffset = {item.anchorOffset}\n focusOffset = {item.focusOffset}\n jsonDomString = {item.jsonDomString}")
     return marked_selection(item)
 
 
