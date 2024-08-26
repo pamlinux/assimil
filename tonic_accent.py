@@ -35,7 +35,7 @@ def get_html_lesson_list():
                 file_list.append(fn)
     return file_list
 
-def fill_word_dict_from_html_files(filenames, word_dict):
+def fill_word_tonic_accent_dict_from_html_files(filenames, word_dict):
     log_file_name = Path(db_directory, word_dict_logfilename)
     logfile = open(log_file_name, 'w')
     
@@ -44,30 +44,42 @@ def fill_word_dict_from_html_files(filenames, word_dict):
         lesson = open(os.path.join(lessons_directory, "html", fn)).read()
         print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
         parser.analyze_lesson(lesson, lesson_nb)
-        wd = parser.get_lesson_word_dict()
+        wd = parser.get_lesson_word_tonic_accent_dict()
         for word in wd:
             if not word in word_dict:
                 word_dict[word] = wd[word]
             else:
-                word_dict[word].index_ref.extend(wd[word].index_ref)
-                if wd[word].tonic_accent != word_dict[word].tonic_accent:
+                if wd[word] != word_dict[word]:
                     logfile.write(f"different tonic accent in lesson {lesson_nb} for word {word} {wd[word]} / {word_dict[word]} \n")
 
     for word in word_dict:
         logfile.write(f"{word} : {word_dict[word]}\n")
     logfile.close()
 
+def fill_word_index_dict_from_html_files(filenames, word_dict):
+    for fn in filenames:
+        lesson_nb = int(fn[1:4])
+        lesson = open(os.path.join(lessons_directory, "html", fn)).read()
+        print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
+        parser.analyze_lesson(lesson, lesson_nb)
+        wd = parser.get_lesson_word_index_dict()
+        for word in wd:
+            if not word in word_dict:
+                word_dict[word] = wd[word]
+            else:
+                word_dict[word].extend(wd[word])
+
 def get_tonic_accent_word_dict():
+    word_dict = {}
+    lessons_filename = sorted(get_html_lesson_list())
+    fill_word_tonic_accent_dict_from_html_files(lessons_filename, word_dict)
+    return word_dict
 
-    db_name = Path(db_directory, word_dict_filename)
-
-    if os.path.isfile(db_name.with_suffix(".db")):
-        return shelve.open(db_name)
-    else:
-        word_dict = {} #shelve.open(db_name)
-        lessons_filename = sorted(get_html_lesson_list())
-        fill_word_dict_from_html_files(lessons_filename, word_dict)
-        return word_dict
+def get_word_index_dict():
+    word_dict = {}
+    lessons_filename = sorted(get_html_lesson_list())
+    fill_word_index_dict_from_html_files(lessons_filename, word_dict)
+    return word_dict
 
 
 global_word_dict = get_tonic_accent_word_dict()
@@ -84,7 +96,7 @@ def get_html_of_token(token, lesson_dict = {}):
             return token
     txt = ""
     index = 0
-    for frag_struct in token_properties.tonic_accent:
+    for frag_struct in token_properties:
         frag_txt = token[index:index+len(frag_struct[0])]
         if frag_struct[1]:
             txt += "<b>" + frag_txt + "</b>"
@@ -163,7 +175,7 @@ def get_html_lesson(lesson_nb):
 def update_lesson(lesson_nb, lesson_html):
     pretty_lesson_html = ""
     parser.analyze_lesson(lesson_html, lesson_nb)
-    lesson_word_dict = parser.get_lesson_word_dict()
+    lesson_word_dict = parser.get_lesson_word_tonic_accent_dict()
     sentences = parser.get_sentences()
     for sentence in sentences:
         if sentence:
@@ -177,7 +189,7 @@ def store_lesson(lesson_nb, lesson_html):
     file.write(pretty_lesson_html)
     file.close()
 
-    lesson_word_dict = parser.get_lesson_word_dict()
+    lesson_word_dict = parser.get_lesson_word_tonic_accent_dict()
     print("lesson_word_dict", lesson_word_dict)
     for word in lesson_word_dict:
         global_word_dict[word] = lesson_word_dict[word]
@@ -186,7 +198,7 @@ def store_lesson(lesson_nb, lesson_html):
 def correct_word(lesson_nb, lesson_html, word, syllabes):
     pretty_lesson_html = ""
     parser.analyze_lesson(lesson_html, lesson_nb)
-    lesson_word_dict = parser.get_lesson_word_dict()
+    lesson_word_dict = parser.get_lesson_word_tonic_accent_dict()
     global_word_dict[word] = syllabes
     lesson_word_dict[word] = syllabes
     sentences = parser.get_sentences()

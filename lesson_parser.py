@@ -6,8 +6,6 @@ from html.parser import HTMLParser
 
 from collections import namedtuple
 
-Word_properties = namedtuple("Word_properties", "tonic_accent index_ref")
-
 def get_words(sentence):
     return re.sub('['+string.punctuation+'¿'+'¡'+']', ' ', sentence).split()
 
@@ -51,7 +49,7 @@ class MyHTMLParser(HTMLParser):
         self.bold_data = False
         self.feed(lesson)
 
-    def get_lesson_word_dict(self):
+    def get_lesson_word_tonic_accent_dict(self):
         word_dict = {}
         if not hasattr(self, 'sentences'):
             return {}
@@ -59,12 +57,22 @@ class MyHTMLParser(HTMLParser):
             wl = get_sentence_word_list(s, self.sentences_fragments[i])
             for word, tonic_accent in wl:
                 if not word in word_dict:
-                    word_dict[word] = Word_properties(tonic_accent, [(self.lesson_number, i)])
-                else:
-                    word_dict[word].index_ref.append((self.lesson_number, i))
+                    word_dict[word] = tonic_accent
         return word_dict
         
-        
+    def get_lesson_word_index_dict(self):
+        word_dict = {}
+        if not hasattr(self, 'sentences'):
+            return {}
+        for i, s in enumerate(self.sentences):
+            wl = get_sentence_word_list(s, self.sentences_fragments[i])
+            for word, tonic_accent in wl:
+                if not word in word_dict:
+                    word_dict[word] = [(self.lesson_number, i)]
+                else:
+                    word_dict[word].append((self.lesson_number, i))
+        return word_dict
+       
     def handle_starttag(self, tag, attrs):
         if tag == "b":
             self.bold_data = True
