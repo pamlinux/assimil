@@ -8,9 +8,9 @@ from fastapi import FastAPI, Request, Response, Depends, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
+from database import get_errors
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
-from tonic_accent import SelectionItem, marked_selection
+from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors
 from pydantic import BaseModel
 
 @dataclass
@@ -53,10 +53,6 @@ def get_bold_word(item : CorrectItem):
         raise
     return word, syllables
 
-def get_title(filename):
-    audiofile = eyed3.load(filename)
-    return audiofile.tag.title
-        
 def get_full_path(lesson_nb, sentence_nb):
     lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
 
@@ -83,6 +79,12 @@ async def display_lesson(request: Request, lesson_nb : int = 8):
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
         request=request, name="lesson.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+
+@app.get("/errors/", response_class=HTMLResponse)
+async def display_errors(request: Request):
+    lesson_nb, sentences = get_lessons_with_errors()
+    return templates.TemplateResponse(
+        request=request, name="errors.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
 
 @app.get("/espagnol/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
@@ -127,17 +129,17 @@ def form_correct_word(lesson_nb,  item: CorrectItem):
     pretty_lesson_html = correct_word(lesson_nb, lesson_html, word, syllabes)
     return pretty_lesson_html
 
-@app.get("/test/{lesson_nb}")
+@app.get("/history/sentences-errors/{lesson_nb}")
 async def test_edit(request: Request, lesson_nb : int = 3):
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="test.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="sentences-errors.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
 
-@app.post("/test/{lesson_nb}")
+@app.post("/history/sentences-errors/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
 
     #print(f" anchorOffset = {item.anchorOffset}\n focusOffset = {item.focusOffset}\n jsonDomString = {item.jsonDomString}")
-    return marked_selection(item)
+    return proceed_marked_selection(lesson_nb, item)
 
 
 
