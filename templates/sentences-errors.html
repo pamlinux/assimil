@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+    <title>{{ lesson_nb }}</title>
+    <link href="{{ url_for('static', path='/styles.css?<?=time()?>') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    <h1>Test getSelectio avec la leçon : {{ lesson_nb }}</a></h1>
+    <input type="button" value="Select" width="100" style="font-weight: bold; width: 100; height : 32" onclick="proceedSelection(false)" />
+    <form method="post" id="myForm"> 
+      <div id="editor" contentEditable;">
+        {% for sentence in sentences %}
+
+          <p> {{ sentence | safe }} </p>
+
+        {% endfor %}
+      </div>
+      <input type="hidden" id="hiddenInput" name="da">
+      <input type="button" onclick="proceedSelection(true);" value="Enregister" />
+      <br />
+    </form>
+    <div id="responseArea"></div>
+    <script>
+      function copyContent() {
+          var divHTML = document.getElementById("editor").innerHTML;
+          document.getElementById("hiddenInput").value = divHTML;
+      }
+      function saveForm() {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+        console.log("anchorOffset", userSelection.anchorOffset)
+        console.log("focusOffset", userSelection.focusOffset)
+        console.log("anchorNode", userSelection.anchorNode)
+        console.log("userSelection.anchorNode.nextSibling", userSelection.anchorNode.nextSibling)
+        console.log("focusNode", userSelection.focusNode)
+        copyContent()
+          var formElement = document.getElementById('myForm');
+          var data = new FormData(formElement);
+          fetch('/test/' + {{ lesson_nb }}, {
+                method: 'POST',
+                body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("responseArea").innerHTML = data;
+              })
+              .catch(error => {
+                console.error(error);
+              });
+      }
+      function updateForm() {
+          copyContent()
+          var formElement = document.getElementById('myForm');
+          var data = new FormData(formElement);
+          fetch('/editor/update/' + {{ lesson_nb }}, {
+                method: 'POST',
+                body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          console.log("In updateForm");
+          console.log(document.getElementById("editor").innerHTML)
+    
+      }
+
+      function correct() {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+        console.log("anchorOffset", userSelection.anchorOffset)
+        console.log("focusOffset", userSelection.focusOffset)
+        console.log("anchorNode", userSelection.anchorNode)
+        console.log("userSelection.anchorNode.nextSibling", userSelection.anchorNode.nextSibling)
+        console.log("focusNode", userSelection.focusNode)
+
+        anchorOffset = userSelection.anchorOffset;
+        focusOffset = userSelection.focusOffset;
+
+        if (userSelection.anchorNode === userSelection.focusNode) {
+          anchorNode = userSelection.anchorNode.textContent.substring(anchorOffset, focusOffset);
+          focusNode = anchorNode;
+          focusNodeIsAnchorNode = true;
+        } else {
+          anchorNode = userSelection.anchorNode.textContent;
+          anchorNode = anchorNode.substring(anchorOffset, anchorNode.length);
+          focusNode = userSelection.focusNode.textContent;
+          focusNode = focusNode.substring(0, focusOffset);
+          focusNodeIsAnchorNode = false;
+        }
+        anchorNodeTag = userSelection.anchorNode.parentNode.tagName;
+        focusNodeTag = userSelection.focusNode.parentNode.tagName;
+        var anchorNextSibling;
+        var anchorNextSiblingTag;
+        if (userSelection.anchorNode.nextSibling) {
+          anchorNextSibling = userSelection.anchorNode.nextSibling.textContent;
+          anchorNextSiblingTag = userSelection.anchorNode.nextElementSibling.tagName
+        } else {
+          anchorNextSibling = ""
+          anchorNextSiblingTag = ""
+        }
+
+        copyContent()
+        var divHTML = document.getElementById("editor").innerHTML;
+
+        item = {
+                 "focusNodeIsAnchorNode" : focusNodeIsAnchorNode,
+                 "anchorNode" : anchorNode,
+                 "anchorNodeTag" : anchorNodeTag,
+                 "focusNode" : focusNode,
+                 "focusNodeTag" : focusNodeTag,
+                 "anchorNextSibling" : anchorNextSibling,
+                 "anchorNextSiblingTag" : anchorNextSiblingTag,
+                 "lesson" : divHTML
+               }
+
+        var data = JSON.stringify(item);
+        fetch('/editor/correct/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("editor").innerHTML = data;
+              })
+              .catch(error => {
+              console.error(error);
+            });
+        let txt = ""
+        let i = 0;
+        let node = userSelection.anchorNode
+        do {
+             console.log(node);
+             node = node.nextSibling;
+            } while (node && !(node === userSelection.focusNode));
+      }
+    
+      function proceedSelection(store) {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+
+        anchorNode = userSelection.anchorNode;
+        anchorOffset = userSelection.anchorOffset;
+
+        focusOffset = userSelection.focusOffset;
+        focusNode = userSelection.focusNode;
+
+        if (anchorNode === focusNode) {
+          focusNodeIsAnchorNode = true;
+        } else {
+          focusNodeIsAnchorNode = false;
+        }
+
+        console.log("anchorOffset", anchorOffset)
+        console.log("focusOffset", focusOffset)
+        console.log("anchorNode", anchorNode)
+        console.log("focusNode", focusNode)
+
+        function serializeDOMElement(element) {
+
+          if (element.tagName) {
+            tagName = element.tagName.toLowerCase();
+          } else {
+            tagName = "";
+          }
+          
+          var status;
+
+          if (element === anchorNode && element === focusNode) {
+            status = "isAnchorAndFocus";
+          } else if (element === anchorNode) {
+            status = "isAnchor";
+          } else if (element === focusNode) {
+            status = "isFocus";
+          } else {
+            status = "";
+          }
+         
+          const obj = {
+            tagName: tagName,
+            status: status,
+            attributes: {},
+            children: [],
+            textContent: element.textContent
+          };
+          
+          // Récupérer les attributs de l'élément
+          if (element.attributes) {
+            for (let attr of element.attributes) {
+              obj.attributes[attr.name] = attr.value;
+            }
+          };
+          // Récupérer les enfants de l'élément
+          if (element.childNodes) {
+            for (let child of element.childNodes) {
+              obj.children.push(serializeDOMElement(child));
+            }
+          }
+
+  
+
+          return obj;
+        }
+
+        const element = document.getElementById("editor"); // Sélectionner l'élément à sérialiser
+        const serializedDOM = serializeDOMElement(element);
+        const jsonString = JSON.stringify(serializedDOM, null, 2);
+
+        item = {
+                "anchorOffset" : anchorOffset,
+                "focusOffset" : focusOffset,
+                "jsonDomString" : jsonString,
+                "store" : Boolean(store)
+               }
+
+        console.log(jsonString);
+        var data = JSON.stringify(item);
+
+        fetch('/history/sentences-errors/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
+              })
+              .catch(error => {
+              console.error(error);
+            });
+
+     }
+
+
+
+
+      function registerSelection() {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+
+        anchorNode = userSelection.anchorNode;
+        anchorOffset = userSelection.anchorOffset;
+
+        focusOffset = userSelection.focusOffset;
+        focusNode = userSelection.focusNode;
+
+        if (anchorNode === focusNode) {
+          focusNodeIsAnchorNode = true;
+        } else {
+          focusNodeIsAnchorNode = false;
+        }
+
+        console.log("anchorOffset", anchorOffset)
+        console.log("focusOffset", focusOffset)
+        console.log("anchorNode", anchorNode)
+        console.log("focusNode", focusNode)
+
+        function serializeDOMElement(element) {
+
+          if (element.tagName) {
+            tagName = element.tagName.toLowerCase();
+          } else {
+            tagName = "";
+          }
+          
+          var status;
+
+          if (element === anchorNode && element === focusNode) {
+            status = "isAnchorAndFocus";
+          } else if (element === anchorNode) {
+            status = "isAnchor";
+          } else if (element === focusNode) {
+            status = "isFocus";
+          } else {
+            status = "";
+          }
+         
+          const obj = {
+            tagName: tagName,
+            status: status,
+            attributes: {},
+            children: [],
+            textContent: element.textContent
+          };
+          
+          // Récupérer les attributs de l'élément
+          if (element.attributes) {
+            for (let attr of element.attributes) {
+              obj.attributes[attr.name] = attr.value;
+            }
+          };
+          // Récupérer les enfants de l'élément
+          if (element.childNodes) {
+            for (let child of element.childNodes) {
+              obj.children.push(serializeDOMElement(child));
+            }
+          }
+
+  
+
+          return obj;
+        }
+
+        const element = document.getElementById("editor"); // Sélectionner l'élément à sérialiser
+        const serializedDOM = serializeDOMElement(element);
+        const jsonString = JSON.stringify(serializedDOM, null, 2);
+
+        item = {
+                "anchorOffset" : anchorOffset,
+                "focusOffset" : focusOffset,
+                "jsonDomString" : jsonString
+               }
+
+        console.log(jsonString);
+        var data = JSON.stringify(item);
+
+       fetch('/history/sentences-errors/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
+              })
+              .catch(error => {
+              console.error(error);
+            });
+     }
+
+      function commande(nom, argument) {
+        if (typeof argument === 'undefined') {
+          argument = '';
+        }
+        switch (nom) {
+          case "createLink":
+            argument = prompt("Quelle est l'adresse du lien ?");
+            break;
+          case "insertImage":
+            argument = prompt("Quelle est l'adresse de l'image ?");
+            break;
+        }
+        // Exécuter la commande
+        console.log("coucou")
+        console.log(nom);
+        console.log("cucu")
+        console.log(argument);
+        console.log("caca")
+        document.execCommand(nom, false, argument);
+      }
+      function serializeDOMElement(element) {
+        if (element.tagName) {
+          tagName = element.tagName;
+        } else {
+          tagName = "";
+        }
+        const obj = {
+           tagName: tagName,
+           attributes: {},
+           children: [],
+           textContent: element.textContent
+        };
+
+        // Récupérer les attributs de l'élément
+        if (element.attributes) {
+          for (let attr of element.attributes) {
+            obj.attributes[attr.name] = attr.value;
+          }
+        };
+        // Récupérer les enfants de l'élément
+        if (element.childNodes) {
+          for (let child of element.childNodes) {
+             obj.children.push(serializeDOMElement(child));
+          }
+        }
+
+        return obj;
+      }
+
+// Exemple d'utilisation
+const element = document.querySelector('body'); // Sélectionner l'élément à sérialiser
+const serializedDOM = serializeDOMElement(element);
+const jsonString = JSON.stringify(serializedDOM, null, 2);
+
+console.log(jsonString);
+
+    </script>
+<address></address>
+<!-- hhmts start -->Last modified: Wed Aug 14 11:32:02 CEST 2024 <!-- hhmts end -->
+</body> </html>
+
