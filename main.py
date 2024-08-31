@@ -82,9 +82,9 @@ async def display_lesson(request: Request, lesson_nb : int = 8):
 
 @app.get("/errors/", response_class=HTMLResponse)
 async def display_errors(request: Request):
-    th_row, rows= get_history()
+    col_nb, th_row, rows = get_history()
     return templates.TemplateResponse(
-        request=request, name="errors.html", context={"date" : date.today(), "th_row" : th_row, "rows" : rows})
+        request=request, name="errors.html", context={"date" : date.today(), "col_nb" : col_nb, "th_row" : th_row, "rows" : rows})
 
 @app.get("/errors/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):

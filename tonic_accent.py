@@ -329,10 +329,13 @@ def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date 
     lessons = get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None)
     rows = []
     th_rows = []
+    col_nb = 0
     for lesson_nb in lessons:
         row=[]
         th_rows.append(lesson_nb)
         for date in lessons[lesson_nb]:
             row.append(date)
         rows.append(row)
-    return th_rows, rows
+        if len(row) > col_nb:
+            col_nb = len(row) 
+    return col_nb, th_rows, rows
