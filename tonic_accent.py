@@ -310,13 +310,29 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
 
 def get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
     errors = get_lessons_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None)
-    lesson = []
-    lesson_nb = list(errors.keys())[0]
-    first_date = list(errors[lesson_nb].keys())[1]
-    sentences = get_html_sentences(lesson_nb)
-    for k, sentence in enumerate(sentences):
-        if k in errors[lesson_nb][first_date]:
-            lesson.append(errors[lesson_nb][first_date][k])
-        else:
-            lesson.append(sentences[k])
-    return lesson_nb, lesson
+    lessons = {}
+    
+    for lesson_nb in errors:
+        lessons[lesson_nb] = {}
+        sentences = get_html_sentences(lesson_nb)
+        for date in errors[lesson_nb]:
+            lesson = []
+            for k, sentence in enumerate(sentences):
+                if k in errors[lesson_nb][date]:
+                    lesson.append(errors[lesson_nb][date][k])
+                else:
+                    lesson.append(sentences[k])
+            lessons[lesson_nb][date] = lesson
+    return lessons
+
+def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
+    lessons = get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None)
+    rows = []
+    th_rows = []
+    for lesson_nb in lessons:
+        row=[]
+        th_rows.append(lesson_nb)
+        for date in lessons[lesson_nb]:
+            row.append(date)
+        rows.append(row)
+    return th_rows, rows
