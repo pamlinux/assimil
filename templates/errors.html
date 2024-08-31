@@ -33,18 +33,28 @@
         <label for="oldestLesson">Leçon la plus ancienne:</label>
         <input type="date" id="oldestLesson" name="oldest-lesson" value="2022-08-31" min="2022-08-30"/>
         <label for="mostRecentLesson">Leçon la plus récente:</label>
-        <input type="date" id="mostRecentLesson" name="most-recent-lesson" value="{{date}}" mxn="{{date}}"/>
+        <input type="date" id="mostRecentLesson" name="most-recent-lesson" value="{{date}}" max="{{date}}"/>
       </div>
     </div>
     <button onclick="proceedSearch()">Rechercher</button>
     <div id="div01">
-    </div>
       <table>
         <caption>Erreurs trouvées</caption>
+        <tr>
+          <th scope="col">Leçon</th>
+          <th scope="col" colspan="{{col_nb}}">Dates</th>
+        </tr>
         {% for row in rows %}
-
+          <tr>
+            <th scope="row">{{th_row[loop.index0]}}</th>
+            {% set outer_loop = loop %}
+            {% for history_date in row %}
+              <td><button onclick="loadLesson({{outer_loop.index0}}, {{loop.index0}})">{{history_date.strftime('%d-%m-%Y %H:%M:%S')}}</button></td>
+            {% endfor %}
+          </tr>
         {% endfor %}
       </table>
+    </div>
     <audio id="audioTag" src=""/>
  
     <script>
@@ -52,29 +62,14 @@
       const div = document.getElementById("div01");
       div.addEventListener("contextmenu", (e) => {e.preventDefault()});
 
-      function playSentence(val) {
-        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
-        console.log(audioRef)
-        var audioEl = document.getElementById("audioTag");
-        audioEl.src = audioRef
-
-        audioEl.load();
-        audioEl.play();
+      function loadLesson(row, col) {
+        console.log(row);
+        console.log(col)
 
       }
 
-      function nextSentence(val) {
-        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
-        console.log(audioRef)
-        var audioEl = document.getElementById("audioTag");
-        audioEl.src = audioRef
-
-        audioEl.load();
-        audioEl.play();
-        e.stopPropagation();
-        e.preventDefault();
-        
-      }
+      
+      
 
       function proceedSearch() {
         var firstLesson =  document.getElementById("firstLesson").value
