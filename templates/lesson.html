@@ -7,11 +7,11 @@
     <h1><a href="{{ url_for('display_lesson', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
 
     <div id="div01">
-    {% for sentence in sentences %}
+      {% for sentence in sentences %}
 
-      <p onClick="playSentence({{loop.index0}})" oncontextmenu="nextSentence({{loop.index}})"> {{ sentence | safe }} </p>
+        <p onClick="playSentence({{loop.index0}})" oncontextmenu="nextSentence({{loop.index}})"> {{ sentence | safe }} </p>
 
-    {% endfor %}
+      {% endfor %}
     </div>
 
     <audio id="audioTag" src=""/>

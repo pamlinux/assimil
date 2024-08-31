@@ -37,17 +37,14 @@
       </div>
     </div>
     <button onclick="proceedSearch()">Rechercher</button>
-    <form method="post" id="myForm">  
- 
-      <div id="div01">
-        {% for sentence in sentences %}
-
-        <p onClick="playSentence({{loop.index0}})" oncontextmenu="nextSentence({{loop.index}})"> {{ sentence | safe }} </p>
+    <div id="div01">
+    </div>
+      <table>
+        <caption>Erreurs trouvées</caption>
+        {% for row in rows %}
 
         {% endfor %}
-      </div>
-    </form>
-
+      </table>
     <audio id="audioTag" src=""/>
  
     <script>
@@ -88,6 +85,7 @@
         console.log("lastLesson", oldestLesson)
         var mostRecentLesson =  document.getElementById("mostRecentLesson").value
         console.log("mostRecentLesson", mostRecentLesson)
+
       }
     </script>
 
