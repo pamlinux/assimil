@@ -1,7 +1,7 @@
 import eyed3
 import os
 from pathlib import Path
-
+from datetime import date
 from dataclasses import dataclass
 
 from fastapi import FastAPI, Request, Response, Depends, Form
@@ -10,7 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from database import get_errors
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
-from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors
+from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors, get_history
 from pydantic import BaseModel
 
 @dataclass
@@ -82,9 +82,16 @@ async def display_lesson(request: Request, lesson_nb : int = 8):
 
 @app.get("/errors/", response_class=HTMLResponse)
 async def display_errors(request: Request):
-    lesson_nb, sentences = get_lessons_with_errors()
+    th_row, rows= get_history()
     return templates.TemplateResponse(
-        request=request, name="errors.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="errors.html", context={"date" : date.today(), "th_row" : th_row, "rows" : rows})
+
+@app.get("/errors/audio/")
+def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
+    print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
+    sentence_path = get_full_path(lesson_nb, sentence_nb)
+    data = open(sentence_path, "rb").read()
+    return Response(content=data, media_type="audio/mpeg")
 
 @app.get("/espagnol/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
