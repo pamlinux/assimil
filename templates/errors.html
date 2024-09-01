@@ -38,23 +38,7 @@
     </div>
     <button onclick="proceedSearch()">Rechercher</button>
     <div id="div01">
-      <table>
-        <caption>Erreurs trouvées</caption>
-        <tr>
-          <th scope="col">Leçon</th>
-          <th scope="col" colspan="{{col_nb}}">Dates</th>
-        </tr>
-        {% for row in rows %}
-          <tr>
-            <th scope="row">{{th_row[loop.index0]}}</th>
-            {% set outer_loop = loop %}
-            {% for history_date in row %}
-              <td><button onclick="loadLesson({{outer_loop.index0}}, {{loop.index0}})">{{history_date.strftime('%d-%m-%Y %H:%M:%S')}}</button></td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
+   </div>
     <audio id="audioTag" src=""/>
  
     <script>
@@ -69,7 +53,6 @@
       }
 
       
-      
 
       function proceedSearch() {
         var firstLesson =  document.getElementById("firstLesson").value
@@ -77,11 +60,64 @@
         var lastLesson = document.getElementById("lastLesson").value
         console.log("lastLesson", lastLesson)
         var oldestLesson = document.getElementById("oldestLesson").value
-        console.log("lastLesson", oldestLesson)
+        console.log("oldestLesson", oldestLesson)
         var mostRecentLesson =  document.getElementById("mostRecentLesson").value
         console.log("mostRecentLesson", mostRecentLesson)
 
+
+        item = {
+                "firstLesson" : firstLesson,
+                "lastLesson" : lastLesson,
+                "oldestLesson" : oldestLesson,
+                "mostRecentLesson" : mostRecentLesson
+               }
+
+        var data = JSON.stringify(item);
+
+       fetch('/errors/',  {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("div01").innerHTML = data.substring(1, data.length-1);
+              })
+              .catch(error => {
+              console.error(error);
+            });
+     }
+
+   
+
+      function playSentence(lesson_nb, sentence_nb) {
+        audioRef = "audio/?".concat("lesson_nb=", lesson_nb ,"&sentence_nb=", sentence_nb)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+
       }
+
+      function nextSentence(lesson_nb, sentence_nb) {
+        audioRef = "audio/?".concat("lesson_nb=", lesson_nb ,"&sentence_nb=", sentence_nb)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+        e.stopPropagation();
+        e.preventDefault();
+        
+      }
+
+
     </script>
 
 </body>

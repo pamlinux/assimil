@@ -309,7 +309,7 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
     return html_with_selection
 
 def get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
-    errors = get_lessons_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None)
+    errors = get_lessons_errors(begin_lesson, end_lesson, begin_date, end_date)
     lessons = {}
     
     for lesson_nb in errors:
@@ -326,7 +326,7 @@ def get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = Non
     return lessons
 
 def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
-    lessons = get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None)
+    lessons = get_lessons_with_errors(begin_lesson, end_lesson, begin_date, end_date)
     rows = []
     th_rows = []
     col_nb = 0
