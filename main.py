@@ -1,13 +1,14 @@
 import eyed3
 import os
 from pathlib import Path
-from datetime import date
+from datetime import date, datetime
 from dataclasses import dataclass
 
 from fastapi import FastAPI, Request, Response, Depends, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from jinja2 import Environment, FileSystemLoader
 from database import get_errors
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
 from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors, get_history
@@ -28,6 +29,13 @@ class CorrectItem(BaseModel):
     anchorNextSibling : str
     anchorNextSiblingTag : str
     lesson : str
+
+class ErrorItem(BaseModel):
+        firstLesson : str
+        lastLesson : str
+        mostRecentLesson : str
+        oldestLesson : str
+
 
 app = FastAPI()
 
@@ -84,7 +92,27 @@ async def display_lesson(request: Request, lesson_nb : int = 8):
 async def display_errors(request: Request):
     col_nb, th_row, rows = get_history()
     return templates.TemplateResponse(
-        request=request, name="errors.html", context={"date" : date.today(), "col_nb" : col_nb, "th_row" : th_row, "rows" : rows})
+        request=request, name="errors.html", context={"date" : date.today()})
+
+@app.post("/errors/")
+async def get_errors(item: ErrorItem):
+    print(item.mostRecentLesson)
+    col_nb, th_rows, rows = get_history(
+        begin_lesson = int(item.firstLesson),
+        end_lesson = int(item.lastLesson),
+        begin_date = datetime.strptime(item.oldestLesson, '%Y-%m-%d'),
+        end_date = datetime.strptime(item.mostRecentLesson, '%Y-%m-%d')
+    )
+    env = Environment(loader = FileSystemLoader("templates"))
+    template = env.get_template('errors_table.html')
+    div0 = template.render(
+        col_nb = col_nb,
+        th_rows = th_rows,
+        rows = rows
+    )
+
+    return div0
+
 
 @app.get("/errors/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):

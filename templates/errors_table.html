@@ -1,0 +1,16 @@
+<table>
+    <caption>Erreurs trouvées</caption>
+    <tr>
+      <th scope="col">Leçon</th>
+      <th scope="col" colspan="{{col_nb}}">Dates</th>
+    </tr>
+    {% for row in rows %}
+      <tr>
+        <th scope="row">{{th_rows[loop.index0]}}</th>
+        {% set outer_loop = loop %}
+        {% for history_date in row %}
+          <td><button onclick="loadLesson({{outer_loop.index0}}, {{loop.index0}})">{{history_date.strftime('%d-%m-%Y %H:%M:%S')}}</button></td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
