@@ -110,7 +110,7 @@ async def get_errors(item: ErrorItem):
         th_rows = th_rows,
         rows = rows
     )
-
+    div0 = div0.replace('\n', '')
     return div0
 
 

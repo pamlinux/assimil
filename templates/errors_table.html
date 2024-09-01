@@ -1,16 +1,39 @@
-<table>
+<style>
+    th {
+        text-align: center;
+    }
+    table, td, th {
+        border: 1px solid black;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+</style>
+<table>     
     <caption>Erreurs trouvées</caption>
     <tr>
       <th scope="col">Leçon</th>
-      <th scope="col" colspan="{{col_nb}}">Dates</th>
+      <th scope="col" colspan="{{col_nb}}" style="text-align:center;">Dates</th>
     </tr>
     {% for row in rows %}
       <tr>
         <th scope="row">{{th_rows[loop.index0]}}</th>
         {% set outer_loop = loop %}
         {% for history_date in row %}
-          <td><button onclick="loadLesson({{outer_loop.index0}}, {{loop.index0}})">{{history_date.strftime('%d-%m-%Y %H:%M:%S')}}</button></td>
+          <td><button onclick='loadLesson({{outer_loop.index0}}, {{loop.index0}})'>{{history_date.strftime('%d-%m-%Y %H:%M:%S')}}</button></td>
         {% endfor %}
       </tr>
     {% endfor %}
   </table>
+
+  <script>
+          
+    function loadLesson(row, col) {
+        console.log(row);
+        console.log(col);
+
+      }
+
+  </script>
