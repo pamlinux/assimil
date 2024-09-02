@@ -146,10 +146,10 @@ def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date =
     if not end_date: end_date = datetime.datetime.max
     stmt = select(MarkedSentence).where(
                     and_(
-                        MarkedSentence.date_time > begin_date,
-                        MarkedSentence.date_time < end_date,
-                        MarkedSentence.lesson > begin_lesson,
-                        MarkedSentence.lesson < end_lesson,
+                        MarkedSentence.date_time >= begin_date,
+                        MarkedSentence.date_time <= end_date,
+                        MarkedSentence.lesson >= begin_lesson,
+                        MarkedSentence.lesson <= end_lesson,
                     )
                 )
     errors = []
@@ -159,6 +159,8 @@ def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date =
     return errors
 
 def get_lessons_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
+    print(f"----------------- begin_date : {begin_date}")
+    print(f"----------------- end_date : {end_date}")
     if not begin_date: begin_date = datetime.datetime.min
     if not end_date: end_date = datetime.datetime.max
     errors = {}
