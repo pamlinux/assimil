@@ -6,8 +6,9 @@ from pathlib import Path
 from pydantic import BaseModel
 from lesson_parser import MyHTMLParser
 from selection import extract_selection, extract_paragraphs
-from database import store_lesson_errors, get_lessons_errors
+from database import store_lesson_errors, get_lessons_errors, get_single_lesson_errors
 import json
+import datetime
 
 lessons_directory = f"Sentences"
 db_directory = "db"
@@ -324,6 +325,26 @@ def get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = Non
                     lesson.append(sentences[k])
             lessons[lesson_nb][date] = lesson
     return lessons
+
+def get_single_lesson_with_errors(lesson_nb, date):
+    sentences = get_html_sentences(lesson_nb)
+    errors = get_single_lesson_errors(lesson_nb, date)
+    lesson = []
+    for k, sentence in enumerate(sentences):
+        if k in errors:
+            lesson.append(errors[k])
+        else:
+            lesson.append(sentence)
+    return lesson
+
+def get_lesson_with_errors_text(lesson_nb, date_time_string):
+    date_time = datetime.datetime.strptime(date_time_string, '%d-%m-%Y %H:%M:%S%f')
+    sentences = get_single_lesson_with_errors(lesson_nb, date_time)
+    lesson = ""
+    for sentence in sentences:
+        lesson += "<p>" + sentence + "</p>"
+    return lesson
+
 
 def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
     lessons = get_lessons_with_errors(begin_lesson, end_lesson, begin_date, end_date)

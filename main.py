@@ -11,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 from database import get_errors
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
-from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors, get_history
+from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors, get_history, get_lesson_with_errors_text
 from pydantic import BaseModel
 
 @dataclass
@@ -104,7 +104,7 @@ async def get_errors(item: ErrorItem):
         end_date = datetime.strptime(item.mostRecentLesson, '%Y-%m-%d')
     )
     env = Environment(loader = FileSystemLoader("templates"))
-    template = env.get_template('errors_table.html')
+    template = env.get_template('errors_list.html')
     div0 = template.render(
         col_nb = col_nb,
         th_rows = th_rows,
@@ -113,6 +113,10 @@ async def get_errors(item: ErrorItem):
     div0 = div0.replace('\n', '')
     return div0
 
+@app.get("/lesson-errors/", response_class=HTMLResponse)
+async def get_errors_list_date(lesson : int = 0, datetime : str = ""):
+    txt = get_lesson_with_errors_text(lesson, datetime)
+    return txt
 
 @app.get("/errors/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
@@ -164,11 +168,11 @@ def form_correct_word(lesson_nb,  item: CorrectItem):
     pretty_lesson_html = correct_word(lesson_nb, lesson_html, word, syllabes)
     return pretty_lesson_html
 
-@app.get("/history/sentences-errors/{lesson_nb}")
+@app.get("/history/errors-editor/{lesson_nb}")
 async def test_edit(request: Request, lesson_nb : int = 3):
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="sentences-errors.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="errors-editor.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
 
 @app.post("/history/sentences-errors/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):

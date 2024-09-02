@@ -129,6 +129,18 @@ def store_lesson_errors(lesson_number, sentences, entrys_numbers):
                 session.add(s_obj)
         session.commit()
 
+def get_single_lesson_errors(lesson_nb, date):
+    stmt = select(MarkedSentence).where(
+                MarkedSentence.lesson == lesson_nb,
+                MarkedSentence.date_time == date
+            )
+
+    errors = {}
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            errors[entry.line] = entry.sentence
+    return errors
+   
 def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
     if not begin_date: begin_date = datetime.datetime.min
     if not end_date: end_date = datetime.datetime.max
