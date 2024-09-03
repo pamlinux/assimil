@@ -56,6 +56,7 @@
         color: white;
     }
 </style>
+
 <p></p>
 <p></p>
     {% for row in rows %}
@@ -64,9 +65,9 @@
             <h2>Lección {{th_rows[loop.index0]}}</h2>
             <p>
                 <ul>
-                    {% for history_date in row %}
-                        {% set date_key = history_date.strftime('%d-%m-%Y %H:%M:%S%f') %}
-                        <li><a href='/lesson-errors/?lesson={{th_rows[outer_loop.index0]}}&datetime={{date_key}}'>{{history_date.strftime('%d-%m-%Y %H:%M:%S')}}</a></li>
+                    {% for history_date_time in row %}
+                        {% set date_time_key = history_date_time.strftime('%d-%m-%Y %H:%M:%S%f') %}
+                        <li><a href='/lesson-errors/?lesson={{th_rows[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></li>
                     {% endfor %}
                 </ul>
             </p>
@@ -75,12 +76,5 @@
  
     {% endfor %}
 
-<script>
-          
-    function loadLesson(row, col) {
-        console.log(row);
-        console.log(col);
 
-    }
 
-</script>

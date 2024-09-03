@@ -11,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 from database import get_errors
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
-from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors, get_history, get_lesson_with_errors_text
+from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors, get_history, get_single_lesson_with_errors
 from pydantic import BaseModel
 
 @dataclass
@@ -90,7 +90,6 @@ async def display_lesson(request: Request, lesson_nb : int = 8):
 
 @app.get("/errors/", response_class=HTMLResponse)
 async def display_errors(request: Request):
-    col_nb, th_row, rows = get_history()
     return templates.TemplateResponse(
         request=request, name="errors.html", context={"date" : date.today()})
 
@@ -115,9 +114,13 @@ async def get_errors(item: ErrorItem):
     return div0
 
 @app.get("/lesson-errors/", response_class=HTMLResponse)
-async def get_errors_list_date(lesson : int = 0, datetime : str = ""):
-    txt = get_lesson_with_errors_text(lesson, datetime)
-    return txt
+async def get_errors_list_date(request: Request, lesson : int = 0, datetimekey : str = ""):
+    date_time = datetime.strptime(datetimekey, '%d-%m-%Y %H:%M:%S%f')
+    date_time_string = date_time.strftime("%d-%m-%Y à %H:%M:%S")
+    sentences = get_single_lesson_with_errors(lesson, date_time)
+    return templates.TemplateResponse(
+        request=request, name="lesson-errors.html", context={"lesson_nb": lesson, "date_time" : date_time_string, "sentences" : sentences})
+
 
 @app.get("/errors/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
@@ -130,6 +133,14 @@ def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1)
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
     print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
     sentence_path = get_full_path(lesson_nb, sentence_nb)
+    data = open(sentence_path, "rb").read()
+    return Response(content=data, media_type="audio/mpeg")
+
+@app.get("/lesson-errors/audio/")
+def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
+    print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
+    sentence_path = get_full_path(lesson_nb, sentence_nb)
+    print("sentence_path", sentence_path)
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
@@ -154,7 +165,7 @@ def form_save(lesson_nb, form_data: SimpleModel = Depends()):
 def form_update(lesson_nb, form_data: SimpleModel = Depends()):
     ta = form_data.ta
     lesson_html = form_data.da
-    print("numéro de la leçon : ", lesson_nb) 
+    print("numéro de la lelesson-errorsçon : ", lesson_nb) 
     print(lesson_html)
     pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
     print(f"pretty lesson : {pretty_lesson_html}")
@@ -170,15 +181,14 @@ def form_correct_word(lesson_nb,  item: CorrectItem):
     return pretty_lesson_html
 
 @app.get("/history/errors-editor/{lesson_nb}")
-async def test_edit(request: Request, lesson_nb : int = 3):
+async def test_edit(request: Request, lesson_nb : int = 3):   
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
         request=request, name="errors-editor.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
 
 @app.post("/history/sentences-errors/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
-
-    #print(f" anchorOffset = {item.anchorOffset}\n focusOffset = {item.focusOffset}\n jsonDomString = {item.jsonDomString}")
+    print(f"SelectionItem item.markType : {item.markType}")
     return proceed_marked_selection(lesson_nb, item)
 
 

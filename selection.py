@@ -14,7 +14,13 @@ class MarkedLinesParser(HTMLParser):
         elif tag == "mark":
             if not self.current_line_number in self.marked_lines_numbers:
                 self.marked_lines_numbers[self.current_line_number] = True
-            self.current_sentence += f"<{tag}>"
+            attrs_string = ""
+            for attr_name, attr_value in attrs:
+                attrs_string += f" {attr_name}='{attr_value}'"
+            if attrs_string:
+                self.current_sentence += f"<{tag}{attrs_string}>"
+            else:
+                self.current_sentence += f"<{tag}>"
         else:
             self.current_sentence += f"<{tag}>"
         
