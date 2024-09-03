@@ -116,9 +116,11 @@ def get_word_index_dict():
     return word_index_dict
 
 def store_lesson_errors(lesson_number, sentences, entrys_numbers):
+    print("-------------- In store_lesson_errors")
     date_time = datetime.datetime.now()
     with Session(engine) as session:
         for line, s in enumerate(sentences):
+            print("----", line, "------", s)
             if line in entrys_numbers:
                 s_obj = MarkedSentence(
                     lesson = lesson_number,
@@ -129,16 +131,19 @@ def store_lesson_errors(lesson_number, sentences, entrys_numbers):
                 session.add(s_obj)
         session.commit()
 
-def get_single_lesson_errors(lesson_nb, date):
+def get_single_lesson_errors(lesson_nb, date_time : datetime.datetime):
+    print(f"----- In get_single_lesson_errors  date : {date_time}, of type {type(date_time)}")
     stmt = select(MarkedSentence).where(
                 MarkedSentence.lesson == lesson_nb,
-                MarkedSentence.date_time == date
+                MarkedSentence.date_time == date_time
             )
 
     errors = {}
     with Session(engine) as session:
         for entry in session.scalars(stmt):
+            print(entry)
             errors[entry.line] = entry.sentence
+
     return errors
    
 def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):

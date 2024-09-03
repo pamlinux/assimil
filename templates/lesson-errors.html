@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<header>
+    <style>
+        .A {
+            background-color: orange;
+            color: black; 
+        }
+        .B {
+            background: rgba(231, 237, 238, 0.377);
+            color: black; 
+        }
+        .E {
+            background: greenyellow;
+            color: black; 
+        }
+        .G {
+            background-color: rgba(152, 27, 198, 0.75);
+            color: black; 
+        }
+        .O {
+            background: rgba(27, 75, 198, 0.75);
+            color: black; 
+        }
+        .S {
+            background: yellow;
+            color: black; 
+        }
+        .V {
+            background: rgba(198, 27, 144, 0.75);
+            color: black; 
+        }
+        #select {
+          width: 32px;
+          height: 32px;
+          font-weight: bold;
+          }
+    </style>
+</header>
+<body>
+    <h1>Session du {{date_time}} concernant la leçon {{lesson_nb}}</h1>
+    <div id="div01">
+        {% for sentence in sentences %}
+            <p onClick="playSentence({{loop.index0}})" oncontextmenu="nextSentence({{loop.index}})"> {{ sentence | safe }} </p>
+          {% endfor %}
+      </div>
+      
+      <audio id="audioTag" src=""/>
+
+      <script>
+          
+        const div = document.getElementById("div01");
+        div.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
+        function playSentence(val) {
+            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+            console.log(audioRef)
+            var audioEl = document.getElementById("audioTag");
+            audioEl.src = audioRef
+
+            audioEl.load();
+            audioEl.play();
+
+        }
+
+        function nextSentence(val) {
+            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+            console.log(audioRef)
+            var audioEl = document.getElementById("audioTag");
+            audioEl.src = audioRef
+
+            audioEl.load();
+            audioEl.play();
+            e.stopPropagation();
+            e.preventDefault();
+  
+        }
+
+    </script>
+</body>
+</html>
