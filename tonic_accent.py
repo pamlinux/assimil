@@ -364,14 +364,11 @@ def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date 
     sessions = get_lesson_sessions_history(begin_lesson, end_lesson, begin_date, end_date)
 
     rows = []
-    th_rows = []
-    col_nb = 0
+    lessons = []
     for lesson_nb in sessions:
         row=[]
-        th_rows.append(lesson_nb)
-        for date in sessions[lesson_nb]:
-            row.append(date)
+        lessons.append(lesson_nb)
+        for date_time in sessions[lesson_nb]:
+            row.append((date_time, sessions[lesson_nb][date_time]))
         rows.append(row)
-        if len(row) > col_nb:
-            col_nb = len(row) 
-    return col_nb, th_rows, rows
+    return  lessons, rows

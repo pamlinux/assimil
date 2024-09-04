@@ -97,7 +97,7 @@ async def display_errors(request: Request):
 async def get_errors(item: ErrorItem):
     end_date = datetime.strptime(item.mostRecentLesson, '%Y-%m-%d')
     end_of_day_datetime = end_date.replace(hour=23, minute=59, second=59, microsecond=999999)
-    col_nb, th_rows, rows = get_history(
+    lessons, rows = get_history(
         begin_lesson = int(item.firstLesson),
         end_lesson = int(item.lastLesson),
         begin_date = datetime.strptime(item.oldestLesson, '%Y-%m-%d'),
@@ -106,8 +106,7 @@ async def get_errors(item: ErrorItem):
     env = Environment(loader = FileSystemLoader("templates"))
     template = env.get_template('errors_list.html')
     div0 = template.render(
-        col_nb = col_nb,
-        th_rows = th_rows,
+        lessons = lessons,
         rows = rows
     )
     div0 = div0.replace('\n', '')
