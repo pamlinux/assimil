@@ -185,7 +185,7 @@ async def test_edit(request: Request, lesson_nb : int = 3):
     return templates.TemplateResponse(
         request=request, name="errors-editor.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
 
-@app.post("/history/sentences-errors/{lesson_nb}")
+@app.post("/history/errors-editor/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
     print(f"SelectionItem item.markType : {item.markType}")
     return proceed_marked_selection(lesson_nb, item)
