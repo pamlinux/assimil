@@ -11,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 from database import get_errors
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
-from tonic_accent import SelectionItem, proceed_marked_selection, get_lessons_with_errors, get_history, get_single_lesson_with_errors
+from tonic_accent import SelectionItem, proceed_marked_selection, get_history, get_single_lesson_with_errors
 from pydantic import BaseModel
 
 @dataclass

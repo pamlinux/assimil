@@ -6,7 +6,7 @@ from pathlib import Path
 from pydantic import BaseModel
 from lesson_parser import MyHTMLParser
 from selection import extract_selection, extract_paragraphs
-from database import store_lesson_errors, get_lessons_errors, get_single_lesson_errors
+from database import store_lesson_errors, get_single_lesson_errors, get_lesson_sessions_history
 import json
 import datetime
 
@@ -320,17 +320,18 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
         store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
     return html_with_selection
 
+
 def get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
-    errors = get_lessons_errors(begin_lesson, end_lesson, begin_date, end_date)
+    sessions = get_lesson_sessions_history(begin_lesson, end_lesson, begin_date, end_date)
     lessons = {}
     
-    for lesson_nb in errors:
+    for lesson_nb in sessions:
         lessons[lesson_nb] = {}
         sentences = get_html_sentences(lesson_nb)
-        for date in errors[lesson_nb]:
+        for date in sessions[lesson_nb]:
             lesson = []
             for k, sentence in enumerate(sentences):
-                if k in errors[lesson_nb][date]:
+                if k in sessions[lesson_nb][date]:
                     lesson.append(errors[lesson_nb][date][k])
                 else:
                     lesson.append(sentences[k])
@@ -360,14 +361,15 @@ def get_lesson_with_errors_text(lesson_nb, date_time_string):
 
 
 def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
-    lessons = get_lessons_with_errors(begin_lesson, end_lesson, begin_date, end_date)
+    sessions = get_lesson_sessions_history(begin_lesson, end_lesson, begin_date, end_date)
+
     rows = []
     th_rows = []
     col_nb = 0
-    for lesson_nb in lessons:
+    for lesson_nb in sessions:
         row=[]
         th_rows.append(lesson_nb)
-        for date in lessons[lesson_nb]:
+        for date in sessions[lesson_nb]:
             row.append(date)
         rows.append(row)
         if len(row) > col_nb:

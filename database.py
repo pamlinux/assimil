@@ -51,13 +51,24 @@ class Sentence(Base):
 class MarkedSentence(Base):
     __tablename__ = "marked_sentences"
     id: Mapped[int] = mapped_column(primary_key=True)
-    date_time: Mapped[datetime.datetime]
     sentence: Mapped[str] 
     comment: Mapped[Optional[str]]
-    lesson : Mapped[int]
     line : Mapped[int]
+    session_id : Mapped[int] = mapped_column(ForeignKey("lesson_sessions.id"))
+    session : Mapped["LessonSession"] = relationship(back_populates="errored_sentences")
     def __repr__(self) -> str:
-        return f"Sentence(id={self.id!r}, date_time = {self.date_time!r}, lesson={self.lesson!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
+        return f"Sentence(id={self.id!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
+
+class LessonSession(Base):
+    __tablename__ = "lesson_sessions"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    lesson: Mapped[int]
+    date_time: Mapped[datetime.datetime]
+    errors_number: Mapped[int]
+    errored_sentences : Mapped[List["MarkedSentence"]] = relationship(
+        back_populates="session", cascade="all, delete-orphan")
+    def __repr__(self) -> str:
+        return f"Session du {self.date_time!r} de la lesson {self.lesson!r} avec {self.errors_number!r} erreurs"
 
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
@@ -119,30 +130,35 @@ def store_lesson_errors(lesson_number, sentences, entrys_numbers):
     print("-------------- In store_lesson_errors")
     date_time = datetime.datetime.now()
     with Session(engine) as session:
-        for line, s in enumerate(sentences):
-            print("----", line, "------", s)
+        errored_sentences = []
+        for line, sentence in enumerate(sentences):
+            print("----", line, "------", sentence)
             if line in entrys_numbers:
-                s_obj = MarkedSentence(
-                    lesson = lesson_number,
+                errored_sentences.append(MarkedSentence(
                     line = line,
-                    date_time = date_time,
-                    sentence = sentences[line]
-                )
-                session.add(s_obj)
+                    sentence = sentence
+                ))
+        l_obj = LessonSession(
+            lesson = lesson_number,
+            date_time = date_time,
+            errors_number = len(errored_sentences),
+            errored_sentences = errored_sentences
+        )
+        session.add(l_obj)
         session.commit()
 
 def get_single_lesson_errors(lesson_nb, date_time : datetime.datetime):
     print(f"----- In get_single_lesson_errors  date : {date_time}, of type {type(date_time)}")
-    stmt = select(MarkedSentence).where(
-                MarkedSentence.lesson == lesson_nb,
-                MarkedSentence.date_time == date_time
+    stmt = select(LessonSession).where(
+                LessonSession.lesson == lesson_nb,
+                LessonSession.date_time == date_time
             )
 
     errors = {}
     with Session(engine) as session:
-        for entry in session.scalars(stmt):
-            print(entry)
-            errors[entry.line] = entry.sentence
+        for lesson_session in session.scalars(stmt):
+            for sentence_entry in lesson_session.errored_sentences:
+                errors[sentence_entry.line] = sentence_entry.sentence
 
     return errors
    
@@ -163,28 +179,48 @@ def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date =
             errors.append(entry.sentence)
     return errors
 
-def get_lessons_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
+def get_lesson_sessions_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
     print(f"----------------- begin_date : {begin_date}")
     print(f"----------------- end_date : {end_date}")
     if not begin_date: begin_date = datetime.datetime.min
     if not end_date: end_date = datetime.datetime.max
-    errors = {}
-    for lesson in range(begin_lesson, end_lesson + 1):
-        stmt = select(MarkedSentence).where(
-                    and_(
-                        MarkedSentence.date_time > begin_date,
-                        MarkedSentence.date_time < end_date,
-                        MarkedSentence.lesson == lesson
-                    )
+    sessions = {}
+    stmt = select(LessonSession).where(
+                and_(
+                    LessonSession.date_time >= begin_date,
+                    LessonSession.date_time <= end_date,
+                    LessonSession.lesson <= end_lesson,
+                    LessonSession.lesson >= begin_lesson
                 )
-        with Session(engine) as session:
-            for entry in session.scalars(stmt):
-                if entry.lesson in errors:
-                    if entry.date_time in errors[entry.lesson]: 
-                        errors[entry.lesson][entry.date_time][entry.line ] = entry.sentence
-                    else:
-                        errors[entry.lesson][entry.date_time] = {entry.line : entry.sentence}
-                else:
-                    errors[entry.lesson] = {entry.date_time : {entry.line : entry.sentence}}
-    return errors
+            )
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            if entry.lesson in sessions:
+                sessions[entry.lesson][entry.date_time] = entry.errors_number
+            else:
+                sessions[entry.lesson] = {entry.date_time : entry.errors_number}
+    return sessions
  
+def get_lessons_errors_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
+    if not begin_date: begin_date = datetime.datetime.min
+    if not end_date: end_date = datetime.datetime.max
+    errors = {}
+    stmt = select(MarkedSentence).where(
+                and_(
+                    MarkedSentence.date_time >= begin_date,
+                    MarkedSentence.date_time <= end_date,
+                    MarkedSentence.lesson >= begin_lesson,
+                    MarkedSentence.lesson <= end_lesson
+                )
+            )
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            if entry.lesson in errors:
+                if entry.date_time in errors[entry.lesson]: 
+                    errors[entry.lesson][entry.date_time][entry.line ] = entry.sentence
+                else:
+                    errors[entry.lesson][entry.date_time] = {entry.line : entry.sentence}
+            else:
+                errors[entry.lesson] = {entry.date_time : {entry.line : entry.sentence}}
+    return errors
+    
