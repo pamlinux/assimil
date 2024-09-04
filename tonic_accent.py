@@ -320,24 +320,6 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
         store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
     return html_with_selection
 
-
-def get_lessons_with_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
-    sessions = get_lesson_sessions_history(begin_lesson, end_lesson, begin_date, end_date)
-    lessons = {}
-    
-    for lesson_nb in sessions:
-        lessons[lesson_nb] = {}
-        sentences = get_html_sentences(lesson_nb)
-        for date in sessions[lesson_nb]:
-            lesson = []
-            for k, sentence in enumerate(sentences):
-                if k in sessions[lesson_nb][date]:
-                    lesson.append(errors[lesson_nb][date][k])
-                else:
-                    lesson.append(sentences[k])
-            lessons[lesson_nb][date] = lesson
-    return lessons
-
 def get_single_lesson_with_errors(lesson_nb, date_time):
     sentences = get_html_sentences(lesson_nb)
     errors = get_single_lesson_errors(lesson_nb, date_time)
@@ -348,17 +330,6 @@ def get_single_lesson_with_errors(lesson_nb, date_time):
         else:
             lesson.append(sentence)
     return lesson
-
-def get_lesson_with_errors_text(lesson_nb, date_time_string):
-    date_time = datetime.datetime.strptime(date_time_string, '%d-%m-%Y %H:%M:%S%f')
-    sentences = get_single_lesson_with_errors(lesson_nb, date_time)
-    lesson = ""
-    print("----- in get_lesson_with_errors_text ------")
-    for sentence in sentences:
-        print(sentence)
-        lesson += "<p>" + sentence + "</p>"
-    return lesson
-
 
 def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
     sessions = get_lesson_sessions_history(begin_lesson, end_lesson, begin_date, end_date)

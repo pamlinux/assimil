@@ -200,27 +200,3 @@ def get_lesson_sessions_history(begin_lesson = 1, end_lesson = 100, begin_date =
             else:
                 sessions[entry.lesson] = {entry.date_time : entry.errors_number}
     return sessions
- 
-def get_lessons_errors_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
-    if not begin_date: begin_date = datetime.datetime.min
-    if not end_date: end_date = datetime.datetime.max
-    errors = {}
-    stmt = select(MarkedSentence).where(
-                and_(
-                    MarkedSentence.date_time >= begin_date,
-                    MarkedSentence.date_time <= end_date,
-                    MarkedSentence.lesson >= begin_lesson,
-                    MarkedSentence.lesson <= end_lesson
-                )
-            )
-    with Session(engine) as session:
-        for entry in session.scalars(stmt):
-            if entry.lesson in errors:
-                if entry.date_time in errors[entry.lesson]: 
-                    errors[entry.lesson][entry.date_time][entry.line ] = entry.sentence
-                else:
-                    errors[entry.lesson][entry.date_time] = {entry.line : entry.sentence}
-            else:
-                errors[entry.lesson] = {entry.date_time : {entry.line : entry.sentence}}
-    return errors
-    
