@@ -1,47 +1,46 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
-<html> <head>
+{% extends "base.html" %}
+
+{% block add_style %}
+.A {
+  background-color: orange;
+  color: black; 
+}
+.B {
+  background: rgba(231, 237, 238, 0.377);
+  color: black; 
+}
+.E {
+  background: greenyellow;
+  color: black; 
+}
+.G {
+  background-color: rgba(152, 27, 198, 0.75);
+  color: black; 
+}
+.O {
+  background: rgba(27, 75, 198, 0.75);
+  color: black; 
+}
+.S {
+  background: yellow;
+  color: black; 
+}
+.V {
+  background: rgba(198, 27, 144, 0.75);
+  color: black; 
+}
+#select {
+width: 32px;
+height: 32px;
+font-weight: bold;
+}
+{% endblock %}
+{% block header %}
+
     <title>{{ lesson_nb }}</title>
     <link href="{{ url_for('static', path='/styles.css?<?=time()?>') }}" rel="stylesheet">
-    <style>
-      .A {
-          background-color: orange;
-          color: black; 
-      }
-      .B {
-          background: rgba(231, 237, 238, 0.377);
-          color: black; 
-      }
-      .E {
-          background: greenyellow;
-          color: black; 
-      }
-      .G {
-          background-color: rgba(152, 27, 198, 0.75);
-          color: black; 
-      }
-      .O {
-          background: rgba(27, 75, 198, 0.75);
-          color: black; 
-      }
-      .S {
-          background: yellow;
-          color: black; 
-      }
-      .V {
-          background: rgba(198, 27, 144, 0.75);
-          color: black; 
-      }
-      #select {
-        width: 32px;
-        height: 32px;
-        font-weight: bold;
-        }
-  </style>
-
-
-</head>
-
-<body>
+{% endblock %}
+{% block content %}
   <h1>Marquer les erreurs pour la leçon {{ lesson_nb }}</a></h1>
   <div>
     <input type="button" id="select" value="S" class="S" onclick="proceedSelection(false, 'S')" />
@@ -152,7 +151,7 @@
 
         var data = JSON.stringify(item);
 
-        fetch('/history/errors-editor/' + {{ lesson_nb }}, {
+        fetch('/errors-editor/' + {{ lesson_nb }}, {
                method: 'POST',
                headers: {
                  'Accept': 'application/json',
@@ -191,5 +190,6 @@
         document.execCommand(nom, false, argument);
       }
     </script>
-</body> </html>
+
+{% endblock %}
 

@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 from datetime import date, datetime
 from dataclasses import dataclass
-
+from fastapi.responses import FileResponse
 from fastapi import FastAPI, Request, Response, Depends, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -41,6 +41,7 @@ app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+favicon_path = 'favicon.ico'
 
 templates = Jinja2Templates(directory="templates")
 
@@ -75,7 +76,11 @@ def get_full_path(lesson_nb, sentence_nb):
                 print(f"Attribute Error with file : {fn}")
         pathes, titles = zip(*sorted(sentences_with_path))
     return pathes[sentence_nb]
-    
+
+@app.get('/favicon.ico', include_in_schema=False)
+async def favicon():
+    return FileResponse(favicon_path)
+
 @app.get("/play_sentence/", response_class=HTMLResponse)
 async def play_sentence(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
     return templates.TemplateResponse(
@@ -86,12 +91,17 @@ async def play_sentence(request: Request, lesson_nb : int = 8, sentence_nb : int
 async def display_lesson(request: Request, lesson_nb : int = 8):
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="lesson.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="lesson.html", context={"active" : "lessons", "lesson_nb": lesson_nb, "sentences" : sentences})
+
+@app.get("/espagnol/", response_class=HTMLResponse)
+async def display_home(request: Request, lesson_nb : int = 8):
+    return templates.TemplateResponse(
+        request=request, name="index.html", context={"active"  :"home"})
 
 @app.get("/errors/", response_class=HTMLResponse)
 async def display_errors(request: Request):
     return templates.TemplateResponse(
-        request=request, name="errors.html", context={"date" : date.today()})
+        request=request, name="errors.html", context= {"active" : "errors", "date" : date.today()})
 
 @app.post("/errors/")
 async def get_errors(item: ErrorItem):
@@ -147,7 +157,7 @@ def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1)
 async def edit(request: Request, lesson_nb : int = 3):
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="editor.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="editor.html", context={"active" : "editor", "lesson_nb": lesson_nb, "sentences" : sentences})
 
 @app.post("/editor/save/{lesson_nb}")
 def form_save(lesson_nb, form_data: SimpleModel = Depends()):
@@ -179,13 +189,13 @@ def form_correct_word(lesson_nb,  item: CorrectItem):
     pretty_lesson_html = correct_word(lesson_nb, lesson_html, word, syllabes)
     return pretty_lesson_html
 
-@app.get("/history/errors-editor/{lesson_nb}")
+@app.get("/errors-editor/{lesson_nb}")
 async def test_edit(request: Request, lesson_nb : int = 3):   
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="errors-editor.html", context={"lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="errors-editor.html", context={"active" : "errors-editor" , "lesson_nb": lesson_nb, "sentences" : sentences})
 
-@app.post("/history/errors-editor/{lesson_nb}")
+@app.post("/errors-editor/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
     print(f"SelectionItem item.markType : {item.markType}")
     return proceed_marked_selection(lesson_nb, item)
