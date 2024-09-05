@@ -1,8 +1,7 @@
-<html>
-<head>
-    <title>Item Details</title>
-    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
-    <style>
+{% extends "base.html" %}
+
+
+{% block add_style %}
       .myDiv {
         display: table;
       }
@@ -18,9 +17,13 @@
         margin-left: 10px;
       
       }
-    </style>
-</head>
-<body>
+{% endblock %}
+{% block header %}
+
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+{% endblock %}
+{% block content %}
   <h1><a href="{{ url_for('display_errors')}}">Erreurs </a></h1>
     <p></p>
     <div class="myDiv">
@@ -122,5 +125,4 @@
 
     </script>
 
-</body>
-</html>
+{% endblock %}

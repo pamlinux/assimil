@@ -1,0 +1,82 @@
+<html>
+<header>
+    <link id="favicon" rel="icon" type="image/x-icon" href="static/icons/espagnol.png">
+    <link rel="shortcut icon" href={{ url_for('static', path='/icons/correction.svg')}}>
+    <style>
+        body {
+          margin: 0;
+        }
+        
+        ul[id^='menu'] {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color: #f1f1f1;
+          position: fixed;
+          height: 100%;
+          overflow: auto;
+        }
+        
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        
+        li a.active {
+          background-color: #04AA6D;
+          color: white;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+        }
+        #main {
+            
+            margin-left: 20%;
+            padding: 1px 16px;
+        }
+        {% block add_style %}{% endblock %}
+ 
+    </style>
+    {% block header %}{% endblock %}
+    <title>{% block title %}Espagnol{% endblock %}</title>
+    <script>
+        console.log("{{active}}")
+    </script>
+</header>
+<body>
+    <ul id="menu">
+        {% if active == "home" %}
+            <li><a class="active" href="/espagnol/">Accueil</a></li>
+        {% else %}
+            <li><a  href="/espagnol/">Accueil</a></li>
+        {% endif %}
+        {% if active == "lessons" %}
+            <li><a class="active" href="/espagnol/1">Leçons</a></li>
+        {% else %}
+            <li><a href="/espagnol/1">Leçons</a></li>
+        {% endif%}
+        {% if active == "errors" %}
+            <li><a class="active" href="/errors/">Historique</a></li>
+        {% else %}
+            <li><a href="/errors/">Historique</a></li>
+        {% endif %}
+        {% if active == "errors-editor" %}
+            <li><a class="active" href="/errors-editor/5">Editeur d'erreurs</a></li>
+        {% else %}
+            <li><a href="/errors-editor/5">Editeur d'erreurs</a></li>
+        {% endif %}
+        {% if active == "editor" %}
+            <li><a class="active" href="/editor/1">Editeur d'accent tonique</a></li>
+        {% else %}
+            <li><a href="/editor/1">Editeur d'accent tonique</a></li>
+        {% endif %}
+    </ul>
+    <div id="main">
+        {% block content %}{% endblock %}
+    </div>
+</body></html>

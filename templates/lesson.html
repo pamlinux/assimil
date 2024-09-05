@@ -1,9 +1,40 @@
-<html>
-<head>
-    <title>Item Details</title>
-    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
-</head>
-<body>
+{% extends "base.html" %}
+{% block header %}
+  <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+  <script>
+
+    const div = document.getElementById("div01");
+    div.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
+    function playSentence(val) {
+      audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+      console.log(audioRef)
+      var audioEl = document.getElementById("audioTag");
+      audioEl.src = audioRef
+
+      audioEl.load();
+      audioEl.play();
+
+    }
+
+    function nextSentence(val) {
+      audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+      console.log(audioRef)
+      var audioEl = document.getElementById("audioTag");
+      audioEl.src = audioRef
+
+      audioEl.load();
+      audioEl.play();
+      e.stopPropagation();
+      e.preventDefault();
+      
+    }
+
+  </script>
+{% endblock %}
+
+{% block content %}
     <h1><a href="{{ url_for('display_lesson', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
 
     <div id="div01">
@@ -16,36 +47,6 @@
 
     <audio id="audioTag" src=""/>
  
-    <script>
+ 
 
-      const div = document.getElementById("div01");
-      div.addEventListener("contextmenu", (e) => {e.preventDefault()});
-
-      function playSentence(val) {
-        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
-        console.log(audioRef)
-        var audioEl = document.getElementById("audioTag");
-        audioEl.src = audioRef
-
-        audioEl.load();
-        audioEl.play();
-
-      }
-
-      function nextSentence(val) {
-        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
-        console.log(audioRef)
-        var audioEl = document.getElementById("audioTag");
-        audioEl.src = audioRef
-
-        audioEl.load();
-        audioEl.play();
-        e.stopPropagation();
-        e.preventDefault();
-        
-      }
-
-    </script>
-
-</body>
-</html>
+{% endblock %}
