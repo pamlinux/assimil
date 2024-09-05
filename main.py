@@ -98,12 +98,12 @@ async def display_home(request: Request, lesson_nb : int = 8):
     return templates.TemplateResponse(
         request=request, name="index.html", context={"active"  :"home"})
 
-@app.get("/errors/", response_class=HTMLResponse)
+@app.get("/history/", response_class=HTMLResponse)
 async def display_errors(request: Request):
     return templates.TemplateResponse(
-        request=request, name="errors.html", context= {"active" : "errors", "date" : date.today()})
+        request=request, name="history.html", context= {"active" : "history", "date" : date.today()})
 
-@app.post("/errors/")
+@app.post("/history/")
 async def get_errors(item: ErrorItem):
     end_date = datetime.strptime(item.mostRecentLesson, '%Y-%m-%d')
     end_of_day_datetime = end_date.replace(hour=23, minute=59, second=59, microsecond=999999)
@@ -131,7 +131,7 @@ async def get_errors_list_date(request: Request, lesson : int = 0, datetimekey :
         request=request, name="lesson-errors.html", context={"lesson_nb": lesson, "date_time" : date_time_string, "sentences" : sentences})
 
 
-@app.get("/errors/audio/")
+@app.get("/history/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
     print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
     sentence_path = get_full_path(lesson_nb, sentence_nb)

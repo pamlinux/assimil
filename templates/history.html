@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+
+{% block add_style %}
+      .myDiv {
+        display: table;
+      }
+      div div {
+        display: table-row;
+      }
+      div div label, div div input {
+        display: table-cell;
+        margin-bottom: 20px;
+        margin-right: 20px;
+      }
+      div div input {
+        margin-left: 10px;
+      
+      }
+{% endblock %}
+{% block header %}
+
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+{% endblock %}
+{% block content %}
+  <h1><a href="{{ url_for('display_errors')}}">Erreurs </a></h1>
+    <p></p>
+    <div class="myDiv">
+      <div>
+        <label for="firstLesson">Première leçon :</label>
+        <input type="number" id="firstLesson" name="firstLesson" value="1" min="1" max="100"/>
+        <label for="lastLesson">Dernière leçon :</label>
+        <input type="number" id="lastLesson" name="lastLesson" value="100" min="1" max="100"/>
+      </div>
+      <div>
+        <label for="oldestLesson">Leçon la plus ancienne:</label>
+        <input type="date" id="oldestLesson" name="oldest-lesson" value="2024-08-30" min="2022-08-30"/>
+        <label for="mostRecentLesson">Leçon la plus récente:</label>
+        <input type="date" id="mostRecentLesson" name="most-recent-lesson" value="{{date}}" max="{{date}}"/>
+      </div>
+    </div>
+    <button onclick="proceedSearch()">Rechercher</button>
+    <div id="div01">
+   </div>
+    <audio id="audioTag" src=""/>
+ 
+    <script>
+
+      const div = document.getElementById("div01");
+      div.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
+      function loadLesson(row, col) {
+        console.log(row);
+        console.log(col);
+
+      }
+
+      
+
+      function proceedSearch() {
+        var firstLesson =  document.getElementById("firstLesson").value
+        console.log("firstLesson", firstLesson)
+        var lastLesson = document.getElementById("lastLesson").value
+        console.log("lastLesson", lastLesson)
+        var oldestLesson = document.getElementById("oldestLesson").value
+        console.log("oldestLesson", oldestLesson)
+        var mostRecentLesson =  document.getElementById("mostRecentLesson").value
+        console.log("mostRecentLesson", mostRecentLesson)
+
+
+        item = {
+                "firstLesson" : firstLesson,
+                "lastLesson" : lastLesson,
+                "oldestLesson" : oldestLesson,
+                "mostRecentLesson" : mostRecentLesson
+               }
+
+        var data = JSON.stringify(item);
+
+       fetch('/history/',  {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("div01").innerHTML = data.substring(1, data.length-1);
+                console.log(data);
+              })
+              .catch(error => {
+              console.error(error);
+            });
+     }
+
+   
+
+      function playSentence(lesson_nb, sentence_nb) {
+        audioRef = "audio/?".concat("lesson_nb=", lesson_nb ,"&sentence_nb=", sentence_nb)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+
+      }
+
+      function nextSentence(lesson_nb, sentence_nb) {
+        audioRef = "audio/?".concat("lesson_nb=", lesson_nb ,"&sentence_nb=", sentence_nb)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+        e.stopPropagation();
+        e.preventDefault();
+        
+      }
+
+
+    </script>
+
+{% endblock %}
