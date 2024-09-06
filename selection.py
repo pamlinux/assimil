@@ -6,7 +6,8 @@ import json
 class SelectionItem(BaseModel):
     anchorOffset : int
     focusOffset : int
-    jsonDomString : str
+    editorDomString : str
+    comment : str
     markType : str
     action: str
 
@@ -52,17 +53,17 @@ class MarkedLinesParser(HTMLParser):
     def get_sentences(self):
         return self.sentences
     
-parser = MarkedLinesParser()
+mark_parser = MarkedLinesParser()
     
 def extract_selection(lesson):
-    parser.analyze_lesson(lesson)
-    marked_lines_numbers = parser.get_marked_lines_numbers()
-    sentences = parser.get_sentences()
+    mark_parser.analyze_lesson(lesson)
+    marked_lines_numbers = mark_parser.get_marked_lines_numbers()
+    sentences = mark_parser.get_sentences()
     return marked_lines_numbers, sentences
     
 def extract_paragraphs(lesson):
-    parser.analyze_lesson(lesson)
-    return parser.get_sentences()
+    mark_parser.analyze_lesson(lesson)
+    return mark_parser.get_sentences()
 
 def get_html_text(element, anchorOffset, focusOffset, mark_tag_string, mark_open = False, open_tag = None):
     text = ''
@@ -141,21 +142,23 @@ def get_html_with_selection(div_element, anchorOffset, focusOffset, mark_tag_str
     return text
 
 def proceed_marked_selection(lesson_nb, item: SelectionItem):
-    jsonDomString = item.jsonDomString
-    editor = json.loads(jsonDomString);
+    editor = json.loads(item.editorDomString)
+    #print(f"************* json editor: {editor}")
+    print(f"------------ comment : {item.comment}")
+    print(f"------------ of length :{len(item.comment)}")
+    if (item.action == 'MARK' or item.action == 'STORE'):
+        mark_tag_string = f"<mark class='{item.markType}'>"
 
-    print(f"************* json editor: {editor}")
-
-    mark_tag_string = f"<mark class='{item.markType}'>"
-
-    print(f"+++++++++++ mark_tag_string : {mark_tag_string}")
-    html_with_selection = get_html_with_selection(editor, item.anchorOffset, item.focusOffset, mark_tag_string)
-    print(f"------------- In proceed_marked_selection {html_with_selection}")
-    html_with_selection = html_with_selection.replace("\n", "")
-    marked_lines_numbers, sentences = extract_selection(html_with_selection)
-    print(marked_lines_numbers)
-    print(sentences)
+        print(f"+++++++++++ mark_tag_string : {mark_tag_string}")
+        html_with_selection = get_html_with_selection(editor, item.anchorOffset, item.focusOffset, mark_tag_string)
+        print(f"------------- In proceed_marked_selection {html_with_selection}")
+        html_with_selection = html_with_selection.replace("\n", "")
+        marked_lines_numbers, sentences = extract_selection(html_with_selection)
+        print(marked_lines_numbers)
+        print(sentences)
+    elif item.action == 'CLEAR':
+        print(f"-- item.action == MARK ") 
     if item.action == 'STORE':
-        store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
+        store_lesson_errors(lesson_nb, sentences, marked_lines_numbers, item.comment)
     print(f"---------- extract_selectionAction : {item.action}")
     return html_with_selection
