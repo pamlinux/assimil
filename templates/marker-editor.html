@@ -151,7 +151,7 @@ font-weight: bold;
 
         var data = JSON.stringify(item);
 
-        fetch('/errors-editor/' + {{ lesson_nb }}, {
+        fetch('/marker-editor/' + {{ lesson_nb }}, {
                method: 'POST',
                headers: {
                  'Accept': 'application/json',
