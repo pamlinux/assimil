@@ -189,13 +189,13 @@ def form_correct_word(lesson_nb,  item: CorrectItem):
     pretty_lesson_html = correct_word(lesson_nb, lesson_html, word, syllabes)
     return pretty_lesson_html
 
-@app.get("/errors-editor/{lesson_nb}")
+@app.get("/marker-editor/{lesson_nb}")
 async def test_edit(request: Request, lesson_nb : int = 3):   
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="errors-editor.html", context={"active" : "errors-editor" , "lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="marker-editor.html", context={"active" : "marker-editor" , "lesson_nb": lesson_nb, "sentences" : sentences})
 
-@app.post("/errors-editor/{lesson_nb}")
+@app.post("/marker-editor/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
     print(f"SelectionItem item.markType : {item.markType}")
     return proceed_marked_selection(lesson_nb, item)
