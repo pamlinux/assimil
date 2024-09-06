@@ -34,10 +34,21 @@
   height: 32px;
   font-weight: bold;
 }
-#tool {
+#clear-tool {
   width: 32px;
   height: 32px;
   float: right;
+}
+#comment,
+textarea {
+  width: 500px;
+  height: 100px;
+  border: 1px solid black;
+  padding: 5px;
+  overflow: auto;
+}
+#toolbar {
+  width: 500px;
 }
 {% endblock %}
 {% block header %}
@@ -47,7 +58,7 @@
 {% endblock %}
 {% block content %}
   <h1>Marquer les erreurs pour la leçon {{ lesson_nb }}</a></h1>
-  <div>
+  <div id="toolbar">
     <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
     <input type="button" id="select" value="A" class="A" onclick="proceedSelection('MARK', 'A')" />
     <input type="button" id="select" value="G" class="G" onclick="proceedSelection('MARK', 'G')" />
@@ -55,7 +66,8 @@
     <input type="button" id="select" value="V" class="V" onclick="proceedSelection('MARK', 'V')" />
     <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
     <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
-    <input type="image" id="tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
+
+    <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
   </div>
     <form method="post" id="myForm"> 
       <div id="editor" contentEditable;>
@@ -66,7 +78,10 @@
         {% endfor %}
       </div>
       <input type="hidden" id="hiddenInput" name="da">
-      <input type="button" onclick="proceedSelection('STORE');" value="Enregister" />
+      <h3>Entrez un commentaire avant de faire une sélection</h3>
+      <div id="comment" contentEditable>
+      </div>
+      <input type="button" onclick="proceedSelection('STORE');" value="Enregister la leçon" />
       <br />
     </form>
     <div id="responseArea"></div>
@@ -143,14 +158,18 @@
           return obj;
         }
 
-        const element = document.getElementById("editor"); // Sélectionner l'élément à sérialiser
-        const serializedDOM = serializeDOMElement(element);
-        const jsonString = JSON.stringify(serializedDOM, null, 2);
+        const editorElement = document.getElementById("editor"); // Sélectionner l'élément à sérialiser
+        const serializedEditorElement = serializeDOMElement(editorElement);
+        const editorJsonString = JSON.stringify(serializedEditorElement, null, 2);
+
+        const commentElement = document.getElementById("comment"); 
+        const comment = commentElement.textContent
 
         item = {
                 "anchorOffset" : anchorOffset,
                 "focusOffset" : focusOffset,
-                "jsonDomString" : jsonString,
+                "editorDomString" : editorJsonString,
+                "comment" : comment,
                 "markType" : markType,
                 "action" : action,
                }

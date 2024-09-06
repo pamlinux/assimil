@@ -126,7 +126,7 @@ def get_word_index_dict():
                 word_index_dict[entry.word.word].append((entry.lesson, entry.line))
     return word_index_dict
 
-def store_lesson_errors(lesson_number, sentences, entrys_numbers):
+def store_lesson_errors(lesson_number, sentences, entrys_numbers, comment):
     print("-------------- In store_lesson_errors")
     date_time = datetime.datetime.now()
     with Session(engine) as session:
@@ -136,7 +136,8 @@ def store_lesson_errors(lesson_number, sentences, entrys_numbers):
             if line in entrys_numbers:
                 errored_sentences.append(MarkedSentence(
                     line = line,
-                    sentence = sentence
+                    sentence = sentence,
+                    comment = comment
                 ))
         l_obj = LessonSession(
             lesson = lesson_number,

@@ -194,7 +194,7 @@ def form_correct_word(lesson_nb,  item: CorrectItem):
 async def test_edit(request: Request, lesson_nb : int = 3):   
     sentences = get_list_of_bold_sentences(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="marker-editor.html", context={"active" : "marker-editorsss" , "lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="marker-editor.html", context={"active" : "marker-editor" , "lesson_nb": lesson_nb, "sentences" : sentences})
 
 @app.post("/marker-editor/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
