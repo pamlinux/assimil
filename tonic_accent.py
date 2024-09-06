@@ -25,7 +25,7 @@ class SelectionItem(BaseModel):
     focusOffset : int
     jsonDomString : str
     markType : str
-    store: bool
+    action: str
 
 
 
@@ -316,8 +316,9 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
     marked_lines_numbers, sentences = extract_selection(html_with_selection)
     print(marked_lines_numbers)
     print(sentences)
-    if item.store:
+    if item.action == 'STORE':
         store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
+    print(f"---------- extract_selectionAction : {item.action}")
     return html_with_selection
 
 def get_single_lesson_with_errors(lesson_nb, date_time):
