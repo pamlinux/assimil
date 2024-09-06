@@ -1,4 +1,14 @@
 from html.parser import HTMLParser
+from pydantic import BaseModel
+from database import store_lesson_errors
+import json
+
+class SelectionItem(BaseModel):
+    anchorOffset : int
+    focusOffset : int
+    jsonDomString : str
+    markType : str
+    action: str
 
 class MarkedLinesParser(HTMLParser):
     def analyze_lesson(self, lesson):
@@ -53,3 +63,99 @@ def extract_selection(lesson):
 def extract_paragraphs(lesson):
     parser.analyze_lesson(lesson)
     return parser.get_sentences()
+
+def get_html_text(element, anchorOffset, focusOffset, mark_tag_string, mark_open = False, open_tag = None):
+    text = ''
+    #print(f"tag : {element['tagName']}, status : {element['status']}") 
+    if element['tagName']:
+        if element['tagName'] == 'p':
+            if mark_open:
+                text += '<' + element['tagName'] + '>' + mark_tag_string
+            else:
+                text += '<' + element['tagName'] + '>'
+        else:
+            text += '<' + element['tagName']
+            for name in element['attributes']:
+                text += f" {name}='{element['attributes'][name]}'"
+            text += '>'
+        if element['status'] == 'isAnchor':
+            text += element['textContent'][:anchorOffset]
+            text += '</' + element['tagName'] + '>' + mark_tag_string + '<' + element['tagName'] + '>'
+            text += element['textContent'][anchorOffset:]
+            mark_open = True
+        elif element['status'] == 'isAnchorAndFocus':
+            text += element['textContent'][:anchorOffset]
+            text += mark_tag_string
+            text += element['textContent'][anchorOffset:focusOffset]
+            text += '</mark>'
+            text += element['textContent'][focusOffset:]
+        elif element['status'] == 'isFocus':
+            text += element['textContent'][:focusOffset]
+            text += '</' + element['tagName'] + '>' + '</mark>' + '<' + element['tagName'] + '>'
+            text += element['textContent'][focusOffset:]
+            mark_open = False
+        else:
+            for child in element['children']:
+                child_text, mark_open = get_html_text(child, anchorOffset, focusOffset, mark_tag_string, mark_open, element['tagName'])
+                text += child_text
+        #print(f"tag : {element['tagName']}, mark_open : {mark_open}, {element['textContent']}")
+        if element['tagName'] == 'p':
+            if mark_open:
+                text += '</mark></' + element['tagName'] + '>'
+            else:
+                text += '</' + element['tagName'] + '>'
+        else:
+            text += '</' + element['tagName'] + '>'
+    else:  # element is element text
+        if element['status'] == 'isAnchor':
+            text += element['textContent'][:anchorOffset]
+            if open_tag == 'b':
+                text += '</b>' + mark_tag_string + '<b>'    
+            else:
+                text += mark_tag_string
+            text += element['textContent'][anchorOffset:]
+            mark_open = True
+        elif element['status'] == 'isAnchorAndFocus':
+            text += element['textContent'][:anchorOffset]
+            text += mark_tag_string + element['textContent'][anchorOffset:focusOffset] + '</mark>'
+            text += element['textContent'][focusOffset:]
+        elif element['status'] == 'isFocus':
+            text += element['textContent'][:focusOffset]
+            if open_tag == 'b':
+                text += '</b></mark><b>'    
+            else:
+                text += '</mark>'
+            text += element['textContent'][focusOffset:]
+            mark_open = False
+        else:
+            text += element['textContent']
+        #print(f"tag : {element['tagName']}, mark_open : {mark_open}, {element['textContent']}")
+    return text, mark_open
+    
+def get_html_with_selection(div_element, anchorOffset, focusOffset, mark_tag_string):
+    text = ""
+    mark_open = False
+    for element in div_element['children']:
+        txt, mark_open = get_html_text(element, anchorOffset, focusOffset, mark_tag_string, mark_open)
+        text += txt
+    return text
+
+def proceed_marked_selection(lesson_nb, item: SelectionItem):
+    jsonDomString = item.jsonDomString
+    editor = json.loads(jsonDomString);
+
+    print(f"************* json editor: {editor}")
+
+    mark_tag_string = f"<mark class='{item.markType}'>"
+
+    print(f"+++++++++++ mark_tag_string : {mark_tag_string}")
+    html_with_selection = get_html_with_selection(editor, item.anchorOffset, item.focusOffset, mark_tag_string)
+    print(f"------------- In proceed_marked_selection {html_with_selection}")
+    html_with_selection = html_with_selection.replace("\n", "")
+    marked_lines_numbers, sentences = extract_selection(html_with_selection)
+    print(marked_lines_numbers)
+    print(sentences)
+    if item.action == 'STORE':
+        store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
+    print(f"---------- extract_selectionAction : {item.action}")
+    return html_with_selection
