@@ -1,7 +1,8 @@
 from html.parser import HTMLParser
 from pydantic import BaseModel
-from database import store_lesson_errors
 import json
+from database import store_lesson_errors
+from htmlescape import convert_to_html_escape
 
 class SelectionItem(BaseModel):
     anchorOffset : int
@@ -27,9 +28,15 @@ class MarkedLinesParser(HTMLParser):
                 self.marked_lines_numbers[self.current_line_number] = True
             attrs_string = ""
             for attr_name, attr_value in attrs:
-                attrs_string += f" {attr_name}='{attr_value}'"
-                for index, char in enumerate(attr_value):
-                    print(f"attr_name = {attr_name}, char : {char}, {ord(char)}, {index}")
+                print(f"attr_name : {attr_name}, attr_value : {attr_value}")
+                escaped_attr_value = convert_to_html_escape(attr_value)
+                attrs_string += f" {attr_name}='{escaped_attr_value}'"
+                print(f"---- escaped_attr_value : {escaped_attr_value}")
+                if attr_value:
+                    for index, char in enumerate(attr_value):
+                        print(f"attr_name = {attr_name}, char : {char}, {ord(char)}, {index}")
+                else:
+                     print(f"attr_name = {attr_name}")
             if attrs_string:
                 self.current_sentence += f"<{tag}{attrs_string}>"
             else:
@@ -82,7 +89,7 @@ def get_html_text(element, anchorOffset, focusOffset, mark_tag_string, mark_open
         else:
             text += '<' + element['tagName']
             for name in element['attributes']:
-                text += f" {name}='{element['attributes'][name]}'"
+                text += f" {name}='{convert_to_html_escape(element['attributes'][name])}'"
             text += '>'
         if element['status'] == 'isAnchor':
             text += element['textContent'][:anchorOffset]
@@ -152,9 +159,10 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
     print(f"------------ of length :{len(item.comment)}")
     print(f"------------ comment : {item.comment}")
     if (item.action == 'MARK' or item.action == 'STORE'):
+        comment = convert_to_html_escape(item.comment)
         mark_tag_string = f"<mark class='{item.markType}'"
         if item.comment:
-            mark_tag_string += f" title='{item.comment}'>"
+            mark_tag_string += f" title='{comment}'>"
         else:
             mark_tag_string += ">"
 
