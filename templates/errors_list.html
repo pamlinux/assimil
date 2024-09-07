@@ -31,7 +31,7 @@
         padding-left: 40px;
     }
 
-    li {
+    li#el {
         display: inline;
     }
 
@@ -44,24 +44,30 @@
     }
 
    li a[id^='id_']:link, li a[id^='id_']:visited, li a[id^='id_']:focus {
+
         background: yellow;
+        display: inline;
     }
 
     li a[id^='id_']:hover {
         background: orange;
+        display: inline;
     }
 
     li a[id^='id_']:active {
         background: red;
         color: white;
+        display: inline;
     }
 
     li span a[id^='id_']:link, li span a[id^='id_']:visited, li span a[id^='id_']:focus {
         background: lightgreen;
+        display: inline;
     }
 
     li span a[id^='id_']:hover {
         background: orange;
+        display: inline;
     }
 
 
@@ -78,9 +84,9 @@
                     {% for history_date_time, errors_number in row %}
                         {% set date_time_key = history_date_time.strftime('%d-%m-%Y %H:%M:%S%f') %}
                         {% if errors_number %}
-                            <li><a id='id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}  </a></li>
+                            <li id='el'><a id='id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}  </a></li>
                         {% else %}
-                            <li><span><a id= 'id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></span></li>
+                            <li id='el'><span><a id= 'id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></span></li>
                         {% endif %}
                     {% endfor %}
                 </ul>

@@ -28,6 +28,8 @@ class MarkedLinesParser(HTMLParser):
             attrs_string = ""
             for attr_name, attr_value in attrs:
                 attrs_string += f" {attr_name}='{attr_value}'"
+                for index, char in enumerate(attr_value):
+                    print(f"attr_name = {attr_name}, char : {char}, {ord(char)}, {index}")
             if attrs_string:
                 self.current_sentence += f"<{tag}{attrs_string}>"
             else:
@@ -53,7 +55,10 @@ class MarkedLinesParser(HTMLParser):
     def get_sentences(self):
         return self.sentences
     
-mark_parser = MarkedLinesParser()
+    def handle_charref(name):
+        print('In handle_charref for : ', name)
+    
+mark_parser = MarkedLinesParser(convert_charrefs = False)
     
 def extract_selection(lesson):
     mark_parser.analyze_lesson(lesson)
@@ -144,10 +149,14 @@ def get_html_with_selection(div_element, anchorOffset, focusOffset, mark_tag_str
 def proceed_marked_selection(lesson_nb, item: SelectionItem):
     editor = json.loads(item.editorDomString)
     #print(f"************* json editor: {editor}")
-    print(f"------------ comment : {item.comment}")
     print(f"------------ of length :{len(item.comment)}")
+    print(f"------------ comment : {item.comment}")
     if (item.action == 'MARK' or item.action == 'STORE'):
-        mark_tag_string = f"<mark class='{item.markType}'>"
+        mark_tag_string = f"<mark class='{item.markType}'"
+        if item.comment:
+            mark_tag_string += f" title='{item.comment}'>"
+        else:
+            mark_tag_string += ">"
 
         print(f"+++++++++++ mark_tag_string : {mark_tag_string}")
         html_with_selection = get_html_with_selection(editor, item.anchorOffset, item.focusOffset, mark_tag_string)
@@ -159,6 +168,6 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
     elif item.action == 'CLEAR':
         print(f"-- item.action == MARK ") 
     if item.action == 'STORE':
-        store_lesson_errors(lesson_nb, sentences, marked_lines_numbers, item.comment)
+        store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
     print(f"---------- extract_selectionAction : {item.action}")
     return html_with_selection
