@@ -68,7 +68,7 @@ class LessonSession(Base):
     errored_sentences : Mapped[List["MarkedSentence"]] = relationship(
         back_populates="session", cascade="all, delete-orphan")
     def __repr__(self) -> str:
-        return f"Session du {self.date_time!r} de la lesson {self.lesson!r} avec {self.errors_number!r} erreurs"
+        return f"date time : {self.date_time!r}, lesson {self.lesson!r} errors number : {self.errors_number!r}"
 
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
@@ -126,9 +126,10 @@ def get_word_index_dict():
                 word_index_dict[entry.word.word].append((entry.lesson, entry.line))
     return word_index_dict
 
-def store_lesson_errors(lesson_number, sentences, entrys_numbers, comment):
+def store_lesson_errors(lesson_number, sentences, entrys_numbers, date_time = None):
     print("-------------- In store_lesson_errors")
-    date_time = datetime.datetime.now()
+    if not date_time:
+       date_time = datetime.datetime.now()
     with Session(engine) as session:
         errored_sentences = []
         for line, sentence in enumerate(sentences):
@@ -136,8 +137,7 @@ def store_lesson_errors(lesson_number, sentences, entrys_numbers, comment):
             if line in entrys_numbers:
                 errored_sentences.append(MarkedSentence(
                     line = line,
-                    sentence = sentence,
-                    comment = comment
+                    sentence = sentence
                 ))
         l_obj = LessonSession(
             lesson = lesson_number,
