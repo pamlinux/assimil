@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block add_style %}
+
+#spanish {
+    border: solid blue;
+    border-width: 2px 2px;
+  }
+  
+{% endblock %}
+
+{% block header %}
+  <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+    <h1><a href="{{ url_for('second_phase', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
+    <button id="toggleAll" onclick="toggleSpanish()">Montrer l'Espagnol</button>
+    <button id="togglemark" onclick="toggleMark()"">Boîte de marquage</button>
+    <div id="spanish">
+        <p id="translation">Espace réservé à l'espagnol</p>
+        <div id="comment">
+            Espace réservé aux commentaires
+        </div>
+    </div>
+    <div id="div01">
+        {% set count = namespace(value=2) %}
+        <h2 id="id_0" onClick="displaySpanish(0)"> {{ lesson[0] }} </h2>
+        <h2 id="id_1" onClick="displaySpanish(1)"> {{ lesson[1] }} </h2>
+            {% for sentence in lesson[2:] %}
+                <p id="id_{{ count.value }}" onClick="displaySpanish({{ count.value }})"> {{ sentence | safe }} </p>
+                {% set count.value = count.value + 1 %}
+            {% endfor %}
+            <h2 id="id_{{ count.value }}" onClick="displaySpanish({{ count.value }})">Corrigé de l&#39;exercice 1</h2>
+            {% set count.value = count.value + 1 %}
+            {% for sentence in exercise1_correction %}
+                <p id="id_{{ count.value }}" onClick="displaySpanish({{ count.value }})"> {{ sentence | safe }} </p>
+                {% set count.value = count.value + 1 %}
+            {% endfor %}
+
+    </div>
+    <audio id="audioTag" src=""/>
+ 
+
+    <script>
+ 
+        function playSentence(val) {
+            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+            console.log(audioRef)
+            var audioEl = document.getElementById("audioTag");
+            audioEl.src = audioRef
+
+            audioEl.load();
+            audioEl.play();
+
+        }
+
+
+        document.getElementById("spanish").style.display = "none";
+
+        function toggleSpanish() {
+            var x = document.getElementById("spanish");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                var button = document.getElementById("toggleAll");
+                button.innerHTML = "Cacher l'espagnol";
+                console.log(button.value);
+            } else {
+                x.style.display = "none";
+                var button = document.getElementById("toggleAll");
+                button.innerHTML = "Montrer l'espagnol";
+            console.log(x);
+            }
+        }
+
+        function toggleMark() {
+            var x = document.getElementById("comment");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function insertAfter(referenceNode, newNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+   
+        function displaySpanish(value) {
+            console.log(value);
+            let id = "id_" + value;
+            console.log(id);
+            let translation = document.getElementById("translation");
+            let spanishNode = document.getElementById("spanish");
+            let clickedNode = document.getElementById(id);
+            insertAfter(clickedNode, spanishNode)
+            let translation_ref ="translation/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", value);
+            console.log(translation_ref)
+            fetch(translation_ref, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+            })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                translation.innerHTML = data.substring(1, data.length-1);
+                translation.setAttribute("onClick", "playSentence(" + value + ")")
+                console.log(translation)
+                console.log(data.substring(1, data.length-1))
+              })
+              .catch(error => {
+              console.error(error);
+            });
+
+
+    }
+    
+    function proceedSelection(action, markType = "") {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+        console.log(typeof store)
+        anchorNode = userSelection.anchorNode;
+        anchorOffset = userSelection.anchorOffset;
+
+        focusOffset = userSelection.focusOffset;
+        focusNode = userSelection.focusNode;
+
+        if (anchorNode === focusNode) {
+          focusNodeIsAnchorNode = true;
+        } else {
+          focusNodeIsAnchorNode = false;
+        }
+
+        console.log("anchorOffset", anchorOffset)
+        console.log("focusOffset", focusOffset)
+        console.log("anchorNode", anchorNode)
+        console.log("focusNode", focusNode)
+        console.log("coucou")
+
+        function serializeDOMElement(element) {
+
+          if (element.tagName) {
+            tagName = element.tagName.toLowerCase();
+          } else {
+            tagName = "";
+          }
+          
+          var status;
+
+          if (element === anchorNode && element === focusNode) {
+            status = "isAnchorAndFocus";
+          } else if (element === anchorNode) {
+            status = "isAnchor";
+          } else if (element === focusNode) {
+            status = "isFocus";
+          } else {
+            status = "";
+          }
+         
+          const obj = {
+            tagName: tagName,
+            status: status,
+            attributes: {},
+            children: [],
+            textContent: element.textContent
+          };
+          
+          // Récupérer les attributs de l'élément
+          if (element.attributes) {
+            for (let attr of element.attributes) {
+              obj.attributes[attr.name] = attr.value;
+            }
+          };
+          // Récupérer les enfants de l'élément
+          if (element.childNodes) {
+            for (let child of element.childNodes) {
+              obj.children.push(serializeDOMElement(child));
+            }
+          }
+
+          return obj;
+        }
+
+        const editorElement = document.getElementById("editor"); // Sélectionner l'élément à sérialiser
+        const serializedEditorElement = serializeDOMElement(editorElement);
+        const editorJsonString = JSON.stringify(serializedEditorElement, null, 2);
+
+        const commentElement = document.getElementById("comment"); 
+        const comment = commentElement.textContent
+
+        item = {
+                "anchorOffset" : anchorOffset,
+                "focusOffset" : focusOffset,
+                "editorDomString" : editorJsonString,
+                "comment" : comment,
+                "markType" : markType,
+                "action" : action,
+               }
+
+        var data = JSON.stringify(item);
+
+        fetch('/marker-editor/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
+                console.log(data.substring(1, data.length-1))
+              })
+              .catch(error => {
+              console.error(error);
+            });
+
+      }
+
+
+    </script>
+{% endblock %}

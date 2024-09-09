@@ -77,7 +77,7 @@ def extract_paragraphs(lesson):
     mark_parser.analyze_lesson(lesson)
     return mark_parser.get_sentences()
 
-def get_html_text(element, anchorOffset, focusOffset, mark_tag_string, mark_open = False, open_tag = None):
+def get_html_text_with_mark(element, anchorOffset, focusOffset, mark_tag_string, mark_open = False, open_tag = None):
     text = ''
     #print(f"tag : {element['tagName']}, status : {element['status']}") 
     if element['tagName']:
@@ -109,7 +109,7 @@ def get_html_text(element, anchorOffset, focusOffset, mark_tag_string, mark_open
             mark_open = False
         else:
             for child in element['children']:
-                child_text, mark_open = get_html_text(child, anchorOffset, focusOffset, mark_tag_string, mark_open, element['tagName'])
+                child_text, mark_open = get_html_text_with_mark(child, anchorOffset, focusOffset, mark_tag_string, mark_open, element['tagName'])
                 text += child_text
         #print(f"tag : {element['tagName']}, mark_open : {mark_open}, {element['textContent']}")
         if element['tagName'] == 'p':
@@ -149,15 +149,72 @@ def get_html_with_selection(div_element, anchorOffset, focusOffset, mark_tag_str
     text = ""
     mark_open = False
     for element in div_element['children']:
-        txt, mark_open = get_html_text(element, anchorOffset, focusOffset, mark_tag_string, mark_open)
+        txt, mark_open = get_html_text_with_mark(element, anchorOffset, focusOffset, mark_tag_string, mark_open)
         text += txt
     return text
 
-def proceed_marked_selection(lesson_nb, item: SelectionItem):
-    editor = json.loads(item.editorDomString)
-    #print(f"************* json editor: {editor}")
+def get_html_text(element):
+    if element['tagName']:
+        text = '<' + element['tagName']
+        for name in element['attributes']:
+            text += f" {name}='{convert_to_html_escape(element['attributes'][name])}'"
+        text += '>'
+        for child in element['children']:
+            text += get_html_text(child)
+        text += f"</{element['tagName']}>"
+    else:
+        text = element['textContent']
+    return text
+    
+
+
+def delete_marked_selection(element):
+    #print(element['tagName'])
+    if element['status'] == 'isAnchor':
+        print(f"Anchor found : {element}")
+        return element
+    elif element['status'] == 'isAnchorAndFocus':
+        print(f"Anchor is Focus found : {element}")
+        return element
+    else:
+        for index, child in enumerate(element['children']):
+            print(child['tagName'])
+            if child['tagName'] == 'mark':
+                founded_selection_element = delete_marked_selection(child)
+                if founded_selection_element:
+                    element_children = element['children']
+                    new_element_children_begining = element_children[:index]
+                    new_element_children_end = element_children[index+1:]
+                    new_element_children = new_element_children_begining
+                    for mark_child in child['children']:
+                        new_element_children.append(mark_child)
+                    new_element_children += new_element_children_end
+                    element['children'] = new_element_children
+                    return founded_selection_element
+            elif child['status'] == 'isAnchor':
+                print(f"Anchor found : {child}")
+                return child
+            elif child['status'] == 'isAnchorAndFocus':
+                print(f"Anchor is Focus found : {child}")
+                return child
+            else:
+                founded_selection_element = delete_marked_selection(child)
+                if founded_selection_element:
+                    return founded_selection_element
+    return None
+
+def get_html_with_selected_mark_removed(div_element):
+    delete_marked_selection(div_element)
+    text = ""
+    for element in div_element['children']:
+        text += get_html_text(element)
+    return text
+
+def proceed_marked_selection(lesson_nb, item: SelectionItem): 
     print(f"------------ of length :{len(item.comment)}")
     print(f"------------ comment : {item.comment}")
+    editor = json.loads(item.editorDomString)
+
     if (item.action == 'MARK' or item.action == 'STORE'):
         comment = convert_to_html_escape(item.comment)
         mark_tag_string = f"<mark class='{item.markType}'"
@@ -167,15 +224,25 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
             mark_tag_string += ">"
 
         print(f"+++++++++++ mark_tag_string : {mark_tag_string}")
+        #print(f"************* json editor: {editor}")
         html_with_selection = get_html_with_selection(editor, item.anchorOffset, item.focusOffset, mark_tag_string)
         print(f"------------- In proceed_marked_selection {html_with_selection}")
         html_with_selection = html_with_selection.replace("\n", "")
-        marked_lines_numbers, sentences = extract_selection(html_with_selection)
-        print(marked_lines_numbers)
-        print(sentences)
+        print(f"html_with_selection : {html_with_selection}")
+        if item.action == 'STORE':
+            print(f"---------- extract_selectionAction : {item.action}")
+            marked_lines_numbers, sentences = extract_selection(html_with_selection)
+            print(marked_lines_numbers)
+            print(sentences)
+            store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
+        return html_with_selection
     elif item.action == 'CLEAR':
-        print(f"-- item.action == MARK ") 
-    if item.action == 'STORE':
-        store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
-    print(f"---------- extract_selectionAction : {item.action}")
-    return html_with_selection
+        print(f"-- item.action == MARK ")
+        #print(f"************* json editor: {editor}")
+        anchor = delete_marked_selection(editor)
+        html_with_selection_removed = get_html_with_selected_mark_removed(editor)
+        #html_with_selection_removed = get_html_text(editor)
+        html_with_selection_removed.replace("\n", "")
+        print(f"html_with_selection_removed : {html_with_selection_removed}")
+        return  html_with_selection_removed
+ 

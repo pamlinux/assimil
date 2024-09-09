@@ -13,7 +13,8 @@ from database import get_errors
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
 from tonic_accent import get_history, get_single_lesson_with_errors
 from pydantic import BaseModel
-from selection import proceed_marked_selection, SelectionItem
+from selection import proceed_marked_selection, delete_marked_selection, SelectionItem
+from translation import get_french_lesson
 
 @dataclass
 class SimpleModel:
@@ -78,9 +79,9 @@ def get_full_path(lesson_nb, sentence_nb):
         pathes, titles = zip(*sorted(sentences_with_path))
     return pathes[sentence_nb]
 
-@app.get('/favicon.ico', include_in_schema=False)
-async def favicon():
-    return FileResponse(favicon_path)
+#@app.get('/favicon.ico', include_in_schema=False)
+#async def favicon():
+#    return FileResponse(favicon_path)
 
 @app.get("/play_sentence/", response_class=HTMLResponse)
 async def play_sentence(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
@@ -133,6 +134,13 @@ async def get_errors_list_date(request: Request, lesson : int = 0, datetimekey :
 
 
 @app.get("/history/audio/")
+def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
+    print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
+    sentence_path = get_full_path(lesson_nb, sentence_nb)
+    data = open(sentence_path, "rb").read()
+    return Response(content=data, media_type="audio/mpeg")
+
+@app.get("/second-phase/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
     print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
     sentence_path = get_full_path(lesson_nb, sentence_nb)
@@ -200,6 +208,28 @@ async def test_edit(request: Request, lesson_nb : int = 3):
 async def test_ranges(lesson_nb, item: SelectionItem):
     print(f"SelectionItem item.markType : {item.markType}")
     return proceed_marked_selection(lesson_nb, item)
+
+@app.post("/marker-editor/delete/{lesson_nb}")
+async def test_ranges(lesson_nb, item: SelectionItem):
+    return delete_marked_selection(lesson_nb, item)
+
+@app.get("/second-phase/{lesson_nb}", response_class=HTMLResponse)
+async def second_phase(request: Request, lesson_nb : int = 1):
+    lesson, exercise1_correction = get_french_lesson(lesson_nb)
+    return templates.TemplateResponse(
+        request=request, name="second-phase.html", context={"active" : "second-phase",
+                                                            "lesson_nb": lesson_nb,
+                                                            "lesson" : lesson,                                                        
+                                                            "exercise1_correction" : exercise1_correction})
+
+@app.post("/second-phase/translation")
+def get_translation(request: Request, lesson_nb : int = 54, sentence_nb : int = 1):
+    print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
+    sentences = get_list_of_bold_sentences(lesson_nb)
+    translation = sentences[sentence_nb]
+    print(translation)
+    return translation
+
 
 
 
