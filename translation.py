@@ -43,4 +43,7 @@ import importlib
 
 def get_french_lesson(lesson_nb):
     module = importlib.import_module(f"lessons.L{str(lesson_nb).zfill(3)}")
-    return module.lesson, module.exercise1_correction
+    if hasattr(module, 'exercise1_correction'):
+        return module.lesson, module.exercise1_correction
+    else:
+        return module.lesson, []

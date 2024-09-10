@@ -79,9 +79,9 @@ def get_full_path(lesson_nb, sentence_nb):
         pathes, titles = zip(*sorted(sentences_with_path))
     return pathes[sentence_nb]
 
-#@app.get('/favicon.ico', include_in_schema=False)
-#async def favicon():
-#    return FileResponse(favicon_path)
+@app.get('/favicon.ico', include_in_schema=False)
+async def favicon():
+    return FileResponse(favicon_path)
 
 @app.get("/play_sentence/", response_class=HTMLResponse)
 async def play_sentence(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):

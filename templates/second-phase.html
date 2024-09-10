@@ -1,11 +1,54 @@
 {% extends "base.html" %}
 {% block add_style %}
 
-#spanish {
+  #spanish,
+  #comment {
     border: solid blue;
     border-width: 2px 2px;
   }
+
+  .A {
+    background-color: orange;
+    color: black; 
+  }
+  .B {
+    background: rgba(128, 128, 128, 0.377);
+    color: black; 
+  }
+  .E {
+    background: greenyellow;
+    color: black; 
+  }
+  .G {
+    background-color: rgba(152, 27, 198, 0.75);
+    color: black; 
+  }
+  .O {
+    background: rgba(27, 75, 198, 0.75);
+    color: black; 
+  }
+  .S {
+    background: yellow;
+    color: black; 
+  }
+  .V {
+    background: rgba(198, 27, 144, 0.75);
+    color: black; 
+  }
+  #select {
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+  }
+  #clear-tool {
+    width: 32px;
+    height: 32px;
+  }
   
+  #toolbar {
+    width: 500px;
+  }
+
 {% endblock %}
 
 {% block header %}
@@ -19,25 +62,37 @@
     <button id="toggleAll" onclick="toggleSpanish()">Montrer l'Espagnol</button>
     <button id="togglemark" onclick="toggleMark()"">Boîte de marquage</button>
     <div id="spanish">
-        <p id="translation">Espace réservé à l'espagnol</p>
-        <div id="comment">
-            Espace réservé aux commentaires
-        </div>
+      <div id="toolbar">
+        <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
+        <input type="button" id="select" value="A" class="A" onclick="proceedSelection('MARK', 'A')" />
+        <input type="button" id="select" value="G" class="G" onclick="proceedSelection('MARK', 'G')" />
+        <input type="button" id="select" value="O" class="O" onclick="proceedSelection('MARK', 'O')" />
+        <input type="button" id="select" value="V" class="V" onclick="proceedSelection('MARK', 'V')" />
+        <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
+        <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
+        <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
+      </div>
+      <p id="translation"></p>
+      <div id="comment" contentEditable>
+        Espace réservé aux commentaires
+      </div>
     </div>
     <div id="div01">
         {% set count = namespace(value=2) %}
-        <h2 id="id_0" onClick="displaySpanish(0)"> {{ lesson[0] }} </h2>
-        <h2 id="id_1" onClick="displaySpanish(1)"> {{ lesson[1] }} </h2>
+        <h2 id="id_0" onClick="fillSpanishBox(0)"> {{ lesson[0] }} </h2>
+        <h2 id="id_1" onClick="fillSpanishBox(1)"> {{ lesson[1] }} </h2>
             {% for sentence in lesson[2:] %}
-                <p id="id_{{ count.value }}" onClick="displaySpanish({{ count.value }})"> {{ sentence | safe }} </p>
+                <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>
                 {% set count.value = count.value + 1 %}
             {% endfor %}
-            <h2 id="id_{{ count.value }}" onClick="displaySpanish({{ count.value }})">Corrigé de l&#39;exercice 1</h2>
-            {% set count.value = count.value + 1 %}
-            {% for sentence in exercise1_correction %}
-                <p id="id_{{ count.value }}" onClick="displaySpanish({{ count.value }})"> {{ sentence | safe }} </p>
-                {% set count.value = count.value + 1 %}
-            {% endfor %}
+            {% if exercise1_correction %}
+              <h2 id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})">Exercice 1</h2>
+              {% set count.value = count.value + 1 %}
+              {% for sentence in exercise1_correction %}
+                  <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>
+                  {% set count.value = count.value + 1 %}
+              {% endfor %}
+            {% endif %}
 
     </div>
     <audio id="audioTag" src=""/>
@@ -58,6 +113,8 @@
 
 
         document.getElementById("spanish").style.display = "none";
+        document.getElementById("comment").style.display = "none";
+        document.getElementById("toolbar").style.display = "none";
 
         function toggleSpanish() {
             var x = document.getElementById("spanish");
@@ -74,8 +131,8 @@
             }
         }
 
-        function toggleMark() {
-            var x = document.getElementById("comment");
+        function toggleNode(node_name) {
+          var x = document.getElementById(node_name);
             if (x.style.display === "none") {
                 x.style.display = "block";
             } else {
@@ -83,12 +140,32 @@
             }
         }
 
+        function toggleMark() {
+          toggleNode("comment");
+          toggleNode("toolbar");
+          let translation = document.getElementById("translation");
+          var x = document.getElementById("comment");
+          console.log("x : ", x)
+          value_id = translation.parentNode.previousSibling.getAttribute("id");
+          value = value_id.substring(3, value_id.length)
+          console.log("id value : ", value, "of type : ", typeof value)
+          var sentence = document.getElementById(value_id)
+          if (x.style.display === "none") {
+            translation.setAttribute("onClick", "playSentence(" + value + ")")
+            console.log("In none, with  translation: ", translation)
+            
+          } else {
+            translation.setAttribute("onClick", "")
+            console.log("In block, with translation : ", translation)
+          }
+        }
+
         function insertAfter(referenceNode, newNode) {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
 
    
-        function displaySpanish(value) {
+        function fillSpanishBox(value) {
             console.log(value);
             let id = "id_" + value;
             console.log(id);
@@ -108,7 +185,12 @@
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
                 translation.innerHTML = data.substring(1, data.length-1);
-                translation.setAttribute("onClick", "playSentence(" + value + ")")
+                var x = document.getElementById("comment");
+                if (x.style.display === "none") {
+                  translation.setAttribute("onClick", "playSentence(" + value + ")")
+                } else {
+                  translation.setAttribute("onClick", "")
+                }
                 console.log(translation)
                 console.log(data.substring(1, data.length-1))
               })
@@ -117,8 +199,10 @@
             });
 
 
-    }
+        }
     
+        fillSpanishBox(0)
+
     function proceedSelection(action, markType = "") {
         const userSelection = window.getSelection();
         console.log(userSelection)

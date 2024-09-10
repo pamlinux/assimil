@@ -6,7 +6,7 @@
   color: black; 
 }
 .B {
-  background: rgba(231, 237, 238, 0.377);
+  background: rgba(128, 128, 128, 0.377);
   color: black; 
 }
 .E {
@@ -187,7 +187,7 @@ textarea {
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
                 document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
-                console.log(data.substring(1, data.length-1))
+                console.log(data)
               })
               .catch(error => {
               console.error(error);
