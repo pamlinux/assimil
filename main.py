@@ -14,6 +14,7 @@ from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, up
 from tonic_accent import get_history, get_single_lesson_with_errors
 from pydantic import BaseModel
 from selection import proceed_marked_selection, delete_marked_selection, SelectionItem
+from selection import MarkedSentencesItem, store_second_phase_marked_sentences
 from translation import get_french_lesson
 
 @dataclass
@@ -216,14 +217,18 @@ async def test_ranges(lesson_nb, item: SelectionItem):
 @app.get("/second-phase/{lesson_nb}", response_class=HTMLResponse)
 async def second_phase(request: Request, lesson_nb : int = 1):
     lesson, exercise1_correction = get_french_lesson(lesson_nb)
+    spanish_sentences = get_list_of_bold_sentences(lesson_nb)
+
     return templates.TemplateResponse(
         request=request, name="second-phase.html", context={"active" : "second-phase",
                                                             "lesson_nb": lesson_nb,
                                                             "lesson" : lesson,                                                        
-                                                            "exercise1_correction" : exercise1_correction})
+                                                            "exercise1_correction" : exercise1_correction,
+                                                            "spanish_sentences" : spanish_sentences
+                                                            })
 
 @app.post("/second-phase/translation")
-def get_translation(request: Request, lesson_nb : int = 54, sentence_nb : int = 1):
+async def get_translation(request: Request, lesson_nb : int = 54, sentence_nb : int = 1):
     print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
     sentences = get_list_of_bold_sentences(lesson_nb)
     translation = sentences[sentence_nb]
@@ -231,7 +236,9 @@ def get_translation(request: Request, lesson_nb : int = 54, sentence_nb : int = 
     return translation
 
 
-
+@app.post("/marker-translation/{lesson_nb}")
+async def store_second_phase_lesson(lesson_nb, item: MarkedSentencesItem):
+    store_second_phase_marked_sentences(lesson_nb, item)
 
 @app.get("/")
 async def root():
