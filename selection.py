@@ -12,6 +12,9 @@ class SelectionItem(BaseModel):
     markType : str
     action: str
 
+class MarkedSentencesItem(BaseModel):
+    marked_sentences : dict
+
 class MarkedLinesParser(HTMLParser):
     def analyze_lesson(self, lesson):
         self.sentences = []
@@ -246,3 +249,6 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
         print(f"html_with_selection_removed : {html_with_selection_removed}")
         return  html_with_selection_removed
  
+
+def store_second_phase_marked_sentences(lesson_nb, item: MarkedSentencesItem):
+    print(item)

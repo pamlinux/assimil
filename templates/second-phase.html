@@ -61,6 +61,7 @@
     <h1><a href="{{ url_for('second_phase', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
     <button id="toggleAll" onclick="toggleSpanish()">Montrer l'Espagnol</button>
     <button id="togglemark" onclick="toggleMark()"">Boîte de marquage</button>
+    <button id="store" onclick="storeMark()"">Enregistrer le marquage</button>
     <div id="spanish">
       <div id="toolbar">
         <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
@@ -71,7 +72,7 @@
         <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
         <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
         <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
-        
+
       </div>
       <p id="translation"></p>
       <div id="comment" contentEditable></div>
@@ -99,6 +100,14 @@
 
     <script>
  
+      spanish_sentences = [
+        {% for sentence in spanish_sentences %}
+            "{{ sentence | safe }}",
+        {% endfor %}
+      ];
+
+      modified_spanish_sentences = {};
+
         function playSentence(val) {
             audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
             console.log(audioRef)
@@ -165,40 +174,25 @@
 
    
         function fillSpanishBox(value) {
-            console.log(value);
-            let id = "id_" + value;
-            console.log(id);
-            let translation = document.getElementById("translation");
-            let spanishNode = document.getElementById("spanish");
-            let clickedNode = document.getElementById(id);
-            insertAfter(clickedNode, spanishNode)
-            let translation_ref ="translation/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", value);
-            console.log(translation_ref)
-            fetch(translation_ref, {
-               method: 'POST',
-               headers: {
-                 'Accept': 'application/json',
-                 'Content-Type': 'application/json'
-               },
-            })
-              .then(resp => resp.text())  // or, resp.json(), etc.
-              .then(data => {
-                translation.innerHTML = data.substring(1, data.length-1);
-                var x = document.getElementById("comment");
-                if (x.style.display === "none") {
-                  translation.setAttribute("onClick", "playSentence(" + value + ")")
-                } else {
-                  translation.setAttribute("onClick", "")
-                }
-                console.log(translation)
-                console.log(data.substring(1, data.length-1))
-              })
-              .catch(error => {
-              console.error(error);
-            });
+
+          console.log(value);
+          let id = "id_" + value;
+          console.log(id);
+          let translation = document.getElementById("translation");
+          let spanishNode = document.getElementById("spanish");
+          let clickedNode = document.getElementById(id);
+          insertAfter(clickedNode, spanishNode)
+          translation.innerHTML = spanish_sentences[value];
+          var x = document.getElementById("comment");
+          if (x.style.display === "none") {
+            translation.setAttribute("onClick", "playSentence(" + value + ")")
+          } else {
+            translation.setAttribute("onClick", "")
+          }
+          console.log(translation)
+        };
 
 
-        }
     
         fillSpanishBox(0)
 
@@ -268,9 +262,9 @@
           return obj;
         }
 
-        const editorElement = document.getElementById("translation"); // Sélectionner l'élément à sérialiser
-        const serializedEditorElement = serializeDOMElement(editorElement);
-        const editorJsonString = JSON.stringify(serializedEditorElement, null, 2);
+        const translation = document.getElementById("translation"); // Sélectionner l'élément à sérialiser
+        const serializedTranslationElement = serializeDOMElement(translation);
+        const translationJsonString = JSON.stringify(serializedTranslationElement, null, 2);
 
         const commentElement = document.getElementById("comment"); 
         const comment = commentElement.textContent
@@ -278,7 +272,7 @@
         item = {
                 "anchorOffset" : anchorOffset,
                 "focusOffset" : focusOffset,
-                "editorDomString" : editorJsonString,
+                "editorDomString" : translationJsonString,
                 "comment" : comment,
                 "markType" : markType,
                 "action" : action,
@@ -297,7 +291,11 @@
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
                 document.getElementById("translation").innerHTML = data.substring(1, data.length-1);
-                console.log(data.substring(1, data.length-1))
+                value_id = translation.parentNode.previousSibling.getAttribute("id");
+                value = parseInt(value_id.substring(3, value_id.length));
+                spanish_sentences[value] = data.substring(1, data.length-1);
+                modified_spanish_sentences[value] = data.substring(1, data.length-1);
+                console.log(modified_spanish_sentences);
               })
               .catch(error => {
               console.error(error);
@@ -305,6 +303,27 @@
 
       }
 
+      function storeMark() {
+        item = {"marked_sentences" : modified_spanish_sentences};
+        var data = JSON.stringify(item);
+
+        fetch('/marker-translation/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                 console.log(data);
+              })
+              .catch(error => {
+              console.error(error);
+            });
+
+      }
 
     </script>
 {% endblock %}
