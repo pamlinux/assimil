@@ -71,11 +71,10 @@
         <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
         <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
         <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
+        
       </div>
       <p id="translation"></p>
-      <div id="comment" contentEditable>
-        Espace réservé aux commentaires
-      </div>
+      <div id="comment" contentEditable></div>
     </div>
     <div id="div01">
         {% set count = namespace(value=2) %}
@@ -269,7 +268,7 @@
           return obj;
         }
 
-        const editorElement = document.getElementById("editor"); // Sélectionner l'élément à sérialiser
+        const editorElement = document.getElementById("translation"); // Sélectionner l'élément à sérialiser
         const serializedEditorElement = serializeDOMElement(editorElement);
         const editorJsonString = JSON.stringify(serializedEditorElement, null, 2);
 
@@ -297,7 +296,7 @@
               })
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
-                document.getElementById("editor").innerHTML = data.substring(1, data.length-1);
+                document.getElementById("translation").innerHTML = data.substring(1, data.length-1);
                 console.log(data.substring(1, data.length-1))
               })
               .catch(error => {
