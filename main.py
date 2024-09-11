@@ -227,17 +227,9 @@ async def second_phase(request: Request, lesson_nb : int = 1):
                                                             "spanish_sentences" : spanish_sentences
                                                             })
 
-@app.post("/second-phase/translation")
-async def get_translation(request: Request, lesson_nb : int = 54, sentence_nb : int = 1):
-    print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
-    sentences = get_list_of_bold_sentences(lesson_nb)
-    translation = sentences[sentence_nb]
-    print(translation)
-    return translation
-
 
 @app.post("/marker-translation/{lesson_nb}")
-async def store_second_phase_lesson(lesson_nb, item: MarkedSentencesItem):
+async def store_second_phase_lesson(item: MarkedSentencesItem, lesson_nb: int = 1):
     store_second_phase_marked_sentences(lesson_nb, item)
 
 @app.get("/")
