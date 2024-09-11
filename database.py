@@ -148,6 +148,27 @@ def store_lesson_errors(lesson_number, sentences, entrys_numbers, date_time = No
         session.add(l_obj)
         session.commit()
 
+def store_lesson_errors_dict(lesson_number, errored_sentences, date_time = None):
+    if not date_time:
+       date_time = datetime.datetime.now()
+    with Session(engine) as session:
+        errored_sentences_list = []
+        for line in errored_sentences:
+            print("----", line, "------")
+            errored_sentences_list.append(MarkedSentence(
+                line = line,
+                sentence = errored_sentences[line]
+            ))
+        l_obj = LessonSession(
+            lesson = lesson_number,
+            date_time = date_time,
+            errors_number = len(errored_sentences_list),
+            errored_sentences = errored_sentences_list
+        )
+        session.add(l_obj)
+        session.commit()
+
+
 def get_single_lesson_errors(lesson_nb, date_time : datetime.datetime):
     print(f"----- In get_single_lesson_errors  date : {date_time}, of type {type(date_time)}")
     stmt = select(LessonSession).where(

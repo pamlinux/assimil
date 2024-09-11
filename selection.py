@@ -61,10 +61,13 @@ class MarkedLinesParser(HTMLParser):
     
     def get_marked_lines_numbers(self):
         return self.marked_lines_numbers
-
+    
     def get_sentences(self):
         return self.sentences
-    
+
+    def get_marked_sentences(self):
+        return {line : self.sentences[line] for line in self.marked_lines_numbers}
+
     def handle_charref(name):
         print('In handle_charref for : ', name)
     
@@ -229,15 +232,15 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
         print(f"+++++++++++ mark_tag_string : {mark_tag_string}")
         #print(f"************* json editor: {editor}")
         html_with_selection = get_html_with_selection(editor, item.anchorOffset, item.focusOffset, mark_tag_string)
-        print(f"------------- In proceed_marked_selection {html_with_selection}")
         html_with_selection = html_with_selection.replace("\n", "")
-        print(f"html_with_selection : {html_with_selection}")
+        print(f"------------- In proceed_marked_selection, html_with_selection : {html_with_selection}")
         if item.action == 'STORE':
             print(f"---------- extract_selectionAction : {item.action}")
-            marked_lines_numbers, sentences = extract_selection(html_with_selection)
-            print(marked_lines_numbers)
-            print(sentences)
-            store_lesson_errors(lesson_nb, sentences, marked_lines_numbers)
+            mark_parser.analyze_lesson(html_with_selection)
+            marked_sentences = mark_parser.get_marked_sentences()
+            #print(marked_lines_numbers)
+            print(marked_sentences)
+            store_lesson_errors(lesson_nb, marked_sentences)
         return html_with_selection
     elif item.action == 'CLEAR':
         print(f"-- item.action == MARK ")
