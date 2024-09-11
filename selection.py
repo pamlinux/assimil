@@ -254,4 +254,5 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
  
 
 def store_second_phase_marked_sentences(lesson_nb, item: MarkedSentencesItem):
+    store_lesson_errors(lesson_nb, item.marked_sentences)
     print(item)
