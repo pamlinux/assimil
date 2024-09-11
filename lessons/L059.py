@@ -1,0 +1,23 @@
+lesson = ['Leçon cinquante-neuf',
+ 'Qui choisit le film ?',
+ "1- Combien de temps [cela] fait[-il] que nous n'allons pas au cinéma ?",
+ "2- [Des] mois ! Je crois que ça a été au (en) printemps, au moment de (quand) la fête du cinéma, avec l'histoire des (cela des) billets presque gratuits.",
+ '3 - L\'événement de la saison, [c\']est la dernière œuvre du célèbre réalisateur de "Un cœur si fragile".',
+ '4- Oui, celle-là nous sommes allés la voir (allâmes à voir- (a). Je me souviens surtout du début.',
+ '5- Fabuleux, pas vrai (à que oui) ?',
+ "6- Oui, après je me suis endormi (m'endormis), et celui qui était à côté de moi (à côté mien) aussi (s'endormit).",
+ "7- Qu'est-ce que tu es balourd (Que brute tu es)...",
+ "8- Peut-être, mais cette fois c'est moi qui choisis le film (la choisis moi):",
+ '9 je ne suis pas disposé à me prendre encore le chou (manger-me la noix-de-coco) avec un navet psychologique.',
+ '10- Tu préfères un western (une de vachers) ? Non, [encore] mieux: un de ceux(là) où on se castagne (où ils se donnent des hosties) !',
+ '11 - Ne te fâche pas, allons. Et un film comique (une de rire)? Avant tu aimais ça (te plaisaient).',
+ '12- Oui, mais maintenant couci-couça.',
+ '13- On tire ça à pile ou face (Le jetons à visage ou croix) ?',
+ "14- Allons-y (Vienne): face c'est toi qui gagnes, pile c'est moi qui gagne.",
+ '15- Face, un film comique ! Et si tu ne ris pas, je paye le dîner.']
+
+exercise1_correction = ['Au printemps, au moment de la fête du cinéma, les entrées sont très bon marché, presque gratuites !',
+ 'C\'est l\'événement de la saison ? Peut-être, mais moi, il me semble que "Un cœur si fragile" est un navet.',
+ 'Je ne suis pas disposée à voir un des ces films où on se castagne.',
+ "Allons, ne te fâche pas, nous allons voir un western d'accord?",
+ 'Je suis un peu balourd : moi les films psychologiques, couci-couça.']
