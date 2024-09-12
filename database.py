@@ -48,13 +48,26 @@ class Sentence(Base):
     def __repr__(self) -> str:
         return f"Sentence(id={self.id!r}, lesson={self.lesson!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
 
+class LessonSession(Base):
+    __tablename__ = "lesson_sessions"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user: Mapped["User"] = relationship(back_populates="sessions")
+    lesson: Mapped[int]
+    date_time: Mapped[datetime.datetime]
+    errors_number: Mapped[int]
+    user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
+    errored_sentences : Mapped[List["MarkedSentence"]] = relationship(
+        back_populates="session", cascade="all, delete-orphan")
+    def __repr__(self) -> str:
+        return f"date time : {self.date_time!r}, lesson {self.lesson!r} errors number : {self.errors_number!r}"
+
 class MarkedSentence(Base):
     __tablename__ = "marked_sentences"
     id: Mapped[int] = mapped_column(primary_key=True)
     sentence: Mapped[str] 
     comment: Mapped[Optional[str]]
     line : Mapped[int]
-    session_id : Mapped[int] = mapped_column(ForeignKey("lessons_sessions.id"))
+    session_id : Mapped[int] = mapped_column(ForeignKey("lesson_sessions.id"))
     session : Mapped["LessonSession"] = relationship(back_populates="errored_sentences")
     def __repr__(self) -> str:
         return f"Sentence(id={self.id!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
@@ -70,19 +83,6 @@ class User(Base):
         back_populates="user", cascade="all, delete-orphan")
     def __repr__(self) -> str:
         return f"username : {self.username!r}, password : {self.password!r}, full name :{self.fullname}"
-
-class LessonSession(Base):
-    __tablename__ = "lesson_sessions"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    user: Mapped["User"] = relationship(back_populates="sessions")
-    lesson: Mapped[int]
-    date_time: Mapped[datetime.datetime]
-    errors_number: Mapped[int]
-    user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
-    errored_sentences : Mapped[List["MarkedSentence"]] = relationship(
-        back_populates="session", cascade="all, delete-orphan")
-    def __repr__(self) -> str:
-        return f"date time : {self.date_time!r}, lesson {self.lesson!r} errors number : {self.errors_number!r}"
 
 
 
