@@ -58,7 +58,12 @@ textarea {
     <link href="{{ url_for('static', path='/styles.css?<?=time()?>') }}" rel="stylesheet">
 {% endblock %}
 {% block content %}
-  <h1>Marquer les erreurs pour la leçon {{ lesson_nb }}</a></h1>
+
+{% import 'lesson_counter.j2' as counter %}
+    
+{{ counter.lesson_counter(lesson_nb) }}
+
+  <h2>Marquer les erreurs</a></h2>
   <div id="toolbar">
     <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
     <input type="button" id="select" value="A" class="A" onclick="proceedSelection('MARK', 'A')" />
@@ -87,6 +92,9 @@ textarea {
     </form>
     <div id="responseArea"></div>
     <script>
+
+      {{ counter.changeLessonFunction("/marker-editor/") }}
+
      //txt='<p> N13-Lec<b>ción</b> <b>tre</b>ce </p>                  <p> S00-TITLE-Fin de se<b>ma</b>na </p>                  <p> S01-¿Ten<b>éis</b> ya plan <b>pa</b>ra el <b></b><mark class="A"><b>sá</b>bado</mark> o <mark class="V">toda<b>ví</b>a</mark> no?  </p>                  <p> S02-Mi mu<b>jer</b> es<b>tá</b> can<b>sa</b>da no <b>quie</b>re ha<b>cer</b> <b>na</b>da ni ver a <b>na</b>die.  </p>                  <p> S03-Co<b>noz</b>co un bar en el <b>cen</b>tro <b>don</b>de las <b>ta</b>pas son <b>bue</b>nas y ba<b>ra</b>tas.  </p>                  <p> S04-Lo <b>sien</b>to, yo tam<b>po</b>co <b>ten</b>go <b>ga</b>nas de ir de <b>co</b>pas.  </p>                  <p> S05-Pre<b>fie</b>ro que<b>dar</b>me con <b>e</b>lla en <b>ca</b>sa <b>vien</b>do <b>u</b>na pe<b>lí</b>cula.  </p>                  <p> S06-Sí, no es <b>ma</b>la i<b>de</b>a.  </p>                  <p> S07-En<b>ton</b>ces yo <b>com</b>pro las <b>pi</b>zzas y vo<b>so</b>tros com<b>práis</b> las cer<b>ve</b>zas, ¿de a<b>cuer</b>do?  </p>                  <p> T00-TRANSLATE-Ejer<b>ci</b>cio 1 – Tra<b>duz</b>ca </p>                  <p> T01-No <b>ha</b>go <b>na</b>da el <b>sá</b>bado.  </p>                  <p> T02-No co<b>noz</b>co a <b>na</b>die en Ma<b>drid</b>.  </p>                  <p> T03-La cer<b>ve</b>za es muy ba<b>ra</b>ta en <b>es</b>te bar.  </p>                  <p> T04-Mi mu<b>jer</b> tam<b>po</b>co <b>tie</b>ne <b>ga</b>nas de ir de <b>co</b>pas.  </p>                  <p> T05-Pre<b>fie</b>re que<b>dar</b>se en <b>ca</b>sa.  </p> '
       function copyContent() {
           var divHTML = document.getElementById("editor").innerHTML;

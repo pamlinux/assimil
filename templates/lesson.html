@@ -35,7 +35,11 @@
 {% endblock %}
 
 {% block content %}
-    <h1><a href="{{ url_for('display_lesson', lesson_nb = lesson_nb)}}">Leçon : {{ lesson_nb }}</a></h1>
+
+  {% import 'lesson_counter.j2' as counter %}
+    
+  {{ counter.lesson_counter(lesson_nb) }}
+
 
     <div id="div01">
       {% for sentence in sentences %}
@@ -47,6 +51,8 @@
 
     <audio id="audioTag" src=""/>
  
- 
+    <script>
+      {{ counter.changeLessonFunction("/espagnol/") }}
+    </script>
 
 {% endblock %}

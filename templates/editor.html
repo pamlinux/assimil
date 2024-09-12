@@ -6,7 +6,13 @@
 
 {% endblock %}
 {% block content %}
-    <h1>Edition de la leçon : {{ lesson_nb }}</a></h1>
+
+    {% import 'lesson_counter.j2' as counter %}
+    
+    {{ counter.lesson_counter(lesson_nb) }}
+
+
+    <h2>Edition des accents toniques</a></h2>
     <input type="button" value="G" width="32" style="font-weight: bold; width: 32; height : 32" onclick="commande('bold');" />
     <input type="image" src={{ url_for('static', path='/icons/correction.svg')}} alt="Correction" width="32" onclick="correct();" />
     <form method="post" id="myForm"> 
@@ -23,7 +29,11 @@
       <br />
     </form>
     <div id="responseArea"></div>
+
     <script>
+
+      {{ counter.changeLessonFunction("/editor/") }}
+
       function copyContent() {
           var divHTML = document.getElementById("editor").innerHTML;
           document.getElementById("hiddenInput").value = divHTML;
