@@ -59,11 +59,10 @@
 
 {% block content %}
 
-    <h1>
-      <label for="lesson_nb">Leçon:</label>
-      <input type="number" id="lesson_nb" name="lesson_nb" value= {{lesson_nb}} min="1" max="100" />
-      <input type="button" id="changeLesson" value="Changer" class="changelesson" onclick="proceedChangeLesson()" />
-    </h1>
+  {% import 'lesson_counter.j2' as counter %}
+    
+  {{ counter.lesson_counter(lesson_nb) }}
+
     <button id="toggleAll" onclick="toggleSpanish()">Montrer l'Espagnol</button>
     <button id="togglemark" onclick="toggleMark()"">Boîte de marquage</button>
     <button id="store" onclick="storeMark()"">Enregistrer le marquage</button>
@@ -104,16 +103,20 @@
  
 
     <script>
- 
+
+      {{ counter.changeLessonFunction("/second-phase/") }}
+
       spanish_sentences = [
         {% for sentence in spanish_sentences %}
             "{{ sentence | safe }}",
         {% endfor %}
       ];
 
+
       modified_spanish_sentences = {};
 
-        function playSentence(val) {
+      
+       function playSentence(val) {
             audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
             console.log(audioRef)
             var audioEl = document.getElementById("audioTag");
@@ -129,12 +132,7 @@
         document.getElementById("comment").style.display = "none";
         document.getElementById("toolbar").style.display = "none";
 
-        function proceedChangeLesson() {
-          var lesson_nb = document.getElementById("lesson_nb").value
-          url = "/second-phase/" + parseInt(lesson_nb);
-          window.location.href = url;
-        }
-        function toggleSpanish() {
+      function toggleSpanish() {
             var x = document.getElementById("spanish");
             if (x.style.display === "none") {
                 x.style.display = "block";

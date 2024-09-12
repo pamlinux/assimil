@@ -2,6 +2,10 @@ h1 {
     color: green;
 }
 
+#changeLesson {
+  height: 2em;
+}
+
 #editor,
 textarea {
   width: 500px;
