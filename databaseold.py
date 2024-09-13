@@ -75,7 +75,7 @@ def get_database_engine(name, echo=True):
     Base.metadata.create_all(engine) 
     return engine
 
-database_name = 'sqlite:///db/assimil_spanish_old.db'
+database_name = 'sqlite:///db/assimil_spanishV1_1.db'
 global engine
 engine = get_database_engine(database_name)
 

@@ -79,15 +79,18 @@ class User(Base):
     password: Mapped[str]
     fullname: Mapped[str]
     email: Mapped[str]
+    parameters: Mapped[str]
+    parameters_version: Mapped[str]
     sessions: Mapped[List["LessonSession"]] = relationship(
         back_populates="user", cascade="all, delete-orphan")
     def __repr__(self) -> str:
         return f"username : {self.username!r}, password : {self.password!r}, full name :{self.fullname}"
 
-
-
-
-
+class GeneralParameters(Base):
+    __tablename__ = "parameters"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    version: Mapped[str]
+    instance: Mapped[str]
 
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
