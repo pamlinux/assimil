@@ -148,10 +148,12 @@ def get_word_index_dict():
                 word_index_dict[entry.word.word].append((entry.lesson, entry.line))
     return word_index_dict
 
-def store_lesson_errors(lesson_number, errored_sentences, date_time = None):
+def store_lesson_errors(lesson_number, errored_sentences, username, date_time = None):
     if not date_time:
        date_time = datetime.datetime.now()
     with Session(engine) as session:
+        stmt = select(User).where(User.username == username)
+        user = session.scalars(stmt).one()
         errored_sentences_list = []
         for line in errored_sentences:
             print("----", line, "------")
@@ -160,6 +162,7 @@ def store_lesson_errors(lesson_number, errored_sentences, date_time = None):
                 sentence = errored_sentences[line]
             ))
         l_obj = LessonSession(
+            user = user,
             lesson = lesson_number,
             date_time = date_time,
             errors_number = len(errored_sentences_list),
