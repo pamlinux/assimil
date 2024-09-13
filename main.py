@@ -16,7 +16,7 @@ from pydantic import BaseModel
 from selection import proceed_marked_selection, delete_marked_selection, SelectionItem
 from selection import MarkedSentencesItem, store_second_phase_marked_sentences
 from translation import get_french_lesson
-from auth import get_current_user
+from auth import get_current_user_username
 
 @dataclass
 class SimpleModel:
@@ -91,11 +91,11 @@ async def play_sentence(request: Request, lesson_nb : int = 8, sentence_nb : int
         request=request, name="play_sentence.html", context={"lesson_nb": lesson_nb, "sentence_nb" : sentence_nb}
     )
 
-@app.get("/espagnol/{lesson_nb}", response_class=HTMLResponse)
-async def display_lesson(request: Request, lesson_nb : int = 8):
-    sentences = get_list_of_bold_sentences(lesson_nb)
-    return templates.TemplateResponse(
-        request=request, name="lesson.html", context={"active" : "lessons", "lesson_nb": lesson_nb, "sentences" : sentences})
+#@app.get("/espagnol/{lesson_nb}", response_class=HTMLResponse)
+#async def display_lesson(request: Request, lesson_nb : int = 8):
+#    lesson = get_list_of_bold_sentences(lesson_nb)
+#    return templates.TemplateResponse(
+#        request=request, name="lesson.html", context={"active" : "lessons", "lesson_nb": lesson_nb, "lesson" : lesson})
 
 @app.get("/espagnol/", response_class=HTMLResponse)
 async def display_home(request: Request, lesson_nb : int = 8):
@@ -149,7 +149,7 @@ def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1)
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
-@app.get("/espagnol/audio/")
+@app.get("/first-phase/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
     print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
     sentence_path = get_full_path(lesson_nb, sentence_nb)
@@ -228,10 +228,32 @@ async def second_phase(request: Request, lesson_nb : int = 1):
                                                             "spanish_sentences" : spanish_sentences
                                                             })
 
+@app.get("/first-phase/{lesson_nb}", response_class=HTMLResponse)
+async def second_phase(request: Request, lesson_nb : int = 1):
+    lesson, exercise1_correction = get_french_lesson(lesson_nb)
+    spanish_sentences = get_list_of_bold_sentences(lesson_nb)
+
+
+    spanish_sentences = get_list_of_bold_sentences(lesson_nb)
+    ex_index = len(lesson)
+    spanish_lesson = spanish_sentences[:ex_index]
+    spanish_exercise1_correction = spanish_sentences[ex_index + 1:]
+    if exercise1_correction:
+        french_sentences = lesson + ["Corrigé de l'exercice 1"] + exercise1_correction
+    else:
+        french_sentences = lesson
+
+    return templates.TemplateResponse(
+        request=request, name="first-phase.html", context={"active" : "first-phase",
+                                                            "lesson_nb": lesson_nb,
+                                                            "lesson" : spanish_lesson,                                                        
+                                                            "exercise1_correction" : spanish_exercise1_correction,
+                                                            "french_sentences" : french_sentences
+                                                            })
 
 @app.post("/marker-translation/{lesson_nb}")
 async def store_second_phase_lesson(item: MarkedSentencesItem, lesson_nb: int = 1):
-    store_second_phase_marked_sentences(lesson_nb, item, get_current_user())
+    store_second_phase_marked_sentences(get_current_user_username(), lesson_nb, item)
 
 @app.get("/")
 async def root():

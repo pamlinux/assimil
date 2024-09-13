@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% block add_style %}
+
+  #french,
+  #comment {
+    border: solid blue;
+    border-width: 2px 2px;
+  }
+
+  .A {
+    background-color: orange;
+    color: black; 
+  }
+  .B {
+    background: rgba(128, 128, 128, 0.377);
+    color: black; 
+  }
+  .E {
+    background: greenyellow;
+    color: black; 
+  }
+  .G {
+    background-color: rgba(152, 27, 198, 0.75);
+    color: black; 
+  }
+  .O {
+    background: rgba(27, 75, 198, 0.75);
+    color: black; 
+  }
+  .S {
+    background: yellow;
+    color: black; 
+  }
+  .V {
+    background: rgba(198, 27, 144, 0.75);
+    color: black; 
+  }
+  #select {
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+  }
+ 
+{% endblock %}
+
+{% block header %}
+  <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+
+  {% import 'lesson_counter.j2' as counter %}
+    
+  {{ counter.lesson_counter(lesson_nb) }}
+
+    <button id="toggleAll" value="S" onclick="toggleFrench()">En mode son</button>
+    <div id="french">
+     <p id="translation"></p>
+    </div>
+    <div id="div01">
+        {% set count = namespace(value=2) %}
+        <h2 id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
+        <h2 id="id_1" onClick="proceedSentence(1)"> {{ lesson[1] | safe }} </h2>
+            {% for sentence in lesson[2:] %}
+                <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence | safe }} </p>
+                {% set count.value = count.value + 1 %}
+            {% endfor %}
+            {% if exercise1_correction %}
+              <h2 id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})">Exercice 1</h2>
+              {% set count.value = count.value + 1 %}
+              {% for sentence in exercise1_correction %}
+                  <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence | safe }} </p>
+                  {% set count.value = count.value + 1 %}
+              {% endfor %}
+            {% endif %}
+
+    </div>
+    <audio id="audioTag" src=""/>
+ 
+
+    <script>
+
+      {{ counter.changeLessonFunction("/first-phase/") }}
+
+      french_sentences = [
+        {% for sentence in french_sentences %}
+            "{{ sentence | safe }}",
+        {% endfor %}
+      ];
+
+
+      modified_french_sentences = {};
+
+      
+       function playSentence(val) {
+            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+            console.log(audioRef)
+            var audioEl = document.getElementById("audioTag");
+            audioEl.src = audioRef
+
+            audioEl.load();
+            audioEl.play();
+
+        }
+
+
+        document.getElementById("french").style.display = "none";
+
+
+      function toggleFrench() {
+            var x = document.getElementById("french");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                var button = document.getElementById("toggleAll");
+                button.innerHTML = "En mode traduction";
+                button.value = "T";
+                console.log(button.value);
+            } else {
+                x.style.display = "none";
+                var button = document.getElementById("toggleAll");
+                button.innerHTML = "En mode son";
+                button.value = "S";
+            console.log(x);
+            }
+        }
+
+        function insertAfter(referenceNode, newNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+   
+        function proceedSentence(value, play=true) {
+
+          console.log(value);
+          let id = "id_" + value;
+          console.log(id);
+          let translation = document.getElementById("translation");
+          let frenchNode = document.getElementById("french");
+          let clickedNode = document.getElementById(id);
+          insertAfter(clickedNode, frenchNode)
+          translation.innerHTML = french_sentences[value];
+          var button = document.getElementById("toggleAll");
+          if (button.value === "S" && play) {
+            playSentence(value)
+          }
+         };
+
+
+    
+        proceedSentence(0, false);
+
+    function proceedSelection(action, markType = "") {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+        console.log(typeof store)
+        anchorNode = userSelection.anchorNode;
+        anchorOffset = userSelection.anchorOffset;
+
+        focusOffset = userSelection.focusOffset;
+        focusNode = userSelection.focusNode;
+
+        if (anchorNode === focusNode) {
+          focusNodeIsAnchorNode = true;
+        } else {
+          focusNodeIsAnchorNode = false;
+        }
+
+        console.log("anchorOffset", anchorOffset)
+        console.log("focusOffset", focusOffset)
+        console.log("anchorNode", anchorNode)
+        console.log("focusNode", focusNode)
+        console.log("coucou")
+
+        function serializeDOMElement(element) {
+
+          if (element.tagName) {
+            tagName = element.tagName.toLowerCase();
+          } else {
+            tagName = "";
+          }
+          
+          var status;
+
+          if (element === anchorNode && element === focusNode) {
+            status = "isAnchorAndFocus";
+          } else if (element === anchorNode) {
+            status = "isAnchor";
+          } else if (element === focusNode) {
+            status = "isFocus";
+          } else {
+            status = "";
+          }
+         
+          const obj = {
+            tagName: tagName,
+            status: status,
+            attributes: {},
+            children: [],
+            textContent: element.textContent
+          };
+          
+          // Récupérer les attributs de l'élément
+          if (element.attributes) {
+            for (let attr of element.attributes) {
+              obj.attributes[attr.name] = attr.value;
+            }
+          };
+          // Récupérer les enfants de l'élément
+          if (element.childNodes) {
+            for (let child of element.childNodes) {
+              obj.children.push(serializeDOMElement(child));
+            }
+          }
+
+          return obj;
+        }
+
+        const translation = document.getElementById("translation"); // Sélectionner l'élément à sérialiser
+        const serializedTranslationElement = serializeDOMElement(translation);
+        const translationJsonString = JSON.stringify(serializedTranslationElement, null, 2);
+
+        const commentElement = document.getElementById("comment"); 
+        const comment = commentElement.textContent
+
+        item = {
+                "anchorOffset" : anchorOffset,
+                "focusOffset" : focusOffset,
+                "editorDomString" : translationJsonString,
+                "comment" : comment,
+                "markType" : markType,
+                "action" : action,
+               }
+
+        var data = JSON.stringify(item);
+
+        fetch('/marker-editor/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("translation").innerHTML = data.substring(1, data.length-1);
+                value_id = translation.parentNode.previousSibling.getAttribute("id");
+                value = parseInt(value_id.substring(3, value_id.length));
+                french_sentences[value] = data.substring(1, data.length-1);
+                modified_french_sentences[value] = data.substring(1, data.length-1);
+                console.log(modified_french_sentences);
+              })
+              .catch(error => {
+              console.error(error);
+            });
+
+      }
+
+
+    </script>
+{% endblock %}
