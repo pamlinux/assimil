@@ -16,6 +16,7 @@ from pydantic import BaseModel
 from selection import proceed_marked_selection, delete_marked_selection, SelectionItem
 from selection import MarkedSentencesItem, store_second_phase_marked_sentences
 from translation import get_french_lesson
+from auth import get_current_user
 
 @dataclass
 class SimpleModel:
@@ -230,7 +231,7 @@ async def second_phase(request: Request, lesson_nb : int = 1):
 
 @app.post("/marker-translation/{lesson_nb}")
 async def store_second_phase_lesson(item: MarkedSentencesItem, lesson_nb: int = 1):
-    store_second_phase_marked_sentences(lesson_nb, item)
+    store_second_phase_marked_sentences(lesson_nb, item, get_current_user())
 
 @app.get("/")
 async def root():
