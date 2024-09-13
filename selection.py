@@ -253,6 +253,6 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
         return  html_with_selection_removed
  
 
-def store_second_phase_marked_sentences(lesson_nb, item: MarkedSentencesItem, user):
-    store_lesson_errors(lesson_nb, item.marked_sentences, user)
-    print(f"Utilisateur : {user} item : {item}")
+def store_second_phase_marked_sentences(username, lesson_nb, item: MarkedSentencesItem):
+    store_lesson_errors(username, lesson_nb, item.marked_sentences)
+    print(f"Utilisateur : {username} item : {item}")
