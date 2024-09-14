@@ -113,25 +113,12 @@
             id = sentences_number - 1;
             console.log("----- id : ", id)
           }
-        } else if (event.key == " ") {
-          // Space touch, repeat the sentence with the same id
         } else {
           id = (id + 1) % sentences_number;
         }
         proceedSentence(id);
       }
 
-      function stopKeyboardPropagation(event) {
-        console.log("in stopKeyboardPropagation", event);
-        event.stopPropagation()
-      }
-      
-      var button = document.getElementById("lesson_nb");
-      button.addEventListener(
-        "keydown",
-        stopKeyboardPropagation
-      );
-     
       document.addEventListener(
         "keydown",
         proceedKeyboard
