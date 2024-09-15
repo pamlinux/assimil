@@ -32,8 +32,10 @@
     }
 
     li#el {
-        display: inline;
+         padding: 20px;
+        display: table-cell;
     }
+
 
     a {
         text-decoration: none;
@@ -71,27 +73,41 @@
     }
 
 
- </style>
+    ul {
 
-<p></p>
-<p></p>
+        display: table-row
+     }
+
+    h2 {
+        padding: 20px;
+        display: table-cell;
+    }
+
+    h1 {
+        padding: 30px;
+
+    }
+    .history {
+        display: table;
+     }
+</style>
+<p>  </p>
+<h1>Sessions groupées par leçon</h1>
     {% for row in rows %}
         {% set outer_loop = loop %}
-        <div>
-            <h2>Lección {{lessons[loop.index0]}}</h2>
-            <p>
+            <div class="history">
                 <ul>
+                    <h2>Leçon {{lessons[loop.index0]}}</h2>
                     {% for history_date_time, errors_number in row %}
                         {% set date_time_key = history_date_time.strftime('%d-%m-%Y %H:%M:%S%f') %}
                         {% if errors_number %}
-                            <li id='el'><a id='id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}  </a></li>
+                            <li id='el'><a id='id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></li>
                         {% else %}
                             <li id='el'><span><a id= 'id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></span></li>
                         {% endif %}
                     {% endfor %}
                 </ul>
-            </p>
-        </div>
+            </div>
        
  
     {% endfor %}

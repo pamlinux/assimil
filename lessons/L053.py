@@ -1,20 +1,2 @@
-lesson = ['Leçon cinquante-trois',
- 'Le Nouveau Monde',
- "Christophe Colomb savait que la Terre était ronde et il voulut atteindre les Indes en allant toujours vers l'ouest.",
- "Quand il mit le pied en Amérique, il crut qu'il était arrivé",
- 'et il appela "Indiens" (a) les hommes qu\'il trouva.',
- "Bientôt on (se) sut qu'il s'agissait d'un nouveau continent",
- "et les conquistadors commencèrent à arriver, attirés par l'or et l'argent.",
- 'Leçon cinquante-trois/53',
- "Les bateaux amenèrent en (d) Amérique [des] dizaines de produits et [d'] animaux nouveaux",
- 'et ils [en] ramenèrent tout autant (autres autant) en (a) Europe.',
- "[Ce] fut la première mondialisation de l'histoire.",
- 'Vous imaginez-vous la cuisine italienne sans tomate, le cinéma sans pop-corn,',
- 'nos desserts sans vanille ou les Peaux-Rouges sans chevaux ?',
- 'Un nouveau monde naquit le 12 (de) octobre (de) 1492.']
-
-exercise1_correction = ["Quand Christophe Colomb arriva en Amérique, il crut qu'il avait atteint les Indes.",
- "À cette époque il y avait des gens qui pensaient que la Terre n'était pas ronde.",
- "L'homme a toujours voulu connaître de nouveaux mondes.",
- 'Te souviens-tu de qui fut le premier homme qui mit le pied sur la Lune ?',
- "Les conquistadors ramenèrent en Europe l'or et l'argent d'Amérique"]
+lesson = ['\ufeffLeçon cinquante-trois', 'Le Nouveau Monde', "Christophe Colomb savait que la Terre était ronde et il voulut atteindre les Indes en allant toujours vers l'ouest.", "Quand il mit le pied en Amérique, il crut qu'il était arrivé", 'et il appela "Indiens" (a) les hommes qu\'il trouva.', "Bientôt on (se) sut qu'il s'agissait d'un nouveau continent", "et les conquistadors commencèrent à arriver, attirés par l'or et l'argent.", "Les bateaux amenèrent en (d) Amérique [des] dizaines de produits et [d'] animaux nouveaux", 'et ils [en] ramenèrent tout autant (autres autant) en (a) Europe.', "[Ce] fut la première mondialisation de l'histoire.", 'Vous imaginez-vous la cuisine italienne sans tomate, le cinéma sans pop-corn,', 'nos desserts sans vanille ou les Peaux-Rouges sans chevaux ?', 'Un nouveau monde naquit le 12 (de) octobre (de) 1492.'] 
+exercise1_correction = ["Quand Christophe Colomb arriva en Amérique, il crut qu'il avait atteint les Indes.", "À cette époque il y avait des gens qui pensaient que la Terre n'était pas ronde.", "L'homme a toujours voulu connaître de nouveaux mondes.", 'Te souviens-tu de qui fut le premier homme qui mit le pied sur la Lune ?', "Les conquistadors ramenèrent en Europe l'or et l'argent d'Amérique."]

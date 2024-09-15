@@ -1,24 +1,2 @@
-lesson = ['Leçon cinquante et un',
- 'Vive [le] Mexique !',
- "- Moi je n'ai jamais été en (a) Amérique latine, et toi ?",
- "- J'ai été (Je fus) au (dans) Mexique l'année dernière (l'an passé).",
- "- Et ça t'a plu (te plut) ?",
- "- Nous y sommes allés (allâmes) en (de) voyage de noces (fiancés) et j'ai adoré (ça m'enchanta) !",
- '- Quelle romantique lune de miel (plus romantique)! Et où avez-vous été (fûtes-vous) ?',
- "- Partout (En toutes parties) ! D'abord (Premier) dans les Caraïbes.",
- 'Leçon cinquante et un / 51',
- 'Nous nous sommes baignés (baignâmes) dans [des] plages de sable blanc, et nous avons nagé (nageâmes) au milieu de (entre) poissons colorés (de couleurs).',
- 'Le bleu de la (du) mer est incroyable.',
- 'Ensuite nous avons voyagé (voyageâmes) à travers (par) tout le pays',
- "et enfin (par fin) nous sommes restés (restâmes) quelques jours à (dans Ville de) Mexico. J'ai été fascinée ([Ça] me fascina).",
- "- Et qu'as-tu pensé des (Que te sembla la) gens ?",
- "- Charmants (Charmante). Nettement (assez) plus agréables (agréable) et polis (polie) qu'en Europe !",
- 'Ici nous sommes un peu secs, tu sais bien (déjà).',
- 'Par exemple, pour payer il suffit de (avec) demander: "Garçon, qu\'est-ce qu\'on (il se) doit ?"',
- 'Là-bas normalement on dit (le normal c\'est dire): "Jeune [homme], auriez-vous l\'amabilité (seriez vous si aimable) de m\'apporter l\'addition, s\'il vous plaît ?"']
-
-exercise1_correction = ['Tu as déjà été en Amérique latine ou pas encore ?',
- "L'été dernier j'ai été dans les Caraïbes en voyage de noces.",
- 'Nous avons voyagé à travers tout le pays et nous sommes allés partout.',
- "Je n'ai pas aimé Mexico, mais j'ai trouvé les gens charmants.",
- "J'ai été fasciné par le Mexique: le bleu incroyable de la mer, le sable blanc des plages, les poissons de couleur..."]
+lesson = ['\ufeffLeçon cinquante et un', 'Vive [le] Mexique !', "- Moi je n'ai jamais été en (a) Amérique latine, et toi ?", "- J'ai été (Je fus) au (dans) Mexique l'année dernière (l'an passé).", "- Et ça t'a plu (te plut) ?", "- Nous y sommes allés (allâmes) en (de) voyage de noces (fiancés) et j'ai adoré (ça m'enchanta) !", '- Quelle romantique lune de miel (plus romantique)! Et où avez-vous été (fûtes-vous) ?', "- Partout (En toutes parties) ! D'abord (Premier) dans les Caraïbes.", 'Nous nous sommes baignés (baignâmes) dans [des] plages de sable blanc, et nous avons nagé (nageâmes) au milieu de (entre) poissons colorés (de couleurs).', 'Le bleu de la (du) mer est incroyable.', 'Ensuite nous avons voyagé (voyageâmes) à travers (par) tout le pays', "et enfin (par fin) nous sommes restés (restâmes) quelques jours à (dans Ville de) Mexico. J'ai été fascinée ([Ça] me fascina).", "- Et qu'as-tu pensé des (Que te sembla la) gens ?", "- Charmants (Charmante). Nettement (assez) plus agréables (agréable) et polis (polie) qu'en Europe !", 'Ici nous sommes un peu secs, tu sais bien (déjà).', 'Par exemple, pour payer il suffit de (avec) demander: "Garçon, qu\'est-ce qu\'on (il se) doit ?"', 'Là-bas normalement on dit (le normal c\'est dire): "Jeune [homme], auriez-vous l\'amabilité (seriez vous si aimable) de m\'apporter l\'addition, s\'il vous plaît ?"'] 
+exercise1_correction = ['Tu as déjà été en Amérique latine ou pas encore ?', "L'été dernier j'ai été dans les Caraïbes en voyage de noces.", 'Nous avons voyagé à travers tout le pays et nous sommes allés partout.', "Je n'ai pas aimé Mexico, mais j'ai trouvé les gens charmants.", "J'ai été fasciné par le Mexique: le bleu incroyable de la mer, le sable blanc des plages, les poissons de couleur..."]
