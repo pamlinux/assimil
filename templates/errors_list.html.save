@@ -37,45 +37,39 @@
     }
 
 
-    a[id^='id_'] {
+    a {
         text-decoration: none;
-        display: inline;
-        
     }
 
     li :last-child a {
         margin-right: 0;
     }
 
-   a[id^='id_']:link, li a[id^='id_']:visited, li a[id^='id_']:focus {
-        padding: 10px;
-        margin-right: 10px;
+   li a[id^='id_']:link, li a[id^='id_']:visited, li a[id^='id_']:focus {
+
         background: yellow;
+        display: inline;
     }
 
-    a[id^='id_']:hover {
-        padding: 10px;
-        margin-right: 10px;
+    li a[id^='id_']:hover {
         background: orange;
+        display: inline;
     }
 
-    a[id^='id_']:active {
+    li a[id^='id_']:active {
         background: red;
-        padding: 10px;
-        margin-right: 10px;
         color: white;
+        display: inline;
     }
 
-    span a[id^='id_']:link, span a[id^='id_']:visited, span a[id^='id_']:focus {
+    li span a[id^='id_']:link, li span a[id^='id_']:visited, li span a[id^='id_']:focus {
         background: lightgreen;
-        padding: 10px;
-        margin-right: 10px;
+        display: inline;
     }
 
-    span a[id^='id_']:hover {
-        padding: 10px;
-        margin-right: 10px;
+    li span a[id^='id_']:hover {
         background: orange;
+        display: inline;
     }
 
 
@@ -87,16 +81,11 @@
     h2 {
         padding: 20px;
         display: table-cell;
-        width: 100px
     }
 
     h1 {
         padding: 30px;
-    }
 
-    .histrow {
-        display: table-row;
-        margin: 0 auto;
     }
     .history {
         display: table;
@@ -107,17 +96,17 @@
     {% for row in rows %}
         {% set outer_loop = loop %}
             <div class="history">
-                <div class="histrow">
+                <ul>
                     <h2>Leçon {{lessons[loop.index0]}}</h2>
                     {% for history_date_time, errors_number in row %}
                         {% set date_time_key = history_date_time.strftime('%d-%m-%Y %H:%M:%S%f') %}
                         {% if errors_number %}
-                            <a id='id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a>
+                            <li id='el'><a id='id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></li>
                         {% else %}
-                            <span><a id= 'id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></span>
+                            <li id='el'><span><a id= 'id_1' href='/lesson-errors/?lesson={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></span></li>
                         {% endif %}
                     {% endfor %}
-                </div>
+                </ul>
             </div>
        
  

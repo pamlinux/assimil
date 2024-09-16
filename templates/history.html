@@ -18,8 +18,26 @@
       
       }
 
+      div div button {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
       h1 {
         padding-top: 30px;
+      }
+      .container {
+        height: 50px;
+        position: relative;
+        border: 3px solid green;
+      }
+      
+      .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
       }
 {% endblock %}
 {% block header %}
@@ -43,10 +61,21 @@
         <label for="mostRecentLesson">Leçon la plus récente:</label>
         <input type="date" id="mostRecentLesson" name="most-recent-lesson" value="{{date}}" max="{{date}}"/>
       </div>
-    </div>
-    <button onclick="proceedSearch()">Rechercher</button>
-    <div id="div01">
-   </div>
+      <div>
+        <label>Session Récentes</label>
+        <button onclick="proceedRecentSearch(20)">20j</button>
+        <button onclick="proceedRecentSearch(10)">10j</button>
+        <button onclick="proceedRecentSearch(5)">5j</button>
+        <button onclick="proceedRecentSearch(2)">48h</button>
+        <button onclick="proceedRecentSearch(1)">24h</button>
+      </div>
+      <div class="container">
+        <div class="center">
+          <button onclick="proceedSearch()">Rechercher</button>
+        </div>
+      </div>
+       </div>
+   <div id="div01"></div>
     <audio id="audioTag" src=""/>
  
     <script>
@@ -98,9 +127,46 @@
               .catch(error => {
               console.error(error);
             });
-     }
+      }
 
    
+      function proceedRecentSearch(days) {
+
+        recentDate = new Date();
+        recentDate.setDate(recentDate.getDate() - days);
+
+        var firstLesson =  document.getElementById("firstLesson").value
+        var lastLesson = document.getElementById("lastLesson").value
+ 
+        item = {
+                "firstLesson" : firstLesson,
+                "lastLesson" : lastLesson,
+                "oldestLesson" : recentDate.toISOString().split('T')[0],
+                "mostRecentLesson" : new Date().toISOString().split('T')[0]
+               }
+
+        var data = JSON.stringify(item);
+
+       fetch('/history/',  {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                document.getElementById("div01").innerHTML = data.substring(1, data.length-1);
+                console.log(data);
+              })
+              .catch(error => {
+              console.error(error);
+            });
+          
+      }
+
+         
 
       function playSentence(lesson_nb, sentence_nb) {
         audioRef = "audio/?".concat("lesson_nb=", lesson_nb ,"&sentence_nb=", sentence_nb)
