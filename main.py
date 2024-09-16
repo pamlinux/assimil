@@ -109,6 +109,7 @@ async def display_errors(request: Request):
 
 @app.post("/history/")
 async def get_errors(item: ErrorItem):
+    print("item", item)
     end_date = datetime.strptime(item.mostRecentLesson, '%Y-%m-%d')
     end_of_day_datetime = end_date.replace(hour=23, minute=59, second=59, microsecond=999999)
     lessons, rows = get_history(
@@ -258,3 +259,10 @@ async def store_second_phase_lesson(item: MarkedSentencesItem, lesson_nb: int = 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+@app.get("/test")
+async def test():
+    f = open("test/test.html")
+    html_text = f.read()
+    return html_text
+
