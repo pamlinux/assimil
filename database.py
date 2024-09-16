@@ -99,7 +99,7 @@ def get_database_engine(name, echo=True):
 
 database_name = 'sqlite:///db/assimil_spanish.db'
 global engine
-engine = get_database_engine(database_name)
+engine = get_database_engine(database_name, False)
 
 
 def fill_word_table(tonic_accent_word_dict, word_index_dict = {}):

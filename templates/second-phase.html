@@ -303,6 +303,7 @@
                 value = parseInt(value_id.substring(3, value_id.length));
                 spanish_sentences[value] = data.substring(1, data.length-1);
                 modified_spanish_sentences[value] = data.substring(1, data.length-1);
+                commentElement.innerHTML = "";
                 console.log(modified_spanish_sentences);
               })
               .catch(error => {
@@ -326,6 +327,7 @@
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
                  console.log(data);
+                 alert("Les erreurs ont bien été enregistées");
               })
               .catch(error => {
               console.error(error);
