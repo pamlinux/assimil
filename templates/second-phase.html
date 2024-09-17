@@ -116,6 +116,22 @@
       modified_spanish_sentences = {};
 
       
+      let markToBeSaved = false; // Variable pour suivre si les données ont été modifiées
+
+      function markNotYetSaved() {
+        markToBeSaved = true;
+      }
+
+      function markSaved() {
+        markToBeSaved = false;
+      }
+
+      window.addEventListener('beforeunload', (event) => {
+        if (markToBeSaved) {
+          event.returnValue = 'Des phrases ont été marquées et ne sont pas encore sauvée. Êtes-vous sûr de vouloir quitter ?';
+        }
+      });
+
        function playSentence(val) {
             audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
             console.log(audioRef)
@@ -301,6 +317,7 @@
                 document.getElementById("translation").innerHTML = data.substring(1, data.length-1);
                 value_id = translation.parentNode.previousSibling.getAttribute("id");
                 value = parseInt(value_id.substring(3, value_id.length));
+                markNotYetSaved();
                 spanish_sentences[value] = data.substring(1, data.length-1);
                 modified_spanish_sentences[value] = data.substring(1, data.length-1);
                 commentElement.innerHTML = "";
@@ -327,6 +344,7 @@
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
                  console.log(data);
+                 markSaved();
                  alert("Les erreurs ont bien été enregistées");
               })
               .catch(error => {
