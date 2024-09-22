@@ -233,9 +233,7 @@ async def second_phase(request: Request, lesson_nb : int = 1):
 async def second_phase(request: Request, lesson_nb : int = 1):
     lesson, exercise1_correction = get_french_lesson(lesson_nb)
     spanish_sentences = get_list_of_bold_sentences(lesson_nb)
-
-
-    spanish_sentences = get_list_of_bold_sentences(lesson_nb)
+    print(spanish_sentences)
     ex_index = len(lesson)
     spanish_lesson = spanish_sentences[:ex_index]
     spanish_exercise1_correction = spanish_sentences[ex_index + 1:]

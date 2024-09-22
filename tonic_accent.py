@@ -101,24 +101,17 @@ def get_html_of_token(token, lesson_dict = {}):
     return txt
 
 def get_bold_sentence(sentence, lesson_dict = {}):
-    tokens = re.findall(r"[\w']+|[.,¡!¿:\-?;–]", sentence)
+    tokens = re.findall(r"[\w']+|[.,¡!¿:&\-?;–]", sentence)
     bold_sentence = ""
-    for index, token in enumerate(tokens):
-        try:
-            next_token = tokens[index + 1]
-        except IndexError:
-            next_token = ''
-        bold_token = get_html_of_token(token, lesson_dict)
-        bold_sentence += bold_token
-        if not token in ".,¡!¿-?;:":
-            if not next_token in ".,;!?-:":
-                bold_sentence += ' '
-        elif token in "¡-¿":
-            pass
-        else:
-            bold_sentence += ' '
-    return bold_sentence        
-    
+    index = 0
+    for token in tokens:
+        token_length = len(token)
+        pos = sentence.find(token, index)
+        inter_token = sentence[index:pos]
+        bold_sentence += inter_token + get_html_of_token(token, lesson_dict)
+        index += len(inter_token) + token_length
+    return bold_sentence
+
 def get_sentences_from_audio_files(lesson_nb : int):
     lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
     w = os.walk(lesson_directory)

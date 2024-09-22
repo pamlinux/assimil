@@ -31,35 +31,26 @@
         padding-left: 40px;
     }
 
-    li#el {
-         padding: 20px;
-        display: table-cell;
-    }
-
-
     a[id^='id_'] {
         text-decoration: none;
         display: inline;
         
     }
 
-    li :last-child a {
-        margin-right: 0;
-    }
-
-   a[id^='id_']:link, li a[id^='id_']:visited, li a[id^='id_']:focus {
+   a[id^='id_']:link {
         padding: 10px;
         margin-right: 10px;
         background: yellow;
     }
 
-    a[id^='id_']:hover {
+    a[id^='id_']:hover, span a[id^='id_']:hover {
         padding: 10px;
         margin-right: 10px;
         background: orange;
     }
 
-    a[id^='id_']:active {
+
+    a[id^='id_']:active, span a[id^='id_']:active {
         background: red;
         padding: 10px;
         margin-right: 10px;
@@ -77,12 +68,13 @@
         margin-right: 10px;
         background: orange;
     }
-
-
-    ul {
-
-        display: table-row
-     }
+ 
+    span a[id^='id_']:active {
+        background: red;
+        padding: 10px;
+        margin-right: 10px;
+        color: white;
+    }
 
     h2 {
         padding: 20px;
