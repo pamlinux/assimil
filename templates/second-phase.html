@@ -99,6 +99,10 @@
             {% endif %}
 
     </div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
     <audio id="audioTag" src=""/>
  
 
@@ -115,7 +119,10 @@
 
       modified_spanish_sentences = {};
 
-      
+      commentBuffer = [""];
+      commentIndex = 0;
+      commentNumber = 1;
+
       let markToBeSaved = false; // Variable pour suivre si les données ont été modifiées
 
       function markNotYetSaved() {
@@ -147,19 +154,37 @@
         document.getElementById("spanish").style.display = "none";
         document.getElementById("comment").style.display = "none";
         document.getElementById("toolbar").style.display = "none";
+        commentNode = document.getElementById("comment")
+        commentNode.addEventListener(
+        "keydown",
+        editComment
+      );
 
+      function editComment(event) {
+          if (event.key == "ArrowUp") {
+            commentIndex = (commentIndex - 1) % commentNumber;
+            if (commentIndex < 0) {
+              commentIndex = commentNumber - 1;
+            }
+            commentNode.innerHTML = commentBuffer[commentIndex];
+          } else if (event.key == "ArrowDown") {
+            commentIndex = (commentIndex + 1) % commentNumber;
+            commentNode.innerHTML = commentBuffer[commentIndex];
+          } else {
+
+          }
+      }
+      
       function toggleSpanish() {
             var x = document.getElementById("spanish");
             if (x.style.display === "none") {
                 x.style.display = "block";
                 var button = document.getElementById("toggleAll");
                 button.innerHTML = "Cacher l'espagnol";
-                console.log(button.value);
             } else {
                 x.style.display = "none";
                 var button = document.getElementById("toggleAll");
                 button.innerHTML = "Montrer l'espagnol";
-            console.log(x);
             }
         }
 
@@ -177,18 +202,13 @@
           toggleNode("toolbar");
           let translation = document.getElementById("translation");
           var x = document.getElementById("comment");
-          console.log("x : ", x)
           value_id = translation.parentNode.previousSibling.getAttribute("id");
           value = value_id.substring(3, value_id.length)
-          console.log("id value : ", value, "of type : ", typeof value)
           var sentence = document.getElementById(value_id)
           if (x.style.display === "none") {
             translation.setAttribute("onClick", "playSentence(" + value + ")")
-            console.log("In none, with  translation: ", translation)
-            
           } else {
             translation.setAttribute("onClick", "")
-            console.log("In block, with translation : ", translation)
           }
         }
 
@@ -199,9 +219,7 @@
    
         function fillSpanishBox(value) {
 
-          console.log(value);
           let id = "id_" + value;
-          console.log(id);
           let translation = document.getElementById("translation");
           let spanishNode = document.getElementById("spanish");
           let clickedNode = document.getElementById(id);
@@ -213,7 +231,6 @@
           } else {
             translation.setAttribute("onClick", "")
           }
-          console.log(translation)
         };
 
 
@@ -222,8 +239,6 @@
 
     function proceedSelection(action, markType = "") {
         const userSelection = window.getSelection();
-        console.log(userSelection)
-        console.log(typeof store)
         anchorNode = userSelection.anchorNode;
         anchorOffset = userSelection.anchorOffset;
 
@@ -235,12 +250,6 @@
         } else {
           focusNodeIsAnchorNode = false;
         }
-
-        console.log("anchorOffset", anchorOffset)
-        console.log("focusOffset", focusOffset)
-        console.log("anchorNode", anchorNode)
-        console.log("focusNode", focusNode)
-        console.log("coucou")
 
         function serializeDOMElement(element) {
 
@@ -291,6 +300,7 @@
         const translationJsonString = JSON.stringify(serializedTranslationElement, null, 2);
 
         const commentElement = document.getElementById("comment"); 
+
         const comment = commentElement.textContent
 
         item = {
@@ -320,11 +330,15 @@
                 markNotYetSaved();
                 spanish_sentences[value] = data.substring(1, data.length-1);
                 modified_spanish_sentences[value] = data.substring(1, data.length-1);
+                if (!(comment.trim().length === 0)) {
+                  commentBuffer.push(comment);
+                  commentNumber += 1;
+                }
                 commentElement.innerHTML = "";
-                console.log(modified_spanish_sentences);
+                commentIndex = 0;
+ 
               })
               .catch(error => {
-              console.error(error);
             });
 
       }
@@ -343,12 +357,10 @@
               })
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
-                 console.log(data);
                  markSaved();
                  alert("Les erreurs ont bien été enregistées");
               })
               .catch(error => {
-              console.error(error);
             });
 
       }

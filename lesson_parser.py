@@ -90,6 +90,7 @@ class MyHTMLParser(HTMLParser):
             self.sentences.append(self.current_sentence)
             
     def handle_data(self, data):
+        data = data.replace('"', "&quot;")
         #if self.first_data:
         #    self.first_data = False
             #data = data.split('-')[1]
