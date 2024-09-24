@@ -68,9 +68,7 @@ class MarkedLinesParser(HTMLParser):
     def get_marked_sentences(self):
         return {line : self.sentences[line] for line in self.marked_lines_numbers}
 
-    def handle_charref(name):
-        print('In handle_charref for : ', name)
-    
+
 mark_parser = MarkedLinesParser(convert_charrefs = False)
     
 def extract_selection(lesson):
