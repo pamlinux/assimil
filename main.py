@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-from database import get_errors
+from database import get_errors, get_most_recent_lesson_in_history
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
 from tonic_accent import get_history, get_single_lesson_with_errors
 from pydantic import BaseModel
@@ -216,21 +216,32 @@ async def test_ranges(lesson_nb, item: SelectionItem):
 async def test_ranges(lesson_nb, item: SelectionItem):
     return delete_marked_selection(lesson_nb, item)
 
-@app.get("/second-phase/{lesson_nb}", response_class=HTMLResponse)
-async def second_phase(request: Request, lesson_nb : int = 1):
+def get_second_phase_contex(lesson_nb):
     lesson, exercise1_correction = get_french_lesson(lesson_nb)
     spanish_sentences = get_list_of_bold_sentences(lesson_nb)
+    context = {
+        "active" : "second-phase",
+        "lesson_nb": lesson_nb,
+        "lesson" : lesson,                                                        
+        "exercise1_correction" : exercise1_correction,
+        "spanish_sentences" : spanish_sentences
+    }
+    return context
 
-    return templates.TemplateResponse(
-        request=request, name="second-phase.html", context={"active" : "second-phase",
-                                                            "lesson_nb": lesson_nb,
-                                                            "lesson" : lesson,                                                        
-                                                            "exercise1_correction" : exercise1_correction,
-                                                            "spanish_sentences" : spanish_sentences
-                                                            })
-
-@app.get("/first-phase/{lesson_nb}", response_class=HTMLResponse)
+@app.get("/second-phase/{lesson_nb}", response_class=HTMLResponse)
 async def second_phase(request: Request, lesson_nb : int = 1):
+    context = get_second_phase_contex(lesson_nb)
+    return templates.TemplateResponse(
+        request=request, name="second-phase.html", context=context)
+
+@app.get("/second-phase/", response_class=HTMLResponse)
+async def second_phase(request: Request, lesson_nb : int = 1):
+    lesson_nb = get_most_recent_lesson_in_history()
+    context = get_second_phase_contex(lesson_nb)
+    return templates.TemplateResponse(
+        request=request, name="second-phase.html", context=context)
+
+def get_first_phase_context(lesson_nb):
     lesson, exercise1_correction = get_french_lesson(lesson_nb)
     spanish_sentences = get_list_of_bold_sentences(lesson_nb)
     print(spanish_sentences)
@@ -242,13 +253,28 @@ async def second_phase(request: Request, lesson_nb : int = 1):
     else:
         french_sentences = lesson
 
+    context = {
+        "active" : "first-phase",
+        "lesson_nb": lesson_nb,
+        "lesson" : spanish_lesson,                                                        
+        "exercise1_correction" : spanish_exercise1_correction,
+        "french_sentences" : french_sentences
+    }
+    return context
+
+@app.get("/first-phase/{lesson_nb}", response_class=HTMLResponse)
+async def first_phase(request: Request, lesson_nb : int = 1):
+    context = get_first_phase_context(lesson_nb)
     return templates.TemplateResponse(
-        request=request, name="first-phase.html", context={"active" : "first-phase",
-                                                            "lesson_nb": lesson_nb,
-                                                            "lesson" : spanish_lesson,                                                        
-                                                            "exercise1_correction" : spanish_exercise1_correction,
-                                                            "french_sentences" : french_sentences
-                                                            })
+        request=request, name="first-phase.html", context=context)
+
+@app.get("/first-phase/", response_class=HTMLResponse)
+async def first_phase_default(request: Request):
+    lesson_nb = get_most_recent_lesson_in_history()
+    context = get_first_phase_context(lesson_nb)
+    return templates.TemplateResponse(
+        request=request, name="first-phase.html", context=context)
+
 
 @app.post("/marker-translation/{lesson_nb}")
 async def store_second_phase_lesson(item: MarkedSentencesItem, lesson_nb: int = 1):

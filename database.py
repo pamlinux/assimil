@@ -3,7 +3,7 @@ from typing import Optional
 import datetime
 import pickle
 import pytz
-from sqlalchemy import ForeignKey, select, String, and_
+from sqlalchemy import ForeignKey, select, String, and_, desc
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
@@ -225,3 +225,8 @@ def get_lesson_sessions_history(begin_lesson = 1, end_lesson = 100, begin_date =
             else:
                 sessions[entry.lesson] = {entry.date_time : entry.errors_number}
     return sessions
+
+def get_most_recent_lesson_in_history():
+    last_lesson_session = Session(engine).query(LessonSession).order_by(desc('date_time')).first()
+    return last_lesson_session.lesson
+    

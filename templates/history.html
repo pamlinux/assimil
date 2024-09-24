@@ -132,11 +132,26 @@
             });
       }
 
+      function formatDateHeureLocale(dateTime) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        dateString = dateTime.toLocaleString('en-US', options).replace(/\//g, '-');
+        const year = dateString.substring(6, 10);
+        const month = dateString.substring(0, 2);
+        const day = dateString.substring(3, 5);
+        return year + '-' + month + '-' + day;
+      }
    
       function proceedRecentSearch(days) {
 
+        currentDate = new Date();
         recentDate = new Date();
         recentDate.setDate(recentDate.getDate() - days);
+
+        currentDateString = formatDateHeureLocale(currentDate)
+        recentDateString = formatDateHeureLocale(recentDate)
+
+        console.log("Current date: ", currentDateString);
+        console.log("recentDate", recentDateString);
 
         var firstLesson =  document.getElementById("firstLesson").value
         var lastLesson = document.getElementById("lastLesson").value
@@ -144,8 +159,8 @@
         item = {
                 "firstLesson" : firstLesson,
                 "lastLesson" : lastLesson,
-                "oldestLesson" : recentDate.toISOString().split('T')[0],
-                "mostRecentLesson" : new Date().toISOString().split('T')[0]
+                "oldestLesson" : recentDateString,
+                "mostRecentLesson" : currentDateString
                }
 
         var data = JSON.stringify(item);
