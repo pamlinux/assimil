@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <header>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
     <style>
         .A {
             background-color: orange;
@@ -34,47 +36,162 @@
           height: 32px;
           font-weight: bold;
           }
+
+        .main {
+            
+            margin-left: 20%;
+            padding: 1px 16px;
+        }
+
+        h2 {
+          font-weight: normal;
+        }
+        #div01 {
+            overflow: scroll
+        }
     </style>
 </header>
 <body>
-    <h1>Session du {{date_time}} concernant la leçon {{lesson_nb}}</h1>
+    {% import 'lesson_counter.j2' as counter %}
+    <div class="main">
+    <h1 class="assimil-title">Leçon {{lesson_nb}} : Session du {{date_time}}</h1>
+    <button id="toggleAll" value="S" onclick="toggleFrench()">En mode son</button>
     <div id="div01">
-        {% for sentence in sentences %}
-            <p onClick="playSentence({{loop.index0}})" oncontextmenu="nextSentence({{loop.index}})"> {{ sentence | safe }} </p>
-          {% endfor %}
-      </div>
-      
+        {% set count = namespace(value=2) %}
+        <h2 class="assimil-title" id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
+        <h2 id="id_1" onClick="proceedSentence(1)"> {{ lesson[1] | safe }} </h2>
+              {% for sentence in lesson[2:] %}
+                  <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence | safe }} </p>
+                  {% set count.value = count.value + 1 %}
+              {% endfor %}
+              {% if exercise1_correction %}
+                <h2 id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})">Ejer<b>ci</b>cio 1 – Tra<b>duz</b>ca</h2>
+                {% set count.value = count.value + 1 %}
+                {% for sentence in exercise1_correction %}
+                    <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence | safe }} </p>
+                    {% set count.value = count.value + 1 %}
+                {% endfor %}
+              {% endif %}
+        </div>
+    </div>
       <audio id="audioTag" src=""/>
 
       <script>
-          
-        const div = document.getElementById("div01");
-        div.addEventListener("contextmenu", (e) => {e.preventDefault()});
 
+        french_sentences = [
+          {% for sentence in french_sentences %}
+              "{{ sentence | safe }}",
+          {% endfor %}
+        ];
+  
+  
+        modified_spanish_sentence = "";
+        var current_sentence_id = "id_0";
+        
         function playSentence(val) {
-            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
-            console.log(audioRef)
-            var audioEl = document.getElementById("audioTag");
-            audioEl.src = audioRef
-
-            audioEl.load();
-            audioEl.play();
-
-        }
-
-        function nextSentence(val) {
-            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
-            console.log(audioRef)
-            var audioEl = document.getElementById("audioTag");
-            audioEl.src = audioRef
-
-            audioEl.load();
-            audioEl.play();
-            e.stopPropagation();
-            e.preventDefault();
+          audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+          console.log(audioRef)
+          var audioEl = document.getElementById("audioTag");
+          audioEl.src = audioRef
+  
+          audioEl.load();
+          audioEl.play();
   
         }
+  
+        function proceedKeyboard(event) {
+          console.log(event.key);
+          sentences_number = french_sentences.length;
+          id = parseInt(current_sentence_id.substring(3, current_sentence_id.length));
+          console.log(id);
+          if (event.key == "ArrowUp") {
+            id = (id - 1) % sentences_number;
+            if (id < 0) {
+              id = sentences_number - 1;
+              console.log("----- id : ", id)
+            }
+          } else if (event.key == " ") {
+            event.preventDefault();// Space touch, repeat the sentence with the same id
+          } else {
+            id = (id + 1) % sentences_number;
+          }
+          proceedSentence(id);
+        }
+  
+        function stopKeyboardPropagation(event) {
+          console.log("in stopKeyboardPropagation", event);
+          event.stopPropagation()
+        }
+        
+        
+        document.addEventListener(
+          "keydown",
+          proceedKeyboard
+        );
+  
+  
+        function toggleFrench() {
+          var button = document.getElementById("toggleAll");
+          if (button.value == "S") {
+            button.value = "T";
+            button.innerHTML = "En mode traduction";
+            precedingNode = document.getElementById(current_sentence_id);
+            modified_spanish_sentence = precedingNode.innerHTML;
+            precedingNode.innerHTML = french_sentences[parseInt(current_sentence_id.substring(3, current_sentence_id.length))];
+          } else {
+            button.value = "S";
+            button.innerHTML = "En mode son";
+            if (modified_spanish_sentence) {
+              precedingNode = document.getElementById(current_sentence_id);
+              precedingNode.innerHTML = modified_spanish_sentence;
+              playSentence(parseInt(current_sentence_id.substring(3, current_sentence_id.length)));
+  
+            }
+  
+          }
+        }
+                  
+          function insertAfter(referenceNode, newNode) {
+              referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+          }
+  
+     
+        function proceedSentence(value, play=true) {
+          console.log(value);
+          let id = "id_" + value;
+            
+          console.log(id);
+          var button = document.getElementById("toggleAll");
+          let clickedNode = document.getElementById(id);
+          clickedNode.style.border = "solid blue";
+          clickedNode.style.padding = "20px 200px 20px 20px";
+          clickedNode.style.borderWidth = "2px 2px";
 
-    </script>
+          clickedNode.scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+            inline: 'center'
+            });
+          if (!(current_sentence_id == id)) {
+            document.getElementById(current_sentence_id).style.padding = "";
+            document.getElementById(current_sentence_id).style.border = "";
+          }
+          if (button.value === "S") {
+            playSentence(value);
+          } else {
+            if (modified_spanish_sentence) {
+              precedingNode = document.getElementById(current_sentence_id);
+              precedingNode.innerHTML = modified_spanish_sentence;
+            }
+            modified_spanish_sentence = clickedNode.innerHTML;
+            console.log(modified_spanish_sentence);
+            clickedNode.innerHTML = french_sentences[value];
+          }
+          current_sentence_id = id;
+        };
+  
+  
+      
+      </script>
 </body>
 </html>

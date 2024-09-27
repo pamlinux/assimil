@@ -2,6 +2,11 @@ h1 {
     color: green;
 }
 
+.assimil-title {
+  font-weight: normal;
+  color: rgba(172,52,62,255);
+}
+
 #changeLesson {
   height: 2em;
 }

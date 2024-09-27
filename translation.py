@@ -43,7 +43,11 @@ import importlib
 
 def get_french_lesson(lesson_nb):
     module = importlib.import_module(f"lessons.L{str(lesson_nb).zfill(3)}")
+    lesson = []
+    exercise1_correction = []
+    for paragraph in module.lesson:
+        lesson.append(paragraph.replace('"', "&quot;"))
     if hasattr(module, 'exercise1_correction'):
-        return module.lesson, module.exercise1_correction
-    else:
-        return module.lesson, []
+        for paragraph in module.exercise1_correction:
+            exercise1_correction.append(paragraph.replace('"', "&quot;"))
+    return lesson, exercise1_correction

@@ -6,7 +6,7 @@ from pathlib import Path
 from pydantic import BaseModel
 from lesson_parser import MyHTMLParser
 from selection import extract_selection, extract_paragraphs
-from database import get_single_lesson_errors, get_lesson_sessions_history
+from database import get_single_lesson_errors, get_lesson_sessions_history, get_paragraphs
 import datetime
 
 lessons_directory = f"Sentences"
@@ -146,19 +146,20 @@ def get_html_sentences(lesson_nb : int):
     try:
         f = open(lesson_filename, "r")
         lesson = f.read()
+        print("In get_html_sentences --- lesson : ", lesson)
         f.close()
         paragraphs = extract_paragraphs(lesson)
+        print("In get_html_sentences ---", paragraphs)
     except FileNotFoundError:
         raise
     return paragraphs
         
 def get_list_of_bold_sentences(lesson_nb):
-    lesson_txt = get_sentences(lesson_nb)
+    paragraphs = get_paragraphs(lesson_nb)
+    lines_nb = sorted(paragraphs.keys())
     lesson_with_bold_sentences = []
-    for sentence in lesson_txt:
-        print(sentence)
-        if sentence:
-            lesson_with_bold_sentences.append(get_bold_sentence(sentence))
+    for k in lines_nb:
+        lesson_with_bold_sentences.append(get_bold_sentence(paragraphs[k]))
     return lesson_with_bold_sentences
 
 

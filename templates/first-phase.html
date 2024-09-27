@@ -58,7 +58,7 @@
     <button id="toggleAll" value="S" onclick="toggleFrench()">En mode son</button>
     <div id="div01">
       {% set count = namespace(value=2) %}
-      <h2 id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
+      <h2 class="assimil-title" id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
       <h2 id="id_1" onClick="proceedSentence(1)"> {{ lesson[1] | safe }} </h2>
             {% for sentence in lesson[2:] %}
                 <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence | safe }} </p>
