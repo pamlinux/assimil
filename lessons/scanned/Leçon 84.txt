@@ -43,7 +43,7 @@ Dialogue de révision
 13 Marché conclu. Ouvre-toi un compte vite fait et commande-moi des sandwichs à la dinde avec un milk-shake.
 
 
-14 Je coche la case "pourboire"?
+14 Je coche la case &quot;pourboire&quot;?
 
 
 15 Oui, mets cinq euros pour le livreur : c'est soir de fête, non ?

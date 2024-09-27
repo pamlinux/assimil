@@ -48,6 +48,19 @@ class Sentence(Base):
     def __repr__(self) -> str:
         return f"Sentence(id={self.id!r}, lesson={self.lesson!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
 
+class Paragraph(Base):
+    __tablename__ = "paragraphs"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    section : Mapped[int]
+    lesson_nb : Mapped[int]
+    line_nb : Mapped[int]
+    paragraph: Mapped[str]
+    translation: Mapped[str]
+    has_dash_dialogue: Mapped[bool]
+    data: Mapped[Optional[str]]
+    def __repr__(self) -> str:
+        return f"Paragraph(id={self.id!r}, section={self.section!r}, lesson_nb={self.lesson_nb!r}, line_nb={self.line_nb!r}, paragraph ={self.paragraph!r}, data ={self.data!r})"
+
 class LessonSession(Base):
     __tablename__ = "lesson_sessions"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -230,3 +243,28 @@ def get_most_recent_lesson_in_history():
     last_lesson_session = Session(engine).query(LessonSession).order_by(desc('date_time')).first()
     return last_lesson_session.lesson
     
+def update_paragraph(lesson_nb, line_nb, paragraph, section = None):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.line_nb == line_nb
+            )
+    )
+
+    with Session(engine) as session:
+        entry = session.scalars(stmt).one()
+        if section:
+            entry.section = section
+        entry.paragraph = paragraph
+        session.commit()
+
+def get_paragraphs(lesson_nb):
+    stmt = select(Paragraph).where(Paragraph.lesson_nb == lesson_nb)
+    paragraphs = {}
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            paragraphs[entry.line_nb] = entry.paragraph
+
+    return paragraphs
+
+

@@ -57,6 +57,7 @@ class MarkedLinesParser(HTMLParser):
 
     def handle_data(self, data):
         if hasattr(self, "current_sentence"):
+            data = data.replace('"', "&quot;")
             self.current_sentence += data
     
     def get_marked_lines_numbers(self):
@@ -69,7 +70,7 @@ class MarkedLinesParser(HTMLParser):
         return {line : self.sentences[line] for line in self.marked_lines_numbers}
 
 
-mark_parser = MarkedLinesParser(convert_charrefs = False)
+mark_parser = MarkedLinesParser()
     
 def extract_selection(lesson):
     mark_parser.analyze_lesson(lesson)

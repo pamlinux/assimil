@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><header>
+    <style>
+        .line-edit {
+            display: table-row;
+        }
+        .para-table {
+            display: table;
+        }
+      div div div {
+        display: table-cell;
+        margin-bottom: 20px;
+        margin-right: 20px;
+      }
+      div div input {
+        margin-left: 10px;
+        display: table-cell;
+      }
+      .ok {
+        color: green;
+        font-weight: bold;
+    }
+    .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+</header>
+<body>
+    <h1>Correction de {{ paragraphs_nb }} paragraphes</h1>
+    {% for lesson_nb, line_nb, mp3_paragraph, modified_paragraph in paragraphs_data %}
+        <div>
+            <table>
+                <th colspan="2"><h2>Leçon : {{ lesson_nb }}, ligne : {{ line_nb }}</h2></th>
+                <tr> 
+                    <td><input type="button" value="Sauver" onclick="proceedSelection(this, {{ lesson_nb }}, {{ line_nb }})"/></td>
+                    <td><div contentEditable>{{ mp3_paragraph }}</div></td>
+                </tr>
+                <tr>
+                    <td id="id_{{ lesson_nb }}_{{ line_nb }}">toto</td>
+                    <td><p>{{ modified_paragraph }}</p></td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+    <script>
+        function proceedSelection($this, lesson_nb, line_nb) {
+            console.log($this.parentElement.nextElementSibling.firstChild.innerHTML);
+            let okField = document.getElementById("id_" + lesson_nb + '_' + line_nb);
+            okField.innerHTML = "<p class='ok'>OK</p>"
+            console.log(okField);
+            item = {
+                "lesson_nb" : lesson_nb,
+                "line_nb" : line_nb,
+                "paragraph" : $this.parentElement.nextElementSibling.firstChild.innerHTML,
+               }
+
+            var data = JSON.stringify(item);
+
+            fetch('/correct-assimil-paragraphs/', {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.text())  // or, resp.json(), etc.
+              .then(data => {
+                okField.innerHTML = "<p class='ok'>OK</p>"
+              })
+              .catch(error => {
+                console.log("error!");
+                okField.innerHTML = "<p class='error'>Error</p>"
+            });
+      }
+    </script>
+</body></html>

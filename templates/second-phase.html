@@ -83,7 +83,7 @@
     </div>
     <div id="div01">
         {% set count = namespace(value=2) %}
-        <h2 id="id_0" onClick="fillSpanishBox(0)"> {{ lesson[0] }} </h2>
+        <h2 class="assimil-title" id="id_0" onClick="fillSpanishBox(0)"> {{ lesson[0] }} </h2>
         <h2 id="id_1" onClick="fillSpanishBox(1)"> {{ lesson[1] }} </h2>
             {% for sentence in lesson[2:] %}
                 <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>

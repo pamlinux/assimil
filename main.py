@@ -17,6 +17,7 @@ from selection import proceed_marked_selection, delete_marked_selection, Selecti
 from selection import MarkedSentencesItem, store_second_phase_marked_sentences
 from translation import get_french_lesson
 from auth import get_current_user_username
+from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_paragraph_correction
 
 @dataclass
 class SimpleModel:
@@ -127,13 +128,35 @@ async def get_errors(item: ErrorItem):
     div0 = div0.replace('\n', '')
     return div0
 
-@app.get("/lesson-errors/", response_class=HTMLResponse)
-async def get_errors_list_date(request: Request, lesson : int = 0, datetimekey : str = ""):
+def get_lesson_errors_context(lesson_nb, datetimekey):
     date_time = datetime.strptime(datetimekey, '%d-%m-%Y %H:%M:%S%f')
+    spanish_sentences = get_single_lesson_with_errors(lesson_nb, date_time)
+    print(spanish_sentences)
+    lesson, exercise1_correction = get_french_lesson(lesson_nb)
+    ex_index = len(lesson)
+    spanish_lesson = spanish_sentences[:ex_index]
+    spanish_exercise1_correction = spanish_sentences[ex_index + 1:]
+    if exercise1_correction:
+        french_sentences = lesson + ["Corrigé de l'exercice 1"] + exercise1_correction
+    else:
+        french_sentences = lesson
+
     date_time_string = date_time.strftime("%d-%m-%Y à %H:%M:%S")
-    sentences = get_single_lesson_with_errors(lesson, date_time)
-    return templates.TemplateResponse(
-        request=request, name="lesson-errors.html", context={"lesson_nb": lesson, "date_time" : date_time_string, "sentences" : sentences})
+
+    context = {
+        "active" : "lesson-errors",
+        "lesson_nb": lesson_nb,
+        "date_time" : date_time_string,
+        "lesson" : spanish_lesson,                                                        
+        "exercise1_correction" : spanish_exercise1_correction,
+        "french_sentences" : french_sentences
+    }
+    return context
+
+@app.get("/lesson-errors/", response_class=HTMLResponse)
+async def get_errors_list_date(request: Request, lesson_nb : int = 0, datetimekey : str = ""):
+    context = get_lesson_errors_context(lesson_nb, datetimekey)
+    return templates.TemplateResponse(request=request, name="lesson-errors.html", context= context)
 
 
 @app.get("/history/audio/")
@@ -289,4 +312,12 @@ async def test():
     f = open("test/test.html")
     html_text = f.read()
     return html_text
+
+@app.get("/correct-assimil-paragraphs/", response_class=HTMLResponse)
+async def correct_paragraphs():
+    return get_correct_paragraphs_page()
+
+@app.post("/correct-assimil-paragraphs/", )
+async def store_assimil_paragraph_correction(item: ParagraphCorrectionItem):
+    store_paragraph_correction(item)
 

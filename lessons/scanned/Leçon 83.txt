@@ -37,7 +37,7 @@ Allez [l'] Atleti !
 11- Allez, commande-moi la même chose, et dis-leur d'appeler (qu'ils appellent) à l'interphone du 2º C !
 
 
-12- Il y a une case "pourboire pour le livreur". Je la coche (marque) et je mets 3 euros ?
+12- Il y a une case &quot;pourboire pour le livreur&quot;. Je la coche (marque) et je mets 3 euros ?
 
 
 13- Oui, dépêche-toi.
@@ -55,7 +55,7 @@ Ouvre-toi un compte sur ce site, les sandwichs ont l'air très bons.
 Vous vous êtes trompés dans ma commande : il manque le milk- shake à la fraise.
 
 
-Je ne coche jamais la case "pourboire", je préfère le donner directement au livreur.
+Je ne coche jamais la case &quot;pourboire&quot;, je préfère le donner directement au livreur.
 
 
 Il y eut un temps où j'avais l'habitude de voir tous les matchs de l'Atlético.
