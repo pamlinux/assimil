@@ -243,7 +243,7 @@ def get_most_recent_lesson_in_history():
     last_lesson_session = Session(engine).query(LessonSession).order_by(desc('date_time')).first()
     return last_lesson_session.lesson
     
-def update_paragraph(lesson_nb, line_nb, paragraph, section = None):
+def update_paragraph(lesson_nb, line_nb, paragraph, translation = None, section = None):
     stmt = select(Paragraph).where(
         and_(
             Paragraph.lesson_nb == lesson_nb,
@@ -255,6 +255,8 @@ def update_paragraph(lesson_nb, line_nb, paragraph, section = None):
         entry = session.scalars(stmt).one()
         if section:
             entry.section = section
+        if translation:
+            entry.translation = translation
         entry.paragraph = paragraph
         session.commit()
 
@@ -264,7 +266,28 @@ def get_paragraphs(lesson_nb):
     with Session(engine) as session:
         for entry in session.scalars(stmt):
             paragraphs[entry.line_nb] = entry.paragraph
-
     return paragraphs
+
+def get_single_paragraph(lesson_nb, line_nb):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.line_nb ==line_nb
+            )
+    )
+    with Session(engine) as session:
+        entry = session.scalars(stmt).one()
+        return entry.paragraph, entry.translation
+    
+def get_paragraphs_translation(lesson_nb):
+    stmt = select(Paragraph).where(Paragraph.lesson_nb == lesson_nb)
+    paragraphs_translation = {}
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            paragraphs_translation[entry.line_nb] =  [entry.section, entry.has_dash_dialogue, entry.translation]
+
+    return paragraphs_translation
+
+
 
 

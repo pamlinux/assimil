@@ -101,7 +101,7 @@ def get_html_of_token(token, lesson_dict = {}):
     return txt
 
 def get_bold_sentence(sentence, lesson_dict = {}):
-    tokens = re.findall(r"[\w']+|[.,¡!¿:&\-?;–]", sentence)
+    tokens = re.findall(r"[\w]+", sentence)
     bold_sentence = ""
     index = 0
     for token in tokens:
@@ -110,6 +110,7 @@ def get_bold_sentence(sentence, lesson_dict = {}):
         inter_token = sentence[index:pos]
         bold_sentence += inter_token + get_html_of_token(token, lesson_dict)
         index += len(inter_token) + token_length
+    bold_sentence += sentence[index:]
     return bold_sentence
 
 def get_sentences_from_audio_files(lesson_nb : int):
@@ -211,7 +212,7 @@ def correct_word(lesson_nb, lesson_html, word, syllabes):
     
 
 def get_single_lesson_with_errors(lesson_nb, date_time):
-    sentences = get_html_sentences(lesson_nb)
+    sentences = get_list_of_bold_sentences(lesson_nb)
     errors = get_single_lesson_errors(lesson_nb, date_time)
     lesson = []
     for k, sentence in enumerate(sentences):
