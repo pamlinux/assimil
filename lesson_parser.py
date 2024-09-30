@@ -6,15 +6,17 @@ from html.parser import HTMLParser
 
 from collections import namedtuple
 
+punctuation = string.punctuation+'¿¡“”…'
+
 def get_words(sentence):
-    return re.sub('['+string.punctuation+'¿'+'¡'+']', ' ', sentence).split()
+    return re.sub('['+ punctuation +']', ' ', sentence).split()
 
 def get_syllables(sentence_fragments):
 
     syllables = []
 
     for f in sentence_fragments:
-        frags = re.sub('['+string.punctuation+'¿'+'¡'+']', ' ', f[0]).split()
+        frags = re.sub('['+ punctuation +']', ' ', f[0]).split()
         for r in frags:
             syllables.append((r, f[1]))
     return syllables

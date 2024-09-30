@@ -17,7 +17,8 @@ from selection import proceed_marked_selection, delete_marked_selection, Selecti
 from selection import MarkedSentencesItem, store_second_phase_marked_sentences
 from translation import get_french_lesson
 from auth import get_current_user_username
-from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_paragraph_correction
+from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_paragraph_correction 
+from assimil import get_paragraph_to_correct
 
 @dataclass
 class SimpleModel:
@@ -209,7 +210,7 @@ def form_save(lesson_nb, form_data: SimpleModel = Depends()):
 def form_update(lesson_nb, form_data: SimpleModel = Depends()):
     ta = form_data.ta
     lesson_html = form_data.da
-    print("numéro de la lelesson-errorsçon : ", lesson_nb) 
+    print("numéro de la leçon : ", lesson_nb) 
     print(lesson_html)
     pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
     print(f"pretty lesson : {pretty_lesson_html}")
@@ -314,10 +315,20 @@ async def test():
     return html_text
 
 @app.get("/correct-assimil-paragraphs/", response_class=HTMLResponse)
-async def correct_paragraphs():
-    return get_correct_paragraphs_page()
+async def correct_paragraphs(prog: str = "all" ):
+    return get_correct_paragraphs_page(prog)
 
 @app.post("/correct-assimil-paragraphs/", )
 async def store_assimil_paragraph_correction(item: ParagraphCorrectionItem):
     store_paragraph_correction(item)
 
+@app.post("/fetch-stored-paragraph/")
+async def get_single_paragraph_stored(item : ParagraphCorrectionItem):
+    print(item)
+    return get_paragraph_to_correct(item)
+
+@app.post("/store-paragraph-changes/")
+async def store_paragraph_changes(item : ParagraphCorrectionItem):
+    store_paragraph_correction(item)
+    print(item)
+    return "OK"
