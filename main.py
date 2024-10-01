@@ -242,6 +242,8 @@ async def test_ranges(lesson_nb, item: SelectionItem):
 
 def get_second_phase_contex(lesson_nb):
     lesson, exercise1_correction = get_french_lesson(lesson_nb)
+    print("--- lesson ---", lesson)
+    print("--- exercise1_correction ---", exercise1_correction)
     spanish_sentences = get_list_of_bold_sentences(lesson_nb)
     context = {
         "active" : "second-phase",

@@ -42,10 +42,10 @@ def get_french_lesson(lesson_nb):
                 text += '- '
             else:
                 text += ' '
-            lesson.append(text + paragraphs[line_nb][2])
+            lesson.append(text + paragraphs[line_nb][2].replace('"', "&quot;"))
             writed_line_number += 1
         else:
-            exercise1_correction.append(paragraphs[line_nb][2])
+            exercise1_correction.append(paragraphs[line_nb][2].replace('"', "&quot;"))
 
     return lesson, exercise1_correction
  

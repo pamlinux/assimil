@@ -48,7 +48,10 @@
   #toolbar {
     width: 500px;
   }
- 
+  h2 {
+    font-weight: normal;
+  }
+
 {% endblock %}
 
 {% block header %}
@@ -90,9 +93,9 @@
                 {% set count.value = count.value + 1 %}
             {% endfor %}
             {% if exercise1_correction %}
-              <h2 id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})">Exercice 1</h2>
+              <h2 id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})">{{ exercise1_correction[0] }}</h2>
               {% set count.value = count.value + 1 %}
-              {% for sentence in exercise1_correction %}
+              {% for sentence in exercise1_correction[1:] %}
                   <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>
                   {% set count.value = count.value + 1 %}
               {% endfor %}
