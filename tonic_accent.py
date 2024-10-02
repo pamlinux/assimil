@@ -163,6 +163,22 @@ def get_list_of_bold_sentences(lesson_nb):
         lesson_with_bold_sentences.append(get_bold_sentence(paragraphs[k]))
     return lesson_with_bold_sentences
 
+def get_spanish_lesson(lesson_nb):
+    paragraphs = get_paragraphs(lesson_nb)
+    lesson = [get_bold_sentence(paragraphs[0][2]), get_bold_sentence(paragraphs[1][2])]
+    exercise1_correction = []
+    lesson_line_number = 1
+    exercise1_correction_number = 1
+    for line_nb in sorted(paragraphs.keys())[2:]:
+        paragraph = paragraphs[line_nb]
+        if paragraph[0] == 1:
+            lesson.append([lesson_line_number, paragraph[1], get_bold_sentence(paragraph[2]).replace('"', "&quot;")])
+            lesson_line_number += 1
+        else:
+            exercise1_correction.append([exercise1_correction_number, paragraph[1], get_bold_sentence(paragraph[2]).replace('"', "&quot;")])
+            exercise1_correction_number += 1
+    return lesson, exercise1_correction
+ 
 
 def get_html_lesson(lesson_nb):
     lesson_html = ""

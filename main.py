@@ -11,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 from database import get_errors, get_most_recent_lesson_in_history
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
-from tonic_accent import get_history, get_single_lesson_with_errors
+from tonic_accent import get_history, get_single_lesson_with_errors, get_spanish_lesson
 from pydantic import BaseModel
 from selection import proceed_marked_selection, delete_marked_selection, SelectionItem
 from selection import MarkedSentencesItem, store_second_phase_marked_sentences
@@ -241,16 +241,16 @@ async def test_ranges(lesson_nb, item: SelectionItem):
     return delete_marked_selection(lesson_nb, item)
 
 def get_second_phase_contex(lesson_nb):
-    lesson, exercise1_correction = get_french_lesson(lesson_nb)
-    print("--- lesson ---", lesson)
+    french, exercise1_correction = get_french_lesson(lesson_nb)
+    print("--- lesson ---", french)
     print("--- exercise1_correction ---", exercise1_correction)
-    spanish_sentences = get_list_of_bold_sentences(lesson_nb)
+    spanish_sentences, exercice1 = get_spanish_lesson(lesson_nb)
     context = {
         "active" : "second-phase",
         "lesson_nb": lesson_nb,
-        "lesson" : lesson,                                                        
+        "lesson" : french,                                                        
         "exercise1_correction" : exercise1_correction,
-        "spanish_paragraphs" : spanish_sentences
+        "spanish_paragraphs" : spanish_sentences + exercice1
     }
     return context
 
@@ -268,23 +268,14 @@ async def second_phase(request: Request, lesson_nb : int = 1):
         request=request, name="second-phase.html", context=context)
 
 def get_first_phase_context(lesson_nb):
-    lesson, exercise1_correction = get_french_lesson(lesson_nb)
-    spanish_sentences = get_list_of_bold_sentences(lesson_nb)
-    print(spanish_sentences)
-    ex_index = len(lesson)
-    spanish_lesson = spanish_sentences[:ex_index]
-    spanish_exercise1_correction = spanish_sentences[ex_index + 1:]
-    if exercise1_correction:
-        french_sentences = lesson + ["Corrigé de l'exercice 1"] + exercise1_correction
-    else:
-        french_sentences = lesson
-
+    lesson_french, exercise1_correction = get_french_lesson(lesson_nb)
+    spanish_lesson, exercice1 = get_spanish_lesson(lesson_nb)
     context = {
         "active" : "first-phase",
         "lesson_nb": lesson_nb,
         "lesson" : spanish_lesson,                                                        
-        "exercise1_correction" : spanish_exercise1_correction,
-        "french_sentences" : french_sentences
+        "exercise1" : exercice1,
+        "french_sentences" : lesson_french + exercise1_correction
     }
     return context
 
