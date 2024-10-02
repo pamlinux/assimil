@@ -47,6 +47,7 @@
   
   #toolbar {
     width: 500px;
+    display: flex;
   }
   h2 {
     font-weight: normal;
@@ -70,19 +71,23 @@
     <button id="togglemark" onclick="toggleMark()"">Boîte de marquage</button>
     <button id="store" onclick="storeMark()"">Enregistrer le marquage</button>
     <div id="spanish">
-      <div id="toolbar">
-        <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
-        <input type="button" id="select" value="A" class="A" onclick="proceedSelection('MARK', 'A')" />
-        <input type="button" id="select" value="G" class="G" onclick="proceedSelection('MARK', 'G')" />
-        <input type="button" id="select" value="O" class="O" onclick="proceedSelection('MARK', 'O')" />
-        <input type="button" id="select" value="V" class="V" onclick="proceedSelection('MARK', 'V')" />
-        <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
-        <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
-        <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
+      <label class="line-nr"></label>
+      <label  class="dialogue-dash"></label>
+      <div>
+        <div id="toolbar">
+          <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
+          <input type="button" id="select" value="A" class="A" onclick="proceedSelection('MARK', 'A')" />
+          <input type="button" id="select" value="G" class="G" onclick="proceedSelection('MARK', 'G')" />
+          <input type="button" id="select" value="O" class="O" onclick="proceedSelection('MARK', 'O')" />
+          <input type="button" id="select" value="V" class="V" onclick="proceedSelection('MARK', 'V')" />
+          <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
+          <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
+          <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
 
+        </div>
+        <p id="translation"></p>
+        <div id="comment" contentEditable></div>
       </div>
-      <p id="translation"></p>
-      <div id="comment" contentEditable></div>
     </div>
     {% set count = namespace(value=2) %}
     <h2 class="assimil-title" id="id_0" onClick="fillSpanishBox(0)">{{ lesson[0] }}</h2>
@@ -155,7 +160,6 @@
 
         }
 
-
         document.getElementById("spanish").style.display = "none";
         document.getElementById("comment").style.display = "none";
         document.getElementById("toolbar").style.display = "none";
@@ -183,7 +187,7 @@
       function toggleSpanish() {
             var x = document.getElementById("spanish");
             if (x.style.display === "none") {
-                x.style.display = "block";
+                x.style.display = "table-row";
                 var button = document.getElementById("toggleAll");
                 button.innerHTML = "Cacher l'espagnol";
             } else {
@@ -196,7 +200,7 @@
         function toggleNode(node_name) {
           var x = document.getElementById(node_name);
             if (x.style.display === "none") {
-                x.style.display = "block";
+                x.style.display = "flex";
             } else {
                 x.style.display = "none";
             }
@@ -207,13 +211,13 @@
           toggleNode("toolbar");
           let translation = document.getElementById("translation");
           var x = document.getElementById("comment");
-          value_id = translation.parentNode.previousSibling.getAttribute("id");
+          value_id = translation.parentNode.parentNode.previousSibling.getAttribute("id");
           value = value_id.substring(3, value_id.length)
           var paragraph = document.getElementById(value_id)
           if (x.style.display === "none") {
             translation.setAttribute("onClick", "playParagraph(" + value + ")")
           } else {
-            translation.setAttribute("onClick", "")
+            translation.setAttribute("onClick", "console.log('coucou')")
           }
         }
 

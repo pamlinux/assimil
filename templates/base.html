@@ -50,8 +50,21 @@
             display: table-row;
             margin-left: 0px;
         }
-  
+
+        div.lesson-container div {
+            display: table-row;
+            margin-left: 0px;
+        }
+ 
         div.lesson-container p label.line-nr {
+            display: table-cell;
+            width: 2rem; 
+            margin-bottom: 10px;
+            text-align: right;
+            color: red;
+        }
+
+        div.lesson-container div label.line-nr {
             display: table-cell;
             width: 2rem; 
             margin-bottom: 10px;
@@ -67,6 +80,23 @@
             color: rgb(54, 196, 83);
         }
  
+        div.lesson-container div label.dialogue-dash {
+            display: table-cell;
+            margin-bottom: 10px;
+            white-space: pre;
+            text-align: right;
+            color: rgb(54, 196, 83);
+        }
+
+        div.lesson-container div div {
+            display: table-cell;
+            margin-bottom: 0px;
+            height: auto;
+            white-space: pre;
+            text-align: right;
+            color: rgb(54, 196, 83);
+        }
+
         {% block add_style %}{% endblock %}
  
     </style>
