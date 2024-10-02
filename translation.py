@@ -36,16 +36,12 @@ def get_french_lesson(lesson_nb):
     exercise1_correction = []
     writed_line_number = 1
     for line_nb in sorted(paragraphs.keys())[2:]:
-        if paragraphs[line_nb][0] == 1: # if paragraph is in section 1
-            text = str(writed_line_number)
-            if paragraphs[line_nb][1]: # if paragraph no line_nb has dash dialogue
-                text += '- '
-            else:
-                text += ' '
-            lesson.append(text + paragraphs[line_nb][2].replace('"', "&quot;"))
+        paragraph = paragraphs[line_nb]
+        if paragraph[0] == 1:
+            lesson.append([writed_line_number, paragraph[1], paragraph[2].replace('"', "&quot;")])
             writed_line_number += 1
         else:
-            exercise1_correction.append(paragraphs[line_nb][2].replace('"', "&quot;"))
+            exercise1_correction.append(paragraph[2].replace('"', "&quot;"))
 
     return lesson, exercise1_correction
  

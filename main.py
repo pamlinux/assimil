@@ -68,7 +68,7 @@ def get_bold_word(item : CorrectItem):
         raise
     return word, syllables
 
-def get_full_path(lesson_nb, sentence_nb):
+def get_full_path(lesson_nb, paragraph_nb):
     lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
 
     w = os.walk(lesson_directory)
@@ -81,7 +81,7 @@ def get_full_path(lesson_nb, sentence_nb):
             except AttributeError:
                 print(f"Attribute Error with file : {fn}")
         pathes, titles = zip(*sorted(sentences_with_path))
-    return pathes[sentence_nb]
+    return pathes[paragraph_nb]
 
 @app.get('/favicon.ico', include_in_schema=False)
 async def favicon():
@@ -168,9 +168,9 @@ def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1)
     return Response(content=data, media_type="audio/mpeg")
 
 @app.get("/second-phase/audio/")
-def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
-    print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
-    sentence_path = get_full_path(lesson_nb, sentence_nb)
+def get_audio_file(request: Request, lesson_nb: int, paragraph_nb: int):
+    print("lesson_nb:", lesson_nb, "sentence_nb", paragraph_nb)
+    sentence_path = get_full_path(lesson_nb, paragraph_nb)
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
@@ -250,7 +250,7 @@ def get_second_phase_contex(lesson_nb):
         "lesson_nb": lesson_nb,
         "lesson" : lesson,                                                        
         "exercise1_correction" : exercise1_correction,
-        "spanish_sentences" : spanish_sentences
+        "spanish_paragraphs" : spanish_sentences
     }
     return context
 
