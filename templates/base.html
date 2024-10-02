@@ -40,30 +40,33 @@
             padding: 1px 16px;
         }
 
-        ul.dash-container {
-            list-style: none; /* Supprime les puces par défaut */
-            padding: 0;
-            margin: 0;
+        div.lesson-container {
+            display: table;
+            margin-left: 0%;
+             color: rgb(93, 0, 255);
+        }
+  
+        div.lesson-container p {
+            display: table-row;
+            margin-left: 0px;
+        }
+  
+        div.lesson-container p label.line-nr {
+            display: table-cell;
+            width: 2rem; 
+            margin-bottom: 10px;
+            text-align: right;
+            color: red;
         }
 
-        li.dash-paragraph {
-            display: flex;
-            align-items: flex-start;
-            padding: 0.5rem;
-            /*border-bottom: 1px solid #ccc; /* Ligne de séparation entre les éléments */
+        div.lesson-container p label.dialogue-dash {
+            display: table-cell;
+            margin-bottom: 10px;
+            white-space: pre;
+            text-align: right;
+            color: rgb(54, 196, 83);
         }
-
-        li.dash-paragraph::before {
-            content: attr(data-num) "   ";
-            width: 2rem; /* Largeur de la partie numérotée */
-            text-align: left; 
-            margin-right: 0.5rem;
-        }
-
-        li.dash-paragraph[data-tiret]::before {
-            content: attr(data-num) ' — ' /* Tiret cadratin (U+2014) */
-        }
-
+ 
         {% block add_style %}{% endblock %}
  
     </style>

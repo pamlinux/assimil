@@ -84,24 +84,26 @@
       <p id="translation"></p>
       <div id="comment" contentEditable></div>
     </div>
-    <div id="div01">
-        {% set count = namespace(value=2) %}
-        <h2 class="assimil-title" id="id_0" onClick="fillSpanishBox(0)"> {{ lesson[0] }} </h2>
-        <h2 id="id_1" onClick="fillSpanishBox(1)"> {{ lesson[1] }} </h2>
-            {% for sentence in lesson[2:] %}
-                <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>
-                {% set count.value = count.value + 1 %}
-            {% endfor %}
-            {% if exercise1_correction %}
-              <h2 id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})">{{ exercise1_correction[0] }}</h2>
-              {% set count.value = count.value + 1 %}
-              {% for sentence in exercise1_correction[1:] %}
-                  <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>
-                  {% set count.value = count.value + 1 %}
-              {% endfor %}
-            {% endif %}
-
+    {% set count = namespace(value=2) %}
+    <h2 class="assimil-title" id="id_0" onClick="fillSpanishBox(0)">{{ lesson[0] }}</h2>
+    <h2 id="id_1" onClick="fillSpanishBox(1)"> {{ lesson[1] }} </h2>
+    <div class="lesson-container">
+      {% for paragraph in lesson[2:] %}
+        <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash"> {% if paragraph[1] %} — {% endif %}</label>{{ paragraph[2] | safe }}</p>
+        {% set count.value = count.value + 1 %}
+      {% endfor %}
     </div>
+    {% if exercise1_correction %}
+      <h2 id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"><span></span>{{ exercise1_correction[0] }}</span></h2>
+      <div class="lesson-container">
+        {% set count.value = count.value + 1 %}
+        {% for paragraph in exercise1_correction[1:] %}
+          <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"><span></span>{{ paragraph | safe }}</span></p>
+          {% set count.value = count.value + 1 %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <p></p>
     <p></p>
     <p></p>
@@ -113,14 +115,14 @@
 
       {{ counter.changeLessonFunction("/second-phase/") }}
 
-      spanish_sentences = [
-        {% for sentence in spanish_sentences %}
-            "{{ sentence | safe }}",
+      spanish_paragraphs = [
+        {% for paragraph in spanish_paragraphs %}
+            "{{ paragraph | safe }}",
         {% endfor %}
       ];
 
 
-      modified_spanish_sentences = {};
+      modified_spanish_paragraphs = {};
 
       commentBuffer = [""];
       commentIndex = 0;
@@ -142,8 +144,8 @@
         }
       });
 
-       function playSentence(val) {
-            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+       function playParagraph(val) {
+            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&paragraph_nb=", val)
             console.log(audioRef)
             var audioEl = document.getElementById("audioTag");
             audioEl.src = audioRef
@@ -207,9 +209,9 @@
           var x = document.getElementById("comment");
           value_id = translation.parentNode.previousSibling.getAttribute("id");
           value = value_id.substring(3, value_id.length)
-          var sentence = document.getElementById(value_id)
+          var paragraph = document.getElementById(value_id)
           if (x.style.display === "none") {
-            translation.setAttribute("onClick", "playSentence(" + value + ")")
+            translation.setAttribute("onClick", "playParagraph(" + value + ")")
           } else {
             translation.setAttribute("onClick", "")
           }
@@ -227,10 +229,10 @@
           let spanishNode = document.getElementById("spanish");
           let clickedNode = document.getElementById(id);
           insertAfter(clickedNode, spanishNode)
-          translation.innerHTML = spanish_sentences[value];
+          translation.innerHTML = spanish_paragraphs[value];
           var x = document.getElementById("comment");
           if (x.style.display === "none") {
-            translation.setAttribute("onClick", "playSentence(" + value + ")")
+            translation.setAttribute("onClick", "playParagraph(" + value + ")")
           } else {
             translation.setAttribute("onClick", "")
           }
@@ -331,8 +333,8 @@
                 value_id = translation.parentNode.previousSibling.getAttribute("id");
                 value = parseInt(value_id.substring(3, value_id.length));
                 markNotYetSaved();
-                spanish_sentences[value] = data.substring(1, data.length-1);
-                modified_spanish_sentences[value] = data.substring(1, data.length-1);
+                spanish_paragraphs[value] = data.substring(1, data.length-1);
+                modified_spanish_paragraphs[value] = data.substring(1, data.length-1);
                 if (!(comment.trim().length === 0)) {
                   commentBuffer.push(comment);
                   commentNumber += 1;
@@ -347,7 +349,7 @@
       }
 
       function storeMark() {
-        item = {"marked_sentences" : modified_spanish_sentences};
+        item = {"marked_paragraphs" : modified_spanish_paragraphs};
         var data = JSON.stringify(item);
 
         fetch('/marker-translation/' + {{ lesson_nb }}, {
