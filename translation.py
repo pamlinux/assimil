@@ -34,17 +34,21 @@ def get_french_lesson(lesson_nb):
     paragraphs = get_paragraphs_translation(lesson_nb)
     lesson = [paragraphs[0][2], paragraphs[1][2]]
     exercise1_correction = []
-    writed_line_number = 1
+    lesson_line_number = 1
+    exercise1_correction_line_number = 0
     for line_nb in sorted(paragraphs.keys())[2:]:
         paragraph = paragraphs[line_nb]
         if paragraph[0] == 1:
-            lesson.append([writed_line_number, paragraph[1], paragraph[2].replace('"', "&quot;")])
-            writed_line_number += 1
+            lesson.append([lesson_line_number, paragraph[1], paragraph[2].replace('"', "&quot;")])
+            lesson_line_number += 1
         else:
-            exercise1_correction.append(paragraph[2].replace('"', "&quot;"))
-
+            if exercise1_correction_line_number == 0:
+                exercise1_correction.append(paragraph[2].replace('"', "&quot;"))
+            else:
+                exercise1_correction.append([exercise1_correction_line_number, paragraph[1], paragraph[2].replace('"', "&quot;")])
+            exercise1_correction_line_number += 1
     return lesson, exercise1_correction
- 
+  
 
     if hasattr(module, 'exercise1_correction'):
         for paragraph in module.exercise1_correction:

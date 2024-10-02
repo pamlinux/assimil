@@ -61,14 +61,14 @@
       <h2 class="assimil-title" id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
       <h2 id="id_1" onClick="proceedSentence(1)"> {{ lesson[1] | safe }} </h2>
             {% for sentence in lesson[2:] %}
-                <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence | safe }} </p>
+                <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence[2] | safe }} </p>
                 {% set count.value = count.value + 1 %}
             {% endfor %}
-            {% if exercise1_correction %}
-              <h2 id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})">Exercice 1</h2>
+            {% if exercise1 %}
+              <h2 id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})">{{ exercise1[0][2] | safe }}</h2>
               {% set count.value = count.value + 1 %}
-              {% for sentence in exercise1_correction %}
-                  <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence | safe }} </p>
+              {% for sentence in exercise1[1:] %}
+                  <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence[2] | safe }} </p>
                   {% set count.value = count.value + 1 %}
               {% endfor %}
             {% endif %}
@@ -82,8 +82,10 @@
       {{ counter.changeLessonFunction("/first-phase/") }}
 
       french_sentences = [
-        {% for sentence in french_sentences %}
-            "{{ sentence | safe }}",
+        "{{french_sentences[0]}}",
+        "{{french_sentences[1]}}",
+        {% for sentence in french_sentences[2:] %}
+            "{{ sentence[2] | safe }}",
         {% endfor %}
       ];
 

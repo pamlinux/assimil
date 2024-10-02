@@ -265,7 +265,7 @@ def get_paragraphs(lesson_nb):
     paragraphs = {}
     with Session(engine) as session:
         for entry in session.scalars(stmt):
-            paragraphs[entry.line_nb] = entry.paragraph
+            paragraphs[entry.line_nb] = [entry.section, entry.has_dash_dialogue, entry.paragraph]
     return paragraphs
 
 def get_single_paragraph(lesson_nb, line_nb):
