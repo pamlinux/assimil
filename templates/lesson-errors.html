@@ -79,11 +79,12 @@
       <script>
 
         french_sentences = [
-          {% for sentence in french_sentences %}
-              "{{ sentence | safe }}",
+          "{{french_sentences[0]}}",
+          "{{french_sentences[1]}}",
+          {% for sentence in french_sentences[2:] %}
+            "{{ sentence[2] | safe }}",
           {% endfor %}
         ];
-  
   
         modified_spanish_sentence = "";
         var current_sentence_id = "id_0";
