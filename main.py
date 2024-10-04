@@ -295,6 +295,7 @@ async def first_phase_default(request: Request):
 
 @app.post("/marker-translation/{lesson_nb}")
 async def store_second_phase_lesson(item: MarkedSentencesItem, lesson_nb: int = 1):
+    print("In store_second_phase_lesson --------", item, lesson_nb)
     store_second_phase_marked_sentences(get_current_user_username(), lesson_nb, item)
 
 @app.get("/")

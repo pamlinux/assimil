@@ -160,7 +160,7 @@ def get_list_of_bold_sentences(lesson_nb):
     lines_nb = sorted(paragraphs.keys())
     lesson_with_bold_sentences = []
     for k in lines_nb:
-        lesson_with_bold_sentences.append(get_bold_sentence(paragraphs[k]))
+        lesson_with_bold_sentences.append(get_bold_sentence(paragraphs[k][2]).replace('"', "&quot;"))
     return lesson_with_bold_sentences
 
 def get_spanish_lesson(lesson_nb):

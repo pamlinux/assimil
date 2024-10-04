@@ -55,25 +55,27 @@
     
   {{ counter.lesson_counter(lesson_nb) }}
 
-    <button id="toggleAll" value="S" onclick="toggleFrench()">En mode son</button>
-    <div id="div01">
-      {% set count = namespace(value=2) %}
-      <h2 class="assimil-title" id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
-      <h2 id="id_1" onClick="proceedSentence(1)"> {{ lesson[1] | safe }} </h2>
-            {% for sentence in lesson[2:] %}
-                <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence[2] | safe }} </p>
-                {% set count.value = count.value + 1 %}
-            {% endfor %}
-            {% if exercise1 %}
-              <h2 id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})">{{ exercise1[0][2] | safe }}</h2>
-              {% set count.value = count.value + 1 %}
-              {% for sentence in exercise1[1:] %}
-                  <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"> {{ sentence[2] | safe }} </p>
-                  {% set count.value = count.value + 1 %}
-              {% endfor %}
-            {% endif %}
-
+  <button id="toggleAll" value="S" onclick="toggleFrench()">En mode son</button>
+    {% set count = namespace(value=2) %}
+    <h2 class="assimil-title" id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
+    <h2 id="id_1" onClick="proceedSentence(1)"> {{ lesson[1] | safe }} </h2>
+    <div class="lesson-container">
+      {% for paragraph in lesson[2:] %}
+        <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash"> {% if paragraph[1] %} — {% endif %}</label>{{ paragraph[2] | safe }}</p>
+        {% set count.value = count.value + 1 %}
+      {% endfor %}
     </div>
+    {% if exercise1 %}
+      <h2 id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})">{{ exercise1[0][2] | safe }}</h2>
+      <div class="lesson-container">
+        {% set count.value = count.value + 1 %}
+        {% for paragraph in exercise1[1:] %}
+          <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash">  — </label>{{ paragraph[2] | safe }}</p>
+          {% set count.value = count.value + 1 %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
     <audio id="audioTag" src=""/>
  
 
@@ -176,9 +178,11 @@
         clickedNode.style.border = "solid blue";
         clickedNode.style.padding = "20px 200px 20px 20px";
         clickedNode.style.borderWidth = "2px 2px";
+        clickedNode.style.fontSize = "x-large";;
         if (!(current_sentence_id == id)) {
           document.getElementById(current_sentence_id).style.padding = "";
           document.getElementById(current_sentence_id).style.border = "";
+          document.getElementById(current_sentence_id).style.fontSize = "";
         }
         if (button.value === "S") {
           playSentence(value);

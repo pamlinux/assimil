@@ -13,7 +13,7 @@ class SelectionItem(BaseModel):
     action: str
 
 class MarkedSentencesItem(BaseModel):
-    marked_sentences : dict
+    marked_paragraphs : dict
 
 class MarkedLinesParser(HTMLParser):
     def analyze_lesson(self, lesson):
@@ -253,5 +253,5 @@ def proceed_marked_selection(lesson_nb, item: SelectionItem):
  
 
 def store_second_phase_marked_sentences(username, lesson_nb, item: MarkedSentencesItem):
-    store_lesson_errors(username, lesson_nb, item.marked_sentences)
+    store_lesson_errors(username, lesson_nb, item.marked_paragraphs)
     print(f"Utilisateur : {username} item : {item}")

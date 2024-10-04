@@ -1,12 +1,7 @@
 {% extends "base.html" %}
 {% block add_style %}
 
-  #spanish {
-    border: solid blue;
-    border-width: 2px 2px;
-    margin: 4px;
-  }
-
+  #spanish,
   #comment {
     border: solid blue;
     border-width: 2px 2px;
@@ -52,12 +47,8 @@
   
   #toolbar {
     width: 500px;
-    display: flex;
   }
-  h2 {
-    font-weight: normal;
-  }
-
+ 
 {% endblock %}
 
 {% block header %}
@@ -76,48 +67,38 @@
     <button id="togglemark" onclick="toggleMark()"">Boîte de marquage</button>
     <button id="store" onclick="storeMark()"">Enregistrer le marquage</button>
     <div id="spanish">
-      <label class="line-nr"></label>
-      <label  class="dialogue-dash"></label>
-      <div>
-        <div id="toolbar">
-          <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
-          <input type="button" id="select" value="A" class="A" onclick="proceedSelection('MARK', 'A')" />
-          <input type="button" id="select" value="G" class="G" onclick="proceedSelection('MARK', 'G')" />
-          <input type="button" id="select" value="O" class="O" onclick="proceedSelection('MARK', 'O')" />
-          <input type="button" id="select" value="V" class="V" onclick="proceedSelection('MARK', 'V')" />
-          <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
-          <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
-          <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
+      <div id="toolbar">
+        <input type="button" id="select" value="S" class="S" onclick="proceedSelection('MARK', 'S')" />
+        <input type="button" id="select" value="A" class="A" onclick="proceedSelection('MARK', 'A')" />
+        <input type="button" id="select" value="G" class="G" onclick="proceedSelection('MARK', 'G')" />
+        <input type="button" id="select" value="O" class="O" onclick="proceedSelection('MARK', 'O')" />
+        <input type="button" id="select" value="V" class="V" onclick="proceedSelection('MARK', 'V')" />
+        <input type="button" id="select" value="E" class="E" onclick="proceedSelection('MARK', 'E')" />
+        <input type="button" id="select" value="B" class="B" onclick="proceedSelection('MARK', 'B')" />
+        <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
 
-        </div>
-        <p id="translation"></p>
-        <div id="comment" contentEditable></div>
       </div>
+      <p id="translation"></p>
+      <div id="comment" contentEditable></div>
     </div>
-    {% set count = namespace(value=2) %}
-    <h2 class="assimil-title" id="id_0" onClick="fillSpanishBox(0)">{{ lesson[0] }}</h2>
-    <h2 id="id_1" onClick="fillSpanishBox(1)"> {{ lesson[1] }} </h2>
-    <div class="lesson-container">
-      {% for paragraph in lesson[2:] %}
-        <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash"> {% if paragraph[1] %} — {% endif %}</label>{{ paragraph[2] | safe }}</p>
-        {% set count.value = count.value + 1 %}
-      {% endfor %}
-    </div>
-    {% if exercise1_correction %}
-      <h2 id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})">{{ exercise1_correction[0] }}</h2>
-      <div class="lesson-container">
-        {% set count.value = count.value + 1 %}
-        {% for paragraph in exercise1_correction[1:] %}
-          <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash">  — </label>{{ paragraph[2] | safe }}</p>
-          {% set count.value = count.value + 1 %}
-        {% endfor %}
-      </div>
-    {% endif %}
+    <div id="div01">
+        {% set count = namespace(value=2) %}
+        <h2 id="id_0" onClick="fillSpanishBox(0)"> {{ lesson[0] }} </h2>
+        <h2 id="id_1" onClick="fillSpanishBox(1)"> {{ lesson[1] }} </h2>
+            {% for sentence in lesson[2:] %}
+                <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>
+                {% set count.value = count.value + 1 %}
+            {% endfor %}
+            {% if exercise1_correction %}
+              <h2 id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})">Exercice 1</h2>
+              {% set count.value = count.value + 1 %}
+              {% for sentence in exercise1_correction %}
+                  <p id="id_{{ count.value }}" onClick="fillSpanishBox({{ count.value }})"> {{ sentence | safe }} </p>
+                  {% set count.value = count.value + 1 %}
+              {% endfor %}
+            {% endif %}
 
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
+    </div>
     <audio id="audioTag" src=""/>
  
 
@@ -125,37 +106,18 @@
 
       {{ counter.changeLessonFunction("/second-phase/") }}
 
-      spanish_paragraphs = [
-        {% for paragraph in spanish_paragraphs %}
-            "{{ paragraph[2] | safe }}",
+      spanish_sentences = [
+        {% for sentence in spanish_sentences %}
+            "{{ sentence | safe }}",
         {% endfor %}
       ];
 
 
-      modified_spanish_paragraphs = {};
+      modified_spanish_sentences = {};
 
-      commentBuffer = [""];
-      commentIndex = 0;
-      commentNumber = 1;
-
-      let markToBeSaved = false; // Variable pour suivre si les données ont été modifiées
-
-      function markNotYetSaved() {
-        markToBeSaved = true;
-      }
-
-      function markSaved() {
-        markToBeSaved = false;
-      }
-
-      window.addEventListener('beforeunload', (event) => {
-        if (markToBeSaved) {
-          event.returnValue = 'Des phrases ont été marquées et ne sont pas encore sauvée. Êtes-vous sûr de vouloir quitter ?';
-        }
-      });
-
-       function playParagraph(val) {
-            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&paragraph_nb=", val)
+      
+       function playSentence(val) {
+            audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
             console.log(audioRef)
             var audioEl = document.getElementById("audioTag");
             audioEl.src = audioRef
@@ -165,47 +127,30 @@
 
         }
 
+
         document.getElementById("spanish").style.display = "none";
         document.getElementById("comment").style.display = "none";
         document.getElementById("toolbar").style.display = "none";
-        commentNode = document.getElementById("comment")
-        commentNode.addEventListener(
-        "keydown",
-        editComment
-      );
 
-      function editComment(event) {
-          if (event.key == "ArrowUp") {
-            commentIndex = (commentIndex - 1) % commentNumber;
-            if (commentIndex < 0) {
-              commentIndex = commentNumber - 1;
-            }
-            commentNode.innerHTML = commentBuffer[commentIndex];
-          } else if (event.key == "ArrowDown") {
-            commentIndex = (commentIndex + 1) % commentNumber;
-            commentNode.innerHTML = commentBuffer[commentIndex];
-          } else {
-
-          }
-      }
-      
       function toggleSpanish() {
             var x = document.getElementById("spanish");
             if (x.style.display === "none") {
-                x.style.display = "table-row";
+                x.style.display = "block";
                 var button = document.getElementById("toggleAll");
                 button.innerHTML = "Cacher l'espagnol";
+                console.log(button.value);
             } else {
                 x.style.display = "none";
                 var button = document.getElementById("toggleAll");
                 button.innerHTML = "Montrer l'espagnol";
+            console.log(x);
             }
         }
 
         function toggleNode(node_name) {
           var x = document.getElementById(node_name);
             if (x.style.display === "none") {
-                x.style.display = "flex";
+                x.style.display = "block";
             } else {
                 x.style.display = "none";
             }
@@ -216,13 +161,18 @@
           toggleNode("toolbar");
           let translation = document.getElementById("translation");
           var x = document.getElementById("comment");
-          value_id = translation.parentNode.parentNode.previousSibling.getAttribute("id");
+          console.log("x : ", x)
+          value_id = translation.parentNode.previousSibling.getAttribute("id");
           value = value_id.substring(3, value_id.length)
-          var paragraph = document.getElementById(value_id)
+          console.log("id value : ", value, "of type : ", typeof value)
+          var sentence = document.getElementById(value_id)
           if (x.style.display === "none") {
-            translation.setAttribute("onClick", "playParagraph(" + value + ")")
+            translation.setAttribute("onClick", "playSentence(" + value + ")")
+            console.log("In none, with  translation: ", translation)
+            
           } else {
-            translation.setAttribute("onClick", "console.log('grrrr')")
+            translation.setAttribute("onClick", "")
+            console.log("In block, with translation : ", translation)
           }
         }
 
@@ -233,18 +183,21 @@
    
         function fillSpanishBox(value) {
 
+          console.log(value);
           let id = "id_" + value;
+          console.log(id);
           let translation = document.getElementById("translation");
           let spanishNode = document.getElementById("spanish");
           let clickedNode = document.getElementById(id);
           insertAfter(clickedNode, spanishNode)
-          translation.innerHTML = spanish_paragraphs[value];
+          translation.innerHTML = spanish_sentences[value];
           var x = document.getElementById("comment");
           if (x.style.display === "none") {
-            translation.setAttribute("onClick", "playParagraph(" + value + ")")
+            translation.setAttribute("onClick", "playSentence(" + value + ")")
           } else {
             translation.setAttribute("onClick", "")
           }
+          console.log(translation)
         };
 
 
@@ -253,6 +206,8 @@
 
     function proceedSelection(action, markType = "") {
         const userSelection = window.getSelection();
+        console.log(userSelection)
+        console.log(typeof store)
         anchorNode = userSelection.anchorNode;
         anchorOffset = userSelection.anchorOffset;
 
@@ -264,6 +219,12 @@
         } else {
           focusNodeIsAnchorNode = false;
         }
+
+        console.log("anchorOffset", anchorOffset)
+        console.log("focusOffset", focusOffset)
+        console.log("anchorNode", anchorNode)
+        console.log("focusNode", focusNode)
+        console.log("coucou")
 
         function serializeDOMElement(element) {
 
@@ -314,7 +275,6 @@
         const translationJsonString = JSON.stringify(serializedTranslationElement, null, 2);
 
         const commentElement = document.getElementById("comment"); 
-
         const comment = commentElement.textContent
 
         item = {
@@ -339,31 +299,22 @@
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
                 document.getElementById("translation").innerHTML = data.substring(1, data.length-1);
-                console.log(translation.parentNode.parentNode.previousSibling);
-                value_id = translation.parentNode.parentNode.previousSibling.getAttribute("id");
-                console.log("coucou");
+                value_id = translation.parentNode.previousSibling.getAttribute("id");
                 value = parseInt(value_id.substring(3, value_id.length));
-                markNotYetSaved();
-                spanish_paragraphs[value] = data.substring(1, data.length-1);
-                modified_spanish_paragraphs[value] = data.substring(1, data.length-1);
-                console.log(modified_spanish_paragraphs);
-                if (!(comment.trim().length === 0)) {
-                  commentBuffer.push(comment);
-                  commentNumber += 1;
-                }
-                commentElement.innerHTML = "";
-                commentIndex = 0;
- 
+                spanish_sentences[value] = data.substring(1, data.length-1);
+                modified_spanish_sentences[value] = data.substring(1, data.length-1);
+                console.log(modified_spanish_sentences);
               })
               .catch(error => {
+              console.error(error);
             });
 
       }
 
       function storeMark() {
-        item = {"marked_paragraphs" : modified_spanish_paragraphs};
-        console.log("modified_spanish_paragraphs", modified_spanish_paragraphs);
+        item = {"marked_sentences" : modified_spanish_sentences};
         var data = JSON.stringify(item);
+
         fetch('/marker-translation/' + {{ lesson_nb }}, {
                method: 'POST',
                headers: {
@@ -374,10 +325,10 @@
               })
               .then(resp => resp.text())  // or, resp.json(), etc.
               .then(data => {
-                 markSaved();
-                 alert("Les erreurs ont bien été enregistées");
+                 console.log(data);
               })
               .catch(error => {
+              console.error(error);
             });
 
       }
