@@ -90,7 +90,7 @@
           <input type="image" id="clear-tool" src={{ url_for('static', path='/icons/clear-selection.png')}} onclick="proceedSelection('CLEAR')" />
 
         </div>
-        <p id="translation"></p>
+        <label id="translation"></label>
         <div id="comment" contentEditable></div>
       </div>
     </div>
@@ -126,7 +126,9 @@
       {{ counter.changeLessonFunction("/second-phase/") }}
 
       spanish_paragraphs = [
-        {% for paragraph in spanish_paragraphs %}
+        "{{ spanish_paragraphs[0] | safe }}",
+        "{{ spanish_paragraphs[1] | safe }}",
+        {% for paragraph in spanish_paragraphs[2:] %}
             "{{ paragraph[2] | safe }}",
         {% endfor %}
       ];
