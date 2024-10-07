@@ -41,6 +41,12 @@
     font-weight: bold;
   }
  
+  h2 {
+    font-weight: normal;
+    vertical-align: middle;
+  }
+
+
 {% endblock %}
 
 {% block header %}
@@ -61,7 +67,7 @@
     <h2 id="id_1" onClick="proceedSentence(1)"> {{ lesson[1] | safe }} </h2>
     <div class="lesson-container">
       {% for paragraph in lesson[2:] %}
-        <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash"> {% if paragraph[1] %} — {% endif %}</label>{{ paragraph[2] | safe }}</p>
+        <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash"> {% if paragraph[1] %} — {% endif %}</label><label>{{ paragraph[2] | safe }}</label></p>
         {% set count.value = count.value + 1 %}
       {% endfor %}
     </div>
@@ -70,7 +76,7 @@
       <div class="lesson-container">
         {% set count.value = count.value + 1 %}
         {% for paragraph in exercise1[1:] %}
-          <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash">  — </label>{{ paragraph[2] | safe }}</p>
+          <p id="id_{{ count.value }}" onClick="proceedSentence({{ count.value }})"><label class="line-nr">{{ paragraph[0] }}</label><label class="dialogue-dash">  — </label><label>{{ paragraph[2] | safe }}</label></p>
           {% set count.value = count.value + 1 %}
         {% endfor %}
       </div>
@@ -93,8 +99,11 @@
 
 
       modified_spanish_sentence = "";
-      var current_sentence_id = "id_0";
+      var current_sentence_id = "";
       
+      exercice1_title_index = {{ lesson | length }};
+      console.log("exercice1_title_index", exercice1_title_index);
+
       function playSentence(val) {
         audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
         console.log(audioRef)
@@ -163,27 +172,38 @@
         }
       }
                 
-        function insertAfter(referenceNode, newNode) {
-            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+      function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+      }
+
+      function toggleActiveParagraph(id) {
+        value = id.substring(3, id.length);
+        let para = document.getElementById(id);
+        if ((value <= 1) || (value == exercice1_title_index)){
+          para.classList.toggle('activeBox');
+          para.classList.toggle('activeH2');
+        } else {
+          para.classList.toggle('activeP');
+          paraElements = para.childNodes;
+          paraElements[2].classList.toggle('activeBox');
+          paraElements[2].classList.add('normalText');
         }
 
-   
+      }
+
       function proceedSentence(value, play=true) {
         console.log(value);
         let id = "id_" + value;
           
         console.log(id);
         var button = document.getElementById("toggleAll");
-        let clickedNode = document.getElementById(id);
-        clickedNode.style.border = "solid blue";
-        clickedNode.style.padding = "20px 200px 20px 20px";
-        clickedNode.style.borderWidth = "2px 2px";
-        clickedNode.style.fontSize = "x-large";;
-        if (!(current_sentence_id == id)) {
-          document.getElementById(current_sentence_id).style.padding = "";
-          document.getElementById(current_sentence_id).style.border = "";
-          document.getElementById(current_sentence_id).style.fontSize = "";
-        }
+
+        if (current_sentence_id == "") {
+          toggleActiveParagraph(id)
+        } else if (!(current_sentence_id == id)) {
+          toggleActiveParagraph(current_sentence_id);
+          toggleActiveParagraph(id)
+       }
         if (button.value === "S") {
           playSentence(value);
         } else {

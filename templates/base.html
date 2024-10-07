@@ -50,7 +50,7 @@
             margin-left: 0px;
         }
 
-        div.lesson-container div {
+        div.lesson-container > div {
             display: table-row;
             margin-left: 0px;
         }
@@ -60,6 +60,7 @@
             width: 2rem; 
             margin-bottom: 10px;
             text-align: right;
+            vertical-align: middle;
         }
 
         div.lesson-container div label.line-nr {
@@ -71,14 +72,16 @@
 
         div.lesson-container p label.dialogue-dash {
             display: table-cell;
-            margin-bottom: 10px;
-            white-space: pre;
+            vertical-align: middle;
             text-align: right;
+            white-space: pre;
+            margin-bottom: 10px;
         }
  
         div.lesson-container div label.dialogue-dash {
             display: table-cell;
-            margin-bottom: 10px;
+            vertical-align: middle;
+            /*margin-bottom: 10px;*/
             white-space: pre;
             text-align: right;
         }
@@ -104,6 +107,27 @@
         }
         {% block add_style %}{% endblock %}
  
+        .activeBox {
+            border: solid blue;
+            border-width: 2px 2px;
+            padding: auto;
+            vertical-align: middle;
+            padding-left: 1rem;
+        }
+        
+        .normalText {
+            display: table-cell;
+        }
+        
+        .activeP {
+            height: 3.5rem;
+            padding: 20px;
+            vertical-align: middle;
+        }
+        .activeH2 {
+            padding: 1.2rem;
+        }
+
     </style>
     {% block header %}{% endblock %}
     <title>{% block title %}Espagnol{% endblock %}</title>
