@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <header>
-    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
-
-    <style>
-        .main {
+  
+  <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+  
+  <style>
+    {% include 'display-spanish-paragraphs-style.jinja' %}
+    {% include 'mark-style.css' %}
+    .main {
             
-            margin-left: 20%;
-            padding: 1px 16px;
-        }
+      margin-left: 20%;
+      padding: 1px 16px;
+    }
 
-        h2 {
-          font-weight: normal;
-        }
-        #div01 {
-            overflow: scroll
-        }
+    h2 {
+      font-weight: normal;
+      }
+    #div01 {
+      overflow: scroll
+    }
     </style>
 </header>
 <body>

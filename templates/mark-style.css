@@ -1,0 +1,28 @@
+.A {
+    background-color: orange;
+    color: black; 
+  }
+  .B {
+    background: rgba(128, 128, 128, 0.377);
+    color: black; 
+  }
+  .E {
+    background: greenyellow;
+    color: black; 
+  }
+  .G {
+    background-color: rgba(152, 27, 198, 0.75);
+    color: black; 
+  }
+  .O {
+    background: rgba(27, 75, 198, 0.75);
+    color: black; 
+  }
+  .S {
+    background: yellow;
+    color: black; 
+  }
+  .V {
+    background: rgba(198, 27, 144, 0.75);
+    color: black; 
+  }

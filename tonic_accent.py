@@ -168,7 +168,7 @@ def get_spanish_lesson(lesson_nb):
     lesson = [get_bold_sentence(paragraphs[0][2]), get_bold_sentence(paragraphs[1][2])]
     exercise1_correction = []
     lesson_line_number = 1
-    exercise1_correction_number = 1
+    exercise1_correction_number = 0
     for line_nb in sorted(paragraphs.keys())[2:]:
         paragraph = paragraphs[line_nb]
         if paragraph[0] == 1:
@@ -225,18 +225,38 @@ def correct_word(lesson_nb, lesson_html, word, syllabes):
             pretty_lesson_html += "<p>" + get_bold_sentence(sentence, lesson_word_dict) + "</p>"
     return pretty_lesson_html
 
-    
+def clean_paragraph(p):
+    if p[:3] == "S00":
+        para = p[10:]
+    elif p[:3] == "T00":
+        para = p[14:]
+    elif p[:4] == "ST00":
+        para = p[15:]
+    elif p[:2] == "ST":
+        para = p[5:]
+    elif p[0] == "N":
+        pos = p.find('-')
+        para = p[pos+1:]
+    else:
+        para = p[4:]
+    return para
 
 def get_single_lesson_with_errors(lesson_nb, date_time):
-    sentences = get_list_of_bold_sentences(lesson_nb)
+    spanish_lesson = get_spanish_lesson(lesson_nb)
     errors = get_single_lesson_errors(lesson_nb, date_time)
-    lesson = []
-    for k, sentence in enumerate(sentences):
-        if k in errors:
-            lesson.append(errors[k])
-        else:
-            lesson.append(sentence)
-    return lesson
+    line_nb = 0
+    for snb, section in enumerate(spanish_lesson):
+        for pnb, paragraph in enumerate(section):
+            if type(paragraph) is str:
+                print(snb, pnb, line_nb, spanish_lesson[snb][pnb])
+                if line_nb in errors:
+                    spanish_lesson[snb][pnb] = errors[line_nb]
+            else:
+                print(snb, pnb, line_nb, spanish_lesson[snb][pnb][2])
+                if line_nb in errors:
+                    spanish_lesson[snb][pnb][2] = errors[line_nb]
+            line_nb += 1
+    return spanish_lesson
 
 def get_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
     sessions = get_lesson_sessions_history(begin_lesson, end_lesson, begin_date, end_date)

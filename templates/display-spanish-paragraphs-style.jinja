@@ -1,4 +1,93 @@
+        div.lesson-container {
+            display: table;
+            margin-left: 0%;
+        }
+  
+        div.lesson-container p {
+            display: table-row;
+            margin-left: 0px;
+        }
 
+        div.lesson-container > div {
+            display: table-row;
+            margin-left: 0px;
+        }
+ 
+        div.lesson-container p label.line-nr {
+            display: table-cell;
+            width: 2rem; 
+            margin-bottom: 10px;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        div.lesson-container div label.line-nr {
+            display: table-cell;
+            width: 2rem; 
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        div.lesson-container p label.dialogue-dash {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+            white-space: pre;
+            margin-bottom: 10px;
+        }
+ 
+        div.lesson-container div label.dialogue-dash {
+            display: table-cell;
+            vertical-align: middle;
+            /*margin-bottom: 10px;*/
+            white-space: pre;
+            text-align: right;
+        }
+
+        div.lesson-container div div {
+            display: table-cell;
+            margin-bottom: 0px;
+            padding-left: 0px;
+            margin-left: 0px;
+            height: auto;
+            /*white-space: pre;*/
+            text-align: left;
+        }
+        
+        .dialogue-line-nr {
+            font-family: monospace;
+        }
+        
+        #translation {
+            text-align: left;
+            padding-left: 0px;
+            margin-left: 0px;
+        }
+        {% block add_style %}{% endblock %}
+ 
+        .activeBox {
+            border: solid blue;
+            border-width: 2px 2px;
+            vertical-align: middle;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .normalText {
+            display: table-cell;
+        }
+        
+        .activeP {
+            height: 3.5rem;
+            padding: 20px;
+            vertical-align: middle;
+        }
+        .activeH2 {
+            padding: 1.2rem;
+        }
+
+
+  
   h2 {
     font-weight: normal;
     vertical-align: middle;

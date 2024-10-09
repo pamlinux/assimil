@@ -131,17 +131,9 @@ async def get_errors(item: ErrorItem):
 
 def get_lesson_errors_context(lesson_nb, datetimekey):
     date_time = datetime.strptime(datetimekey, '%d-%m-%Y %H:%M:%S%f')
-    spanish_sentences = get_single_lesson_with_errors(lesson_nb, date_time)
-    print(spanish_sentences)
-    lesson, exercise1_correction = get_french_lesson(lesson_nb)
-    ex_index = len(lesson)
-    spanish_lesson = spanish_sentences[:ex_index]
-    spanish_exercise1_correction = spanish_sentences[ex_index + 1:]
-    if exercise1_correction:
-        french_sentences = lesson + ["Corrigé de l'exercice 1"] + exercise1_correction
-    else:
-        french_sentences = lesson
-
+    lesson_french, exercise1_correction = get_french_lesson(lesson_nb)
+    spanish_lesson, exercise1  = get_single_lesson_with_errors(lesson_nb, date_time)
+    print(spanish_lesson, exercise1)
     date_time_string = date_time.strftime("%d-%m-%Y à %H:%M:%S")
 
     context = {
@@ -149,8 +141,8 @@ def get_lesson_errors_context(lesson_nb, datetimekey):
         "lesson_nb": lesson_nb,
         "date_time" : date_time_string,
         "lesson" : spanish_lesson,                                                        
-        "exercise1_correction" : spanish_exercise1_correction,
-        "french_sentences" : french_sentences
+        "exercise1" : exercise1,
+        "french_sentences" : lesson_french + exercise1_correction
     }
     return context
 
@@ -244,13 +236,13 @@ def get_second_phase_contex(lesson_nb):
     french, exercise1_correction = get_french_lesson(lesson_nb)
     print("--- lesson ---", french)
     print("--- exercise1_correction ---", exercise1_correction)
-    spanish_sentences, exercice1 = get_spanish_lesson(lesson_nb)
+    spanish_sentences, exercise1 = get_spanish_lesson(lesson_nb)
     context = {
         "active" : "second-phase",
         "lesson_nb": lesson_nb,
         "lesson" : french,                                                        
         "exercise1_correction" : exercise1_correction,
-        "spanish_paragraphs" : spanish_sentences + exercice1
+        "spanish_paragraphs" : spanish_sentences + exercise1
     }
     return context
 
@@ -269,12 +261,12 @@ async def second_phase(request: Request, lesson_nb : int = 1):
 
 def get_first_phase_context(lesson_nb):
     lesson_french, exercise1_correction = get_french_lesson(lesson_nb)
-    spanish_lesson, exercice1 = get_spanish_lesson(lesson_nb)
+    spanish_lesson, exercise1 = get_spanish_lesson(lesson_nb)
     context = {
         "active" : "first-phase",
         "lesson_nb": lesson_nb,
         "lesson" : spanish_lesson,                                                        
-        "exercise1" : exercice1,
+        "exercise1" : exercise1,
         "french_sentences" : lesson_french + exercise1_correction
     }
     return context
