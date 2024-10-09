@@ -1,0 +1,172 @@
+      exercise1_title_index = {{ lesson | length }}
+      console.log("exercise1_title_index", exercise1_title_index)
+
+      french_sentences = [
+        "{{french_sentences[0]}}",
+        "{{french_sentences[1]}}",
+        {% for sentence in french_sentences[2: lesson | length] %}
+            "{{ sentence[2] | safe }}",
+        {% endfor %}
+        "{{ french_sentences[lesson | length] | safe }}",
+         {% for sentence in french_sentences[lesson | length +1:] %}
+            "{{ sentence[2] | safe }}",
+        {% endfor %}
+       
+      ];
+
+
+      modified_spanish_sentence = "";
+      var preceeding_paragraph_id = "";
+      
+      exercise1_title_index = {{ lesson | length }};
+      console.log("exercise1_title_index", exercise1_title_index);
+
+      function playSentence(val) {
+        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+
+      }
+
+      function proceedKeyboard(event) {
+        if (!(preceeding_paragraph_id)) {
+          return;
+        }
+        console.log(event.key);
+        sentences_number = french_sentences.length;
+        id = parseInt(preceeding_paragraph_id.substring(3, preceeding_paragraph_id.length));
+        console.log(id);
+        if (event.key == "ArrowUp") {
+          id = (id - 1) % sentences_number;
+          if (id < 0) {
+            id = sentences_number - 1;
+            console.log("----- id : ", id)
+          }
+        } else if (event.key == " ") {
+          // Space touch, repeat the sentence with the same id
+        } else {
+          id = (id + 1) % sentences_number;
+        }
+        proceedSentence(id);
+      }
+
+      function stopKeyboardPropagation(event) {
+        console.log("in stopKeyboardPropagation", event);
+        event.stopPropagation()
+      }
+      
+      var button = document.getElementById("lesson_nb");
+      if (button) {
+        button.addEventListener(
+            "keydown",
+            stopKeyboardPropagation
+        );
+      }
+
+      document.addEventListener(
+        "keydown",
+        proceedKeyboard
+      );
+
+
+      function toggleFrench() {
+        var button = document.getElementById("toggleAll");
+        if (!(preceeding_paragraph_id)) {
+          return;
+        }
+        precedingParagraph = document.getElementById(preceeding_paragraph_id);
+        preceedingValue = parseInt(preceeding_paragraph_id.substring(3, preceeding_paragraph_id.length));
+        if (button.value == "S") {
+          button.value = "T";
+          button.innerHTML = "En mode traduction";
+          frenchText = french_sentences[preceedingValue];
+          if ((preceedingValue <= 1) || (preceedingValue == exercise1_title_index)) {
+            modified_spanish_sentence = precedingParagraph.innerHTML;
+            precedingParagraph.innerHTML = frenchText;
+          } else {
+            modified_spanish_sentence = precedingParagraph.lastChild.innerHTML;
+            precedingParagraph.lastChild.innerHTML = frenchText;
+          }
+        } else {
+          button.value = "S";
+          button.innerHTML = "En mode son";
+          if (modified_spanish_sentence) {
+            if ((preceedingValue <= 1) || (preceedingValue == exercise1_title_index)) {
+                precedingParagraph.innerHTML = modified_spanish_sentence;
+            } else {
+                precedingParagraph.lastChild.innerHTML = modified_spanish_sentence;
+            }
+            playSentence(preceedingValue);
+          }
+        }
+      }
+                
+      function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+      }
+
+      function toggleActiveParagraph(id) {
+        value = id.substring(3, id.length);
+        let para = document.getElementById(id);
+        if ((value <= 1) || (value == exercise1_title_index)){
+          para.classList.toggle('activeBox');
+          para.classList.toggle('activeH2');
+        } else {
+          para.classList.toggle('activeP');
+          paraElements = para.childNodes;
+          paraElements[2].classList.toggle('activeBox');
+          paraElements[2].classList.add('normalText');
+        }
+
+      }
+
+      function proceedSentence(value, play=true) {
+        console.log(value);
+        let id = "id_" + value;
+          
+        console.log(id);
+        var button = document.getElementById("toggleAll");
+
+        console.log("Button.value ----------", button.value);
+        if (preceeding_paragraph_id == "") {
+          toggleActiveParagraph(id)
+        } else if (!(preceeding_paragraph_id == id)) {
+            toggleActiveParagraph(preceeding_paragraph_id);
+            toggleActiveParagraph(id)
+            if ((button.value == "T")) {
+                preceedingValue = parseInt(preceeding_paragraph_id.substring(3, preceeding_paragraph_id.length));
+                if (modified_spanish_sentence) {
+                    console.log("----- preceedingValue -----", preceedingValue)
+                    preceedingParagraph = document.getElementById(preceeding_paragraph_id)
+                    clickedNode = document.getElementById(id)
+                    if ((preceedingValue <= 1) || (preceedingValue == exercise1_title_index)) {
+                        precedingTextNode = preceedingParagraph
+                    } else {
+                        precedingTextNode = preceedingParagraph.lastChild
+                    }
+                    if ((value <= 1) || (value == exercise1_title_index)) {
+                        textNode = clickedNode
+                    } else {
+                        textNode = clickedNode.lastChild
+                    }
+                    console.log("precedingTextNode: ", precedingTextNode, "textNode: ", textNode);
+                    precedingTextNode.innerHTML = modified_spanish_sentence;
+                    modified_spanish_sentence = textNode.innerHTML;
+                    textNode.innerHTML = french_sentences[value];
+                } else {
+                    throw new Error("Logical bug");
+                }
+            }
+        }
+        if (button.value === "S") {
+          playSentence(value);
+        }
+        preceeding_paragraph_id = id;
+      };
+
+
+ 
