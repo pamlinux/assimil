@@ -7,11 +7,12 @@
         {% for sentence in french_sentences[2: lesson | length] %}
             "{{ sentence[2] | safe }}",
         {% endfor %}
-        "{{ french_sentences[lesson | length] | safe }}",
-         {% for sentence in french_sentences[lesson | length +1:] %}
+        {% if exercise1 %}
+          "{{ french_sentences[lesson | length] | safe }}",
+          {% for sentence in french_sentences[lesson | length +1:] %}
             "{{ sentence[2] | safe }}",
-        {% endfor %}
-       
+          {% endfor %}
+        {% endif %}
       ];
 
 
