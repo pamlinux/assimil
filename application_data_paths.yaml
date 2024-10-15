@@ -1,0 +1,14 @@
+database_name: sqlite:///Users/pam/assimil/db/assimil_spanish.db
+lessons_directory: /Users/pam/assimil/Sentences
+html_lessons_directory: /Users/pam/assimil/lessons/html
+databases_directory: /Users/pam/assimil/db
+word_dict_logfilename: /Users/pam/assimil/word_dict_logfile.log
+UserName: GeeksforGeeks
+Password: GFG@123
+Phone: 1234567890
+Website: geeksforgeeks.org
+Skills:
+  -Python
+  -SQL
+  -Django
+  -JavaScript

@@ -8,14 +8,13 @@ from lesson_parser import MyHTMLParser
 from selection import extract_selection, extract_paragraphs
 from database import get_single_lesson_errors, get_lesson_sessions_history, get_paragraphs
 import datetime
+from paths import get_path
 
-lessons_directory = f"lessons/html"
-db_directory = "db"
+html_lessons_directory = get_path('html_lessons_directory')
+databases_directory = get_path('databases_directory')
 
-#lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
+word_dict_logfilename = get_path('word_dict_logfilename')
 
-word_dict_filename = "tonic_accent_word_dict"
-word_dict_logfilename = "word_dict_logfile.log"
 parser = MyHTMLParser()
 
 
@@ -23,7 +22,7 @@ def get_html_lesson_list():
     file_list = []
     m = "L[\d]{3}"
     p = re.compile(m)
-    w = os.walk(lessons_directory)
+    w = os.walk(html_lessons_directory)
     for (dirpath, dirnames, filenames) in w:
         for fn in filenames:
             if p.match(fn):
@@ -31,12 +30,12 @@ def get_html_lesson_list():
     return file_list
 
 def fill_word_tonic_accent_dict_from_html_files(filenames, word_dict):
-    log_file_name = Path(db_directory, word_dict_logfilename)
+    log_file_name = Path(databases_directory, word_dict_logfilename)
     logfile = open(log_file_name, 'w')
     
     for fn in filenames:
         lesson_nb = int(fn[1:4])
-        lesson = open(os.path.join(lessons_directory, fn)).read()
+        lesson = open(os.path.join(html_lessons_directory, fn)).read()
         #print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
         parser.analyze_lesson(lesson, lesson_nb)
         wd = parser.get_lesson_word_tonic_accent_dict()
@@ -54,7 +53,7 @@ def fill_word_tonic_accent_dict_from_html_files(filenames, word_dict):
 def fill_word_index_dict_from_html_files(filenames, word_dict):
     for fn in filenames:
         lesson_nb = int(fn[1:4])
-        lesson = open(os.path.join(lessons_directory, fn)).read()
+        lesson = open(os.path.join(html_lessons_directory, fn)).read()
         #print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
         parser.analyze_lesson(lesson, lesson_nb)
         wd = parser.get_lesson_word_index_dict()
@@ -128,7 +127,7 @@ def get_sentences_from_audio_files(lesson_nb : int):
     return titles
     
 def get_sentences(lesson_nb : int):
-    lesson_filename = os.path.join(lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
+    lesson_filename = os.path.join(html_lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
     try:
         f = open(lesson_filename, "r")
         lines = f.readlines()
@@ -143,7 +142,7 @@ def get_sentences(lesson_nb : int):
     return sentences
 
 def get_html_sentences(lesson_nb : int):
-    lesson_filename = os.path.join(lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
+    lesson_filename = os.path.join(html_lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
     try:
         f = open(lesson_filename, "r")
         lesson = f.read()
@@ -200,7 +199,7 @@ def update_lesson(lesson_nb, lesson_html):
     return pretty_lesson_html
         
 def store_lesson(lesson_nb, lesson_html):
-    filename = os.path.join(lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
+    filename = os.path.join(html_lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
     pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
     file = open(filename, "w")
     file.write(pretty_lesson_html)

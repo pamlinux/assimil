@@ -11,6 +11,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+from paths import get_path
 
 class Base(DeclarativeBase):
     pass
@@ -110,7 +111,8 @@ def get_database_engine(name, echo=True):
     Base.metadata.create_all(engine) 
     return engine
 
-database_name = 'sqlite:///db/assimil_spanish.db'
+database_name = get_path('database_name')
+
 global engine
 engine = get_database_engine(database_name, False)
 

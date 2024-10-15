@@ -19,6 +19,9 @@ from translation import get_french_lesson
 from auth import get_current_user_username
 from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_paragraph_correction 
 from assimil import get_paragraph_to_correct
+from paths import get_path
+
+lessons_directory = get_path('lessons_directory')
 
 @dataclass
 class SimpleModel:
@@ -69,7 +72,7 @@ def get_bold_word(item : CorrectItem):
     return word, syllables
 
 def get_full_path(lesson_nb, paragraph_nb):
-    lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
+    lesson_directory = os.path.join(lessons_directory, f"L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL")
 
     w = os.walk(lesson_directory)
     sentences_with_path = []
