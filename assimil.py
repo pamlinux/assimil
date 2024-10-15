@@ -10,6 +10,7 @@ from translation import store_french_lesson
 class ParagraphCorrectionItem(BaseModel):
     lesson_nb : int
     line_nb: int
+    has_dash_dialogue : bool | None = None
     paragraph : str | None = None
     translation : str | None = None
 
@@ -21,8 +22,8 @@ def get_correct_paragraphs_page(prog):
         return get_correct_single_paragraph_page()
     
 def get_paragraph_to_correct(item: ParagraphCorrectionItem):
-    paragraph, translation = get_single_paragraph(item.lesson_nb, item.line_nb)
-    return {"paragraph" : paragraph, "translation" : translation}
+    has_dash_dialogue, paragraph, translation = get_single_paragraph(item.lesson_nb, item.line_nb)
+    return {"has_dash_dialogue" : has_dash_dialogue, "paragraph" : paragraph, "translation" : translation}
 
 def get_correct_single_paragraph_page():
     env = Environment(loader = FileSystemLoader("templates"))
@@ -79,7 +80,7 @@ def get_correct_paragraphs_from_mp3_page():
     return html_text
 
 def store_paragraph_correction(item: ParagraphCorrectionItem):
-    update_paragraph(item.lesson_nb, item.line_nb, item.paragraph, item.translation)
+    update_paragraph(item.lesson_nb, item.line_nb, item.has_dash_dialogue, item.paragraph, item.translation)
     paragraphs_translation = get_paragraphs_translation(item.lesson_nb)
     paragraphs_translation[item.line_nb][2] = item.translation
     store_french_lesson(item.lesson_nb, paragraphs_translation)

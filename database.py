@@ -243,7 +243,7 @@ def get_most_recent_lesson_in_history():
     last_lesson_session = Session(engine).query(LessonSession).order_by(desc('date_time')).first()
     return last_lesson_session.lesson
     
-def update_paragraph(lesson_nb, line_nb, paragraph, translation = None, section = None):
+def update_paragraph(lesson_nb, line_nb, has_dash_dialogue, paragraph, translation = None, section = None):
     stmt = select(Paragraph).where(
         and_(
             Paragraph.lesson_nb == lesson_nb,
@@ -258,6 +258,7 @@ def update_paragraph(lesson_nb, line_nb, paragraph, translation = None, section 
         if translation:
             entry.translation = translation
         entry.paragraph = paragraph
+        entry.has_dash_dialogue = has_dash_dialogue
         session.commit()
 
 def get_paragraphs(lesson_nb):
@@ -277,7 +278,7 @@ def get_single_paragraph(lesson_nb, line_nb):
     )
     with Session(engine) as session:
         entry = session.scalars(stmt).one()
-        return entry.paragraph, entry.translation
+        return entry.has_dash_dialogue, entry.paragraph, entry.translation
     
 def get_paragraphs_translation(lesson_nb):
     stmt = select(Paragraph).where(Paragraph.lesson_nb == lesson_nb)

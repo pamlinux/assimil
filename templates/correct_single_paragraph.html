@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<header>
+<head>
     <style>
       div {
         display: table;
       }
       div div {
-        #display: table-row;
+        display: table-row;
       }
       div div label, div div input {
         display: table-cell;
@@ -25,8 +25,64 @@
         /*border: 3px solid green;*/
       }
 
+      input[type=checkbox]{
+        height: 0;
+        width: 0;
+        visibility: hidden;
+      }
+
+      label.switch-label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 50px;
+        height: 25px;
+        background: grey;
+
+        border-radius: 50px;
+        position: relative;
+        vertical-align: middle;
+        
+      }
+  
+      label.switch-label::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 22px;
+        height: 22px;
+        background: #fff;
+        border-radius: 22px;
+        transition: 0.3s;
+      }
+  
+      input:checked + label.switch-label {
+        background: #bada55;
+      }
+  
+      input:checked + label.switch-label::after {
+        left: calc(100% - 2px);
+        transform: translateX(-100%);
+      }
+  
+      label.switch-label:active::after {
+      width: 45px;
+      }
+
+      .dash-switch {
+        height: 30px;
+        display: table-cell;
+        padding-bottom: 20;
+       }
+
+      .dash-label {
+        vertical-align: bottom;
+        padding-right: 20px;
+       }
+
+
     </style>
-</header>
+</head>
 <body>
     <h1>Correction du paragraphe</h1>
     <div class="searchBox">
@@ -49,6 +105,14 @@
             <label for="translation">Traduction:</label>
             <input type="text" id="translation" name="translation" size="100"/>
         </div>
+        <div>
+          <label class="dash-label">Tiret cadratin:</label>
+          <div class="dash-switch">
+            <input type="checkbox" id="switch"
+                        class="checkbox" />
+            <label for="switch" class="switch-label"></label>
+          </div>
+        </div>
         <div class="center">
             <button onclick="storeChanges()">Enregistrer</button>
         </div>
@@ -66,6 +130,9 @@
 
             translation = document.getElementById("translation");
             translation.value = entry["translation"];
+
+            has_dash_dialogue = document.getElementById("switch");
+            has_dash_dialogue.checked = entry['has_dash_dialogue'];
         }
 
         function clearParagraph() {
@@ -111,10 +178,12 @@
             let lineNb = document.getElementById("lineNb").value;
             let paragraph = document.getElementById("paragraph").value;
             let translation = document.getElementById("translation").value;
+            let has_dash_dialogue = document.getElementById("switch").value;
 
             let item = {
                 "lesson_nb" : lessonNb,
                 "line_nb" : lineNb,
+                "has_dash_dialogue" : has_dash_dialogue,
                 "paragraph" : paragraph,
                 "translation" : translation,
             }
