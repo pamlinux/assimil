@@ -1,7 +1,7 @@
 <html>
-<header>
+<head>
     <link id="favicon" rel="icon" type="image/x-icon" href={{ url_for('static', path="/icons/espagnol.png")}} >
-    <link rel="shortcut icon" href={{ url_for('static', path='/icons/correction.svg')}}>
+    <link rel="shortcut icon" href={{ url_for('static', path="/icons/espagnol.png")}}>
     <style>
         body {
           margin: 0;
@@ -46,7 +46,7 @@
     <script>
         console.log("{{active}}")
     </script>
-</header>
+</head>
 <body>
     <ul id="menu">
         {% if active == "home" %}
