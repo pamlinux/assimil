@@ -1,7 +1,10 @@
 import importlib
-
+import os
 from html.parser import HTMLParser
 from database import get_paragraphs_translation
+from paths import get_path
+
+french_translation_lessons_directoy = get_path("french_translation_lessons_directoy")
 
 class SimpleParser(HTMLParser):
     def analyze_lesson(self, lesson):
@@ -102,7 +105,7 @@ def store_french_lesson(lesson_nb, paragraphs):
         text += paragraphs[line_nb][2]
         writed_line_number += 1
     
-    fn = f"lessons/new/L{str(lesson_nb).zfill(3)}.txt"
+    fn = os.path.join(french_translation_lessons_directoy, f"L{str(lesson_nb).zfill(3)}.txt")
     f = open(fn, 'w')
     f.write(text)
     f.close()
