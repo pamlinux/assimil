@@ -1,0 +1,223 @@
+      french_sentences = [
+        "{{french_sentences[0]}}",
+        "{{french_sentences[1]}}",
+        {% for sentence in french_sentences[2:] %}
+            "{{ sentence[2] | safe }}",
+        {% endfor %}
+      ];
+
+
+      modified_spanish_sentence = "";
+      var current_sentence_id = "";
+      
+      exercice1_title_index = {{ lesson | length }};
+      console.log("exercice1_title_index", exercice1_title_index);
+
+      function playSentence(val) {
+        console.log("in playSentence");
+        return;
+        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+        console.log(audioRef)
+        var audioEl = document.getElementById("audioTag");
+        audioEl.src = audioRef
+
+        audioEl.load();
+        audioEl.play();
+
+      }
+
+      function proceedKeyboard(event) {
+        console.log(event.key);
+        sentences_number = french_sentences.length;
+        id = parseInt(current_sentence_id.substring(3, current_sentence_id.length));
+        console.log(id);
+        if (event.key == "ArrowUp") {
+          id = (id - 1) % sentences_number;
+          if (id < 0) {
+            id = sentences_number - 1;
+            console.log("----- id : ", id)
+          }
+        } else if (event.key == " ") {
+          // Space touch, repeat the sentence with the same id
+        } else {
+          id = (id + 1) % sentences_number;
+        }
+      }
+
+      function stopKeyboardPropagation(event) {
+        console.log("in stopKeyboardPropagation", event);
+        event.stopPropagation()
+      }
+      
+      var button = document.getElementById("lesson_nb");
+      if (button) {
+        button.addEventListener(
+            "keydown",
+            stopKeyboardPropagation
+        );
+      }
+
+      document.addEventListener(
+        "keydown",
+        proceedKeyboard
+      );
+
+
+    function sendSelection() {
+        const userSelection = window.getSelection();
+        console.log(userSelection)
+        anchorNode = userSelection.anchorNode;
+        anchorOffset = userSelection.anchorOffset;
+
+        focusOffset = userSelection.focusOffset;
+        focusNode = userSelection.focusNode;
+
+        if (anchorNode === focusNode) {
+          focusNodeIsAnchorNode = true;
+        } else {
+          focusNodeIsAnchorNode = false;
+        }
+
+        console.log("anchorOffset", anchorOffset)
+        console.log("focusOffset", focusOffset)
+        console.log("anchorNode", anchorNode)
+        console.log("focusNode", focusNode)
+        console.log("coucou")
+
+        function serializeDOMElement(element) {
+
+          if (element.tagName) {
+            tagName = element.tagName.toLowerCase();
+          } else {
+            tagName = "";
+          }
+          
+          var status;
+
+          if (element === anchorNode && element === focusNode) {
+            status = "isAnchorAndFocus";
+          } else if (element === anchorNode) {
+            status = "isAnchor";
+          } else if (element === focusNode) {
+            status = "isFocus";
+          } else {
+            status = "";
+          }
+         
+          const obj = {
+            tagName: tagName,
+            status: status,
+            attributes: {},
+            children: [],
+            textContent: element.textContent
+          };
+          
+          // Récupérer les attributs de l'élément
+          if (element.attributes) {
+            for (let attr of element.attributes) {
+              obj.attributes[attr.name] = attr.value;
+            }
+          };
+          // Récupérer les enfants de l'élément
+          if (element.childNodes) {
+            for (let child of element.childNodes) {
+              obj.children.push(serializeDOMElement(child));
+            }
+          }
+
+          return obj;
+        }
+
+        const editorElement = document.getElementById("editor"); // Sélectionner l'élément à sérialiser
+        const noteNumber = document.getElementById("note-nb").value;
+        console.log(noteNumber);
+        const serializedEditorElement = serializeDOMElement(editorElement);
+        const editorJsonString = JSON.stringify(serializedEditorElement, null, 2);
+
+        item = {
+                "anchorOffset" : anchorOffset,
+                "focusOffset" : focusOffset,
+                "editorDomString" : editorJsonString,
+                "noteNumber" : parseInt(noteNumber),
+                "lineNb" : parseInt(current_sentence_id.substring(3, current_sentence_id.length)),
+               }
+
+        var data = JSON.stringify(item);
+
+        fetch('/grammar-note-numbers-editor/' + {{ lesson_nb }}, {
+               method: 'POST',
+               headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+               },
+               body: data,
+              })
+              .then(resp => resp.json())  // or, resp.json(), etc.
+              .then(data => {
+                
+                console.log("data:", data);
+                console.log("data type :", typeof data);
+                document.getElementById("editor").innerHTML = data;
+                toggleActiveParagraph(current_sentence_id)
+              })
+              .catch(error => {
+              console.error(error);
+            });
+
+    }
+                
+      function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+      }
+
+      function toggleActiveParagraph(id) {
+        value = id.substring(3, id.length);
+        let para = document.getElementById(id);
+        if ((value <= 1) || (value == exercice1_title_index)){
+          para.classList.toggle('activeBox');
+          para.classList.toggle('activeH2');
+        } else {
+          para.classList.toggle('activeP');
+          paraElements = para.childNodes;
+          paraElements[2].classList.toggle('activeBox');
+          paraElements[2].classList.add('normalText');
+        }
+
+      }
+
+      function proceedSentence(value, play=true) {
+        console.log(value);
+        let id = "id_" + value;
+          
+        console.log(id);
+        var button = document.getElementById("toggleAll");
+
+        if (current_sentence_id == "") {
+          toggleActiveParagraph(id)
+        } else if (!(current_sentence_id == id)) {
+            toggleActiveParagraph(current_sentence_id);
+            toggleActiveParagraph(id)
+                preceedingValue = parseInt(current_sentence_id.substring(3, current_sentence_id.length));
+                if (modified_spanish_sentence) {
+                    preceedingParagraph = document.getElementById(current_sentence_id)
+                    clickedNode = document.getElementById(id)
+                    if (preceedingValue > 1) {
+                        precedingTextNode = preceedingParagraph.lastChild
+                        textNode = clickedNode.lastChild
+                    } else {
+                        precedingTextNode = preceedingParagraph
+                        textNode = clickedNode
+                    }
+                    precedingTextNode.innerHTML = modified_spanish_sentence;
+                    modified_spanish_sentence = textNode.innerHTML;
+                    textNode.innerHTML = french_sentences[value];
+                }
+        }
+        current_sentence_id = id;
+
+
+      }
+
+
+
+ 

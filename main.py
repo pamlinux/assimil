@@ -20,7 +20,7 @@ from auth import get_current_user_username
 from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_paragraph_correction 
 from assimil import get_paragraph_to_correct
 from paths import get_path
-
+from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
 lessons_directory = get_path('lessons_directory')
 
 @dataclass
@@ -319,5 +319,15 @@ async def get_single_paragraph_stored(item : ParagraphCorrectionItem):
 @app.post("/store-paragraph-changes/")
 async def store_paragraph_changes(item : ParagraphCorrectionItem):
     store_paragraph_correction(item)
-    print(item)
+    print("coucou", item)
     return "OK"
+
+@app.get("/test-grammar/{lesson_nb}", response_class=HTMLResponse)
+async def test_grammar(request: Request, lesson_nb : int = 1):
+    context = get_first_phase_context(lesson_nb)
+    return templates.TemplateResponse(
+        request=request, name="test-grammar.jinja", context=context)
+
+@app.post("/grammar-note-numbers-editor/{lesson_nb}")
+async def insert_grammar_note_number(item: GrammarNoteItem, lesson_nb: int):
+    return get_html_with_grammar_number(item, lesson_nb)

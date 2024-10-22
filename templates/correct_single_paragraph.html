@@ -25,11 +25,11 @@
         /*border: 3px solid green;*/
       }
 
-      input[type=checkbox]{
-        height: 0;
-        width: 0;
-        visibility: hidden;
-      }
+  input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
 
       label.switch-label {
         cursor: pointer;
@@ -106,12 +106,12 @@
             <input type="text" id="translation" name="translation" size="100"/>
         </div>
         <div>
-          <label class="dash-label">Tiret cadratin:</label>
-          <div class="dash-switch">
-            <input type="checkbox" id="switch"
-                        class="checkbox" />
-            <label for="switch" class="switch-label"></label>
-          </div>
+            <label class="dash-label">Tiret cadratin:</label>
+            <div class="dash-switch">
+              <input type="checkbox" id="switch"
+                          class="checkbox" />
+              <label for="switch" class="switch-label"></label>
+              </div>
         </div>
         <div class="center">
             <button onclick="storeChanges()">Enregistrer</button>
@@ -178,7 +178,8 @@
             let lineNb = document.getElementById("lineNb").value;
             let paragraph = document.getElementById("paragraph").value;
             let translation = document.getElementById("translation").value;
-            let has_dash_dialogue = document.getElementById("switch").value;
+            let has_dash_dialogue = document.getElementById("switch").checked;
+            console.log("has_dash_dialogue : ", has_dash_dialogue);
 
             let item = {
                 "lesson_nb" : lessonNb,
