@@ -80,6 +80,7 @@ def get_correct_paragraphs_from_mp3_page():
     return html_text
 
 def store_paragraph_correction(item: ParagraphCorrectionItem):
+    print ("----- item ------", item)
     update_paragraph(item.lesson_nb, item.line_nb, item.has_dash_dialogue, item.paragraph, item.translation)
     paragraphs_translation = get_paragraphs_translation(item.lesson_nb)
     paragraphs_translation[item.line_nb][2] = item.translation

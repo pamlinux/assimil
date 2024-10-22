@@ -12,6 +12,7 @@ from sqlalchemy.sql import func
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from paths import get_path
+import yaml
 
 class Base(DeclarativeBase):
     pass
@@ -293,6 +294,24 @@ def get_paragraphs_translation(lesson_nb):
 
     return paragraphs_translation
 
+def store_note_number(lesson_nb, line_nb, note_number, note_number_pos):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.line_nb == line_nb
+            )
+    )
+
+    with Session(engine) as session:
+        entry = session.scalars(stmt).one()
+        grammar_indexes_string = entry.grammar_indexes
+        if grammar_indexes_string:
+            grammar_indexes = yaml.safe_load(grammar_indexes_string)
+        else:
+            grammar_indexes = {}
+        grammar_indexes[note_number] = note_number_pos
+        entry.grammar_indexes = yaml.dump(grammar_indexes)
+        session.commit()
 
 
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html><html>
+<head>
+
+    <style>
+    {% include 'display-spanish-paragraphs-style.jinja' %}
+    </style>
+
+
+  <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+
+
+  {% import 'lesson_counter.j2' as counter %}
+    
+  {{ counter.lesson_counter(lesson_nb) }}
+
+  <label for="note-nb" style="height: 2em;">Numéro de note:</label>
+  <input type="number" id="note-nb" name="note-nb" value="{{note_nb}}" min="1" max="100" style="height: 2em;"/>
+  <button id="send" value="S" onclick="sendSelection()">Insérer un numéro de note</button>
+
+  {% include 'test-grammar-html.jinja' %}
+
+    <script>
+
+      {{ counter.changeLessonFunction("/test-grammar/") }}
+
+      {% include 'test-grammar-espagnol.jinja' %}
+    </script>
+</body>
+</html>
