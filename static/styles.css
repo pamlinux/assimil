@@ -2,6 +2,17 @@ h1 {
     color: green;
 }
 
+body {
+  line-height: 1.2;
+}
+
+sup {
+  vertical-align: top;
+  position: relative;
+  top: -0.2em;
+  color: rgba(172,52,62,255);
+}
+
 .assimil-title {
   font-weight: normal;
   vertical-align: middle;

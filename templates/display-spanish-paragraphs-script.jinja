@@ -1,7 +1,10 @@
-      exercise1_title_index = {{ lesson | length }}
-      console.log("exercise1_title_index", exercise1_title_index)
+exercise1_title_index = {{ lesson | length }}
+console.log("exercise1_title_index", exercise1_title_index)
 
-      french_sentences = [
+modified_spanish_sentence = "";
+var preceeding_paragraph_id = "";
+
+french_sentences = [
         "{{french_sentences[0]}}",
         "{{french_sentences[1]}}",
         {% for sentence in french_sentences[2: lesson | length] %}
@@ -16,22 +19,28 @@
       ];
 
 
-      modified_spanish_sentence = "";
-      var preceeding_paragraph_id = "";
-      
-      exercise1_title_index = {{ lesson | length }};
-      console.log("exercise1_title_index", exercise1_title_index);
 
-      function playSentence(val) {
-        audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
-        console.log(audioRef)
-        var audioEl = document.getElementById("audioTag");
-        audioEl.src = audioRef
+function displayNote(note, event) {
+    console.log(event);
+    event.stopPropagation();
+    console.log("clicked on note :", note);
 
-        audioEl.load();
-        audioEl.play();
+}
 
-      }
+exercise1_title_index = {{ lesson | length }};
+console.log("exercise1_title_index", exercise1_title_index);
+
+function playSentence(val) {
+  audioRef = "audio/?".concat("lesson_nb=", {{lesson_nb}},"&sentence_nb=", val)
+  console.log(audioRef)
+  var audioEl = document.getElementById("audioTag");
+  audioEl.src = audioRef
+
+  audioEl.load();
+  audioEl.play();
+
+}
+
 
       function proceedKeyboard(event) {
         if (!(preceeding_paragraph_id)) {

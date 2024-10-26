@@ -3,7 +3,7 @@
 """
 from sqlalchemy.orm import Session
 from sqlalchemy import select, and_
-from database import Paragraph, engine, update_paragraph, get_paragraphs
+from database import Paragraph, engine
 import re
 
 def get_pos_after_digits(s):
