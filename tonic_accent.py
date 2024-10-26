@@ -99,18 +99,48 @@ def get_html_of_token(token, lesson_dict = {}):
         index += len(frag_struct[0])
     return txt
 
-def get_bold_sentence(sentence, lesson_dict = {}):
-    tokens = re.findall(r"[\w]+", sentence)
-    bold_sentence = ""
+def get_bold_paragraph(paragraph, lesson_dict = {}):
+    tokens = re.findall(r"[\w]+", paragraph)
+    bold_paragraph = ""
     index = 0
     for token in tokens:
         token_length = len(token)
-        pos = sentence.find(token, index)
-        inter_token = sentence[index:pos]
-        bold_sentence += inter_token + get_html_of_token(token, lesson_dict)
+        pos = paragraph.find(token, index)
+        inter_token = paragraph[index:pos]
+        bold_paragraph += inter_token + get_html_of_token(token, lesson_dict)
         index += len(inter_token) + token_length
-    bold_sentence += sentence[index:]
-    return bold_sentence
+    bold_paragraph += paragraph[index:]
+    return bold_paragraph
+
+def get_bold_paragraph_with_note_numbers(paragraph, note_numbers, lesson_dict = {}):
+    note_positions = []
+    bold_paragraph = ""
+    index = 0
+    if note_numbers:
+        for n in note_numbers:
+            note_positions.append((note_numbers[n], n))
+        note_positions.sort()
+        np_index = 0
+        np = note_positions[np_index][0]
+    else:
+        np = float('inf')
+    tokens = re.findall(r"[\w]+", paragraph)
+
+    for token in tokens:
+        token_length = len(token)
+        pos = paragraph.find(token, index)
+        inter_token = paragraph[index:pos]
+        bold_paragraph += inter_token + get_html_of_token(token, lesson_dict)
+        if np <= pos + token_length:
+            bold_paragraph += f"<sup onclick='(function(event) {{ displayNote({note_positions[np_index][1]}, event); }})(event)' class='assimil'> {note_positions[np_index][1]}</sup>"
+            if np_index < len(note_positions) - 1:
+                np_index += 1
+                np = note_positions[np_index][0]
+            else:
+                np = float('inf')
+        index += len(inter_token) + token_length
+    bold_paragraph += paragraph[index:]
+    return bold_paragraph
 
 def get_sentences_from_audio_files(lesson_nb : int):
     lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
@@ -159,34 +189,27 @@ def get_list_of_bold_sentences(lesson_nb):
     lines_nb = sorted(paragraphs.keys())
     lesson_with_bold_sentences = []
     for k in lines_nb:
-        lesson_with_bold_sentences.append(get_bold_sentence(paragraphs[k][2]).replace('"', "&quot;"))
+        lesson_with_bold_sentences.append(get_bold_paragraph(paragraphs[k][2]).replace('"', "&quot;"))
     return lesson_with_bold_sentences
 
 def get_spanish_lesson(lesson_nb):
     paragraphs = get_paragraphs(lesson_nb)
-    lesson = [get_bold_sentence(paragraphs[0][2]), get_bold_sentence(paragraphs[1][2])]
+    p0 = paragraphs[0]
+    p1 = paragraphs[1]
+    lesson = [get_bold_paragraph_with_note_numbers(p0[2], p0[3]), get_bold_paragraph_with_note_numbers(p1[2], p1[3])]
     exercise1_correction = []
     lesson_line_number = 1
     exercise1_correction_number = 0
     for line_nb in sorted(paragraphs.keys())[2:]:
-        paragraph = paragraphs[line_nb]
-        if paragraph[0] == 1:
-            lesson.append([lesson_line_number, paragraph[1], get_bold_sentence(paragraph[2]).replace('"', "&quot;")])
+        p = paragraphs[line_nb]
+        if p[0] == 1:
+            lesson.append([lesson_line_number, p[1], get_bold_paragraph_with_note_numbers(p[2], p[3]).replace('"', "&quot;")])
             lesson_line_number += 1
         else:
-            exercise1_correction.append([exercise1_correction_number, paragraph[1], get_bold_sentence(paragraph[2]).replace('"', "&quot;")])
+            exercise1_correction.append([exercise1_correction_number, p[1], get_bold_paragraph_with_note_numbers(p[2], p[3]).replace('"', "&quot;")])
             exercise1_correction_number += 1
     return lesson, exercise1_correction
  
-
-def get_html_lesson(lesson_nb):
-    lesson_html = ""
-    list_of_bold_sentences = get_list_of_bold_sentences(lesson_nb)
-    for sentence in list_of_bold_sentences:
-        if sentence:
-            lesson_html += "<p>" + sentence + "</p>"
-    return lesson_html
-
 
 def update_lesson(lesson_nb, lesson_html):
     pretty_lesson_html = ""
@@ -195,7 +218,7 @@ def update_lesson(lesson_nb, lesson_html):
     sentences = parser.get_sentences()
     for sentence in sentences:
         if sentence:
-            pretty_lesson_html += "<p>" + get_bold_sentence(sentence, lesson_word_dict) + "</p>"
+            pretty_lesson_html += "<p>" + get_bold_paragraph(sentence, lesson_word_dict) + "</p>"
     return pretty_lesson_html
         
 def store_lesson(lesson_nb, lesson_html):
@@ -221,7 +244,7 @@ def correct_word(lesson_nb, lesson_html, word, syllabes):
     sentences = parser.get_sentences()
     for sentence in sentences:
         if sentence:
-            pretty_lesson_html += "<p>" + get_bold_sentence(sentence, lesson_word_dict) + "</p>"
+            pretty_lesson_html += "<p>" + get_bold_paragraph(sentence, lesson_word_dict) + "</p>"
     return pretty_lesson_html
 
 def clean_paragraph(p):

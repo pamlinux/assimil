@@ -108,6 +108,13 @@ class GeneralParameters(Base):
     version: Mapped[str]
     instance: Mapped[str]
 
+class GrammarNote(Base):
+    __tablename__ = "grammar_note"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    lesson: Mapped[int]
+    note_number: Mapped[int]
+    note: Mapped[str]
+
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
     Base.metadata.create_all(engine) 
@@ -271,7 +278,11 @@ def get_paragraphs(lesson_nb):
     paragraphs = {}
     with Session(engine) as session:
         for entry in session.scalars(stmt):
-            paragraphs[entry.line_nb] = [entry.section, entry.has_dash_dialogue, entry.paragraph]
+            if entry.grammar_indexes:
+                note_numbers = yaml.safe_load(entry.grammar_indexes)
+            else:
+                note_numbers = None
+            paragraphs[entry.line_nb] = [entry.section, entry.has_dash_dialogue, entry.paragraph, note_numbers]
     return paragraphs
 
 def get_single_paragraph(lesson_nb, line_nb):
@@ -314,4 +325,23 @@ def store_note_number(lesson_nb, line_nb, note_number, note_number_pos):
         session.commit()
 
 
+def store_note(lesson_nb, note_number, note):
+    stmt = select(GrammarNote).where(
+        and_(
+            GrammarNote.lesson == lesson_nb,
+            GrammarNote.note_number == note_number
+        )
+    )
+    with Session(engine) as session:
+        entry = session.scalars(stmt).first()
+        if entry:
+            entry.note = note
+        else:
+            entry = GrammarNote(
+                lesson = lesson_nb,
+                note_number = note_number,
+                note = note
+            )
+            session.add(entry)
+        session.commit()
 
