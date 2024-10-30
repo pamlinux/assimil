@@ -140,6 +140,8 @@ def get_bold_paragraph_with_note_numbers(paragraph, note_numbers, lesson_dict = 
                 np = float('inf')
         index += len(inter_token) + token_length
     bold_paragraph += paragraph[index:]
+    if np != float('inf'):
+        bold_paragraph += f"<sup onclick='(function(event) {{ displayNote({note_positions[np_index][1]}, event); }})(event)' class='assimil'> {note_positions[np_index][1]}</sup>"
     return bold_paragraph
 
 def get_sentences_from_audio_files(lesson_nb : int):
