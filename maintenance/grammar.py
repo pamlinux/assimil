@@ -1,3 +1,4 @@
+import os
 import json
 from selection import SelectionItem
 from pydantic import BaseModel
@@ -5,7 +6,9 @@ from fastapi.encoders import jsonable_encoder
 from jinja2 import Environment, FileSystemLoader
 from tonic_accent import get_spanish_lesson
 from translation import get_french_lesson
-from database import store_note_number
+from database import store_note_number, store_note
+from paths import get_path      
+from notes_parser import NotesParser
 
 class GrammarNoteItem(BaseModel):
     anchorOffset : int
@@ -66,12 +69,13 @@ def get_html_with_grammar_number(item: GrammarNoteItem, lesson_nb):
         if fragment['tagName'] in ['b', '']:
             if fragment['status'] in ['isFocus', 'isAnchorAndFocus']:
                 text += fragment['textContent'][:focus_offset]
-                text += '<sup> 1</sup>'
+                text += f'<sup> </sup>'
                 text += fragment['textContent'][focus_offset:]
             else:
                 text += fragment['textContent']
-        else:
-            raise
+        elif fragment['tagName'] == 'sup':
+            print(f"tag : {fragment['tagName']}, fragment : {fragment}")
+            text += '<sup>' + fragment['textContent'] + '</sup>'
     print("------ text --------", text)
     clean_text = ""
     for fragment in line_text_fragments:
@@ -87,6 +91,8 @@ def get_html_with_grammar_number(item: GrammarNoteItem, lesson_nb):
                 if child['status'] in ['isFocus', 'isAnchorAndFocus']:
                     note_number_pos = len(clean_text) + focus_offset
                 clean_text += child['textContent']
+        elif fragment['tagName'] == 'sup':
+            pass
         else:
             raise
     
@@ -111,3 +117,22 @@ def get_html_with_grammar_number(item: GrammarNoteItem, lesson_nb):
     #return 
     #return jsonable_encoder(response)
     #return json.dumps([clean_text, clean_text[:note_number_pos] + "<sup> 1</sup>" + clean_text[note_number_pos:], note_number_pos])
+
+def store_all_notes():
+    notes_directory = get_path("notes_directory")
+    file_names = os.listdir("lessons/notes")
+    parser = NotesParser()
+    for fn in file_names:
+        if fn[0] != '.':
+            f = open(os.path.join(notes_directory, fn))
+            notes = f.read()
+            parser.analyze(notes)
+            lesson_nb_string = ""
+            for char in fn:
+                if char.isdigit():
+                    lesson_nb_string += char
+            lesson_nb = int(lesson_nb_string)
+            print(lesson_nb, fn)
+            for note_number, note in parser.notes:
+                store_note(lesson_nb, note_number, note)
+
