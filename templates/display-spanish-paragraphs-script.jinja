@@ -20,11 +20,22 @@ french_sentences = [
 
 
 
-function displayNote(note, event) {
+function displayNote(noteNumber, event) {
     console.log(event);
     event.stopPropagation();
-    console.log("clicked on note :", note);
+    console.log("clicked on note :", noteNumber, "for lesson : ", {{ lesson_nb }});
 
+    url = '/grammar_note/?lesson_nb={{ lesson_nb }}&note_nb=' + noteNumber;
+    console.log("url", url);
+    fetch(url)
+    .then(resp => resp.text())  // or, resp.json(), etc.
+    .then(data => {
+      //document.getElementById("div01").innerHTML = data.substring(1, data.length-1);
+      console.log(data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 
