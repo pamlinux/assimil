@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-from database import get_errors, get_most_recent_lesson_in_history
+from database import get_errors, get_most_recent_lesson_in_history, get_note
 from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
 from tonic_accent import get_history, get_single_lesson_with_errors, get_spanish_lesson
 from pydantic import BaseModel
@@ -331,3 +331,8 @@ async def test_grammar(request: Request, lesson_nb : int = 1):
 @app.post("/grammar-note-numbers-editor/{lesson_nb}")
 async def insert_grammar_note_number(item: GrammarNoteItem, lesson_nb: int):
     return get_html_with_grammar_number(item, lesson_nb)
+
+@app.get("/grammar_note/", response_class=HTMLResponse)
+async def get_errors_list_date(request: Request, lesson_nb : int = 0, note_nb : int = 0):
+    print(f"lesson_nb : {lesson_nb}, note_nb : {note_nb}")
+    return get_note(lesson_nb, note_nb)

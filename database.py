@@ -345,3 +345,16 @@ def store_note(lesson_nb, note_number, note):
             session.add(entry)
         session.commit()
 
+def get_note(lesson_nb, note_number):
+    stmt = select(GrammarNote).where(
+        and_(
+            GrammarNote.lesson == lesson_nb,
+            GrammarNote.note_number == note_number
+        )
+    )
+    with Session(engine) as session:
+        entry = session.scalars(stmt).first()
+        if entry:   
+            return entry.note
+        else:
+            return None
