@@ -318,9 +318,17 @@ def store_note_number(lesson_nb, line_nb, note_number, note_number_pos):
         grammar_indexes_string = entry.grammar_indexes
         if grammar_indexes_string:
             grammar_indexes = yaml.safe_load(grammar_indexes_string)
+            if note_number in grammar_indexes:
+                if type(grammar_indexes[note_number]) is list:
+                    grammar_indexes[note_number].append(note_number_pos)
+                else:
+                    print("--------- coucou in store_note_number ----------", "grammar_indexes :", grammar_indexes)
+                    grammar_indexes[note_number] = [grammar_indexes[note_number], note_number_pos]
+
+            else:
+                grammar_indexes[note_number] = note_number_pos
         else:
-            grammar_indexes = {}
-        grammar_indexes[note_number] = note_number_pos
+            grammar_indexes = {note_number : note_number_pos}
         entry.grammar_indexes = yaml.dump(grammar_indexes)
         session.commit()
 
@@ -355,6 +363,6 @@ def get_note(lesson_nb, note_number):
     with Session(engine) as session:
         entry = session.scalars(stmt).first()
         if entry:   
-            return entry.note
+            return str(note_number) + '       ' + entry.note
         else:
             return None

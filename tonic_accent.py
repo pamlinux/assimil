@@ -118,7 +118,11 @@ def get_bold_paragraph_with_note_numbers(paragraph, note_numbers, lesson_dict = 
     index = 0
     if note_numbers:
         for n in note_numbers:
-            note_positions.append((note_numbers[n], n))
+            if type(note_numbers[n]) is list:
+                for pos in note_numbers[n]:
+                    note_positions.append((pos, n))
+            else:
+                note_positions.append((note_numbers[n], n))
         note_positions.sort()
         np_index = 0
         np = note_positions[np_index][0]

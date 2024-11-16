@@ -1,3 +1,4 @@
+  <main>
     <button id="toggleAll" value="S" onclick="toggleFrench()">En mode son</button>
     {% set count = namespace(value=2) %}
     <h2 class="assimil-title" id="id_0" onClick="proceedSentence(0)"> {{ lesson[0] | safe }} </h2>
@@ -18,6 +19,11 @@
         {% endfor %}
       </div>
     {% endif %}
+  </main>
+  <aside id="notePanel">
+    <div id="noteContent"></div>
+    <button onclick="closeNote()">Fermer</button>
+  </aside>
 
     <audio id="audioTag" src=""/>
  
