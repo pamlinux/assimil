@@ -136,3 +136,18 @@ def store_all_notes():
             for note_number, note in parser.notes:
                 store_note(lesson_nb, note_number, note)
 
+def store_all_notes2():
+    fn = "lessons/Notes.html"
+    notes_html = open(fn).read()
+    parser = NotesParser()
+    parser.analyze(notes_html)
+    all_notes = parser.get_notes()
+    for notes in all_notes:
+        lesson_nb = notes[0]
+        print(lesson_nb)
+        for note in notes[1]:
+            print(note[0], "   ", note[1])
+            store_note(lesson_nb, note[0], note[1])
+    
+
+

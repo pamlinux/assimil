@@ -88,8 +88,19 @@
 
 
   
-  h2 {
-    font-weight: normal;
-    vertical-align: middle;
-  }
+    h2 {
+        font-weight: normal;
+        vertical-align: middle;
+    }
 
+aside {
+    width: 250px; /* Largeur fixe */
+    background-color: #f0f0f0;
+    position: fixed; /* Reste fixé à la fenêtre */
+    right: 0; /* Toujours aligné à droite */
+    top: 20px; /* Décalage du haut */
+    display: none; /* Masquer le panneau par défaut */
+    padding: 10px;
+    border: 1px solid #ccc;
+    z-index: 1000; /* Assurer que le panneau est au-dessus du contenu */
+}
