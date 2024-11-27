@@ -33,8 +33,8 @@ class SimpleParser(HTMLParser):
         return self.sentences
 
 
-def get_french_lesson(lesson_nb):
-    paragraphs = get_paragraphs_translation(lesson_nb)
+def get_french_lesson(level, lesson_nb):
+    paragraphs = get_paragraphs_translation(level, lesson_nb)
     lesson = [paragraphs[0][2], paragraphs[1][2]]
     exercise1_correction = []
     lesson_line_number = 1

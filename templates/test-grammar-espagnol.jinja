@@ -133,18 +133,19 @@
         console.log(noteNumber);
         const serializedEditorElement = serializeDOMElement(editorElement);
         const editorJsonString = JSON.stringify(serializedEditorElement, null, 2);
+        const lineNb = parseInt(current_sentence_id.substring(3, current_sentence_id.length));
 
         item = {
                 "anchorOffset" : anchorOffset,
                 "focusOffset" : focusOffset,
                 "editorDomString" : editorJsonString,
                 "noteNumber" : parseInt(noteNumber),
-                "lineNb" : parseInt(current_sentence_id.substring(3, current_sentence_id.length)),
+                "lineNb" : lineNb,
                }
 
         var data = JSON.stringify(item);
 
-        fetch('/grammar-note-numbers-editor/' + {{ lesson_nb }}, {
+        fetch('/grammar-note-numbers-editor/?level=' + {{ level }} + '&lesson_nb=' + {{ lesson_nb }}, {
                method: 'POST',
                headers: {
                  'Accept': 'application/json',
@@ -157,8 +158,8 @@
                 
                 console.log("data:", data);
                 console.log("data type :", typeof data);
-                document.getElementById("editor").innerHTML = data;
-                toggleActiveParagraph(current_sentence_id)
+                document.getElementById("id_" + lineNb).lastChild.innerHTML = data;
+                //toggleActiveParagraph(current_sentence_id)
               })
               .catch(error => {
               console.error(error);

@@ -3,7 +3,7 @@ from typing import Optional
 import datetime
 import pickle
 import pytz
-from sqlalchemy import ForeignKey, select, String, and_
+from sqlalchemy import ForeignKey, select, String, and_, desc
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
@@ -11,6 +11,8 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+from paths import get_path
+import yaml
 
 class Base(DeclarativeBase):
     pass
@@ -48,36 +50,81 @@ class Sentence(Base):
     def __repr__(self) -> str:
         return f"Sentence(id={self.id!r}, lesson={self.lesson!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
 
-class MarkedSentence(Base):
-    __tablename__ = "marked_sentences"
+class Paragraph(Base):
+    __tablename__ = "paragraphs"
     id: Mapped[int] = mapped_column(primary_key=True)
-    sentence: Mapped[str] 
-    comment: Mapped[Optional[str]]
-    line : Mapped[int]
-    session_id : Mapped[int] = mapped_column(ForeignKey("lesson_sessions.id"))
-    session : Mapped["LessonSession"] = relationship(back_populates="errored_sentences")
+    section : Mapped[int]
+    lesson_nb : Mapped[int]
+    line_nb : Mapped[int]
+    paragraph: Mapped[str]
+    translation: Mapped[str]
+    has_dash_dialogue: Mapped[bool]
+    grammar_indexes: Mapped[Optional[str]]
+    data: Mapped[Optional[str]]
     def __repr__(self) -> str:
-        return f"Sentence(id={self.id!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
+        return f"Paragraph(id={self.id!r}, section={self.section!r}, lesson_nb={self.lesson_nb!r}, line_nb={self.line_nb!r}, paragraph ={self.paragraph!r}, data ={self.data!r})"
 
 class LessonSession(Base):
     __tablename__ = "lesson_sessions"
     id: Mapped[int] = mapped_column(primary_key=True)
+    user: Mapped["User"] = relationship(back_populates="sessions")
     lesson: Mapped[int]
     date_time: Mapped[datetime.datetime]
     errors_number: Mapped[int]
-    errored_sentences : Mapped[List["MarkedSentence"]] = relationship(
+    user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
+    errored_paragraphs : Mapped[List["MarkedParagraph"]] = relationship(
         back_populates="session", cascade="all, delete-orphan")
     def __repr__(self) -> str:
         return f"date time : {self.date_time!r}, lesson {self.lesson!r} errors number : {self.errors_number!r}"
+
+class MarkedParagraph(Base):
+    __tablename__ = "marked_paragraphs"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    paragraph: Mapped[str] 
+    comment: Mapped[Optional[str]]
+    line : Mapped[int]
+    session_id : Mapped[int] = mapped_column(ForeignKey("lesson_sessions.id"))
+    session : Mapped["LessonSession"] = relationship(back_populates="errored_paragraphs")
+    def __repr__(self) -> str:
+        return f"Paragraph(id={self.id!r}, line={self.line!r}, paragraph ={self.paragraph!r}, comment={self.comment!r})"
+
+class User(Base):
+    __tablename__ = "user_account"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    username: Mapped[str]
+    password: Mapped[str]
+    fullname: Mapped[str]
+    email: Mapped[str]
+    parameters: Mapped[str]
+    parameters_version: Mapped[str]
+    sessions: Mapped[List["LessonSession"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan")
+    def __repr__(self) -> str:
+        return f"username : {self.username!r}, password : {self.password!r}, full name :{self.fullname}"
+
+class GeneralParameters(Base):
+    __tablename__ = "parameters"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    version: Mapped[str]
+    instance: Mapped[str]
+
+class GrammarNote(Base):
+    __tablename__ = "grammar_note"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    lesson: Mapped[int]
+    note_number: Mapped[int]
+    note: Mapped[str]
 
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
     Base.metadata.create_all(engine) 
     return engine
 
-database_name = 'sqlite:///db/assimil_spanishV1_1.db'
+database_name = "sqlite:////Users/pam/assimil/db/assimil_spanish.db"
+#database_name = get_path('database_name')
+
 global engine
-engine = get_database_engine(database_name)
+engine = get_database_engine(database_name, False)
 
 
 def fill_word_table(tonic_accent_word_dict, word_index_dict = {}):
@@ -126,22 +173,25 @@ def get_word_index_dict():
                 word_index_dict[entry.word.word].append((entry.lesson, entry.line))
     return word_index_dict
 
-def store_lesson_errors(lesson_number, errored_sentences, date_time = None):
+def store_lesson_errors(username, lesson_number, errored_paragraphs, date_time = None):
     if not date_time:
        date_time = datetime.datetime.now()
     with Session(engine) as session:
-        errored_sentences_list = []
-        for line in errored_sentences:
+        stmt = select(User).where(User.username == username)
+        user = session.scalars(stmt).one()
+        errored_paragraphs_list = []
+        for line in errored_paragraphs:
             print("----", line, "------")
-            errored_sentences_list.append(MarkedSentence(
+            errored_paragraphs_list.append(MarkedParagraph(
                 line = line,
-                sentence = errored_sentences[line]
+                paragraph = errored_paragraphs[line]
             ))
         l_obj = LessonSession(
+            user = user,
             lesson = lesson_number,
             date_time = date_time,
-            errors_number = len(errored_sentences_list),
-            errored_sentences = errored_sentences_list
+            errors_number = len(errored_paragraphs_list),
+            errored_paragraphs = errored_paragraphs_list
         )
         session.add(l_obj)
         session.commit()
@@ -157,26 +207,26 @@ def get_single_lesson_errors(lesson_nb, date_time : datetime.datetime):
     errors = {}
     with Session(engine) as session:
         for lesson_session in session.scalars(stmt):
-            for sentence_entry in lesson_session.errored_sentences:
-                errors[sentence_entry.line] = sentence_entry.sentence
+            for paragraph_entry in lesson_session.errored_paragraphs:
+                errors[paragraph_entry.line] = paragraph_entry.paragraph
 
     return errors
    
 def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
     if not begin_date: begin_date = datetime.datetime.min
     if not end_date: end_date = datetime.datetime.max
-    stmt = select(MarkedSentence).where(
+    stmt = select(MarkedParagraph).where(
                     and_(
-                        MarkedSentence.date_time >= begin_date,
-                        MarkedSentence.date_time <= end_date,
-                        MarkedSentence.lesson >= begin_lesson,
-                        MarkedSentence.lesson <= end_lesson,
+                        MarkedParagraph.date_time >= begin_date,
+                        MarkedParagraph.date_time <= end_date,
+                        MarkedParagraph.lesson >= begin_lesson,
+                        MarkedParagraph.lesson <= end_lesson,
                     )
                 )
     errors = []
     with Session(engine) as session:
         for entry in session.scalars(stmt):
-            errors.append(entry.sentence)
+            errors.append(entry.paragraph)
     return errors
 
 def get_lesson_sessions_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
@@ -200,3 +250,119 @@ def get_lesson_sessions_history(begin_lesson = 1, end_lesson = 100, begin_date =
             else:
                 sessions[entry.lesson] = {entry.date_time : entry.errors_number}
     return sessions
+
+def get_most_recent_lesson_in_history():
+    last_lesson_session = Session(engine).query(LessonSession).order_by(desc('date_time')).first()
+    return last_lesson_session.lesson
+    
+def update_paragraph(lesson_nb, line_nb, has_dash_dialogue, paragraph, translation = None, section = None):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.line_nb == line_nb
+            )
+    )
+
+    with Session(engine) as session:
+        entry = session.scalars(stmt).one()
+        if section:
+            entry.section = section
+        if translation:
+            entry.translation = translation
+        entry.paragraph = paragraph
+        entry.has_dash_dialogue = has_dash_dialogue
+        session.commit()
+
+def get_paragraphs(lesson_nb):
+    stmt = select(Paragraph).where(Paragraph.lesson_nb == lesson_nb)
+    paragraphs = {}
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            if entry.grammar_indexes:
+                note_numbers = yaml.safe_load(entry.grammar_indexes)
+            else:
+                note_numbers = None
+            paragraphs[entry.line_nb] = [entry.section, entry.has_dash_dialogue, entry.paragraph, note_numbers]
+    return paragraphs
+
+def get_single_paragraph(lesson_nb, line_nb):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.line_nb ==line_nb
+            )
+    )
+    with Session(engine) as session:
+        entry = session.scalars(stmt).one()
+        return entry.has_dash_dialogue, entry.paragraph, entry.translation
+    
+def get_paragraphs_translation(lesson_nb):
+    stmt = select(Paragraph).where(Paragraph.lesson_nb == lesson_nb)
+    paragraphs_translation = {}
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            paragraphs_translation[entry.line_nb] =  [entry.section, entry.has_dash_dialogue, entry.translation]
+
+    return paragraphs_translation
+
+def store_note_number(lesson_nb, line_nb, note_number, note_number_pos):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.line_nb == line_nb
+            )
+    )
+
+    with Session(engine) as session:
+        entry = session.scalars(stmt).one()
+        grammar_indexes_string = entry.grammar_indexes
+        if grammar_indexes_string:
+            grammar_indexes = yaml.safe_load(grammar_indexes_string)
+            if note_number in grammar_indexes:
+                if type(grammar_indexes[note_number]) is list:
+                    grammar_indexes[note_number].append(note_number_pos)
+                else:
+                    print("--------- coucou in store_note_number ----------", "grammar_indexes :", grammar_indexes)
+                    grammar_indexes[note_number] = [grammar_indexes[note_number], note_number_pos]
+
+            else:
+                grammar_indexes[note_number] = note_number_pos
+        else:
+            grammar_indexes = {note_number : note_number_pos}
+        entry.grammar_indexes = yaml.dump(grammar_indexes)
+        session.commit()
+
+
+def store_note(lesson_nb, note_number, note):
+    stmt = select(GrammarNote).where(
+        and_(
+            GrammarNote.lesson == lesson_nb,
+            GrammarNote.note_number == note_number
+        )
+    )
+    with Session(engine) as session:
+        entry = session.scalars(stmt).first()
+        if entry:
+            entry.note = note
+        else:
+            entry = GrammarNote(
+                lesson = lesson_nb,
+                note_number = note_number,
+                note = note
+            )
+            session.add(entry)
+        session.commit()
+
+def get_note(lesson_nb, note_number):
+    stmt = select(GrammarNote).where(
+        and_(
+            GrammarNote.lesson == lesson_nb,
+            GrammarNote.note_number == note_number
+        )
+    )
+    with Session(engine) as session:
+        entry = session.scalars(stmt).first()
+        if entry:   
+            return str(note_number) + '       ' + entry.note
+        else:
+            return None

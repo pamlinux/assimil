@@ -18,6 +18,10 @@
           overflow: auto;
         }
         
+        li h3 {
+            padding: 4px 8px;
+
+        }
         li a {
           display: block;
           color: #000;
@@ -50,14 +54,15 @@
 <body>
     <ul id="menu">
         {% if active == "home" %}
-            <li><a class="active" href="/espagnol/">Accueil</a></li>
+            <li><a class="active" href="/spanish/">Accueil</a></li>
         {% else %}
-            <li><a  href="/espagnol/">Accueil</a></li>
+            <li><a  href="/spanish/">Accueil</a></li>
         {% endif %}
+        <li><h3>Espagnol de base</h3></li>
         {% if active == "first-phase" %}
-            <li><a class="active" href="/first-phase/">Première phase</a></li>
+            <li><a class="active" href="/basic/first-phase/">Première phase</a></li>
         {% else %}
-            <li><a href="/first-phase/">Première phase</a></li>
+            <li><a href="/basic/first-phase/">Première phase</a></li>
         {% endif%}
         {% if active == "second-phase" %}
             <li><a  class="active" href="/second-phase/">Seconde phase</a></li>
@@ -74,10 +79,21 @@
         {% else %}
             <li><a href="/history/">Historique</a></li>
         {% endif %}
-        {% if active == "editor" %}
-            <li><a class="active" href="/editor/1">Editeur d'accent tonique</a></li>
+        {% if active == "basic-editor" %}
+            <li><a class="active" href="/basic/editor/1">Editeur d'accent tonique</a></li>
         {% else %}
-            <li><a href="/editor/1">Editeur d'accent tonique</a></li>
+            <li><a href="/basic/editor/1">Editeur d'accent tonique</a></li>
+        {% endif %}
+        <li><h3>Espagnol Avancé</h3></li>
+        {% if active == "using-spanish-first-phase" %}
+        <li><a class="active" href="/using_spanish/first-phase/">Première phase</a></li>
+        {% else %}
+        <li><a href="/using_spanish/first-phase/">Première phase</a></li>
+        {% endif %}
+        {% if active == "using-spanish-editor" %}
+            <li><a class="active" href="/using_spanish/editor/1">Editeur d'accent tonique</a></li>
+        {% else %}
+            <li><a href="/using_spanish/editor/1">Editeur d'accent tonique</a></li>
         {% endif %}
     </ul>
     <div id="main">

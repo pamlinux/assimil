@@ -29,7 +29,7 @@ function displayNote(noteNumber, event) {
     console.log("clicked on note :", noteNumber, "for lesson : ", {{ lesson_nb }})
     event.stopPropagation();
     console.log(event);
-    url = '/grammar_note/?lesson_nb={{ lesson_nb }}&note_nb=' + noteNumber;
+    url = '/grammar_note/?level={{ level }}&lesson_nb={{ lesson_nb }}&note_nb=' + noteNumber;
 
     const notePanel = document.getElementById("notePanel");
     const noteContent = document.getElementById("noteContent");

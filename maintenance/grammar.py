@@ -4,9 +4,9 @@ from selection import SelectionItem
 from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
 from jinja2 import Environment, FileSystemLoader
-from tonic_accent import get_spanish_lesson
+from tonic_accent import get_spanish_lesson, get_bold_paragraph_with_note_numbers
 from translation import get_french_lesson
-from database import store_note_number, store_note
+from database import store_note_number, store_note, get_paragraphs
 from paths import get_path      
 from notes_parser import NotesParser
 
@@ -47,7 +47,7 @@ def find_selection_elements(element):
     for child in element['children']:
         find_selection_elements(child)
 
-def get_html_with_grammar_number(item: GrammarNoteItem, lesson_nb):
+def get_html_with_grammar_number(item: GrammarNoteItem, level, lesson_nb):
     editor = json.loads(item.editorDomString)
     find_selection_elements(editor)
     focus_offset = item.focusOffset
@@ -96,12 +96,18 @@ def get_html_with_grammar_number(item: GrammarNoteItem, lesson_nb):
         else:
             raise
     
-    print(f"{text}\n{clean_text[:note_number_pos]}<sup> {note_number}</sup>{clean_text[note_number_pos:]}")
 
-    store_note_number(lesson_nb, line_nb, note_number, note_number_pos)
+    store_note_number(level, lesson_nb, line_nb, note_number, note_number_pos)
 
-    lesson_french, exercise1_correction = get_french_lesson(lesson_nb)
-    spanish_lesson, exercise1 = get_spanish_lesson(lesson_nb)
+    paragraphs = get_paragraphs(level, lesson_nb)
+    if  paragraphs is {}: raise
+    p = paragraphs[line_nb]
+ 
+    bold_paragraph = get_bold_paragraph_with_note_numbers(p[2], p[3])
+    print(f"bold paragraph : {bold_paragraph}")
+
+    lesson_french, exercise1_correction = get_french_lesson(level, lesson_nb)
+    spanish_lesson, exercise1 = get_spanish_lesson(level, lesson_nb)
 
     env = Environment(loader = FileSystemLoader("templates"))
     template = env.get_template('test-grammar-html.jinja')
@@ -113,7 +119,7 @@ def get_html_with_grammar_number(item: GrammarNoteItem, lesson_nb):
     )
 
     div0 = div0.replace('\n', '')
-    return div0
+    return bold_paragraph
     #return 
     #return jsonable_encoder(response)
     #return json.dumps([clean_text, clean_text[:note_number_pos] + "<sup> 1</sup>" + clean_text[note_number_pos:], note_number_pos])
@@ -136,8 +142,12 @@ def store_all_notes():
             for note_number, note in parser.notes:
                 store_note(lesson_nb, note_number, note)
 
-def store_all_notes2():
-    fn = "lessons/Notes.html"
+def store_all_notes2(level = 0):
+    if level == 0:
+        level_prefix = "Basic"
+    elif level == 1:
+        level_prefix = "UsingSpanish"
+    fn = os.path.join("lessons", level_prefix, "notes/Notes.html")
     notes_html = open(fn).read()
     parser = NotesParser()
     parser.analyze(notes_html)
@@ -146,8 +156,8 @@ def store_all_notes2():
         lesson_nb = notes[0]
         print(lesson_nb)
         for note in notes[1]:
-            print(note[0], "   ", note[1])
-            store_note(lesson_nb, note[0], note[1])
+            #print(note[0], "   ", note[1])
+            store_note(level, lesson_nb, note[0], note[1])
     
 
 

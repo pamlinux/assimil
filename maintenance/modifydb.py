@@ -52,7 +52,7 @@ def store_lessons(list_of_files):
                 if l[0].isdigit():
                     ie += 1
             except IndexError:
-                print(f"IndexError pour le fichier : {py_file_name} à la ligne : {ie}, {l}")
+                print(f"IndexError pour le fichier : {txt_file} à la ligne : {ie}, {l}")
             #newll.append(l.lstrip('0123456789 '))
             if first_line:
                 l = l.replace('\ufeff', '')

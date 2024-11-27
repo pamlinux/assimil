@@ -9,9 +9,10 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-from database import get_errors, get_most_recent_lesson_in_history, get_note
-from tonic_accent import get_title, get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
+from database import get_errors, get_default_lesson, get_note
+from tonic_accent import get_html_lessons_directory, get_lesson_audio_files_directory, get_title 
 from tonic_accent import get_history, get_single_lesson_with_errors, get_spanish_lesson
+from tonic_accent import get_list_of_bold_sentences, store_lesson, update_lesson, correct_word
 from pydantic import BaseModel
 from selection import proceed_marked_selection, delete_marked_selection, SelectionItem
 from selection import MarkedSentencesItem, store_second_phase_marked_sentences
@@ -21,7 +22,7 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-lessons_directory = get_path('lessons_directory')
+from database import NoSuchLesson
 
 @dataclass
 class SimpleModel:
@@ -71,8 +72,13 @@ def get_bold_word(item : CorrectItem):
         raise
     return word, syllables
 
-def get_full_path(lesson_nb, paragraph_nb):
-    lesson_directory = os.path.join(lessons_directory, f"L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL")
+def get_full_path(lesson_nb, paragraph_nb, level = 0):
+    lessons_directory = get_lesson_audio_files_directory(level)
+    if level == 0:
+        lesson_directory = os.path.join(lessons_directory, f"L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL")
+    elif level == 1:
+        lesson_directory = os.path.join(lessons_directory, f"L{str(lesson_nb).zfill(3)}-Using Spanish ASSIMIL")
+
 
     w = os.walk(lesson_directory)
     sentences_with_path = []
@@ -96,13 +102,13 @@ async def play_sentence(request: Request, lesson_nb : int = 8, sentence_nb : int
         request=request, name="play_sentence.html", context={"lesson_nb": lesson_nb, "sentence_nb" : sentence_nb}
     )
 
-#@app.get("/espagnol/{lesson_nb}", response_class=HTMLResponse)
+#@app.get("/spanish/{lesson_nb}", response_class=HTMLResponse)
 #async def display_lesson(request: Request, lesson_nb : int = 8):
 #    lesson = get_list_of_bold_sentences(lesson_nb)
 #    return templates.TemplateResponse(
 #        request=request, name="lesson.html", context={"active" : "lessons", "lesson_nb": lesson_nb, "lesson" : lesson})
 
-@app.get("/espagnol/", response_class=HTMLResponse)
+@app.get("/spanish/", response_class=HTMLResponse)
 async def display_home(request: Request, lesson_nb : int = 8):
     return templates.TemplateResponse(
         request=request, name="index.html", context={"active"  :"home"})
@@ -132,9 +138,9 @@ async def get_errors(item: ErrorItem):
     div0 = div0.replace('\n', '')
     return div0
 
-def get_lesson_errors_context(lesson_nb, datetimekey):
+def get_lesson_errors_context(lesson_nb, datetimekey, level = 0):
     date_time = datetime.strptime(datetimekey, '%d-%m-%Y %H:%M:%S%f')
-    lesson_french, exercise1_correction = get_french_lesson(lesson_nb)
+    lesson_french, exercise1_correction = get_french_lesson(level, lesson_nb)
     spanish_lesson, exercise1  = get_single_lesson_with_errors(lesson_nb, date_time)
     print(spanish_lesson, exercise1)
     date_time_string = date_time.strftime("%d-%m-%Y à %H:%M:%S")
@@ -169,7 +175,7 @@ def get_audio_file(request: Request, lesson_nb: int, paragraph_nb: int):
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
-@app.get("/first-phase/audio/")
+@app.get("/basic/first-phase/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
     print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
     sentence_path = get_full_path(lesson_nb, sentence_nb)
@@ -184,40 +190,57 @@ def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1)
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
-@app.get("/editor/{lesson_nb}", response_class=HTMLResponse)
+@app.get("/basic/editor/{lesson_nb}", response_class=HTMLResponse)
 async def edit(request: Request, lesson_nb : int = 3):
-    sentences = get_list_of_bold_sentences(lesson_nb)
+    sentences = get_list_of_bold_sentences(lesson_nb, level = 0)
+    context = {
+        "active" : "basic-editor",
+        "level" : 0,
+        "lesson_nb": lesson_nb,
+        "sentences" : sentences
+        }
     return templates.TemplateResponse(
-        request=request, name="editor.html", context={"active" : "editor", "lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="editor.html", context= context)
 
-@app.post("/editor/save/{lesson_nb}")
-def form_save(lesson_nb, form_data: SimpleModel = Depends()):
+@app.get("/using_spanish/editor/{lesson_nb}", response_class=HTMLResponse)
+async def edit(request: Request, lesson_nb : int = 3):
+    sentences = get_list_of_bold_sentences(lesson_nb, level = 1)
+    context = {
+        "active" : "using-spanish-editor",
+        "level" : 1,
+        "lesson_nb": lesson_nb,
+        "sentences" : sentences
+        }
+    return templates.TemplateResponse(
+        request=request, name="editor.html", context=context)
+
+@app.post("/editor/save/")
+def form_save(level: int, lesson_nb: int, form_data: SimpleModel = Depends()):
     ta = form_data.ta
     lesson_html = form_data.da
     print("numéro de la leçon : ", lesson_nb) 
     print(lesson_html)
-    pretty_lesson_html = store_lesson(lesson_nb, lesson_html)
-    #store_lesson(lesson_nb, lesson_html)
+    pretty_lesson_html = store_lesson(level, lesson_nb, lesson_html)
     
     return pretty_lesson_html
 
-@app.post("/editor/update/{lesson_nb}")
-def form_update(lesson_nb, form_data: SimpleModel = Depends()):
+@app.post("/editor/update/")
+def form_update(level: int, lesson_nb: int, form_data: SimpleModel = Depends()):
     ta = form_data.ta
     lesson_html = form_data.da
     print("numéro de la leçon : ", lesson_nb) 
     print(lesson_html)
-    pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
+    pretty_lesson_html = update_lesson(level, lesson_nb, lesson_html)
     print(f"pretty lesson : {pretty_lesson_html}")
     return pretty_lesson_html
 
-@app.post("/editor/correct/{lesson_nb}")
-def form_correct_word(lesson_nb,  item: CorrectItem):
+@app.post("/editor/correct/")
+def form_correct_word(level: int, lesson_nb: int,  item: CorrectItem):
     word, syllabes = get_bold_word(item)
     lesson_html = item.lesson
     print(lesson_html)
     print("word to correct", word, syllabes)
-    pretty_lesson_html = correct_word(lesson_nb, lesson_html, word, syllabes)
+    pretty_lesson_html = correct_word(level, lesson_nb, lesson_html, word, syllabes)
     return pretty_lesson_html
 
 @app.get("/marker-editor/{lesson_nb}")
@@ -235,11 +258,11 @@ async def test_ranges(lesson_nb, item: SelectionItem):
 async def test_ranges(lesson_nb, item: SelectionItem):
     return delete_marked_selection(lesson_nb, item)
 
-def get_second_phase_contex(lesson_nb):
-    french, exercise1_correction = get_french_lesson(lesson_nb)
+def get_second_phase_contex(lesson_nb, level = 0):
+    french, exercise1_correction = get_french_lesson(level, lesson_nb)
     print("--- lesson ---", french)
     print("--- exercise1_correction ---", exercise1_correction)
-    spanish_sentences, exercise1 = get_spanish_lesson(lesson_nb)
+    spanish_sentences, exercise1 = get_spanish_lesson(level, lesson_nb)
     context = {
         "active" : "second-phase",
         "lesson_nb": lesson_nb,
@@ -257,33 +280,50 @@ async def second_phase(request: Request, lesson_nb : int = 1):
 
 @app.get("/second-phase/", response_class=HTMLResponse)
 async def second_phase(request: Request, lesson_nb : int = 1):
-    lesson_nb = get_most_recent_lesson_in_history()
+    lesson_nb = get_default_lesson()
     context = get_second_phase_contex(lesson_nb)
     return templates.TemplateResponse(
         request=request, name="second-phase.html", context=context)
 
-def get_first_phase_context(lesson_nb):
-    lesson_french, exercise1_correction = get_french_lesson(lesson_nb)
-    spanish_lesson, exercise1 = get_spanish_lesson(lesson_nb)
+
+def get_first_phase_context(lesson_nb, active="first-phase", level = 0):
+    lesson_french, exercise1_correction = get_french_lesson(level, lesson_nb)
+    print("------- lesson_nb : ", lesson_nb)
+    spanish_lesson_and_execrice1 = get_spanish_lesson(level, lesson_nb)
+    if spanish_lesson_and_execrice1:
+        spanish_lesson, exercise1 = spanish_lesson_and_execrice1
+    else:
+        return None
+    
+    if level == 0:
+        level_prefix = "basic"
+    elif level == 1:
+        level_prefix = "using_spanish"
+    else:
+        raise
+
     context = {
-        "active" : "first-phase",
+        "active" : active,
+        "level" : level,
+        "level_prefix" : level_prefix,
         "lesson_nb": lesson_nb,
         "lesson" : spanish_lesson,                                                        
         "exercise1" : exercise1,
         "french_sentences" : lesson_french + exercise1_correction
     }
+    print(f"---- In get_first_phase_context, with level_prefix : {level_prefix}")
     return context
 
-@app.get("/first-phase/{lesson_nb}", response_class=HTMLResponse)
+@app.get("/basic/first-phase/{lesson_nb}", response_class=HTMLResponse)
 async def first_phase(request: Request, lesson_nb : int = 1):
-    context = get_first_phase_context(lesson_nb)
+    context = get_first_phase_context(lesson_nb, level = 0)
     return templates.TemplateResponse(
         request=request, name="first-phase.html", context=context)
 
-@app.get("/first-phase/", response_class=HTMLResponse)
+@app.get("/basic/first-phase/", response_class=HTMLResponse)
 async def first_phase_default(request: Request):
-    lesson_nb = get_most_recent_lesson_in_history()
-    context = get_first_phase_context(lesson_nb)
+    lesson_nb = get_default_lesson()
+    context = get_first_phase_context(lesson_nb, level = 0)
     return templates.TemplateResponse(
         request=request, name="first-phase.html", context=context)
 
@@ -322,17 +362,64 @@ async def store_paragraph_changes(item : ParagraphCorrectionItem):
     print("coucou", item)
     return "OK"
 
-@app.get("/test-grammar/{lesson_nb}", response_class=HTMLResponse)
-async def test_grammar(request: Request, lesson_nb : int = 1):
-    context = get_first_phase_context(lesson_nb)
+def get_grammar_context(level, lesson_nb):
+    lesson_french, exercise1_correction = get_french_lesson(level, lesson_nb)
+    print("------- lesson_nb : ", lesson_nb)
+    spanish_lesson_and_execrice1 = get_spanish_lesson(level, lesson_nb)
+    if spanish_lesson_and_execrice1:
+        spanish_lesson, exercise1 = spanish_lesson_and_execrice1
+    else:
+        return None
+
+    context = {
+        "level" : level,
+        "lesson_nb": lesson_nb,
+        "lesson" : spanish_lesson,                                                        
+        "exercise1" : exercise1,
+        "french_sentences" : lesson_french + exercise1_correction
+    }
+    return context
+
+@app.get("/test-grammar/", response_class=HTMLResponse)
+async def test_grammar(request: Request, level: int, lesson_nb : int = 1):
+    context = get_grammar_context(level, lesson_nb)
     return templates.TemplateResponse(
         request=request, name="test-grammar.jinja", context=context)
 
-@app.post("/grammar-note-numbers-editor/{lesson_nb}")
-async def insert_grammar_note_number(item: GrammarNoteItem, lesson_nb: int):
-    return get_html_with_grammar_number(item, lesson_nb)
+@app.post("/grammar-note-numbers-editor/")
+async def insert_grammar_note_number(level: int, lesson_nb: int, item: GrammarNoteItem):
+    return get_html_with_grammar_number(item, level, lesson_nb)
 
 @app.get("/grammar_note/", response_class=HTMLResponse)
-async def get_errors_list_date(request: Request, lesson_nb : int = 0, note_nb : int = 0):
+async def get_errors_list_date(request: Request, level: int, lesson_nb : int = 0, note_nb : int = 0):
     print(f"lesson_nb : {lesson_nb}, note_nb : {note_nb}")
-    return get_note(lesson_nb, note_nb)
+    return get_note(level, lesson_nb, note_nb)
+
+@app.get("/using_spanish/first-phase/audio")
+def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
+    print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
+    sentence_path = get_full_path(lesson_nb, sentence_nb, level = 1)
+    data = open(sentence_path, "rb").read()
+    return Response(content=data, media_type="audio/mpeg")
+
+@app.get("/using_spanish/first-phase/", response_class=HTMLResponse)
+async def using_spanish_first_phase_default(request: Request):
+    lesson_nb = get_default_lesson(level = 1)
+    try:
+        context = get_first_phase_context(lesson_nb, active = "using-spanish-first-phase", level = 1)
+    except NoSuchLesson:
+        return "No such lesson"
+    return templates.TemplateResponse(
+        request=request, name="first-phase.html", context=context)
+
+@app.get("/using_spanish/first-phase/{lesson_nb}", response_class=HTMLResponse)
+async def using_spanish_first_phase_default(request: Request, lesson_nb : int = 1):
+    try: 
+        context = get_first_phase_context(lesson_nb, active = "using-spanish-first-phase", level = 1)
+    except NoSuchLesson:
+        return "No such Lesson"
+    return templates.TemplateResponse(
+        request=request, name="first-phase.html", context=context)
+
+
+

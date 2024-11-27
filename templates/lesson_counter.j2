@@ -10,8 +10,10 @@
 {% macro changeLessonFunction(base_page_url) -%}
         function proceedChangeLesson() {
           var lesson_nb = document.getElementById("lesson_nb").value
-          url = {{ base_page_url }} + parseInt(lesson_nb);
-          window.location.href = url;
+          url = parseInt(lesson_nb);
+          console.log("in lesson_counter with url : ", url)
+          location.href = url;
+
         }
         counter = document.getElementById('lesson_nb');
         counter.addEventListener('change', () => {
