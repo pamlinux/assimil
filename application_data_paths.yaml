@@ -1,6 +1,8 @@
-database_name: sqlite:////Users/pam/assimil/db/assimil_spanish.db
-lessons_directory: /Users/pam/AssimilAudio/Sentences
-html_lessons_directory: /Users/pam/assimil/lessons/html
+database_name: sqlite:////Users/pam/assimil/db/assimil_spanish_new.db
+basic_audio_directory: /Users/pam/AssimilAudio/Basic
+using_spanish_audio_directory: /Users/pam/AssimilAudio/UsingSpanish
+html_basic_lessons_directory: /Users/pam/assimil/lessons/Basic/html
+html_using_spanish_lessons_directory: /Users/pam/assimil/lessons/UsingSpanish/html
 databases_directory: /Users/pam/assimil/db
 french_translation_lessons_directoy: /Users/pam/assimil/lessons/new
 word_dict_logfilename: /Users/pam/assimil/word_dict_logfile.log

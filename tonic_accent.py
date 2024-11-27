@@ -10,52 +10,79 @@ from database import get_single_lesson_errors, get_lesson_sessions_history, get_
 import datetime
 from paths import get_path
 
-html_lessons_directory = get_path('html_lessons_directory')
+html_basic_lessons_directory = get_path('html_basic_lessons_directory')
+html_using_spanish_lessons_directory = get_path('html_using_spanish_lessons_directory')
+
+basic_audio_directory = get_path('basic_audio_directory')
+using_spanish_audio_directory = get_path('using_spanish_audio_directory')
+
 databases_directory = get_path('databases_directory')
 
 word_dict_logfilename = get_path('word_dict_logfilename')
 
 parser = MyHTMLParser()
 
+def get_html_lessons_directory(level):
+    if level == 0:
+        html_lessons_directory = html_basic_lessons_directory
+    elif level == 1:
+        html_lessons_directory = html_using_spanish_lessons_directory
+    else:
+        raise
+    return html_lessons_directory
 
-def get_html_lesson_list():
-    file_list = []
+def get_lesson_audio_files_directory(level):
+    if level == 0:
+        audio_files_directory = basic_audio_directory
+    elif level == 1:
+        audio_files_directory = using_spanish_audio_directory
+    else:
+        raise
+    return audio_files_directory
+
+def get_html_lesson_files(level):
+    filenames_list = []
     m = "L[\d]{3}"
     p = re.compile(m)
-    w = os.walk(html_lessons_directory)
+    lessons_directory = get_html_lessons_directory(level)
+    w = os.walk(lessons_directory)
     for (dirpath, dirnames, filenames) in w:
         for fn in filenames:
             if p.match(fn):
-                file_list.append(fn)
-    return file_list
+                filenames_list.append(fn)
+    filenames_list = sorted(filenames_list)
+    return filenames_list
 
-def fill_word_tonic_accent_dict_from_html_files(filenames, word_dict):
+def fill_word_tonic_accent_dict_from_html_files(word_dict):
     log_file_name = Path(databases_directory, word_dict_logfilename)
     logfile = open(log_file_name, 'w')
-    
-    for fn in filenames:
-        lesson_nb = int(fn[1:4])
-        lesson = open(os.path.join(html_lessons_directory, fn)).read()
-        #print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
-        parser.analyze_lesson(lesson, lesson_nb)
-        wd = parser.get_lesson_word_tonic_accent_dict()
-        for word in wd:
-            if not word in word_dict:
-                word_dict[word] = wd[word]
-            else:
-                if wd[word] != word_dict[word]:
-                    logfile.write(f"different tonic accent in lesson {lesson_nb} for word {word} {wd[word]} / {word_dict[word]} \n")
+    for level in [0, 1]:
+        html_lessons_directory = get_html_lessons_directory(level)
+        html_lesson_files = get_html_lesson_files(level)
+        for fn in html_lesson_files:
+            lesson_nb = int(fn[1:4])
+            lesson = open(os.path.join(html_lessons_directory, fn)).read()
+            #print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
+            parser.analyze_lesson(lesson, level, lesson_nb)
+            wd = parser.get_lesson_word_tonic_accent_dict()
+            for word in wd:
+                if not word in word_dict:
+                    word_dict[word] = wd[word]
+                else:
+                    if wd[word] != word_dict[word]:
+                        logfile.write(f"different tonic accent in lesson {lesson_nb} for word {word} {wd[word]} / {word_dict[word]} \n")
 
     for word in word_dict:
         logfile.write(f"{word} : {word_dict[word]}\n")
     logfile.close()
 
-def fill_word_index_dict_from_html_files(filenames, word_dict):
+def fill_word_index_dict_from_html_files(filenames, word_dict, level):
+    html_lessons_directory = get_html_lessons_directory(level)
     for fn in filenames:
         lesson_nb = int(fn[1:4])
         lesson = open(os.path.join(html_lessons_directory, fn)).read()
         #print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
-        parser.analyze_lesson(lesson, lesson_nb)
+        parser.analyze_lesson(lesson, level, lesson_nb)
         wd = parser.get_lesson_word_index_dict()
         for word in wd:
             if not word in word_dict:
@@ -65,8 +92,7 @@ def fill_word_index_dict_from_html_files(filenames, word_dict):
 
 def get_tonic_accent_word_dict():
     word_dict = {}
-    lessons_filename = sorted(get_html_lesson_list())
-    fill_word_tonic_accent_dict_from_html_files(lessons_filename, word_dict)
+    fill_word_tonic_accent_dict_from_html_files(word_dict)
     return word_dict
 
 def get_word_index_dict():
@@ -128,7 +154,7 @@ def get_bold_paragraph_with_note_numbers(paragraph, note_numbers, lesson_dict = 
         np = note_positions[np_index][0]
     else:
         np = float('inf')
-    tokens = re.findall(r"[\w]+", paragraph)
+    tokens = re.findall(r"[\w]+|\S", paragraph)
 
     for token in tokens:
         token_length = len(token)
@@ -148,8 +174,14 @@ def get_bold_paragraph_with_note_numbers(paragraph, note_numbers, lesson_dict = 
         bold_paragraph += f"<sup onclick='(function(event) {{ displayNote({note_positions[np_index][1]}, event); }})(event)' class='assimil'> {note_positions[np_index][1]}</sup>"
     return bold_paragraph
 
-def get_sentences_from_audio_files(lesson_nb : int):
-    lesson_directory = f"Sentences/L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL"
+def get_paragraphs_from_audio_files(lesson_nb : int, level = 0):
+    if level == 0:
+        lesson_directory = os.path.join(basic_audio_directory,f"L{str(lesson_nb).zfill(3)}-Spanish ASSIMIL")
+    elif level == 1:
+        lesson_directory = os.path.join(using_spanish_audio_directory,f"L{str(lesson_nb).zfill(3)}-Using Spanish ASSIMIL")
+    else:
+        raise
+
     w = os.walk(lesson_directory)
     sentences_with_path = []
     for (dirpath, dirnames, filenames) in w:
@@ -162,8 +194,12 @@ def get_sentences_from_audio_files(lesson_nb : int):
         pathes, titles = zip(*sorted(sentences_with_path))
     return titles
     
-def get_sentences(lesson_nb : int):
-    lesson_filename = os.path.join(html_lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
+def get_sentences(lesson_nb : int, level = 0):
+    if level == 0:
+        lesson_filename = os.path.join(html_basic_lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
+    elif level == 1:
+        lesson_filename = os.path.join(html_using_spanish_lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
+
     try:
         f = open(lesson_filename, "r")
         lines = f.readlines()
@@ -171,10 +207,10 @@ def get_sentences(lesson_nb : int):
         lesson = ""
         for line in lines:
             lesson += line
-        parser.analyze_lesson(lesson, lesson_nb)
+        parser.analyze_lesson(lesson, level, lesson_nb)
         sentences = parser.get_sentences()
     except FileNotFoundError:
-        sentences = get_sentences_from_audio_files(lesson_nb)
+        sentences = get_paragraphs_from_audio_files(lesson_nb)
     return sentences
 
 def get_html_sentences(lesson_nb : int):
@@ -190,16 +226,17 @@ def get_html_sentences(lesson_nb : int):
         raise
     return paragraphs
         
-def get_list_of_bold_sentences(lesson_nb):
-    paragraphs = get_paragraphs(lesson_nb)
+def get_list_of_bold_sentences(lesson_nb, level = 0):
+    paragraphs = get_paragraphs(level, lesson_nb)
     lines_nb = sorted(paragraphs.keys())
     lesson_with_bold_sentences = []
     for k in lines_nb:
         lesson_with_bold_sentences.append(get_bold_paragraph(paragraphs[k][2]).replace('"', "&quot;"))
     return lesson_with_bold_sentences
 
-def get_spanish_lesson(lesson_nb):
-    paragraphs = get_paragraphs(lesson_nb)
+def get_spanish_lesson(level, lesson_nb):
+    paragraphs = get_paragraphs(level, lesson_nb)
+    if  paragraphs is {}: return None
     p0 = paragraphs[0]
     p1 = paragraphs[1]
     lesson = [get_bold_paragraph_with_note_numbers(p0[2], p0[3]), get_bold_paragraph_with_note_numbers(p1[2], p1[3])]
@@ -217,9 +254,9 @@ def get_spanish_lesson(lesson_nb):
     return lesson, exercise1_correction
  
 
-def update_lesson(lesson_nb, lesson_html):
+def update_lesson(level, lesson_nb, lesson_html):
     pretty_lesson_html = ""
-    parser.analyze_lesson(lesson_html, lesson_nb)
+    parser.analyze_lesson(lesson_html, level, lesson_nb)
     lesson_word_dict = parser.get_lesson_word_tonic_accent_dict()
     sentences = parser.get_sentences()
     for sentence in sentences:
@@ -227,23 +264,23 @@ def update_lesson(lesson_nb, lesson_html):
             pretty_lesson_html += "<p>" + get_bold_paragraph(sentence, lesson_word_dict) + "</p>"
     return pretty_lesson_html
         
-def store_lesson(lesson_nb, lesson_html):
-    filename = os.path.join(html_lessons_directory, f"L{str(lesson_nb).zfill(3)}.html")
-    pretty_lesson_html = update_lesson(lesson_nb, lesson_html)
+def store_lesson(level, lesson_nb, lesson_html):
+    filename = os.path.join(get_html_lessons_directory(level), f"L{str(lesson_nb).zfill(3)}.html")
+    pretty_lesson_html = update_lesson(level, lesson_nb, lesson_html)
     file = open(filename, "w")
     file.write(pretty_lesson_html)
     file.close()
 
-    parser.analyze_lesson(lesson_html, lesson_nb)
+    parser.analyze_lesson(lesson_html, level, lesson_nb)
     lesson_word_dict = parser.get_lesson_word_tonic_accent_dict()
     print("lesson_word_dict", lesson_word_dict)
     for word in lesson_word_dict:
         global_word_dict[word] = lesson_word_dict[word]
     return pretty_lesson_html
        
-def correct_word(lesson_nb, lesson_html, word, syllabes):
+def correct_word(level, lesson_nb, lesson_html, word, syllabes):
     pretty_lesson_html = ""
-    parser.analyze_lesson(lesson_html, lesson_nb)
+    parser.analyze_lesson(level, lesson_html, lesson_nb)
     lesson_word_dict = parser.get_lesson_word_tonic_accent_dict()
     global_word_dict[word] = syllabes
     lesson_word_dict[word] = syllabes
@@ -269,8 +306,9 @@ def clean_paragraph(p):
         para = p[4:]
     return para
 
-def get_single_lesson_with_errors(lesson_nb, date_time):
-    spanish_lesson = get_spanish_lesson(lesson_nb)
+def get_single_lesson_with_errors(lesson_nb, date_time, level = 0):
+    spanish_lesson = get_spanish_lesson(level, lesson_nb)
+    if not spanish_lesson: raise
     errors = get_single_lesson_errors(lesson_nb, date_time)
     line_nb = 0
     for snb, section in enumerate(spanish_lesson):

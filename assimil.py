@@ -3,7 +3,7 @@ from jinja2 import Environment, FileSystemLoader
 from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from tonic_accent import get_sentences_from_audio_files, get_sentences, global_word_dict
+from tonic_accent import get_paragraphs_from_audio_files, get_sentences, global_word_dict
 from database import update_paragraph, get_single_paragraph, get_paragraphs_translation, engine, Paragraph
 from translation import store_french_lesson
 
@@ -60,7 +60,7 @@ def get_correct_paragraphs_from_mp3_page():
     k= 0
     paragraphs_data = []
     for lesson_nb in range(1, 101):
-        mp3_paragraphs = get_sentences_from_audio_files(lesson_nb)
+        mp3_paragraphs = get_paragraphs_from_audio_files(lesson_nb)
         modified_paragraphs = get_sentences(lesson_nb)
         for line_nb, mp3_paragraph in enumerate(mp3_paragraphs):
             tokens = re.findall(r"[\w]+", mp3_paragraph)
@@ -90,7 +90,7 @@ def get_correct_paragraphs_page_old():
     k= 0
     paragraphs_data = []
     for lesson_nb in range(1, 101):
-        mp3_paragraphs = get_sentences_from_audio_files(lesson_nb)
+        mp3_paragraphs = get_paragraphs_from_audio_files(lesson_nb)
         modified_paragraphs = get_sentences(lesson_nb)
         for line_nb, mp3_paragraph in enumerate(mp3_paragraphs):
             modified_paragraph = modified_paragraphs[line_nb].strip()

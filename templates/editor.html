@@ -42,7 +42,7 @@
           copyContent()
           var formElement = document.getElementById('myForm');
           var data = new FormData(formElement);
-          fetch('/editor/save/' + {{ lesson_nb }}, {
+          fetch('/editor/save/?level=' + {{ level }} +'&lesson_nb=' + {{ lesson_nb }}, {
                 method: 'POST',
                 body: data,
               })
@@ -58,7 +58,7 @@
           copyContent()
           var formElement = document.getElementById('myForm');
           var data = new FormData(formElement);
-          fetch('/editor/update/' + {{ lesson_nb }}, {
+          fetch('/editor/update/?level=' + {{ level }} +'&lesson_nb=' + {{ lesson_nb }}, {
                 method: 'POST',
                 body: data,
               })
@@ -124,7 +124,7 @@
                }
 
         var data = JSON.stringify(item);
-        fetch('/editor/correct/' + {{ lesson_nb }}, {
+        fetch('/' + '{{ level }}' + '/editor/correct/' + {{ lesson_nb }}, {
                method: 'POST',
                headers: {
                  'Accept': 'application/json',

@@ -3,7 +3,7 @@ from typing import Optional
 import datetime
 import pickle
 import pytz
-from sqlalchemy import ForeignKey, select, String, and_, desc
+from sqlalchemy import ForeignKey, select, String, and_, desc, exc
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
@@ -13,6 +13,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from paths import get_path
 import yaml
+
+class NoSuchLesson(Exception):
+    pass
 
 class Base(DeclarativeBase):
     pass
@@ -32,27 +35,19 @@ class Word(Base):
 class IndexEntry(Base):
     __tablename__ = "word_index"
     id : Mapped[int] = mapped_column(primary_key=True)
-    lesson : Mapped[int]
-    line : Mapped[int]
+    level : Mapped[int]
+    lesson_nb : Mapped[int]
+    line_nb : Mapped[int]
     position : Mapped[Optional[int]]
     word_id : Mapped[int] = mapped_column(ForeignKey("word_dict.id"))
     word : Mapped["Word"] = relationship(back_populates="index_ref_entries")
     def __repr__(self) -> str:
         return f"IndexEntry(id={self.id!r}, word={self.word!r}, word_id={self.word_id}, lesson={self.lesson!r}, line={self.line!r}), position={self.position!r}"
         
-class Sentence(Base):
-    __tablename__ = "sentences"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    sentence: Mapped[str] 
-    comment: Mapped[Optional[str]]
-    lesson : Mapped[int]
-    line : Mapped[int]
-    def __repr__(self) -> str:
-        return f"Sentence(id={self.id!r}, lesson={self.lesson!r}, line={self.line!r}, sentence ={self.sentence!r}, comment={self.comment!r})"
-
 class Paragraph(Base):
     __tablename__ = "paragraphs"
     id: Mapped[int] = mapped_column(primary_key=True)
+    level : Mapped[int]
     section : Mapped[int]
     lesson_nb : Mapped[int]
     line_nb : Mapped[int]
@@ -62,31 +57,32 @@ class Paragraph(Base):
     grammar_indexes: Mapped[Optional[str]]
     data: Mapped[Optional[str]]
     def __repr__(self) -> str:
-        return f"Paragraph(id={self.id!r}, section={self.section!r}, lesson_nb={self.lesson_nb!r}, line_nb={self.line_nb!r}, paragraph ={self.paragraph!r}, data ={self.data!r})"
+        return f"Paragraph(id={self.id!r}, level={self.level!r}, section={self.section!r}, lesson_nb={self.lesson_nb!r}, line_nb={self.line_nb!r}, paragraph ={self.paragraph!r}, grammar_indexes : {self.grammar_indexes!r}, data = {self.data!r})"
 
 class LessonSession(Base):
     __tablename__ = "lesson_sessions"
     id: Mapped[int] = mapped_column(primary_key=True)
     user: Mapped["User"] = relationship(back_populates="sessions")
-    lesson: Mapped[int]
+    level: Mapped[int]
+    lesson_nb: Mapped[int]
     date_time: Mapped[datetime.datetime]
     errors_number: Mapped[int]
     user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
     errored_paragraphs : Mapped[List["MarkedParagraph"]] = relationship(
         back_populates="session", cascade="all, delete-orphan")
     def __repr__(self) -> str:
-        return f"date time : {self.date_time!r}, lesson {self.lesson!r} errors number : {self.errors_number!r}"
+        return f"date time : {self.date_time!r}, level : {self.level!r}, lesson {self.lesson_nb!r} errors number : {self.errors_number!r}"
 
 class MarkedParagraph(Base):
     __tablename__ = "marked_paragraphs"
     id: Mapped[int] = mapped_column(primary_key=True)
     paragraph: Mapped[str] 
     comment: Mapped[Optional[str]]
-    line : Mapped[int]
+    line_nb : Mapped[int]
     session_id : Mapped[int] = mapped_column(ForeignKey("lesson_sessions.id"))
     session : Mapped["LessonSession"] = relationship(back_populates="errored_paragraphs")
     def __repr__(self) -> str:
-        return f"Paragraph(id={self.id!r}, line={self.line!r}, paragraph ={self.paragraph!r}, comment={self.comment!r})"
+        return f"Paragraph(id={self.id!r}, line={self.line_nb!r}, paragraph ={self.paragraph!r}, comment={self.comment!r})"
 
 class User(Base):
     __tablename__ = "user_account"
@@ -111,21 +107,23 @@ class GeneralParameters(Base):
 class GrammarNote(Base):
     __tablename__ = "grammar_note"
     id: Mapped[int] = mapped_column(primary_key=True)
-    lesson: Mapped[int]
+    level: Mapped[int]
+    lesson_nb: Mapped[int]
     note_number: Mapped[int]
     note: Mapped[str]
-
+    def __repr__(self) -> str:
+        return f"level : {self.level}, lessons_nb : {self.lesson_nb}, note_number : {self.note_number}, note : {self.note}"
+    
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
     Base.metadata.create_all(engine) 
     return engine
 
-#database_name = "sqlite:////Users/pam/assimil/db/assimil_spanish_mnt2.db"
-database_name = get_path('database_name')
+database_name = "sqlite:////Users/pam/assimil/db/assimil_spanish_mnt3.db"
+#database_name = get_path('database_name')
 
 global engine
 engine = get_database_engine(database_name, False)
-
 
 def fill_word_table(tonic_accent_word_dict, word_index_dict = {}):
     with Session(engine) as session:
@@ -141,17 +139,6 @@ def fill_word_table(tonic_accent_word_dict, word_index_dict = {}):
                 index_ref_entries=entries
             )
             session.add_all([word_obj])
-        session.commit()
-
-def fill_sentences_table(lesson, sentences):
-    with Session(engine) as session:
-        for line, sentence in enumerate(sentences):
-            s_obj = Sentence(
-                lesson = lesson,
-                line = line,
-                sentence = sentence
-            )
-            session.add(s_obj)
         session.commit()
 
 def get_tonic_accent_word_dict():
@@ -180,15 +167,16 @@ def store_lesson_errors(username, lesson_number, errored_paragraphs, date_time =
         stmt = select(User).where(User.username == username)
         user = session.scalars(stmt).one()
         errored_paragraphs_list = []
-        for line in errored_paragraphs:
-            print("----", line, "------")
+        for line_nb in errored_paragraphs:
+            print("----", line_nb, "------")
             errored_paragraphs_list.append(MarkedParagraph(
-                line = line,
-                paragraph = errored_paragraphs[line]
+                line_nb = line_nb,
+                paragraph = errored_paragraphs[line_nb]
             ))
         l_obj = LessonSession(
             user = user,
-            lesson = lesson_number,
+            level = 0,
+            lesson_nb = lesson_number,
             date_time = date_time,
             errors_number = len(errored_paragraphs_list),
             errored_paragraphs = errored_paragraphs_list
@@ -200,7 +188,7 @@ def store_lesson_errors(username, lesson_number, errored_paragraphs, date_time =
 def get_single_lesson_errors(lesson_nb, date_time : datetime.datetime):
     print(f"----- In get_single_lesson_errors  date : {date_time}, of type {type(date_time)}")
     stmt = select(LessonSession).where(
-                LessonSession.lesson == lesson_nb,
+                LessonSession.lesson_nb == lesson_nb,
                 LessonSession.date_time == date_time
             )
 
@@ -208,7 +196,7 @@ def get_single_lesson_errors(lesson_nb, date_time : datetime.datetime):
     with Session(engine) as session:
         for lesson_session in session.scalars(stmt):
             for paragraph_entry in lesson_session.errored_paragraphs:
-                errors[paragraph_entry.line] = paragraph_entry.paragraph
+                errors[paragraph_entry.line_nb] = paragraph_entry.paragraph
 
     return errors
    
@@ -229,7 +217,7 @@ def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date =
             errors.append(entry.paragraph)
     return errors
 
-def get_lesson_sessions_history(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date = None):
+def get_lesson_sessions_history(begin_lesson_nb = 1, end_lesson_nb = 100, begin_date = None, end_date = None):
     print(f"----------------- begin_date : {begin_date}")
     print(f"----------------- end_date : {end_date}")
     if not begin_date: begin_date = datetime.datetime.min
@@ -239,22 +227,55 @@ def get_lesson_sessions_history(begin_lesson = 1, end_lesson = 100, begin_date =
                 and_(
                     LessonSession.date_time >= begin_date,
                     LessonSession.date_time <= end_date,
-                    LessonSession.lesson <= end_lesson,
-                    LessonSession.lesson >= begin_lesson
+                    LessonSession.lesson_nb <= end_lesson_nb,
+                    LessonSession.lesson_nb >= begin_lesson_nb
                 )
             )
     with Session(engine) as session:
         for entry in session.scalars(stmt):
-            if entry.lesson in sessions:
-                sessions[entry.lesson][entry.date_time] = entry.errors_number
+            if entry.lesson_nb in sessions:
+                sessions[entry.lesson_nb][entry.date_time] = entry.errors_number
             else:
-                sessions[entry.lesson] = {entry.date_time : entry.errors_number}
+                sessions[entry.lesson_nb] = {entry.date_time : entry.errors_number}
     return sessions
 
-def get_most_recent_lesson_in_history():
-    last_lesson_session = Session(engine).query(LessonSession).order_by(desc('date_time')).first()
-    return last_lesson_session.lesson
-    
+def get_default_lesson(level = 0):
+    if level == 0:
+        last_lesson_session = Session(engine).query(LessonSession).order_by(desc('date_time')).first()
+        return last_lesson_session.lesson_nb
+    elif level == 1:
+        return 1
+
+def store_paragraph(level, lesson_nb, section, line_nb, has_dash_dialogue, paragraph, translation = None):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.level == level,
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.line_nb == line_nb
+            )
+    )
+    print("level :", level, "lesson_nb : ", lesson_nb, "line_nb :", line_nb)
+    with Session(engine) as session:
+        try:
+            entry = session.scalars(stmt).one()
+            entry.section = section
+            entry.has_dash_dialogue = has_dash_dialogue
+            entry.paragraph = paragraph
+            entry.translation = translation
+        except exc.NoResultFound:
+            print("titi")
+            entry = Paragraph(
+                level = level,
+                lesson_nb = lesson_nb,
+                section = section,
+                line_nb = line_nb,
+                has_dash_dialogue = has_dash_dialogue,
+                paragraph = paragraph,
+                translation = translation
+            )
+            session.add(entry)
+        session.commit()
+
 def update_paragraph(lesson_nb, line_nb, has_dash_dialogue, paragraph, translation = None, section = None):
     stmt = select(Paragraph).where(
         and_(
@@ -273,8 +294,14 @@ def update_paragraph(lesson_nb, line_nb, has_dash_dialogue, paragraph, translati
         entry.has_dash_dialogue = has_dash_dialogue
         session.commit()
 
-def get_paragraphs(lesson_nb):
-    stmt = select(Paragraph).where(Paragraph.lesson_nb == lesson_nb)
+def get_paragraphs(level, lesson_nb):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.lesson_nb == lesson_nb,
+            Paragraph.level == level
+        )
+    )
+    
     paragraphs = {}
     with Session(engine) as session:
         for entry in session.scalars(stmt):
@@ -283,6 +310,7 @@ def get_paragraphs(lesson_nb):
             else:
                 note_numbers = None
             paragraphs[entry.line_nb] = [entry.section, entry.has_dash_dialogue, entry.paragraph, note_numbers]
+    if paragraphs == {}: raise NoSuchLesson
     return paragraphs
 
 def get_single_paragraph(lesson_nb, line_nb):
@@ -296,8 +324,14 @@ def get_single_paragraph(lesson_nb, line_nb):
         entry = session.scalars(stmt).one()
         return entry.has_dash_dialogue, entry.paragraph, entry.translation
     
-def get_paragraphs_translation(lesson_nb):
-    stmt = select(Paragraph).where(Paragraph.lesson_nb == lesson_nb)
+def get_paragraphs_translation(level, lesson_nb):
+    stmt = select(Paragraph).where(
+        and_(
+            Paragraph.level == level,
+            Paragraph.lesson_nb == lesson_nb
+            )
+    )
+
     paragraphs_translation = {}
     with Session(engine) as session:
         for entry in session.scalars(stmt):
@@ -305,9 +339,10 @@ def get_paragraphs_translation(lesson_nb):
 
     return paragraphs_translation
 
-def store_note_number(lesson_nb, line_nb, note_number, note_number_pos):
+def store_note_number(level, lesson_nb, line_nb, note_number, note_number_pos):
     stmt = select(Paragraph).where(
         and_(
+            Paragraph.level == level,
             Paragraph.lesson_nb == lesson_nb,
             Paragraph.line_nb == line_nb
             )
@@ -333,35 +368,38 @@ def store_note_number(lesson_nb, line_nb, note_number, note_number_pos):
         session.commit()
 
 
-def store_note(lesson_nb, note_number, note):
+def store_note(level, lesson_nb, note_number, note):
     stmt = select(GrammarNote).where(
         and_(
-            GrammarNote.lesson == lesson_nb,
+            GrammarNote.level == level,
+            GrammarNote.lesson_nb == lesson_nb,
             GrammarNote.note_number == note_number
         )
     )
     with Session(engine) as session:
-        entry = session.scalars(stmt).first()
-        if entry:
+        try:
+            entry = session.scalars(stmt).one()
             entry.note = note
-        else:
+        except exc.NoResultFound:
             entry = GrammarNote(
-                lesson = lesson_nb,
+                level = level,
+                lesson_nb = lesson_nb,
                 note_number = note_number,
                 note = note
             )
             session.add(entry)
         session.commit()
 
-def get_note(lesson_nb, note_number):
+def get_note(level, lesson_nb, note_number):
     stmt = select(GrammarNote).where(
         and_(
-            GrammarNote.lesson == lesson_nb,
+            GrammarNote.level == level,
+            GrammarNote.lesson_nb == lesson_nb,
             GrammarNote.note_number == note_number
         )
     )
     with Session(engine) as session:
-        entry = session.scalars(stmt).first()
+        entry = session.scalars(stmt).one()
         if entry:   
             return str(note_number) + '       ' + entry.note
         else:

@@ -44,9 +44,10 @@ def get_sentence_word_list(sentence, sentence_fragments):
 
 class MyHTMLParser(HTMLParser):
         
-    def analyze_lesson(self, lesson, lesson_number):
+    def analyze_lesson(self, lesson, level, lesson_number):
         self.sentences = []
         self.sentences_fragments = []
+        self.level = level
         self.lesson_number = lesson_number
         self.bold_data = False
         self.feed(lesson)
@@ -70,9 +71,9 @@ class MyHTMLParser(HTMLParser):
             wl = get_sentence_word_list(s, self.sentences_fragments[i])
             for word, tonic_accent in wl:
                 if not word in word_dict:
-                    word_dict[word] = [(self.lesson_number, i)]
+                    word_dict[word] = [(self.level, self.lesson_number, i)]
                 else:
-                    word_dict[word].append((self.lesson_number, i))
+                    word_dict[word].append((self.level, self.lesson_number, i))
         return word_dict
        
     def handle_starttag(self, tag, attrs):

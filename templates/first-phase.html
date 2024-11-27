@@ -21,8 +21,7 @@
   {% include 'display-spanish-paragraphs-html.jinja' %}
 
   <script>
-
-      {{ counter.changeLessonFunction("/first-phase/") }}
+      {{ counter.changeLessonFunction(level_prefix + "/first-phase/") }}
 
       {% include 'display-spanish-paragraphs-script.jinja' %}
     </script>
