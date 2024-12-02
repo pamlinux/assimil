@@ -4,8 +4,6 @@ from html.parser import HTMLParser
 from database import get_paragraphs_translation
 from paths import get_path
 
-french_translation_lessons_directoy = get_path("french_translation_lessons_directoy")
-
 class SimpleParser(HTMLParser):
     def analyze_lesson(self, lesson):
         self.sentences = []
@@ -88,7 +86,12 @@ def get_french_paragraphs(lesson_nb):
     return paragraphs
 
 
-def store_french_lesson(lesson_nb, paragraphs):
+def store_french_lesson(level, lesson_nb, paragraphs):
+    if level == 0:
+        french_translation_lessons_directoy = get_path("basic_french_translation_lessons_directoy")
+    elif level == 1:
+        french_translation_lessons_directoy = get_path("using_spanish_french_translation_lessons_directoy")
+
     text = paragraphs[0][2]
     text += '\n' + paragraphs[1][2]
 

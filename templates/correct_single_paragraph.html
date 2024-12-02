@@ -87,6 +87,11 @@
     <h1>Correction du paragraphe</h1>
     <div class="searchBox">
         <div>
+          <label for="level">Niveau:</label>
+          <select id="level", name="level">
+            <option value="0">Basic</option>
+            <option value="1">Pratique de l'espagnol</option>
+          </select>
           <label for="lessonNb">Numéro de leçon:</label>
           <input type="number" id="lessonNb" name="lessonNb" min="1" max="100"/>
           <label for="lineNb">Numéro de ligne:</label>
@@ -145,11 +150,14 @@
         }
 
         function proceedSearch() {
+            let level = document.getElementById("level").value;
             let lessonNb = document.getElementById("lessonNb").value;
             let lineNb = document.getElementById("lineNb").value;
 
-            console.log(lessonNb, lineNb)
+
+            console.log(level, lessonNb, lineNb)
             item = {
+                "level" : level,
                 "lesson_nb" : lessonNb,
                 "line_nb" : lineNb,
            }
@@ -174,6 +182,7 @@
         }
 
         function storeChanges() {
+            let level = document.getElementById("level").value;
             let lessonNb = document.getElementById("lessonNb").value;
             let lineNb = document.getElementById("lineNb").value;
             let paragraph = document.getElementById("paragraph").value;
@@ -182,6 +191,7 @@
             console.log("has_dash_dialogue : ", has_dash_dialogue);
 
             let item = {
+                "level" : level,
                 "lesson_nb" : lessonNb,
                 "line_nb" : lineNb,
                 "has_dash_dialogue" : has_dash_dialogue,

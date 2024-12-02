@@ -4,6 +4,7 @@ using_spanish_audio_directory: /Users/pam/AssimilAudio/UsingSpanish
 html_basic_lessons_directory: /Users/pam/assimil/lessons/Basic/html
 html_using_spanish_lessons_directory: /Users/pam/assimil/lessons/UsingSpanish/html
 databases_directory: /Users/pam/assimil/db
-french_translation_lessons_directoy: /Users/pam/assimil/lessons/new
+basic_french_translation_lessons_directoy: /Users/pam/assimil/lessons/Basic/new
+using_spanish_french_translation_lessons_directoy: /Users/pam/assimil/lessons/UsingSpanish/new
 word_dict_logfilename: /Users/pam/assimil/word_dict_logfile.log
 notes_directory: /Users/pam/assimil/lessons/notes
