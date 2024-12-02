@@ -8,6 +8,7 @@ from database import update_paragraph, get_single_paragraph, get_paragraphs_tran
 from translation import store_french_lesson
 
 class ParagraphCorrectionItem(BaseModel):
+    level : int
     lesson_nb : int
     line_nb: int
     has_dash_dialogue : bool | None = None
@@ -22,7 +23,7 @@ def get_correct_paragraphs_page(prog):
         return get_correct_single_paragraph_page()
     
 def get_paragraph_to_correct(item: ParagraphCorrectionItem):
-    has_dash_dialogue, paragraph, translation = get_single_paragraph(item.lesson_nb, item.line_nb)
+    has_dash_dialogue, paragraph, translation = get_single_paragraph(item.level, item.lesson_nb, item.line_nb)
     return {"has_dash_dialogue" : has_dash_dialogue, "paragraph" : paragraph, "translation" : translation}
 
 def get_correct_single_paragraph_page():
@@ -81,10 +82,10 @@ def get_correct_paragraphs_from_mp3_page():
 
 def store_paragraph_correction(item: ParagraphCorrectionItem):
     print ("----- item ------", item)
-    update_paragraph(item.lesson_nb, item.line_nb, item.has_dash_dialogue, item.paragraph, item.translation)
-    paragraphs_translation = get_paragraphs_translation(item.lesson_nb)
+    update_paragraph(item.level, item.lesson_nb, item.line_nb, item.has_dash_dialogue, item.paragraph, item.translation)
+    paragraphs_translation = get_paragraphs_translation(item.level, item.lesson_nb)
     paragraphs_translation[item.line_nb][2] = item.translation
-    store_french_lesson(item.lesson_nb, paragraphs_translation)
+    store_french_lesson(item.level, item.lesson_nb, paragraphs_translation)
 
 def get_correct_paragraphs_page_old():
     k= 0

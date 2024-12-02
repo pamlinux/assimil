@@ -288,9 +288,10 @@ def store_paragraph(level, lesson_nb, section, line_nb, has_dash_dialogue, parag
             session.add(entry)
         session.commit()
 
-def update_paragraph(lesson_nb, line_nb, has_dash_dialogue, paragraph, translation = None, section = None):
+def update_paragraph(level, lesson_nb, line_nb, has_dash_dialogue, paragraph, translation = None, section = None):
     stmt = select(Paragraph).where(
         and_(
+            Paragraph.level == level,
             Paragraph.lesson_nb == lesson_nb,
             Paragraph.line_nb == line_nb
             )
@@ -325,9 +326,10 @@ def get_paragraphs(level, lesson_nb):
     if paragraphs == {}: raise NoSuchLesson
     return paragraphs
 
-def get_single_paragraph(lesson_nb, line_nb):
+def get_single_paragraph(level, lesson_nb, line_nb):
     stmt = select(Paragraph).where(
         and_(
+            Paragraph.level == level,
             Paragraph.lesson_nb == lesson_nb,
             Paragraph.line_nb ==line_nb
             )
