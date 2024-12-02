@@ -1,4 +1,4 @@
-database_name: sqlite:////Users/pam/assimil/db/assimil_spanish_new.db
+database_name: sqlite:////Users/pam/assimil/db/assimil_spanish.db
 basic_audio_directory: /Users/pam/AssimilAudio/Basic
 using_spanish_audio_directory: /Users/pam/AssimilAudio/UsingSpanish
 html_basic_lessons_directory: /Users/pam/assimil/lessons/Basic/html

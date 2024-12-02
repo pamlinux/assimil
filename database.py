@@ -119,8 +119,8 @@ def get_database_engine(name, echo=True):
     Base.metadata.create_all(engine) 
     return engine
 
-database_name = "sqlite:////Users/pam/assimil/db/assimil_spanish_mnt3.db"
-#database_name = get_path('database_name')
+#database_name = "sqlite:////Users/pam/assimil/db/assimil_spanish_mnt3.db"
+database_name = get_path('database_name')
 
 global engine
 engine = get_database_engine(database_name, False)
