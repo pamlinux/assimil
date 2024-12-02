@@ -104,9 +104,9 @@
                     {% for history_date_time, errors_number in row %}
                         {% set date_time_key = history_date_time.strftime('%d-%m-%Y %H:%M:%S%f') %}
                         {% if errors_number %}
-                            <a id='id_1' href='/lesson-errors/?lesson_nb={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a>
+                            <a id='id_1' href='/lesson-errors/?level={{lessons[outer_loop.index0][0]}}&lesson_nb={{lessons[outer_loop.index0][1]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a>
                         {% else %}
-                            <span><a id= 'id_1' href='/lesson-errors/?lesson_nb={{lessons[outer_loop.index0]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></span>
+                            <span><a id= 'id_1' href='/lesson-errors/?level={{lessons[outer_loop.index0][0]}}&lesson_nb={{lessons[outer_loop.index0][1]}}&datetimekey={{date_time_key}}'>{{history_date_time.strftime('%d-%m-%Y %H:%M:%S')}}</a></span>
                         {% endif %}
                     {% endfor %}
                 </div>
