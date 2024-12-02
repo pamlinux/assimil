@@ -138,7 +138,7 @@ async def get_errors(item: ErrorItem):
     div0 = div0.replace('\n', '')
     return div0
 
-def get_lesson_errors_context(lesson_nb, datetimekey, level = 0):
+def get_lesson_errors_context(level, lesson_nb, datetimekey):
     date_time = datetime.strptime(datetimekey, '%d-%m-%Y %H:%M:%S%f')
     lesson_french, exercise1_correction = get_french_lesson(level, lesson_nb)
     spanish_lesson, exercise1  = get_single_lesson_with_errors(lesson_nb, date_time)
@@ -147,6 +147,7 @@ def get_lesson_errors_context(lesson_nb, datetimekey, level = 0):
 
     context = {
         "active" : "lesson-errors",
+        "level" : level,
         "lesson_nb": lesson_nb,
         "date_time" : date_time_string,
         "lesson" : spanish_lesson,                                                        
@@ -156,8 +157,8 @@ def get_lesson_errors_context(lesson_nb, datetimekey, level = 0):
     return context
 
 @app.get("/lesson-errors/", response_class=HTMLResponse)
-async def get_errors_list_date(request: Request, lesson_nb : int = 0, datetimekey : str = ""):
-    context = get_lesson_errors_context(lesson_nb, datetimekey)
+async def get_errors_list_date(request: Request, level: int, lesson_nb : int = 0, datetimekey : str = ""):
+    context = get_lesson_errors_context(level, lesson_nb, datetimekey)
     return templates.TemplateResponse(request=request, name="lesson-errors.html", context= context)
 
 

@@ -217,26 +217,38 @@ def get_errors(begin_lesson = 1, end_lesson = 100, begin_date = None, end_date =
             errors.append(entry.paragraph)
     return errors
 
-def get_lesson_sessions_history(begin_lesson_nb = 1, end_lesson_nb = 100, begin_date = None, end_date = None):
+def get_lesson_sessions_history(begin_lesson_nb = 1, end_lesson_nb = 100, begin_date = None, end_date = None, level = -1):
     print(f"----------------- begin_date : {begin_date}")
     print(f"----------------- end_date : {end_date}")
     if not begin_date: begin_date = datetime.datetime.min
     if not end_date: end_date = datetime.datetime.max
     sessions = {}
-    stmt = select(LessonSession).where(
-                and_(
-                    LessonSession.date_time >= begin_date,
-                    LessonSession.date_time <= end_date,
-                    LessonSession.lesson_nb <= end_lesson_nb,
-                    LessonSession.lesson_nb >= begin_lesson_nb
-                )
+    if level in [0, 1]:
+        stmt = select(LessonSession).where(
+                    and_(
+                        LessonSession.level == level,
+                        LessonSession.date_time >= begin_date,
+                        LessonSession.date_time <= end_date,
+                        LessonSession.lesson_nb <= end_lesson_nb,
+                        LessonSession.lesson_nb >= begin_lesson_nb
+                    )
             )
+    else:
+        stmt = select(LessonSession).where(
+                    and_(
+                        LessonSession.date_time >= begin_date,
+                        LessonSession.date_time <= end_date,
+                        LessonSession.lesson_nb <= end_lesson_nb,
+                        LessonSession.lesson_nb >= begin_lesson_nb
+                    )
+            )
+
     with Session(engine) as session:
         for entry in session.scalars(stmt):
-            if entry.lesson_nb in sessions:
-                sessions[entry.lesson_nb][entry.date_time] = entry.errors_number
+            if (entry.level, entry.lesson_nb) in sessions:
+                sessions[(entry.level, entry.lesson_nb)][entry.date_time] = entry.errors_number
             else:
-                sessions[entry.lesson_nb] = {entry.date_time : entry.errors_number}
+                sessions[(entry.level, entry.lesson_nb)] = {entry.date_time : entry.errors_number}
     return sessions
 
 def get_default_lesson(level = 0):

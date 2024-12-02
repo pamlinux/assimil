@@ -71,7 +71,10 @@ def rewrite_french_text_lessons(level):
 
     for fn in os.listdir(scanned_lessons_french_text_directory):
         comp = re.split('\.| ', fn)
-        lesson_nb = int(comp[1])
+        try:
+            lesson_nb = int(comp[1])
+        except ValueError:
+            continue
         new_file_name = os.path.join(new_file_directory, f"L{str(lesson_nb).zfill(3)}.txt")
         txt_file = open(os.path.join(scanned_lessons_french_text_directory, fn))
         lesson = txt_file.read()
