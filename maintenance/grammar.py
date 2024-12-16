@@ -159,5 +159,25 @@ def store_all_notes2(level = 0):
             #print(note[0], "   ", note[1])
             store_note(level, lesson_nb, note[0], note[1])
     
+def store_notes(lessons, level):
+    if level == 0:
+        level_prefix = "Basic"
+    elif level == 1:
+        level_prefix = "UsingSpanish"
+    fn = os.path.join("lessons", level_prefix, "notes/Notes.html")
+    notes_html = open(fn).read()
+    parser = NotesParser()
+    parser.analyze(notes_html)
+    all_notes = parser.get_notes()
+    print("coucou")
+    for lesson_nb, notes in all_notes:
+        print("lesson_nb : ", lesson_nb)
+        if lesson_nb in lessons:
+            print("++++++++++++++++", lesson_nb)
+            for note_number, note in notes:
+                print("+++++++++++++++", level, lesson_nb, note_number, note)
+                store_note(level, lesson_nb, note_number, note)
+    
+    print("coucou à nouveau")
 
 

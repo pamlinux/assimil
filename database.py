@@ -351,6 +351,7 @@ def get_paragraphs_translation(level, lesson_nb):
         for entry in session.scalars(stmt):
             paragraphs_translation[entry.line_nb] =  [entry.section, entry.has_dash_dialogue, entry.translation]
 
+    if paragraphs_translation == {}: raise NoSuchLesson
     return paragraphs_translation
 
 def store_note_number(level, lesson_nb, line_nb, note_number, note_number_pos):

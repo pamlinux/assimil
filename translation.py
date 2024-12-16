@@ -1,7 +1,7 @@
 import importlib
 import os
 from html.parser import HTMLParser
-from database import get_paragraphs_translation
+from database import NoSuchLesson, get_paragraphs_translation
 from paths import get_path
 
 class SimpleParser(HTMLParser):
