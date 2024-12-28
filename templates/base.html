@@ -64,10 +64,10 @@
         {% else %}
             <li><a href="/basic/first-phase/">Première phase</a></li>
         {% endif%}
-        {% if active == "second-phase" %}
-            <li><a  class="active" href="/second-phase/">Seconde phase</a></li>
+        {% if active == "basic-second-phase" %}
+            <li><a  class="active" href="/basic/second-phase/">Seconde phase</a></li>
         {% else %}
-            <li><a href="/second-phase/">Seconde phase</a></li>
+            <li><a href="/basic/second-phase/">Seconde phase</a></li>
         {% endif%}
         {% if active == "marker-editor" %}
             <li><a class="active" href="/marker-editor/1">Marquer les erreurs</a></li>
@@ -89,6 +89,11 @@
         <li><a class="active" href="/using_spanish/first-phase/">Première phase</a></li>
         {% else %}
         <li><a href="/using_spanish/first-phase/">Première phase</a></li>
+        {% endif %}
+        {% if active == "using-spanish-second-phase" %}
+        <li><a class="active" href="/using_spanish/second-phase/">Seconde phase</a></li>
+        {% else %}
+        <li><a href="/using_spanish/second-phase/">Seconde phase</a></li>
         {% endif %}
         {% if active == "using-spanish-editor" %}
             <li><a class="active" href="/using_spanish/editor/1">Editeur d'accent tonique</a></li>
