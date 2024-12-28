@@ -169,17 +169,17 @@ def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1)
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
-@app.get("/second-phase/audio/")
+@app.get("/basic/second-phase/audio/")
 def get_audio_file(request: Request, lesson_nb: int, paragraph_nb: int):
     print("lesson_nb:", lesson_nb, "sentence_nb", paragraph_nb)
-    sentence_path = get_full_path(lesson_nb, paragraph_nb)
+    sentence_path = get_full_path(lesson_nb, paragraph_nb, level = 0)
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
 @app.get("/basic/first-phase/audio/")
 def get_audio_file(request: Request, lesson_nb : int = 8, sentence_nb : int = 1):
     print("lesson_nb:", lesson_nb, "sentence_nb", sentence_nb)
-    sentence_path = get_full_path(lesson_nb, sentence_nb)
+    sentence_path = get_full_path(lesson_nb, sentence_nb, level = 0)
     data = open(sentence_path, "rb").read()
     return Response(content=data, media_type="audio/mpeg")
 
@@ -264,8 +264,12 @@ def get_second_phase_contex(lesson_nb, level = 0):
     print("--- lesson ---", french)
     print("--- exercise1_correction ---", exercise1_correction)
     spanish_sentences, exercise1 = get_spanish_lesson(level, lesson_nb)
+    if level == 1:
+        active = "using-spanish-second-phase"
+    elif level == 0:
+        active = "basic-second-phase"
     context = {
-        "active" : "second-phase",
+        "active" : active,
         "lesson_nb": lesson_nb,
         "lesson" : french,                                                        
         "exercise1_correction" : exercise1_correction,
@@ -273,19 +277,32 @@ def get_second_phase_contex(lesson_nb, level = 0):
     }
     return context
 
-@app.get("/second-phase/{lesson_nb}", response_class=HTMLResponse)
+@app.get("/basic/second-phase/{lesson_nb}", response_class=HTMLResponse)
 async def second_phase(request: Request, lesson_nb : int = 1):
-    context = get_second_phase_contex(lesson_nb)
+    context = get_second_phase_contex(lesson_nb, level = 0)
     return templates.TemplateResponse(
         request=request, name="second-phase.html", context=context)
 
-@app.get("/second-phase/", response_class=HTMLResponse)
+@app.get("/using_spanish/second-phase/{lesson_nb}", response_class=HTMLResponse)
+async def second_phase(request: Request, lesson_nb : int = 1):
+    context = get_second_phase_contex(lesson_nb, level = 1)
+    return templates.TemplateResponse(
+        request=request, name="second-phase.html", context=context)
+
+@app.get("/basic/second-phase/", response_class=HTMLResponse)
 async def second_phase(request: Request, lesson_nb : int = 1):
     lesson_nb = get_default_lesson()
-    context = get_second_phase_contex(lesson_nb)
+    context = get_second_phase_contex(lesson_nb, level = 0)
     return templates.TemplateResponse(
         request=request, name="second-phase.html", context=context)
 
+@app.get("/using_spanish/second-phase/", response_class=HTMLResponse)
+async def second_phase(request: Request, lesson_nb : int = 1):
+    lesson_nb = get_default_lesson(level = 1)
+    print("+++++ lesson_nb : ", lesson_nb)
+    context = get_second_phase_contex(lesson_nb, level = 1)
+    return templates.TemplateResponse(
+        request=request, name="second-phase.html", context=context)
 
 def get_first_phase_context(lesson_nb, active="first-phase", level = 0):
     lesson_french, exercise1_correction = get_french_lesson(level, lesson_nb)
