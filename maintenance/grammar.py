@@ -169,7 +169,6 @@ def store_notes(lessons, level):
     parser = NotesParser()
     parser.analyze(notes_html)
     all_notes = parser.get_notes()
-    print("coucou")
     for lesson_nb, notes in all_notes:
         print("lesson_nb : ", lesson_nb)
         if lesson_nb in lessons:
@@ -177,7 +176,3 @@ def store_notes(lessons, level):
             for note_number, note in notes:
                 print("+++++++++++++++", level, lesson_nb, note_number, note)
                 store_note(level, lesson_nb, note_number, note)
-    
-    print("coucou à nouveau")
-
-

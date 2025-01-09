@@ -4,6 +4,12 @@
 
 {% include 'display-spanish-paragraphs-style.jinja' %}
 
+{% if level == 1 %}
+  {% include 'using-spanish-specific-style.jinja' %}
+{% elif level == 0 %}
+  {% include 'basic-specific-style.jinja' %}
+{% endif %}
+
 {% endblock %}
 
 {% block header %}
@@ -24,5 +30,5 @@
       {{ counter.changeLessonFunction(level_prefix + "/first-phase/") }}
 
       {% include 'display-spanish-paragraphs-script.jinja' %}
-    </script>
+  </script>
 {% endblock %}
