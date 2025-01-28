@@ -76,19 +76,21 @@ def fill_word_tonic_accent_dict_from_html_files(word_dict):
         logfile.write(f"{word} : {word_dict[word]}\n")
     logfile.close()
 
-def fill_word_index_dict_from_html_files(filenames, word_dict, level):
-    html_lessons_directory = get_html_lessons_directory(level)
-    for fn in filenames:
-        lesson_nb = int(fn[1:4])
-        lesson = open(os.path.join(html_lessons_directory, fn)).read()
-        #print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
-        parser.analyze_lesson(lesson, level, lesson_nb)
-        wd = parser.get_lesson_word_index_dict()
-        for word in wd:
-            if not word in word_dict:
-                word_dict[word] = wd[word]
-            else:
-                word_dict[word].extend(wd[word])
+def fill_word_index_dict_from_html_files(word_dict):
+    for level in [0, 1]:
+        html_lessons_directory = get_html_lessons_directory(level)
+        html_lesson_files = get_html_lesson_files(level)
+        for fn in html_lesson_files:
+            lesson_nb = int(fn[1:4])
+            lesson = open(os.path.join(html_lessons_directory, fn)).read()
+            #print(f"Analyzing lesson {lesson_nb} with length {len(lesson)}")
+            parser.analyze_lesson(lesson, level, lesson_nb)
+            wd = parser.get_lesson_word_index_dict()
+            for word in wd:
+                if not word in word_dict:
+                    word_dict[word] = wd[word]
+                else:
+                    word_dict[word].extend(wd[word])
 
 def get_tonic_accent_word_dict():
     word_dict = {}
