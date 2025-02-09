@@ -8,6 +8,7 @@ class NotesParser(HTMLParser):
 
     def analyze(self, level, notes):
         self._level = level
+        self._superscript_printed = False
         self.feed(notes)
 
     def handle_starttag(self, tag, attrs):
@@ -25,6 +26,12 @@ class NotesParser(HTMLParser):
             elif data == "as":
                 print(f"""tag for "as" : {self._tag}""")
                 print(f"""attrs for "as" : {self._attrs}""")
+            elif data == "e":
+                if not self._superscript_printed:
+                    print(f"""tag for "e" : {self._tag}""")
+                    print(f"""attrs for "e" : {self._attrs}""")
+                    self._superscript_printed = True
+
                 
         elif self._level == 1:
             if data == "el tuteo":

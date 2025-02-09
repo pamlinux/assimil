@@ -60,6 +60,13 @@
   
   {% include 'display-spanish-paragraphs-style.jinja' %}
 
+  {% if level == 1 %}
+    {% include 'using-spanish-specific-style.jinja' %}
+  {% elif level == 0 %}
+    {% include 'basic-specific-style.jinja' %}
+  {% endif %}
+
+
 {% endblock %}
 
 {% block header %}
@@ -73,6 +80,7 @@
   {% import 'lesson_counter.j2' as counter %}
     
   {{ counter.lesson_counter(lesson_nb) }}
+
 
     <button id="toggleAll" onclick="toggleSpanish()">Montrer l'Espagnol</button>
     <button id="togglemark" onclick="toggleMark()"">Boîte de marquage</button>
@@ -120,6 +128,11 @@
     <p></p>
     <p></p>
     <p></p>
+    <aside id="notePanel">
+      <div id="noteContent"></div>
+      <button onclick="closeNote()">Fermer</button>
+    </aside>
+  
     <audio id="audioTag" src=""/>
  
 
@@ -385,6 +398,56 @@
             });
 
       }
+
+
+  function displayNote(noteNumber, event) {
+    console.log("clicked on note :", noteNumber, "for lesson : ", {{ lesson_nb }})
+    event.stopPropagation();
+    console.log(event);
+    url = '/grammar_note/?level={{ level }}&lesson_nb={{ lesson_nb }}&note_nb=' + noteNumber;
+
+    const notePanel = document.getElementById("notePanel");
+    const noteContent = document.getElementById("noteContent");
+    noteParent = event.target.parentNode;
+
+    
+    console.log("noteParent",noteParent);
+    if (noteParent.tagName.toLowerCase() == 'label') {
+      paragraphId = noteParent.parentNode.id;
+    } else {
+      paragraphId = noteParent.id;
+    }
+
+    paragraphId = noteParent.parentNode.parentNode.previousElementSibling.id
+    reference = document.getElementById(paragraphId);
+
+    console.log("paragraphId :", paragraphId, "reference", reference);
+
+    console.log("url", url);
+    fetch(url)
+    .then(resp => resp.text())  // or, resp.json(), etc.
+    .then(data => {
+      //document.getElementById("div01").innerHTML = data.substring(1, data.length-1);
+      console.log(data);
+      noteContent.innerHTML = data;
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+
+    const rect = reference.getBoundingClientRect(); // Récupère la position de la référence
+    const panelTop = rect.top + window.scrollY; // Calcule la position en haut du panneau
+    console.log("rect : ", rect , "panelTop : ", panelTop)
+
+    notePanel.style.top = `${panelTop}px`; // Positionne le panneau en haut de la référence
+    notePanel.style.display = 'block'; // Affiche le panneau
+}
+
+function closeNote() {
+    const notePanel = document.getElementById("notePanel");
+    notePanel.style.display = 'none'; // Masquer le panneau
+}
 
     </script>
 {% endblock %}
