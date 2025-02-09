@@ -6,6 +6,14 @@
   <style>
     {% include 'display-spanish-paragraphs-style.jinja' %}
     {% include 'mark-style.css' %}
+
+    {% if level == 1 %}
+      {% include 'using-spanish-specific-style.jinja' %}
+    {% elif level == 0 %}
+      {% include 'basic-specific-style.jinja' %}
+    {% endif %}
+
+
     .main {
             
       margin-left: 20%;

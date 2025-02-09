@@ -270,6 +270,7 @@ def get_second_phase_contex(lesson_nb, level = 0):
         active = "basic-second-phase"
     context = {
         "active" : active,
+        "level" : level,
         "lesson_nb": lesson_nb,
         "lesson" : french,                                                        
         "exercise1_correction" : exercise1_correction,
