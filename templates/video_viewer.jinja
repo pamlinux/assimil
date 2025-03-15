@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Éditeur de sous-titres</title>
     <style>
-        body { display: flex; height: 100vh; margin: 0; flex-direction: column; align-items: center; }
+        body { display: flex; height: 100vh; margin: 0; overflow: hidden; }
         #container { display: flex; width: 100%; }
-        #subtitles { width: 50%; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; }
-        #video-container { width: 50%; display: flex; flex-direction: column; align-items: center; }
-        video { width: 100%; max-width: 600px; }
+        #subtitles { width: 40%; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; max-height: 100vh; }
+        #video-container { width: 60%; display: flex; flex-direction: column; align-items: center; }
+        video { width: 100%; max-width: 720px; }
         .subtitle { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
         .active { background-color: yellow; }
         .controls { display: flex; gap: 10px; margin-top: 10px; }
-        .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; background: none; border: none; }
+        .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; }
         .controls img { width: 24px; height: 24px; }
-        #current-subtitle { margin-top: 10px; font-size: 18px; font-weight: bold; }
+         #current-subtitle { margin-top: 10px; font-size: 18px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -114,17 +114,17 @@
 
         function replaySubtitle() {
             if (lastActiveIndex >= 0) {
-                video.currentTime = subtitles[lastActiveIndex].start;
+                video.currentTime = subtitles[lastActiveIndex].start - 1;
                 video.play();
                 setTimeout(() => {
                     video.pause();
-                }, (subtitles[lastActiveIndex].end - subtitles[lastActiveIndex].start) * 1000);
+                }, ((subtitles[lastActiveIndex].end - subtitles[lastActiveIndex].start) + 2) * 1000);
             }
         }
 
         function prevSubtitle() {
             if (lastActiveIndex > 0) {
-                video.currentTime = subtitles[lastActiveIndex - 1].start;
+                video.currentTime = subtitles[lastActiveIndex - 1].start - 1;
                 if (!video.paused) {
                     video.play();
                 }
@@ -133,7 +133,7 @@
 
         function nextSubtitle() {
             if (lastActiveIndex < subtitles.length - 1) {
-                video.currentTime = subtitles[lastActiveIndex + 1].start;
+                video.currentTime = subtitles[lastActiveIndex + 1].start - 1;
                 if (!video.paused) {
                     video.play();
                 }
