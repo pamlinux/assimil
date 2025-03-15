@@ -13,7 +13,9 @@
         .subtitle { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
         .active { background-color: yellow; }
         .controls { display: flex; gap: 10px; margin-top: 10px; }
-        .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; }
+        .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; background: none; border: none; }
+        .controls img { width: 24px; height: 24px; }
+        #translated-subtitle { margin-top: 10px; font-size: 18px; font-weight: bold; text-align: center; }
     </style>
 </head>
 <body>
@@ -23,13 +25,14 @@
             <video id="video" controls>
                 <source src="/simple-video.mp4" type="video/mp4">
                 <track src="subtitles.srt" kind="subtitles" srclang="fr" label="Français" default>
-            </video>
+             </video>
+            <div id="translated-subtitle"></div>
             <div class="controls">
-                <button onclick="prevSubtitle()">⬅️</button>
-                <button onclick="video.pause()">⏸</button>
-                <button onclick="video.play()">▶</button>
-                <button onclick="replaySubtitle()">🔄</button>
-                <button onclick="nextSubtitle()">➡️</button>
+                <button onclick="prevSubtitle()"><img src={{ url_for('static', path="/icons/step-backward.svg")}} alt="Prev"></button>
+                <button onclick="video.pause()"><img src={{ url_for('static', path="/icons/pause.svg")}} alt="Pause"></button>
+                <button onclick="video.play()"><img src={{ url_for('static', path="/icons/play.svg")}} alt="Play"></button>
+                <button onclick="replaySubtitle()"><img src={{ url_for('static', path="/icons/replay.svg")}} alt="Replay"></button>
+                <button onclick="nextSubtitle()"><img src={{ url_for('static', path="/icons/step-forward.svg")}} alt="Next"></button>
             </div>
         </div>
     </div>
@@ -37,9 +40,11 @@
     <script>
         const video = document.getElementById("video");
         const subtitleContainer = document.getElementById("subtitles");
+        const translatedSubtitle = document.getElementById("translated-subtitle");
         let subtitles = [];
+        let frenchSubtitles = [];
 
-        // Récupération des sous-titres depuis FastAPI
+        // Fetch Spanish subtitles
         fetch("http://127.0.0.1:8001/subtitles_es")
             .then(response => response.json())
             .then(data => {
@@ -52,7 +57,15 @@
                 });
                 displaySubtitles();
             })
-            .catch(error => console.error("Erreur lors du chargement des sous-titres:", error));
+            .catch(error => console.error("Error loading Spanish subtitles:", error));
+
+        // Fetch French subtitles
+        fetch("http://127.0.0.1:8001/subtitles_fr")
+            .then(response => response.json())
+            .then(data => {
+                frenchSubtitles = data;
+            })
+            .catch(error => console.error("Error loading French subtitles:", error));
 
         function displaySubtitles() {
             subtitleContainer.innerHTML = "";
@@ -72,13 +85,13 @@
             });
         }
 
-        // Synchronisation des sous-titres avec la vidéo
         video.addEventListener("timeupdate", () => {
             subtitles.forEach((sub, index) => {
                 const div = subtitleContainer.children[index];
                 if (video.currentTime >= sub.start && video.currentTime < sub.end) {
                     div.classList.add("active");
                     div.scrollIntoView({ behavior: "smooth", block: "center" });
+                    translatedSubtitle.innerText = frenchSubtitles[index]?.french || "";
                 } else {
                     div.classList.remove("active");
                 }
