@@ -1,9 +1,11 @@
+from typing import List
 import eyed3
 import os
 from pathlib import Path
 from datetime import date, datetime
 from dataclasses import dataclass
 from fastapi.responses import FileResponse
+from fastapi.responses import StreamingResponse
 from fastapi import FastAPI, Request, Response, Depends, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -22,7 +24,8 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson
+from database import NoSuchLesson, update_subtitle_french, get_es_and_fr_subtitles
+from subtitles import get_subtitles_context, NoSuchTvSerie
 
 @dataclass
 class SimpleModel:
@@ -46,6 +49,9 @@ class ErrorItem(BaseModel):
         mostRecentLesson : str
         oldestLesson : str
 
+class SubtitleUpdate(BaseModel):
+    id: int
+    french_text: str
 
 app = FastAPI()
 
@@ -440,5 +446,77 @@ async def using_spanish_first_phase_default(request: Request, lesson_nb : int = 
     return templates.TemplateResponse(
         request=request, name="first-phase.html", context=context)
 
+@app.get("/subtitles/edit/{dvd}", response_class=HTMLResponse)
+async def get_subtitles_of_television_serie(request: Request, dvd : int =1):
+    try:
+        context = get_subtitles_context(dvd)
+        print("context : ", context)
+    except NoSuchTvSerie:
+        return("No such TV serie")
+    return templates.TemplateResponse(
+        request=request, name="subtitles.jinja", context=context)
+
+@app.get("/subtitles")
+def get_both_subtitles():
+    return get_es_and_fr_subtitles(1)
+
+@app.post("/subtitles/update")
+def update_subtitle_in_database(updates: List[SubtitleUpdate]):
+    print(updates)
+    for update in updates:
+        update_subtitle_french(update.id, update.french_text)
+        print(update.id, update.french_text)
 
 
+    #for update in updates:
+    #    for subtitle in subtitles:
+    #        update_subtitle(subtitle)
+    #raise HTTPException(status_code=404, detail="Subtitle not found")
+    return {"message": "Subtitle updated successfully"}
+
+@app.get("/video_viewer")
+async def get_video_a1_t00(request: Request):
+    return templates.TemplateResponse(
+        request=request, name="video_viewer.jinja", context={"dummy" : 0})
+
+
+#VIDEO_PATH = "Movies/Aquí No Hay Quien Viva 1/A1_t00.m4v" 
+VIDEO_PATH = "Movies/Aquí No Hay Quien Viva 1/A1_t00.m4v" 
+
+def video_stream(start: int, end: int):
+    with open(VIDEO_PATH, "rb") as video:
+        video.seek(start)
+        while start < end:
+            chunk = video.read(min(4096, end - start))
+            if not chunk:
+                break
+            yield chunk
+            start += len(chunk)
+
+
+@app.get("/simple-video.mp4")
+async def serve_video(request: Request):
+    file_size = os.path.getsize(VIDEO_PATH)
+    
+    range_header = request.headers.get("range")
+    if range_header:
+        range_start, range_end = range_header.replace("bytes=", "").split("-")
+        start = int(range_start)
+        end = int(range_end) if range_end else file_size - 1
+    else:
+        start, end = 0, file_size - 1
+
+    headers = {
+        "Content-Range": f"bytes {start}-{end}/{file_size}",
+        "Accept-Ranges": "bytes",
+        "Content-Length": str(end - start + 1),
+        "Content-Type": "video/mp4",
+    }
+
+    return StreamingResponse(video_stream(start, end + 1), headers=headers, status_code=206)
+
+
+
+@app.get("/subtitles.srt")
+def get_subtitles():
+    return FileResponse("Movies/Aquí No Hay Quien Viva 1/a1_t00_es.vtt", media_type="text/vtt")

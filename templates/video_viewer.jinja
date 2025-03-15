@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur de sous-titres</title>
+    <style>
+        body { display: flex; height: 100vh; margin: 0; }
+        #container { display: flex; width: 100%; }
+        #subtitles { width: 50%; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; }
+        #video-container { width: 50%; display: flex; flex-direction: column; align-items: center; }
+        video { width: 100%; max-width: 600px; }
+        .subtitle { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
+        .active { background-color: yellow; }
+        .controls { display: flex; gap: 10px; margin-top: 10px; }
+        .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="subtitles"></div>
+        <div id="video-container">
+            <video id="video" controls>
+                <source src="/simple-video.mp4" type="video/mp4">
+                <track src="subtitles.srt" kind="subtitles" srclang="fr" label="Français" default>
+            </video>
+            <div class="controls">
+                <button onclick="prevSubtitle()">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/>
+                    </svg>
+                  </button>
+                <button onclick="prevSubtitle()">⬅️</button>
+                <button onclick="video.pause()">⏸</button>
+                <button onclick="video.play()">▶</button>
+                <button onclick="replaySubtitle()">🔄</button>
+                <button onclick="nextSubtitle()">➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const subtitles = [
+            { start: 2, end: 5, text: "Hola, ¿cómo estás?" },
+            { start: 6, end: 9, text: "Bienvenido a esta lección." },
+            { start: 10, end: 14, text: "Vamos a aprender juntos." }
+        ];
+        const video = document.getElementById("video");
+        const subtitleContainer = document.getElementById("subtitles");
+
+        // Affichage des sous-titres
+        subtitles.forEach((sub, index) => {
+            const div = document.createElement("div");
+            div.classList.add("subtitle");
+            div.textContent = sub.text;
+            div.dataset.start = sub.start;
+            div.dataset.index = index;
+            div.onclick = () => {
+                video.currentTime = sub.start;
+                if (!video.paused) {
+                    video.play();
+                }
+            };
+            subtitleContainer.appendChild(div);
+        });
+
+        // Synchronisation des sous-titres avec la vidéo
+        video.addEventListener("timeupdate", () => {
+            subtitles.forEach((sub, index) => {
+                const div = subtitleContainer.children[index];
+                if (video.currentTime >= sub.start && video.currentTime < sub.end) {
+                    div.classList.add("active");
+                    div.scrollIntoView({ behavior: "smooth", block: "center" });
+                } else {
+                    div.classList.remove("active");
+                }
+            });
+        });
+
+        // Fonction pour rejouer le sous-titre en cours
+        function replaySubtitle() {
+            const active = document.querySelector(".subtitle.active");
+            if (active) {
+                video.currentTime = subtitles[active.dataset.index].start;
+                if (!video.paused) {
+                    video.play();
+                }
+            }
+        }
+
+        // Fonction pour aller au sous-titre précédent
+        function prevSubtitle() {
+            const active = document.querySelector(".subtitle.active");
+            if (active && active.previousElementSibling) {
+                const prevIndex = active.dataset.index - 1;
+                video.currentTime = subtitles[prevIndex].start;
+                if (!video.paused) {
+                    video.play();
+                }
+            }
+        }
+
+        // Fonction pour aller au sous-titre suivant
+        function nextSubtitle() {
+            const active = document.querySelector(".subtitle.active");
+            if (active && active.nextElementSibling) {
+                const nextIndex = parseInt(active.dataset.index) + 1;
+                if (nextIndex < subtitles.length) {
+                    video.currentTime = subtitles[nextIndex].start;
+                    if (!video.paused) {
+                        video.play();
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

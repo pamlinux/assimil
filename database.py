@@ -114,6 +114,29 @@ class GrammarNote(Base):
     def __repr__(self) -> str:
         return f"level : {self.level}, lessons_nb : {self.lesson_nb}, note_number : {self.note_number}, note : {self.note}"
     
+class Media(Base):
+    __tablename__ = 'media'
+    id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str]
+    media_type: Mapped[str] # "movie" or "series"
+    season: Mapped[Optional[int]]
+    series_number: Mapped[Optional[int]] # Number of the series
+    series_title: Mapped[str]
+    disc_number: Mapped[Optional[int]] # Number of the DVD or Blu-ray
+    subtitles: Mapped[List["Subtitle"]] = relationship(
+        back_populates="media", cascade="all, delete-orphan")
+
+class Subtitle(Base):
+    __tablename__ = 'subtitles'
+    id: Mapped[int] = mapped_column(primary_key=True)
+    media_id: Mapped[int] = mapped_column(ForeignKey("media.id"))
+    media: Mapped["Media"] = relationship(back_populates="subtitles")
+    start_time: Mapped[datetime.time]
+    end_time: Mapped[datetime.time]
+    spanish_text: Mapped[str]
+    french_text: Mapped[Optional[str]]
+
+
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
     Base.metadata.create_all(engine) 
@@ -419,3 +442,35 @@ def get_note(level, lesson_nb, note_number):
             return str(note_number) + '       ' + entry.note
         else:
             return None
+
+def update_subtitle_french(id: int, french_text: str):
+    stmt = select(Subtitle).where(Subtitle.id == id)
+                        
+    with Session(engine) as session:
+        entry = session.scalars(stmt).one()
+        entry.french_text = french_text
+        #print(entry.id, entry.spanish_text, entry.french_text)
+        session.commit()
+
+def format_srt_timestamp(start_time: datetime.time, end_time: datetime.time) -> str:
+    """Convert two objects datetime.time to one timestamp SRT."""
+    return f"{start_time.strftime('%H:%M:%S,%f')[:-3]} --> {end_time.strftime('%H:%M:%S,%f')[:-3]}"
+
+def get_es_and_fr_subtitles(dvd: int):
+    stmt = select(Subtitle)
+    
+    subtitles = []
+
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            subtitles.append({
+                "id": entry.id,
+                "timestamp": format_srt_timestamp(entry.start_time, entry.end_time),
+                "spanish": entry.spanish_text,
+                "french": entry.french_text
+            })
+
+    return subtitles
+
+
+ 
