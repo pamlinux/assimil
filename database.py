@@ -472,5 +472,19 @@ def get_es_and_fr_subtitles(dvd: int):
 
     return subtitles
 
+def get_es_subtitles(dvd: int):
+    stmt = select(Subtitle)
+    
+    subtitles = []
+
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            subtitles.append({
+                "id": entry.id,
+                "timestamp": format_srt_timestamp(entry.start_time, entry.end_time),
+                "spanish": entry.spanish_text,
+            })
+
+    return subtitles
 
  

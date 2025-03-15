@@ -24,7 +24,7 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson, update_subtitle_french, get_es_and_fr_subtitles
+from database import NoSuchLesson, update_subtitle_french, get_es_and_fr_subtitles, get_es_subtitles
 from subtitles import get_subtitles_context, NoSuchTvSerie
 
 @dataclass
@@ -520,3 +520,7 @@ async def serve_video(request: Request):
 @app.get("/subtitles.srt")
 def get_subtitles():
     return FileResponse("Movies/Aquí No Hay Quien Viva 1/a1_t00_es.vtt", media_type="text/vtt")
+
+@app.get("/subtitles_es")
+def get_es_only_subtitles():
+    return get_es_subtitles(1)

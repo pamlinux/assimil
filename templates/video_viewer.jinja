@@ -25,11 +25,6 @@
                 <track src="subtitles.srt" kind="subtitles" srclang="fr" label="Français" default>
             </video>
             <div class="controls">
-                <button onclick="prevSubtitle()">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
-                      <path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/>
-                    </svg>
-                  </button>
                 <button onclick="prevSubtitle()">⬅️</button>
                 <button onclick="video.pause()">⏸</button>
                 <button onclick="video.play()">▶</button>
@@ -40,29 +35,42 @@
     </div>
 
     <script>
-        const subtitles = [
-            { start: 2, end: 5, text: "Hola, ¿cómo estás?" },
-            { start: 6, end: 9, text: "Bienvenido a esta lección." },
-            { start: 10, end: 14, text: "Vamos a aprender juntos." }
-        ];
         const video = document.getElementById("video");
         const subtitleContainer = document.getElementById("subtitles");
+        let subtitles = [];
 
-        // Affichage des sous-titres
-        subtitles.forEach((sub, index) => {
-            const div = document.createElement("div");
-            div.classList.add("subtitle");
-            div.textContent = sub.text;
-            div.dataset.start = sub.start;
-            div.dataset.index = index;
-            div.onclick = () => {
-                video.currentTime = sub.start;
-                if (!video.paused) {
-                    video.play();
-                }
-            };
-            subtitleContainer.appendChild(div);
-        });
+        // Récupération des sous-titres depuis FastAPI
+        fetch("http://127.0.0.1:8001/subtitles_es")
+            .then(response => response.json())
+            .then(data => {
+                subtitles = data.map(sub => {
+                    const [start, end] = sub.timestamp.split(' --> ').map(t => {
+                        const [h, m, s] = t.split(':').map(parseFloat);
+                        return h * 3600 + m * 60 + s;
+                    });
+                    return { id: sub.id, start, end, text: sub.spanish };
+                });
+                displaySubtitles();
+            })
+            .catch(error => console.error("Erreur lors du chargement des sous-titres:", error));
+
+        function displaySubtitles() {
+            subtitleContainer.innerHTML = "";
+            subtitles.forEach((sub, index) => {
+                const div = document.createElement("div");
+                div.classList.add("subtitle");
+                div.innerHTML = sub.text.replace(/\n/g, "<br>");
+                div.dataset.start = sub.start;
+                div.dataset.index = index;
+                div.onclick = () => {
+                    video.currentTime = sub.start;
+                    if (!video.paused) {
+                        video.play();
+                    }
+                };
+                subtitleContainer.appendChild(div);
+            });
+        }
 
         // Synchronisation des sous-titres avec la vidéo
         video.addEventListener("timeupdate", () => {
@@ -77,7 +85,6 @@
             });
         });
 
-        // Fonction pour rejouer le sous-titre en cours
         function replaySubtitle() {
             const active = document.querySelector(".subtitle.active");
             if (active) {
@@ -88,7 +95,6 @@
             }
         }
 
-        // Fonction pour aller au sous-titre précédent
         function prevSubtitle() {
             const active = document.querySelector(".subtitle.active");
             if (active && active.previousElementSibling) {
@@ -100,7 +106,6 @@
             }
         }
 
-        // Fonction pour aller au sous-titre suivant
         function nextSubtitle() {
             const active = document.querySelector(".subtitle.active");
             if (active && active.nextElementSibling) {
