@@ -33,7 +33,7 @@
                 <button onclick="video.pause()">
                     <img src="{{ url_for('static', path='/icons/pause.svg') }}" alt="Pause">
                 </button>
-                <button onclick="video.play()">
+                <button onclick="playVideo()">
                     <img src="{{ url_for('static', path='/icons/play.svg') }}" alt="Play">
                 </button>
                 <button onclick="replaySubtitle()">
@@ -54,6 +54,8 @@
         let subtitles = [];
         let frenchSubtitles = [];
         let lastActiveIndex = -1;
+        let replaySubtitleIndex = -1;
+        let replayingSubtitle = false;
 
         // Fetch Spanish subtitles
         fetch("http://127.0.0.1:8001/subtitles_es")
@@ -75,7 +77,6 @@
             .then(response => response.json())
             .then(data => {
                 frenchSubtitles = data;
-                console.log("frenchSubtitles : ", frenchSubtitles[2])
             })
             .catch(error => console.error("Error loading French subtitles:", error));
 
@@ -102,8 +103,8 @@
             subtitles.forEach((sub, index) => {
                 const div = subtitleContainer.children[index];
                 if (video.currentTime >= sub.start && video.currentTime < sub.end) {
-                    div.classList.add("active");
                     div.scrollIntoView({ behavior: "smooth", block: "center" });
+                    div.classList.add("active");
                     currentSubtitleDisplay.innerText = frenchSubtitles[index]?.french || "";
                     lastActiveIndex = index;
                 } else {
@@ -112,19 +113,30 @@
             });
         });
 
+        function playVideo() {
+            video.play();
+            replayingSubtitle = false;
+        }
+
         function replaySubtitle() {
-            if (lastActiveIndex >= 0) {
-                video.currentTime = subtitles[lastActiveIndex].start - 1;
+            if (!replayingSubtitle) {
+                replaySubtitleIndex = lastActiveIndex;
+            }
+            replayingSubtitle = true;
+            if (replaySubtitleIndex >= 0) {
+                video.currentTime = subtitles[replaySubtitleIndex].start - 1;
                 video.play();
                 setTimeout(() => {
                     video.pause();
-                }, ((subtitles[lastActiveIndex].end - subtitles[lastActiveIndex].start) + 2) * 1000);
+                }, ((subtitles[replaySubtitleIndex].end - subtitles[replaySubtitleIndex].start) + 2) * 1000);
             }
         }
 
         function prevSubtitle() {
+            replayingSubtitle = false;
             if (lastActiveIndex > 0) {
-                video.currentTime = subtitles[lastActiveIndex - 1].start - 1;
+                delta = subtitles[lastActiveIndex - 1].end - subtitles[lastActiveIndex - 1].start
+                video.currentTime = subtitles[lastActiveIndex - 1].start + delta / 2;
                 if (!video.paused) {
                     video.play();
                 }
@@ -132,8 +144,10 @@
         }
 
         function nextSubtitle() {
+            replayingSubtitle = false;
             if (lastActiveIndex < subtitles.length - 1) {
-                video.currentTime = subtitles[lastActiveIndex + 1].start - 1;
+                delta = subtitles[lastActiveIndex + 1].end - subtitles[lastActiveIndex + 1].start
+                video.currentTime = subtitles[lastActiveIndex + 1].start + delta / 2;
                 if (!video.paused) {
                     video.play();
                 }
