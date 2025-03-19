@@ -11,6 +11,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
+from main_menu import MENU_ITEMS
 from database import get_errors, get_default_lesson, get_note
 from tonic_accent import get_html_lessons_directory, get_lesson_audio_files_directory, get_title 
 from tonic_accent import get_history, get_single_lesson_with_errors, get_spanish_lesson
@@ -109,21 +110,20 @@ async def play_sentence(request: Request, lesson_nb : int = 8, sentence_nb : int
         request=request, name="play_sentence.html", context={"lesson_nb": lesson_nb, "sentence_nb" : sentence_nb}
     )
 
-#@app.get("/spanish/{lesson_nb}", response_class=HTMLResponse)
-#async def display_lesson(request: Request, lesson_nb : int = 8):
-#    lesson = get_list_of_bold_sentences(lesson_nb)
-#    return templates.TemplateResponse(
-#        request=request, name="lesson.html", context={"active" : "lessons", "lesson_nb": lesson_nb, "lesson" : lesson})
-
 @app.get("/spanish/", response_class=HTMLResponse)
 async def display_home(request: Request, lesson_nb : int = 8):
     return templates.TemplateResponse(
-        request=request, name="index.html", context={"active"  :"home"})
+        request=request, name="index.html", context={"active" : "home", "menu_items" : MENU_ITEMS})
 
 @app.get("/history/", response_class=HTMLResponse)
 async def display_errors(request: Request):
+    context = {
+        "active" : "history",
+        "menu_items" : MENU_ITEMS,
+        "date" : date.today()
+    }
     return templates.TemplateResponse(
-        request=request, name="history.html", context= {"active" : "history", "date" : date.today()})
+        request=request, name="history.html", context= context)
 
 @app.post("/history/")
 async def get_errors(item: ErrorItem):
@@ -154,6 +154,7 @@ def get_lesson_errors_context(level, lesson_nb, datetimekey):
 
     context = {
         "active" : "lesson-errors",
+        "menu_items" : MENU_ITEMS,
         "level" : level,
         "lesson_nb": lesson_nb,
         "date_time" : date_time_string,
@@ -203,6 +204,7 @@ async def edit(request: Request, lesson_nb : int = 3):
     sentences = get_list_of_bold_sentences(lesson_nb, level = 0)
     context = {
         "active" : "basic-editor",
+        "menu_items" : MENU_ITEMS,
         "level" : 0,
         "lesson_nb": lesson_nb,
         "sentences" : sentences
@@ -215,6 +217,7 @@ async def edit(request: Request, lesson_nb : int = 3):
     sentences = get_list_of_bold_sentences(lesson_nb, level = 1)
     context = {
         "active" : "using-spanish-editor",
+        "menu_items" : MENU_ITEMS,
         "level" : 1,
         "lesson_nb": lesson_nb,
         "sentences" : sentences
@@ -254,8 +257,14 @@ def form_correct_word(level: int, lesson_nb: int,  item: CorrectItem):
 @app.get("/marker-editor/{lesson_nb}")
 async def test_edit(request: Request, lesson_nb : int = 3):   
     sentences = get_list_of_bold_sentences(lesson_nb)
+    context = {
+        "active" : "marker-editor" ,
+        "menu_items" : MENU_ITEMS,
+        "lesson_nb": lesson_nb,
+        "sentences" : sentences
+    }
     return templates.TemplateResponse(
-        request=request, name="marker-editor.html", context={"active" : "marker-editor" , "lesson_nb": lesson_nb, "sentences" : sentences})
+        request=request, name="marker-editor.html", context = context)
 
 @app.post("/marker-editor/{lesson_nb}")
 async def test_ranges(lesson_nb, item: SelectionItem):
@@ -277,6 +286,7 @@ def get_second_phase_contex(lesson_nb, level = 0):
         active = "basic-second-phase"
     context = {
         "active" : active,
+        "menu_items" : MENU_ITEMS,
         "level" : level,
         "lesson_nb": lesson_nb,
         "lesson" : french,                                                        
@@ -330,6 +340,7 @@ def get_first_phase_context(lesson_nb, active="first-phase", level = 0):
 
     context = {
         "active" : active,
+        "menu_items" : MENU_ITEMS,
         "level" : level,
         "level_prefix" : level_prefix,
         "lesson_nb": lesson_nb,

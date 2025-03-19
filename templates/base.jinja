@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link id="favicon" rel="icon" type="image/x-icon" href={{ url_for('static', path="/icons/espagnol.png")}} >
+    <link rel="shortcut icon" href={{ url_for('static', path="/icons/espagnol.png")}}>
+    <style>
+        body {
+          margin: 0;
+        }
+        
+        ul[id^='menu'] {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color: #f1f1f1;
+          position: fixed;
+          height: 100%;
+          overflow: auto;
+        }
+        
+        li h3 {
+            padding: 4px 8px;
+
+        }
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        
+        li a.active {
+          background-color: #04AA6D;
+          color: white;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+        }
+        #main {
+            
+            margin-left: 20%;
+            padding: 1px 16px;
+        }
+        {% block add_style %}{% endblock %}
+    </style>
+    {% block header %}{% endblock %}
+    <title>{% block title %}Espagnol{% endblock %}</title>
+    <script>
+        console.log("{{active}}")
+    </script>
+</head>
+<body>
+    <ul id="menu">
+        <li><a href="/spanish/" class="{% if active == 'home' %}active{% endif %}">Accueil Assimil</a></li>
+        
+        {% for section in menu_items %}
+            <li><h3>{{ section.category }}</h3></li>
+            {% for item in section["items"] %}
+                <li><a href="{{ item.url }}" class="{% if active == item.key %}active{% endif %}">{{ item.name }}</a></li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    <div id="main">
+        {% block content %}{% endblock %}
+    </div>
+</body></html>
