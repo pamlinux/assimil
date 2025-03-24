@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Éditeur de sous-titres</title>
     <style>
-        body { display: flex; height: 100vh; margin: 0; overflow: hidden; }
-        #container { display: flex; width: 100%; }
-        #subtitles { width: 40%; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; max-height: 100vh; }
+        body {  height: 100vh; margin: 0; overflow: hidden; }
+        #container {
+            display: flex;
+            width: 100%;
+            margin-top: 40px; /* Décale pour éviter le chevauchement */
+        }
+                #subtitles { width: 40%; scroll-padding-top: 80px; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; }
         #video-container { width: 60%; display: flex; flex-direction: column; align-items: center; }
         video { width: 100%; max-width: 720px; }
         .subtitle { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
@@ -15,10 +19,31 @@
         .controls { display: flex; gap: 10px; margin-top: 10px; }
         .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; }
         .controls img { width: 24px; height: 24px; }
-         #current-subtitle { margin-top: 10px; font-size: 18px; font-weight: bold; }
+        #current-subtitle { margin-top: 10px; font-size: 18px; font-weight: bold; }
+        #top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px; /* Ajuste selon ta div */
+            background: white; /* Ajoute un fond si besoin */
+            z-index: 1000; /* Pour s'assurer qu'elle est au-dessus des autres éléments */
+        } 
+
+        #subtitles, #video-container {
+            max-height: calc(100vh - 80px); /* Ajuste la hauteur en soustrayant la barre du haut */
+            overflow-y: auto;
+        }
+
     </style>
 </head>
 <body>
+    <div id="top-bar">
+        <button id="save-all">Tout Sauver</button>
+        <input type="number" id="subtitle-number" placeholder="Numéro">
+        <button id="go-to-subtitle">Aller</button>
+    </div>
+
     <div id="container">
         <div id="subtitles"></div>
         <div id="video-container">
@@ -103,7 +128,7 @@
             subtitles.forEach((sub, index) => {
                 const div = subtitleContainer.children[index];
                 if (video.currentTime >= sub.start && video.currentTime < sub.end) {
-                    div.scrollIntoView({ behavior: "smooth", block: "center" });
+                    div.scrollIntoView({ behavior: "smooth", block: "center", inline: "start"});
                     div.classList.add("active");
                     currentSubtitleDisplay.innerText = frenchSubtitles[index]?.french || "";
                     lastActiveIndex = index;

@@ -4,3 +4,7 @@ __pycache__
 **/.DS_Store
 *.mp4
 *.m4v
+audio_extrait.mpga
+Movies/audio_extrait.mp3
+extrait_audio_converted_16bit.flac
+extrait_audio.mpga

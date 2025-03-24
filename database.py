@@ -131,6 +131,7 @@ class Subtitle(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     media_id: Mapped[int] = mapped_column(ForeignKey("media.id"))
     media: Mapped["Media"] = relationship(back_populates="subtitles")
+    source: Mapped[Optional[str]]
     start_time: Mapped[datetime.time]
     end_time: Mapped[datetime.time]
     spanish_text: Mapped[str]

@@ -1,0 +1,2863 @@
+[   {   'french_text': 'Sous-titres : Atresmedia',
+        'id': 1,
+        'spanish_text': 'Subtítulos: Atresmedia'},
+    {   'french_text': '"Ici, personne ne peut vivre ici,\npas ici, pas ici."',
+        'id': 2,
+        'spanish_text': '"Aquí, aquí no hay quien viva,\naquí no, aquí no."'},
+    {   'french_text': '-Vicenta ! Allez, ça commence maintenant.\n'
+                       '-Non, je vais me coucher.',
+        'id': 3,
+        'spanish_text': '-¡Vicenta! Ven que esto empieza ya.\n'
+                        '-No, voy a acostarme.'},
+    {   'french_text': "J'ai des ardeurs...\n"
+                       '-Normal, tu es célibataire depuis toujours.',
+        'id': 4,
+        'spanish_text': 'Tengo unos ardores..\n-Normal, soltera toda tu vida.'},
+    {   'french_text': "-Des brûlures d'estomac.",
+        'id': 5,
+        'spanish_text': '-Ardor de estómago.'},
+    {   'french_text': 'Pourquoi me rappelles-tu toujours\n'
+                       "que je ne me suis pas mariée ? J'ai décidé...",
+        'id': 6,
+        'spanish_text': '¿Por qué siempre me recuerdas\n'
+                        'que no me he casado? Yo decidí...'},
+    {   'french_text': "...en attendant l'homme de ma vie.\n"
+                       '-Cela semble prendre du temps.',
+        'id': 7,
+        'spanish_text': '...esperar al hombre de mi vida.\n-Parece que tarda.'},
+    {   'french_text': "-Je n'ai pas besoin d'un homme, pas comme toi,\n"
+                       "depuis que Manolo t'a quittée...",
+        'id': 8,
+        'spanish_text': '-No necesito a un hombre, no como\n'
+                        'tú, desde que te dejó Manolo...'},
+    {   'french_text': "...tu es amère.\n-Non, j'étais amère avant.",
+        'id': 9,
+        'spanish_text': '...estás amargada.\n'
+                        '-No, estaba amargada desde antes.'},
+    {   'french_text': 'Papa était responsable de tout.\n-Pourquoi ?',
+        'id': 10,
+        'spanish_text': 'A culpa de todo la tuvo papá.\n-¿Por qué?'},
+    {   'french_text': "-Si je lui dis à 11 heures, c'est à 11 heures.\n"
+                       "Pourquoi cette enfant n'écoute-t-elle jamais ?",
+        'id': 11,
+        'spanish_text': '-Si le digo a las 11, es a las 11.\n'
+                        '¿Por qué esta niña nunca hace caso?'},
+    {   'french_text': 'Appelle-la sur son portable.\n'
+                       '-Mais elle ne décroche pas.',
+        'id': 12,
+        'spanish_text': 'Llámala al móvil.\n-Pero si no me lo coge.'},
+    {   'french_text': "Nous lui en achetons un et elle l'éteint.\n"
+                       'Mon fils, si je te dis à 11 heures,',
+        'id': 13,
+        'spanish_text': 'Le compramos uno y lo apaga.\n'
+                        'Hijo mío, si te digo a las 11,'},
+    {   'french_text': 'Que comprend-tu ?\n-A 11 heures, non?',
+        'id': 14,
+        'spanish_text': '¿tú qué entiendes?\n-A las 11, ¿no?'},
+    {   'french_text': '-Cet enfant deviendra quelque chose de grand\nun jour.',
+        'id': 15,
+        'spanish_text': '-Este niño sí será algo grande\nalgún día.'},
+    {   'french_text': '-Elle a dû être un peu retardée.\n'
+                       'Elle est jeune, elle a 17 ans.',
+        'id': 16,
+        'spanish_text': '-Se habrá retrasado un poco.\n'
+                        'Es joven, tiene 17 años.'},
+    {   'french_text': "Elle aime s'amuser et sortir\n"
+                       "avec des garçons. Quand j'avais...",
+        'id': 17,
+        'spanish_text': 'Le gusta divertirse y salir\n'
+                        'con chicos. Cuando yo tenía...'},
+    {'french_text': '...SON âge...', 'id': 18, 'spanish_text': '...SU edad...'},
+    {   'french_text': 'Elle verra bien quand elle rentrera.',
+        'id': 19,
+        'spanish_text': 'Ya verás cuando vuelva.'},
+    {   'french_text': 'Alicia, on y va ?\n'
+                       'Je veux rencontrer des gars quand...',
+        'id': 20,
+        'spanish_text': 'Alicia, ¿nos vamos?\n'
+                        'Quiero conocer a tíos cuando aún...'},
+    {   'french_text': '...Ils ne sont pas encore ivres.',
+        'id': 21,
+        'spanish_text': '...No están borrachos.'},
+    {   'french_text': 'me voilà.\nAllons-y.',
+        'id': 22,
+        'spanish_text': 'Ya estoy.\n-Vámonos.'},
+    {   'french_text': 'Tu sors comme ça ?\n-Oui.',
+        'id': 23,
+        'spanish_text': '¿Vas a salir así?\n-Sí.'},
+    {   'french_text': '-Alors je ne sors pas.\n'
+                       'Tu me fais toujours la même chose.',
+        'id': 24,
+        'spanish_text': '-Pues no salgo.\nSiempre me haces lo mismo.'},
+    {   'french_text': '-Allez, ma chère ! Si alors ils te parlent toujours.',
+        'id': 25,
+        'spanish_text': '-¡Venga, tía! Si luego siempre\nhablan contigo.'},
+    {   'french_text': "-Pour me demander ton prénom.\nC'est humiliant !",
+        'id': 26,
+        'spanish_text': '-Para preguntarme tu nombre.\n¡Es humillante!'},
+    {   'french_text': 'Pourquoi es-tu si négative ?\n'
+                       "-Parce que je ne suis plus d'humeur à le faire,",
+        'id': 27,
+        'spanish_text': '-¿Por qué eres tan negativa?\n'
+                        '-Porque no estoy ya para eso,'},
+    {   'french_text': "J'ai presque 30 ans.\n"
+                       "Je n'ai pas de maison, pas de voiture... rien !",
+        'id': 28,
+        'spanish_text': 'tengo casi 30 años.\n'
+                        'No tengo casa ni coche... ¡nada!'},
+    {   'french_text': "jusqu'à quand allons-nous nous comporter\n"
+                       'comme si nous avions 16 ans ?',
+        'id': 29,
+        'spanish_text': '¿Hasta cuándo nos vamos a comportar\n'
+                        'como si tuviéramos 16 años?'},
+    {   'french_text': '-On y va ?\nAllons-y.',
+        'id': 30,
+        'spanish_text': '-¿Nos vamos?\n-Vámonos.'},
+    {   'french_text': "C'est la dernière fois que je sors.\nOui.",
+        'id': 31,
+        'spanish_text': 'Es la última vez que salgo.\nSí.'},
+    {   'french_text': "-Je suis sérieux, la dernière.\n-D'accord.",
+        'id': 32,
+        'spanish_text': '-Te lo digo en serio, la última.\n-Vale.'},
+    {   'french_text': '-Tu me fais toujours la même chose.',
+        'id': 33,
+        'spanish_text': '-Siempre me haces lo mismo.'},
+    {   'french_text': 'Où vont-elles à ces heures ?\n'
+                       'De quoi te préoccupez-tu ?',
+        'id': 34,
+        'spanish_text': '-¿Adónde irán a estas horas?\nA ti qué más te da.'},
+    {   'french_text': 'Ces deux-là se couchent plus tard\n'
+                       "que Batman. Si seulement j'avais su,",
+        'id': 35,
+        'spanish_text': '-Estas dos trasnochan más\n'
+                        'que Batman. Si lo hubiera sabido,'},
+    {   'french_text': "Je ne leur aurais pas loué l'appartement.\n"
+                       "-Béatriz, je garde l'enfant.",
+        'id': 36,
+        'spanish_text': 'no les alquilo el piso.\n'
+                        '-Beatriz, el niño me lo quedo yo.'},
+    {   'french_text': "Dimanche, tu l'emméne toi.\n-Avec la voiture !",
+        'id': 37,
+        'spanish_text': 'El domingo te lo llevas tú.\n-¡Con coche!'},
+    {   'french_text': "-J'ai aussi le droit de profiter\nde mon fils.",
+        'id': 38,
+        'spanish_text': '-También tengo derecho a disfrutar\nde mi hijo.'},
+    {   'french_text': '-Dites oui !\n-Je vais boire un verre.',
+        'id': 39,
+        'spanish_text': '-¡Di que sí!\n-Me voy a tomar algo.'},
+    {   'french_text': "-Et l'enfant ?\nMais, mère, où je vais...",
+        'id': 40,
+        'spanish_text': '-¿Y el niño?\nPero, mamá, donde voy...'},
+    {   'french_text': "...Ou ils l'ont laissé entrer.\n-Vous plaisantez...",
+        'id': 41,
+        'spanish_text': '...O le dejan entrar.\n-Anda que...'},
+    {   'french_text': '-Pourquoi ne pas aller à Ibiza\nen ferry ?',
+        'id': 42,
+        'spanish_text': '-¿Por qué no vamos a Ibiza\nen ferry?'},
+    {   'french_text': "Parce qu'on y va le week-end.\n"
+                       "-Je ne peux pas prendre l'avion,",
+        'id': 43,
+        'spanish_text': 'Porque se nos va el fin de semana.\n'
+                        '-No puedo montar en avión,'},
+    {   'french_text': 'Fernando, je ne peux pas.\n'
+                       'Mauri, Ibiza est la porte à côté.',
+        'id': 44,
+        'spanish_text': 'Fernando, no puedo.\nMauri, Ibiza está aquí al lado.'},
+    {   'french_text': "C'est 40 minutes.\n-Assez pour s'écraser.",
+        'id': 45,
+        'spanish_text': 'Son 40 minutos.\n-Suficientes para estrellarse.'},
+    {   'french_text': "L'avion est le moyen de transport\n"
+                       'le plus sûr qui existe.',
+        'id': 46,
+        'spanish_text': 'El avión es el medio de transporte\n'
+                        'más seguro que existe.'},
+    {   'french_text': 'La pire chose qui puisse arriver\n'
+                       'est de perdre la valise.',
+        'id': 47,
+        'spanish_text': 'Lo peor que puede pasar\nes perder la maleta.'},
+    {   'french_text': "-D'abord ils me tuent\n"
+                       'et ensuite ils perdent ma valise.',
+        'id': 48,
+        'spanish_text': '-Primero me matan\ny luego me pierden la maleta.'},
+    {   'french_text': 'Eh bien, je ne mettrai pas cette chemise\n'
+                       'elle est trop cher.',
+        'id': 49,
+        'spanish_text': 'Pues esta camisa no la meto\nque es muy cara.'},
+    {   'french_text': '-Tout est un drame.',
+        'id': 50,
+        'spanish_text': '-Todo es un drama.'},
+    {   'french_text': "Je ne pouvais pas y aller, c'était impossible.",
+        'id': 51,
+        'spanish_text': 'No podía ir, imposible.'},
+    {   'french_text': 'OK, je te rappelle.',
+        'id': 52,
+        'spanish_text': 'Vale, yo te llamo.'},
+    {   'french_text': "Natalia, as-tu vu l'heure qu'il est ?",
+        'id': 53,
+        'spanish_text': 'Natalia, ¿has visto qué hora es?'},
+    {   'french_text': "Tu n'as rien à dire ?\nNatalia !",
+        'id': 54,
+        'spanish_text': '¿No tienes nada que decir?\n¡Natalia!'},
+    {'french_text': 'Natalia !', 'id': 55, 'spanish_text': '¡Natalia!'},
+    {   'french_text': '(Une porte est claquée)',
+        'id': 56,
+        'spanish_text': '(Se oye un portazo)'},
+    {   'french_text': '-Dans ta chambre punie !',
+        'id': 57,
+        'spanish_text': '-¡A tu cuarto castigada!'},
+    {   'french_text': 'Et ne sort pas !',
+        'id': 58,
+        'spanish_text': '¡Y no salgas!'},
+    {   'french_text': '-Ne sois pas si dur avec elle.\n'
+                       '-Celle-là ne me connaît pas.',
+        'id': 59,
+        'spanish_text': '-No seas tan duro con ella.\n'
+                        '-Esta no me conoce a mí.'},
+    {   'french_text': "(CHANSON) Il n'y a pas moyen de vivre ici.",
+        'id': 60,
+        'spanish_text': '(CANCIÓN) Aquí no hay quien viva,\naquí no.'},
+    {   'french_text': "C'est comme ça tous les jours, je ne pouvais pas\n"
+                       "l'imaginer en arrivant ici.",
+        'id': 61,
+        'spanish_text': 'Todos los días son así, no podía\n'
+                        'imaginarlo cuando vine aquí.'},
+    {   'french_text': 'Je cherchais juste quelque chose de normal.\n'
+                       'Je me réveille tous les jours au milieu de...',
+        'id': 62,
+        'spanish_text': 'Sólo buscaba algo normal.\n'
+                        'Me despierto cada día en medio...'},
+    {   'french_text': "...d'un ouragan.",
+        'id': 63,
+        'spanish_text': '...de un huracán.'},
+    {   'french_text': "Il n'y a pas moyen de vivre ici, pas ici.",
+        'id': 64,
+        'spanish_text': 'Aquí no hay quien viva, aquí no.'},
+    {   'french_text': "Il n'y a pas moyen de vivre ici, pas ici.",
+        'id': 65,
+        'spanish_text': 'Aquí no hay quien viva, aquí no.'},
+    {   'french_text': "La maison au-dessus de moi s'effondre,\n"
+                       'le portier est introuvable.',
+        'id': 66,
+        'spanish_text': 'La casa sobre mí se derrumba,\n'
+                        'al portero no le puedo encontrar.'},
+    {   'french_text': "Les voisins m'observent et écoutent,\n"
+                       'Je ne supporte pas cet endroit.',
+        'id': 67,
+        'spanish_text': 'Los vecinos me vigilan y escuchan,\n'
+                        'no aguanto en este lugar.'},
+    {   'french_text': 'Mettre dans un shaker...',
+        'id': 68,
+        'spanish_text': 'Mete en una coctelera...'},
+    {   'french_text': '...Un train, un tremblement de terre\net un volcan,',
+        'id': 69,
+        'spanish_text': '...UN tren, un terremoto\ny un volcán,'},
+    {   'french_text': 'et vous aurez cet escalier.',
+        'id': 70,
+        'spanish_text': 'y tendrás esta escalera.'},
+    {   'french_text': "Il n'y a pas moyen de vivre ici, pas ici",
+        'id': 71,
+        'spanish_text': 'Aquí no hay quien viva, aquí no.'},
+    {   'french_text': "Il n'y a pas moyen de vivre ici, pas ici",
+        'id': 72,
+        'spanish_text': 'Aquí no hay quien viva, aquí no.'},
+    {   'french_text': "Il n'y a pas moyen de vivre ici, pas ici",
+        'id': 73,
+        'spanish_text': 'Aquí no hay quien viva, aquí no.'},
+    {   'french_text': 'Lucia, peux-tu ouvrir la porte ?\n'
+                       "C'est juste que c'est lourd.",
+        'id': 74,
+        'spanish_text': 'Lucía, ¿puedes abrir la puerta?\nEs que esto pesa.'},
+    {   'french_text': "-Je sais que c'est lourd, mais tu n'es pas le seul\n"
+                       'à être chargé.',
+        'id': 75,
+        'spanish_text': '-Ya sé que pesa, pero no eres\n'
+                        'el único que va cargado.'},
+    {   'french_text': '-Pourquoi ne pas essayer la clé ?\n'
+                       '-Le concierge était censé me les donner.',
+        'id': 76,
+        'spanish_text': '-¿Por qué no pruebas con la llave?\n'
+                        '-Me las tenía que dar el conserje.'},
+    {   'french_text': 'Tu vois le concierge ?\n'
+                       "Appele un voisin et qu'il ouvre.",
+        'id': 77,
+        'spanish_text': '¿Tú ves el conserje?\nLlama algún vecino y que abra.'},
+    {   'french_text': "-tu as promis d'être de bonne humeur\n"
+                       'pendant le déménagement.',
+        'id': 78,
+        'spanish_text': '-Prometiste estar de buen humor\ndurante la mudanza.'},
+    {   'french_text': '-Si je suis de bonne humeur. Je ne saute pas\n'
+                       'de joie parce que la télévision est lourde.',
+        'id': 79,
+        'spanish_text': '-Si estoy de buen humor. No salto\n'
+                        'de alegría porque la tele pesa.'},
+    {   'french_text': '-Oui ?\n-Bonjour, nous ne trouvons pas le concierge.',
+        'id': 80,
+        'spanish_text': '-¿Si?\n-Hola, no encontramos el conserje.'},
+    {   'french_text': 'Pourquoi penses-tu que ce connard\n'
+                       'est dans ma maison ?',
+        'id': 81,
+        'spanish_text': '-¿Por qué supone que ese imbécil\nestá en mi casa?'},
+    {   'french_text': '-Mais... Pouvez-vous ouvrir\nla porte ?',
+        'id': 82,
+        'spanish_text': '-Pero... ¿nos puede abrir\nla puerta?'},
+    {   'french_text': "-Non, je ne m'ouvre pas aux étrangers.\n"
+                       "Quelle impolitesse, n'est-ce pas ?",
+        'id': 83,
+        'spanish_text': '-No, yo no abro a desconocidos.\n-Qué borde, ¿no?'},
+    {   'french_text': "Appelle quelqu'un d'autre.\n"
+                       'Pourquoi ne la poses-tu pas ?',
+        'id': 84,
+        'spanish_text': 'Llama a otro.\n-¿Por qué no la dejas en el suelo?'},
+    {   'french_text': "-Parce qu'il faut le reprendre.\n-Dites-moi ?",
+        'id': 85,
+        'spanish_text': '-Porque hay que volver a cogerla.\n-¿Díigame?'},
+    {   'french_text': '-Bonjour, je suis la nouvelle voisine....\n'
+                       'Non merci, nous ne voulons rien.',
+        'id': 86,
+        'spanish_text': '-Hola, soy la nueva vecina...\n'
+                        'No, gracias, no queremos nada.'},
+    {   'french_text': 'Mais attendez...\nNe leurs ouvre pas, Marisa,',
+        'id': 87,
+        'spanish_text': 'Pero espere...\nNo les abras, Marisa,'},
+    {   'french_text': '- Je ne sais pas qui ils sont.\n'
+                       '(IRONIQUE) - Ce sont de gentils voisins,',
+        'id': 88,
+        'spanish_text': '— que no sé quiénes son.\n'
+                        '(IRÓNICO) -Son majos los vecinos,'},
+    {   'french_text': 'Je pense que nous avons réussi.\n'
+                       "Il y aura bien quelqu'un pour nous ouvrir, n'est-ce "
+                       'pas ?',
+        'id': 89,
+        'spanish_text': 'creo que hemos acertado.\n'
+                        '-Habrá alguien que nos abra, ¿no?'},
+    {   'french_text': 'Je ne crois pas.\nAccrochez-vous, madame !',
+        'id': 90,
+        'spanish_text': 'No creo.\n-¡Cuelgue, señora!'},
+    {   'french_text': '(On sonne à la porte)',
+        'id': 91,
+        'spanish_text': '(Suena el timbre)'},
+    {   'french_text': "Mais il n'est que 12 heures.",
+        'id': 92,
+        'spanish_text': 'Pero si sólo son las 12.'},
+    {   'french_text': 'Belén, tu es réveillée ?\nNon.',
+        'id': 93,
+        'spanish_text': 'Belén, ¿estás despierta?\nNo.'},
+    {   'french_text': "Ils sont à l'interphone.\n-Tu ne me dis rien ?",
+        'id': 94,
+        'spanish_text': 'Están llamando al telefonillo.\n-¿No me digas?'},
+    {   'french_text': 'Mais qui est-ce ?\n-Tes menstruations.',
+        'id': 95,
+        'spanish_text': '-¿Pero quién es?\n-Tu menstruación.'},
+    {   'french_text': "Qu'est-ce que tu me racontes ?\n"
+                       '-Je ne vais pas me lever.',
+        'id': 96,
+        'spanish_text': '¿A mí que me cuentas?\n-Pues no pienso levantarme.'},
+    {   'french_text': 'Je ne sais plus où appeler.\nEh bien, ça suffit.',
+        'id': 97,
+        'spanish_text': 'Ya no sé dónde llamar.\nBueno, ya está bien.'},
+    {   'french_text': 'Regarde ce que je fais.\n'
+                       "Si quelqu'un ne m'ouvre pas la porte...",
+        'id': 98,
+        'spanish_text': 'Mira lo que hago.\nComo no me abra alguien...'},
+    {   'french_text': "Qu'vas-tu faire ?\n"
+                       'Je ne sais pas, mais il faudra bien faire quelque '
+                       'chose.',
+        'id': 99,
+        'spanish_text': '-¿Qué vas a hacer?\n'
+                        'No sé, pero algo habrá que hacer.'},
+    {   'french_text': "L'hiver approche.",
+        'id': 100,
+        'spanish_text': 'Se acerca el invierno.'},
+    {   'french_text': '-Bonjour.\n-Merci beaucoup, Madame.',
+        'id': 101,
+        'spanish_text': '-Buenos días.\n-Muchas gracias, señora.'},
+    {   'french_text': "Si ma petite amie n'était pas là,\n"
+                       'je vous embrasserais sur la bouche.',
+        'id': 102,
+        'spanish_text': 'Si no estuviese mi novia,\n'
+                        'le daba un beso en la boca.'},
+    {   'french_text': "-Je vous demande pardon ?\nNe l'écoutez pas.",
+        'id': 103,
+        'spanish_text': '-¿Perdón?\nNo le haga caso.'},
+    {   'french_text': "Nous sommes nouveaux et nous n'avons toujours pas de "
+                       'clé\n'
+                       'et personne ne veut nous ouvrir la porte.',
+        'id': 104,
+        'spanish_text': 'Somos nuevos y aún no tenemos llave\n'
+                        'y nadie nos abría la puerta.'},
+    {   'french_text': '-Et Emilio, le concierge ?\n-Qui a tué Kennedy,',
+        'id': 105,
+        'spanish_text': '-¿Ah, no? ¿Y Emilio, el portero?\n'
+                        '-¿Quién mató a Kennedy,'},
+    {   'french_text': 'où est le concierge... ?\nJe suis en train de monter.',
+        'id': 106,
+        'spanish_text': 'dónde está el portero...?\nYo voy subiendo.'},
+    {   'french_text': 'Enchanté, madame.\n-Entrez, je vous accompagne.',
+        'id': 107,
+        'spanish_text': 'Encantado, señora.\n-Pasad, yo os acompaño.'},
+    {   'french_text': "Je m'appelle Vicenta\net voici Valentin.",
+        'id': 108,
+        'spanish_text': 'Me llamo Vicenta\ny éste es Valentin.'},
+    {   'french_text': "-Enchantée, je m'appelle Lucía\net voici Roberto.",
+        'id': 109,
+        'spanish_text': '-Encantada, yo soy Lucía\ny él es Roberto.'},
+    {   'french_text': "Qu'est-ce que je vous ai dit ?\nVoici les clés.",
+        'id': 110,
+        'spanish_text': '-¿Qué os decía?\nAquí están las llaves.'},
+    {   'french_text': 'Emilio les laisse toujours\nau même endroit.',
+        'id': 111,
+        'spanish_text': 'Emilio las deja siempre\nen el mismo sitio.'},
+    {   'french_text': '-Alors tout le monde peut les prendre.\n'
+                       'Non, seulement ceux qui le savent.',
+        'id': 112,
+        'spanish_text': '-Entonces las coge cualquiera.\n'
+                        'No, sólo los que lo sabemos.'},
+    {   'french_text': "Ucia, tu peux m'ouvrir ?\n-Non, non, c'est interdit...",
+        'id': 113,
+        'spanish_text': 'Ucía, ¿puedes abrirme?\n-No, no, está prohibido...'},
+    {   'french_text': "...Utilisez l'ascenseur pour monter.\n"
+                       'Il vaut mieux prendre les escaliers.',
+        'id': 114,
+        'spanish_text': '...Usar el ascensor para subir.\n'
+                        'Vamos mejor por las escaleras.'},
+    {   'french_text': "-Comment ?\n-Nous ne l'utilisons que pour descendre.",
+        'id': 115,
+        'spanish_text': '-¿Cómo?\n-Que sólo lo usamos para bajar.'},
+    {   'french_text': 'Il tombe souvent en panne.\n'
+                       "Je pense qu'ils veulent le changer.",
+        'id': 116,
+        'spanish_text': 'Se estropea mucho.\nCreo que quieren cambiarlo.'},
+    {   'french_text': "-Qu'ils le changent, j'attends ici.\n"
+                       "Allons, chéri, il n'y a que trois étages.",
+        'id': 117,
+        'spanish_text': '-Que lo cambien, yo espero aquí.\n'
+                        'Venga, cariño, sólo son 3 pisos.'},
+    {   'french_text': "-Ah, seulement trois ! Si ce n'est que trois\n"
+                       "étages, d'accord.",
+        'id': 118,
+        'spanish_text': '-¡Ah, sólo tres! Si sólo son tres\npisos, vale.'},
+    {   'french_text': 'Vous allez adorer les gens dans le bâtiment,\n'
+                       'nous sommes tous très jeunes.',
+        'id': 119,
+        'spanish_text': 'Les va a encantar la gente del\n'
+                        'edificio, somos todos muy jóvenes.'},
+    {   'french_text': 'Je vis ici, au premier A\n'
+                       'avec ma sœur. Voulez-vous faire sa connaissance ?',
+        'id': 120,
+        'spanish_text': 'Yo vivo aquí, en el primero A\n'
+                        'con mi hermana. ¿Queréis conocerla?'},
+    {   'french_text': '-Nous aimerions bien, mais ce sera pour\n'
+                       'une autre fois.',
+        'id': 121,
+        'spanish_text': '-Nos encantaría, pero en otro\nmomento.'},
+    {   'french_text': '-Marisa, sors un instant !',
+        'id': 122,
+        'spanish_text': '-¡Marisa, sal un momento!'},
+    {   'french_text': "-Mais tu n'allais pas faire des courses ?\n"
+                       '-Ce sont les nouveaux voisins...',
+        'id': 123,
+        'spanish_text': '-¿Pero no ibas a la compra?\n'
+                        '-Son los nuevos vecinos...'},
+    {   'french_text': '...du troisième.\n-Ce qui manquait, encore des jeunes.',
+        'id': 124,
+        'spanish_text': '...del tercero.\n-Lo que faltaba, más jóvenes.'},
+    {   'french_text': "Vous êtes mariés, n'est-ce pas ?\n"
+                       '-Pas encore, mais nous sommes sur le point de le '
+                       'faire.',
+        'id': 125,
+        'spanish_text': 'Estaréis casados, ¿no?\n'
+                        '-Todavía no, pero estamos a punto.'},
+    {   'french_text': '-Ah, oui ?\n'
+                       'Donne-moi le panier, je vais faire les courses '
+                       'moi-même.',
+        'id': 126,
+        'spanish_text': '-¿Ah, sí?\nDame el carro, voy yo a comprar.'},
+    {   'french_text': 'Enchanté de vous rencontrer, hein ?\n-Moi de même.',
+        'id': 127,
+        'spanish_text': 'Encantada, ¿eh?\n-igualmente.'},
+    {   'french_text': "-Ne l'écoute pas, c'est une blagueuse.\n"
+                       "-Allez, Mauri, s'il te plaît,",
+        'id': 128,
+        'spanish_text': '-No hagáis caso, es una bromista.\n'
+                        '-Venga, Mauri, por favor,'},
+    {   'french_text': "nous ratons l'avion.\nNous allons à Ibiza en avion,",
+        'id': 129,
+        'spanish_text': 'que perdemos el avión.\nNos vamos a Ibiza en avión,'},
+    {   'french_text': 'Je suis très heureux.\nPardonnez-lui, il a pris...',
+        'id': 130,
+        'spanish_text': 'estoy muy contento.\nPerdonadle, se ha tomado...'},
+    {   'french_text': '...Un valium et il devient hystérique.\n'
+                       '-Fernando, ce sont les nouveaux...',
+        'id': 131,
+        'spanish_text': '...UN valium y está histérico.\n'
+                        '-Fernando, estos son los nuevos...'},
+    {   'french_text': '...Voisins du troisième.\nDialgo.',
+        'id': 132,
+        'spanish_text': '...Vecinos del tercero.\nDialgo.'},
+    {   'french_text': '-Au secours !\n-Bienvenue, je suis Fernando....',
+        'id': 133,
+        'spanish_text': '-¡Socorro!\n-Bienvenidos, yo soy Fernando...'},
+    {   'french_text': '...et voici Mauri. Et nous partons\n'
+                       'parce que nous ne sommes pas arrivé. A lundi.',
+        'id': 134,
+        'spanish_text': '...y él es Mauri. Y nos vamos\n'
+                        'porque no llegamos. Hasta el lunes.'},
+    {   'french_text': '-Tu donnes les clés à Emilio ?\n'
+                       'Il doit nourrir Versace.',
+        'id': 135,
+        'spanish_text': '-¿Le da las llaves a Emilio?\n'
+                        'Tiene que dar de comer a Versace.'},
+    {   'french_text': '-Qui est Versace ?\n'
+                       '-Mon animal de compagnie, un lapin nain.',
+        'id': 136,
+        'spanish_text': '-¿Quién es Versace?\n-Mi mascota, un conejo enano.'},
+    {   'french_text': "-Maurizio !\n-J'arrive ! Si ça va avec la hâte....",
+        'id': 137,
+        'spanish_text': '-¡Mauricio!\n-¡Ya voy! Si va con las prisas...'},
+    {   'french_text': "Eh bien, pouvons-nous continuer\nl'ascension ?",
+        'id': 138,
+        'spanish_text': '-Bueno, ¿podemos seguir\nla escalada?'},
+    {   'french_text': "Ce sont nos voisins\nd'en face. Ma sœur dit...",
+        'id': 139,
+        'spanish_text': 'Estos son nuestros vecinos\n'
+                        'de enfrente. Mi hermana asegura...'},
+    {   'french_text': '...ils sont gays, mais je pense\n'
+                       "qu'ils sont homosexuels.",
+        'id': 140,
+        'spanish_text': '...QUe son gays, pero a mí me da\n'
+                        'que son homosexuales.'},
+    {   'french_text': '-De nos jours, on ne sait plus.\n-Jamais, mon enfant.',
+        'id': 141,
+        'spanish_text': '-Hoy nunca se sabe.\n-Nunca, hija.'},
+    {   'french_text': 'Maintenant, vous aller faire\n'
+                       'la connasissance de Concha.',
+        'id': 142,
+        'spanish_text': 'Ahora vais a conocer a Concha.'},
+    {   'french_text': "Je dis cela parce qu'elle regarde\npar le judas.",
+        'id': 143,
+        'spanish_text': 'Lo digo porque está mirando\npor la mirilla.'},
+    {   'french_text': '-Je ne regarde pas par le judas,\n'
+                       'mais vous aimez les scandales...',
+        'id': 144,
+        'spanish_text': '-No miro por la mirilla,\n'
+                        'pero es que amáis un escándalo...'},
+    {   'french_text': 'Qui sont-ils ?\n'
+                       '-Les nouveaux voisins ; ils ne sont pas...',
+        'id': 145,
+        'spanish_text': '¿Estos quiénes son?\n'
+                        '-Los nuevos vecinos; no están...'},
+    {   'french_text': '...Mariés, mais ils vont se marier.\n-Enchantée.',
+        'id': 146,
+        'spanish_text': '...Casados, pero se van a casar.\n-Encantada.'},
+    {   'french_text': 'Nous sommes en visite officielle\nau bâtiment.',
+        'id': 147,
+        'spanish_text': 'Estamos de visita oficial\npor el edificio.'},
+    {   'french_text': '-Bonjour.\n-Bonjour.',
+        'id': 148,
+        'spanish_text': '-Buenos días.\n-Hola.'},
+    {   'french_text': "Attention avec ça.\nC'est comme jouer à la Play,",
+        'id': 149,
+        'spanish_text': '-Ten cuidado con ésta.\n'
+                        'Esto es como jugar a la Play,'},
+    {   'french_text': 'nous avons passé un autre écran.\n'
+                       "De nouveaux voisins, n'est-ce pas ?",
+        'id': 150,
+        'spanish_text': 'hemos pasado otra pantalla.\nVecinos nuevos, ¿no?'},
+    {   'french_text': "Je m'appelle Paloma et voici mon mari.\n"
+                       "-Je m'appelle Juan Cuesta, le président.",
+        'id': 151,
+        'spanish_text': 'Yo soy Paloma y éste es mi marido.\n'
+                        '-Soy Juan Cuesta, el Presidente.'},
+    {   'french_text': 'Bienvenue.\nUne bonne télévision, ça doit coûter cher.',
+        'id': 152,
+        'spanish_text': 'Bienvenidos.\nBuena tele, debe ser cara.'},
+    {   'french_text': '-Merci de me le rappeler.\nJe pensais la lâcher.',
+        'id': 153,
+        'spanish_text': '-Gracias por recordármelo.\nPensaba soltarla.'},
+    {   'french_text': "Attends, je vais t'aider.\nAllez, fais attention,",
+        'id': 154,
+        'spanish_text': 'Espera, te ayudo.\nVenga, con cuidado,'},
+    {   'french_text': "N'allons pas faire une expérience désagréable.",
+        'id': 155,
+        'spanish_text': 'no vayamos a tener un disgusto.'},
+    {   'french_text': '-Allez, ces gars doivent être\n'
+                       "être impatients de s'installer.",
+        'id': 156,
+        'spanish_text': '-Vamos, que estos chicos deben\n'
+                        'estar deseando instalarse.'},
+    {   'french_text': "-Je monte et je m'en vais vite,\n"
+                       "j'ai beaucoup à faire.",
+        'id': 157,
+        'spanish_text': '-Yo subo y me voy pronto,\n'
+                        'que tengo mucho que hacer.'},
+    {   'french_text': '-Oui, regarder la télévision.',
+        'id': 158,
+        'spanish_text': '-Sí, ver la tele.'},
+    {   'french_text': "S'il vous plaît, si le concierge apparaît,\n"
+                       'veuillez lever la main.',
+        'id': 159,
+        'spanish_text': 'Por favor, si aparece el conserje,\n'
+                        'que levante la mano.'},
+    {   'french_text': '-Merci beaucoup pour tout.\n-Pas de quoi, bienvenue.',
+        'id': 160,
+        'spanish_text': '-Muchas gracias por todo.\n-De nada, bienvenidos.'},
+    {   'french_text': 'Si vous avez besoin de quoi que ce soit...\n'
+                       '-Nous sommes une grande famille.',
+        'id': 161,
+        'spanish_text': 'Si necesitáis algo...\n-Aquí somos una gran familia.'},
+    {   'french_text': '-Tu vas devoir peindre.\n-Allez, viens...',
+        'id': 162,
+        'spanish_text': '-Vais a tener que pintar.\n-Venga...'},
+    {   'french_text': "-tu vois qu'est-ce que je t'avais dit,\n"
+                       'cette histoire de câble, gamine.',
+        'id': 163,
+        'spanish_text': '-Mira que te he dicho lo del cable,\nchaval.'},
+    {   'french_text': '-Je ne les aime pas, je ne sais pas pourquoi,\n'
+                       'mais je ne les aime pas du tout.',
+        'id': 164,
+        'spanish_text': '-No me gustan, no sé por qué,\n'
+                        'pero no me gustan nada.'},
+    {   'french_text': "-Et vous aimez quelqu'un ?\n"
+                       '-Je vous le dis, ils ne se marient pas.',
+        'id': 165,
+        'spanish_text': '-¿Y a usted le gusta alguien?\n'
+                        '-Yo te digo que esos no se casan.'},
+    {   'french_text': "Et l'appartement, ils l'ont acheté\nmoitié-moitié ?",
+        'id': 166,
+        'spanish_text': '¿Y el piso, se lo han comprado\na medias?'},
+    {   'french_text': '-Je ne lui ai pas demandé.\n-Mal fait.',
+        'id': 167,
+        'spanish_text': '-No se lo he preguntado.\n-Mal hecho.'},
+    {   'french_text': "-Du moment qu'ils paient les frais communautaires....",
+        'id': 168,
+        'spanish_text': '-Mientras paguen la comunidad...'},
+    {   'french_text': "Qu'en penses-tu ?",
+        'id': 169,
+        'spanish_text': '-¿Qué te parece?'},
+    {   'french_text': 'On le peint, on répare le sol,\n'
+                       'on change la salle de bain...',
+        'id': 170,
+        'spanish_text': 'Lo pintamos, arreglamos el suelo,\n'
+                        'cambiamos el baño...'},
+    {   'french_text': 'on met des halogènes\n'
+                       "et il est comme neuf, n'est-ce pas ?",
+        'id': 171,
+        'spanish_text': 'Le ponemos unos halógenos\ny como nuevo, ¿a que sí?'},
+    {   'french_text': "-J'était si bien\navec mes parents...",
+        'id': 172,
+        'spanish_text': '-Con lo bien que estaba yo\ncon mis padres...'},
+    {   'french_text': "-Quoi ?\n-Non, c'est très lumineux.",
+        'id': 173,
+        'spanish_text': '-¿Qué?\n-No, que tiene mucha luz.'},
+    {   'french_text': "-C'est vrai ? tu as vu la chambre  à coucher ?\n"
+                       '-La chambre à coucher ?',
+        'id': 174,
+        'spanish_text': '-¿Verdad? ¿Has visto el dormitorio?\n'
+                        '-¿El dormitorio?'},
+    {   'french_text': "Non, je ne l'ai pas vue.",
+        'id': 175,
+        'spanish_text': 'No, no lo he visto.'},
+    {   'french_text': 'Et celui-là, qui est-ce ?\n-Le concierge.',
+        'id': 176,
+        'spanish_text': '¿Y éste quién es?\n-El portero.'},
+    {   'french_text': 'Hé, réveillez-vous !',
+        'id': 177,
+        'spanish_text': '¡Oiga, despierte!'},
+    {   'french_text': 'Bonjour, comment allez-vous ?',
+        'id': 178,
+        'spanish_text': 'Hola, ¿qué tal?'},
+    {   'french_text': "-D'accord, vous vous souvenez de moi ?\n"
+                       'Nous sommes ceux des clés.',
+        'id': 179,
+        'spanish_text': '-Muy bien, ¿se acuerda de mí?\n'
+                        'Somos los de las llaves.'},
+    {   'french_text': '-Oui, je suis désolé, mais je suis venu réparer\n'
+                       "quelques fiches et j'ai eu des vertiges.",
+        'id': 180,
+        'spanish_text': '-Sí, perdone, pero vine a arreglar\n'
+                        'unos enchufes y me he mareado.'},
+    {   'french_text': "Coiffes-toi, on t'a donné\nune décharge électrique.",
+        'id': 181,
+        'spanish_text': 'Péinate, alguno te ha dado\ncalambre.'},
+    {   'french_text': "D'ailleurs, on vous a déjà apporté\nle lit.",
+        'id': 182,
+        'spanish_text': 'Por cierto, ya le han traído\nla cama.'},
+    {   'french_text': "-Et comment c'était ?\n-Un peu dur, en fait.",
+        'id': 183,
+        'spanish_text': '-¿Y qué tal?\n-Un poco dura, la verdad.'},
+    {   'french_text': "Mais dès que l'utilise un peu,\nil va très bien aller.",
+        'id': 184,
+        'spanish_text': 'Pero en cuanto la rueden un poco,\nva air muy bien.'},
+    {   'french_text': "J'ai enlevé le plastique moi-même,\n"
+                       "parce qu'il fait si chaud...",
+        'id': 185,
+        'spanish_text': 'El plástico se lo he quitado yo,\n'
+                        'porque da un calor...'},
+    {   'french_text': "Je vous laisse, j'ai beaucoup à faire.\n"
+                       'Si vous avez besoin de moi, vous savez...',
+        'id': 186,
+        'spanish_text': 'Les dejo que tengo mucho que hacer.\n'
+                        'Si me necesitan, ya saben...'},
+    {   'french_text': '...où me trouver.\nA plus tard.',
+        'id': 187,
+        'spanish_text': '...dónde me tienen.\nHasta luego.'},
+    {'french_text': '-Au revoir.', 'id': 188, 'spanish_text': '-Adiós.'},
+    {'french_text': 'Bien...', 'id': 189, 'spanish_text': 'Bueno...'},
+    {   'french_text': '-Bien...\n-On nettoie ?',
+        'id': 190,
+        'spanish_text': '-Bueno...\n-¿Limpiamos?'},
+    {'french_text': '-Oui.', 'id': 191, 'spanish_text': '-Si.'},
+    {   'french_text': 'Asseyez-vous tout de suite, on mange.\n'
+                       "-Je n'ai pas faim.",
+        'id': 192,
+        'spanish_text': '-Sentaos de una vez, vamos a comer.\n'
+                        '-Yo no tengo hambre.'},
+    {   'french_text': 'De toute façon, tu vas manger.\n'
+                       'Natalia ! Que fait cette fille ?',
+        'id': 193,
+        'spanish_text': 'Da igual, vas a comer.\n'
+                        '¡Natalia! ¿Qué hace esta niña?'},
+    {   'french_text': 'Juan, fais-moi de la place.\n-Encore des lentilles ?',
+        'id': 194,
+        'spanish_text': '-Juan, hazme sitio.\n-¿Otra vez lentejas?'},
+    {   'french_text': "-Oui, encore.\nNatalia, je ne t'appelle plus.",
+        'id': 195,
+        'spanish_text': '-Sí, otra vez.\nNatalia, no te llamo más.'},
+    {   'french_text': '-Je suis là, tu es lourd.\n'
+                       'Pourquoi mangeons-nous si tôt ?',
+        'id': 196,
+        'spanish_text': '-Ya estoy aquí, pesado.\n'
+                        '-¿Por qué comemos tan pronto?'},
+    {   'french_text': "Quand est-ce qu'ils s'installent\nceux du troisième ?",
+        'id': 197,
+        'spanish_text': '-¿Cuándo se mudarán\nlos del tercero?'},
+    {   'french_text': "-Les lentilles ? Je ne mange pas.\n-Tu t'assieds.",
+        'id': 198,
+        'spanish_text': '-¿Lentejas? Yo no como.\n-Tú te sientas.'},
+    {   'french_text': 'Je ne sais pas, je ne leur ai pas parlé.\n'
+                       'Souviens-toi comment ils sont partis....',
+        'id': 199,
+        'spanish_text': 'No lo sé, no he hablado con ellos.\n'
+                        '-Acuérdate cómo dejaron...'},
+    {   'french_text': '...Le portail ceux qui sont partis.\n'
+                       'pose ton téléphone portable pendant que tu manges.',
+        'id': 200,
+        'spanish_text': '...El portal los que se marcharon.\n'
+                        'Deja el móvil mientras comes.'},
+    {   'french_text': '-Je ne mange pas.\n'
+                       '-Chez Dani, on mange à trois heures.',
+        'id': 201,
+        'spanish_text': '-Es que no estoy comiendo.\n'
+                        '-En casa de Dani comen alas tres.'},
+    {   'french_text': 'Plus tard je demande à Emilio de me faire savoir\n'
+                       'quand le déménagement à lieu.',
+        'id': 202,
+        'spanish_text': 'Luego le digo a Emilio que avise\n'
+                        'cuando llegue la mudanza.'},
+    {   'french_text': '-Si ils vont te balader maintenant ?\n'
+                       'Non, personne ne va me balader.',
+        'id': 203,
+        'spanish_text': '-Si van a torearte desde ahora...\n'
+                        'No, a mí no me torea nadie.'},
+    {   'french_text': 'Natalia !\nPapa, tu es mené en bateau.',
+        'id': 204,
+        'spanish_text': '¡Natalia!\nPapá, que te está toreando.'},
+    {   'french_text': '-Arrête de jouer avec le pain.\n'
+                       "-L'important, c'est que les nouveaux...",
+        'id': 205,
+        'spanish_text': '-Deja de jugar con el pan.\n'
+                        '-Lo importante de los nuevos...'},
+    {   'french_text': '...soient des gens éduqués\n'
+                       'et de bons voisins comme nous.',
+        'id': 206,
+        'spanish_text': '...eS que sean personas educadas\n'
+                        'y buenos vecinos como nosotros.'},
+    {   'french_text': '-Dani a toujours de la pizza.\n-Tu vas te taire ?',
+        'id': 207,
+        'spanish_text': '-A Dani siempre le ponen pizza.\n'
+                        '-¿Te quieres callar ya?'},
+    {'french_text': 'Natalia...', 'id': 208, 'spanish_text': 'Natalia...'},
+    {'french_text': '-Bonjour !', 'id': 209, 'spanish_text': '-Buenos días!'},
+    {   'french_text': 'Tu as vu comme il fait beau ?\n'
+                       'Je vais préparer quelque chose.',
+        'id': 210,
+        'spanish_text': '¿Has visto qué bueno hace?\nMe voy a preparar algo.'},
+    {   'french_text': 'Pourquoi te leves-tu toujours\nde bonne humeur ?',
+        'id': 211,
+        'spanish_text': '-¿Por qué siempre te levantas\nde buen humor?'},
+    {   'french_text': "J'ai bien dormi, je suis heureuse.",
+        'id': 212,
+        'spanish_text': 'He dormido bien, estoy contenta.'},
+    {   'french_text': "Aujourd'hui, je me sens heureuse.\n"
+                       'tu ressembles à une publicité pour des serviettes '
+                       'hygiéniques.',
+        'id': 213,
+        'spanish_text': 'Hoy es un día que me siento feliz.\n'
+                        'Pareces un anuncio de compresas.'},
+    {   'french_text': '-En plus, on a un plan pour ce soir.\n'
+                       "-Tu ne crois pas qu'au lieu de sortir...",
+        'id': 214,
+        'spanish_text': '-Además, esta noche tenemos plan.\n'
+                        '-¿No crees que en vez de salir...'},
+    {   'french_text': '...pour chercher des hommes, devrions-nous sortir\n'
+                       'pour chercher du travail ?',
+        'id': 215,
+        'spanish_text': '...a buscar tíos deberíamos salir\na buscar trabajo?'},
+    {   'french_text': "-Raoul va t'amener un ami.\n"
+                       'qui va te plaire quand tu le verras.',
+        'id': 216,
+        'spanish_text': '-Raúl te va a traer un amigo\n'
+                        'que te vas a caer cuando lo veas.'},
+    {   'french_text': 'Sportif, 1,90, 35...\nEt en plus, il est médecin.',
+        'id': 217,
+        'spanish_text': 'Deportista, 1.90, 35...\nY encima es médico.'},
+    {   'french_text': '-Au moins, il peut me prescrire\n'
+                       'quelque chose pour la gueule de bois.',
+        'id': 218,
+        'spanish_text': '-Por lo menos puede recetame\nalgo para la resaca.'},
+    {   'french_text': '-Il ne rentre pas !\nLe canapé ne rentre pas !',
+        'id': 219,
+        'spanish_text': '-¡Que no cabe!\n¡Que no entra el sofá!'},
+    {   'french_text': '-Tu le remontes un peu.\n'
+                       "C'est juste que c'est plus lourd...",
+        'id': 220,
+        'spanish_text': '-Tira tú un poco de arriba.\nEs que esto pesa más...'},
+    {   'french_text': '...que le Christ de la Grande Puissance,...\n'
+                       '-Pour un fois que je nettoye, un déménagement.',
+        'id': 221,
+        'spanish_text': '...Que el Cristo del Gran Poder,.\n'
+                        '-Para un día que friego, mudanza.'},
+    {   'french_text': 'Hé, toi, la propagande dans les boîtes aux lettres !\n'
+                       "Tu verras le jour où je t'attraperai,",
+        'id': 222,
+        'spanish_text': '¡Oye, tú, la propaganda en los\n'
+                        'buzones! Verás el día que te coja,'},
+    {   'french_text': 'dégoûtant.\n'
+                       '-Hé, attendez une minute, attendez une minute !',
+        'id': 223,
+        'spanish_text': 'asqueroso.\n-¡Eh, un momento, un momento!'},
+    {   'french_text': 'Je suis Juan Cuesta, le président.\n'
+                       'Que se passe-t-il ici ?',
+        'id': 224,
+        'spanish_text': 'Soy Juan Cuesta, el Presidente.\n¿Qué pasa aquí?'},
+    {   'french_text': "C'est moi qui ai dit qu'il n'y entrait pas.\n"
+                       "Et ils sont là jusqu'à ce qu'ils brisent....",
+        'id': 225,
+        'spanish_text': 'Es he dicho que por ahí no entra.\n'
+                        'Y están ahí hasta que rompan...'},
+    {   'french_text': "...l'ascenseur.\nIl est interdit d'utiliser ...",
+        'id': 226,
+        'spanish_text': '...É ascensor.\nEstá prohibido usar...'},
+    {   'french_text': "...l'ascenseur comme un monte-charge.\n"
+                       "C'est pour monter le canapé.",
+        'id': 227,
+        'spanish_text': '...el ascensor como montacargas.\n'
+                        'Es para subir el sofá.'},
+    {   'french_text': 'Vous ne pouvez pas le monter par là !\n'
+                       'Selon les statuts...',
+        'id': 228,
+        'spanish_text': '-¡No pueden subirlo por ahí!\nSegún los estatutos...'},
+    {   'french_text': "-Bon, d'accord...\n"
+                       "Montons par les escaliers et c'est bon.",
+        'id': 229,
+        'spanish_text': '-Bueno, vale...\nSubimos por la escalera y ya está.'},
+    {   'french_text': "Mais qu'est-ce que vous dites ? vous ne peuvez pas,\n"
+                       'vous aller nous décoller le mur.',
+        'id': 230,
+        'spanish_text': '-¿Pero qué dice? No pueden,\n'
+                        'que nos desconchan la pared.'},
+    {   'french_text': 'Et la balustrade et les marches....\n'
+                       '-Il faut le monter avec une grue.',
+        'id': 231,
+        'spanish_text': 'Y la barandilla y los escalones...\n'
+                        '-Estoy hay que subirlo con grúa.'},
+    {   'french_text': "Le client nous a dit que ce n'était pas\nnécessaire.",
+        'id': 232,
+        'spanish_text': 'El cliente nos dijo que no hacía\nfalta.'},
+    {   'french_text': "Eh bien, c'est nécessaire.\n"
+                       '-Que le client réfléchisse.',
+        'id': 233,
+        'spanish_text': 'Pues hace falta.\n-Pues que piense el cliente.'},
+    {   'french_text': '-Remettez ça dans le camion.\n'
+                       'Qui est ce casse-couilles ?',
+        'id': 234,
+        'spanish_text': '-Suban esto al camión otra vez.\n'
+                        '-¿Quién es este tocapelotas?'},
+    {   'french_text': '-Je suis Juan Cuesta, Président\n'
+                       "de la Communauté, vous n'entendez pas ?",
+        'id': 235,
+        'spanish_text': '-Soy Juan Cuesta, Presidente\n'
+                        'de la Comunidad, ¿no oye?'},
+    {   'french_text': "Le président du gouvernement, c'est vous.\n"
+                       '-Qui vous a insulté.',
+        'id': 236,
+        'spanish_text': 'Presidente del Gobierno es usted.\n'
+                        '-Que le ha insultado.'},
+    {   'french_text': '(TOUS DISCUTENT)',
+        'id': 237,
+        'spanish_text': '(TODOS DISCUTEN)'},
+    {   'french_text': "-C'est moi, Concha !\n"
+                       "-Non, Concha, non, pour l'amour de Dieu.",
+        'id': 238,
+        'spanish_text': '-¡Soy yo, Concha!\n-No, Concha, no, por Dios.'},
+    {   'french_text': 'Comment pouvez-vous me faire cela ?\n'
+                       'Bonjour, vous ici ?',
+        'id': 239,
+        'spanish_text': '-¡Cómo me tenéis esto!\n'
+                        '-Buenos días, ¿cómo usted por aquí?'},
+    {   'french_text': '-Je viens pour que vous me donniez\n'
+                       'le loyer, que vous...',
+        'id': 240,
+        'spanish_text': '-Vengo para que me deis\n'
+                        'el alquiler, que deberíais...'},
+    {   'french_text': '...Auriez dû me donner hier soir.\n'
+                       'Attendez une minute...',
+        'id': 241,
+        'spanish_text': '...labérmelo dado anoche.\nUn momento...'},
+    {   'french_text': "Ça sent l'homme ici.\n"
+                       "Vous savez qu'il vous est interdit...",
+        'id': 242,
+        'spanish_text': 'Aquí huele a hombre.\nSabéis que tenéis prohibido...'},
+    {   'french_text': '...de faire monter les hommes à la maison.\n'
+                       '-Vous savez que nous ne faisons jamais monter '
+                       'personne.',
+        'id': 243,
+        'spanish_text': '...SUbir hombres a casa.\n'
+                        '-Sabe que nunca subimos a nadie.'},
+    {   'french_text': '-Jamais.\n-Je ne suis pas dupe.',
+        'id': 244,
+        'spanish_text': '-Nunca.\n-A mí no me engañáis.'},
+    {   'french_text': 'Allez, le loyer.\n'
+                       'Prenez-le, et rappelez-vous que la...',
+        'id': 245,
+        'spanish_text': 'Venga, el alquiler.\n-Tome, y acuérdese de que la...'},
+    {   'french_text': '...Machine à laver ne tourne pas.\n'
+                       "Pour ce que vous l'utilisez...",
+        'id': 246,
+        'spanish_text': '...Javadora no centrifuga.\nPara lo que la usáis...'},
+    {   'french_text': 'Vous me donner toujours des petites coupures.\n'
+                       "Non, pour l'amour de Dieu, comptez-les.",
+        'id': 247,
+        'spanish_text': 'siempre me dais billetes pequeños.\n'
+                        '-No, por Dios, cuéntelo.'},
+    {   'french_text': '-Bien sûr que je vais les compter,\nmais chez moi.',
+        'id': 248,
+        'spanish_text': '-Claro que lo voy a contar,\npero en mi casa.'},
+    {   'french_text': 'Et nettoyez ça, cochonnes !',
+        'id': 249,
+        'spanish_text': '¡Y limpiad esto, guarras!'},
+    {   'french_text': 'A plus tard, hein ?\n-Au revoir, ma mignone.',
+        'id': 250,
+        'spanish_text': 'Hasta luego, ¿eh?\n-Adiós, monada.'},
+    {'french_text': '-Au revoir.', 'id': 251, 'spanish_text': '-Adiós.'},
+    {   'french_text': "Espérons qu'elle ne le comptera pas.\n"
+                       "Hier, j'ai pris 50 euros pour la sortie.",
+        'id': 252,
+        'spanish_text': 'Esperemos que no lo cuente.\n'
+                        'Ayer cogí 50 euros para las copas.'},
+    {   'french_text': 'Ah, très bien...',
+        'id': 253,
+        'spanish_text': 'Ah, muy bien...'},
+    {   'french_text': "-C'est ici que le canapé va aller !\n"
+                       "Montons les cartons à l'étage.",
+        'id': 254,
+        'spanish_text': '-¡Aquí se va a quedar el sofá!\n'
+                        'Yamos a subir las cajas.'},
+    {   'french_text': 'Faites-le sortir maintenant !\n'
+                       "Qu'est-ce que vous me faites ?",
+        'id': 255,
+        'spanish_text': '-¡Sáquenlo ahora mismo!\n¿Pero qué hacéis?'},
+    {   'french_text': '-Le portier ?\n-Non, je nettoie par plaisir.',
+        'id': 256,
+        'spanish_text': '-¿El portero?\n-No, me gusta fregar portales.'},
+    {   'french_text': "-Putain, t'es bizarre, mec.\n"
+                       '-Bien sûr que je suis le portier.',
+        'id': 257,
+        'spanish_text': '-Joder, qué raro eres, tío.\n'
+                        '-Pues claro que soy el portero.'},
+    {   'french_text': "Qu'est-ce que tu veux ?\n"
+                       '-Je suis Paco, le nouveau vendeur...',
+        'id': 258,
+        'spanish_text': '¿Qué quieres?\n-Soy Paco, el nuevo dependiente...'},
+    {   'french_text': "...du vidéoclub. Je m'ennuie.\n"
+                       'Si tu marches là, je te tue.',
+        'id': 259,
+        'spanish_text': '...del videoclub. Es que me aburro.\n'
+                        '-Como pises ahí, te mato.'},
+    {   'french_text': "-D'accord, d'accord...\n"
+                       'En fait, je suis réalisateur de films.',
+        'id': 260,
+        'spanish_text': '-Vale, vale...\nEn realidad, soy director de cine.'},
+    {   'french_text': 'Cet emploi est temporaire.\n'
+                       "-Oui, j'ai été mannequin pour Calvin Klein,",
+        'id': 261,
+        'spanish_text': 'Este trabajo es temporal.\n'
+                        '-Sí, yo era modelo de Calvin Klein,'},
+    {   'french_text': "mais j'en ai eu assez de montrer mon cul.\n"
+                       '-Non et non !',
+        'id': 262,
+        'spanish_text': 'pero me cansé de enseñar el culo.\n'
+                        '-¡Que no y que no!'},
+    {   'french_text': 'Chaque locataire doit informer la\n'
+                       "à la communauté de la date et de l'heure...",
+        'id': 263,
+        'spanish_text': 'Todo inquilino debe comunicar\n'
+                        'a la comunidad la fecha y hora...'},
+    {   'french_text': "...du déménagement, et ils n'ont rien dit.\n"
+                       'rien, donc ça va au camion.',
+        'id': 264,
+        'spanish_text': '...de la mudanza, y no han dicho\n'
+                        'nada, así que esto va al camión.'},
+    {   'french_text': 'Faites-moi une faveur !\n'
+                       "-S'il ne se tait pas, je vais le frapper....",
+        'id': 265,
+        'spanish_text': '¡Hagan el favor!\n-Como no se calle, le voy a dar...'},
+    {   'french_text': '...Juña a baisé le Pokémon...\n'
+                       "Comment m'a-t-il appelé ?",
+        'id': 266,
+        'spanish_text': '...Juña hostia al Pokémon...\n-¿Qué me ha llamado?'},
+    {   'french_text': 'Du calme, mon pote, laisse-le tranquille.\n'
+                       '-Ton partenaire est plutôt cool, hein ?',
+        'id': 267,
+        'spanish_text': '-Tranquilo, compañero, déjalo.\n'
+                        '-Su compañero es muy chulo, ¿eh?'},
+    {   'french_text': '-Allez, il faut manger\n'
+                       "et il faut mettre de l'essence dans le moteur.",
+        'id': 268,
+        'spanish_text': '-Venga, que hay que comer\n'
+                        'y hay que echar gasolina al motor.'},
+    {   'french_text': 'Cet après-midi, nous terminons le travail.\n'
+                       '-Cela ne peut pas rester ici !',
+        'id': 269,
+        'spanish_text': 'Esta tarde rematamos la faena.\n'
+                        '-¡Esto no se puede quedar aquí!'},
+    {   'french_text': 'Ecoute !\nLe samedi après-midi...',
+        'id': 270,
+        'spanish_text': '¡Oiga!\nLos sábados por la tarde...'},
+    {   'french_text': "...Ou nous travaillons, n'est-ce pas ?\n"
+                       '-Allez, petit, on y va.',
+        'id': 271,
+        'spanish_text': '...O trabajamos, ¿no?\n-Yamos, chiquillo, tira.'},
+    {   'french_text': 'Où vont-ils ?\nÇa ne peut pas rester ici !',
+        'id': 272,
+        'spanish_text': '-¿Dónde van?\n¡Esto no se puede quedar aquí!'},
+    {   'french_text': 'Emilio, organise un peu tout ça\n'
+                       "parce que c'est une honte.",
+        'id': 273,
+        'spanish_text': 'Emilio, organiza esto un poco\n'
+                        'porque es una vergienza.'},
+    {   'french_text': "Et faites-moi savoir dès qu'ils reviennent.\n"
+                       'Ils ne savent pas qui je suis.',
+        'id': 274,
+        'spanish_text': 'Y me avisas en cuanto vuelvan.\n'
+                        'Esos no saben quién soy yo.'},
+    {   'french_text': "-Maintenant c'est moi qui porte le chapeau.\n"
+                       'Je quitte ce travail...',
+        'id': 275,
+        'spanish_text': '-Ahora me como yo el "marrón".\n'
+                        'Este trabajo lo dejo...'},
+    {   'french_text': "...Parce que j'en ai marre.\nAllez, regarde !",
+        'id': 276,
+        'spanish_text': '...Porque yo estoy harto.\n¡Anda, mira!'},
+    {   'french_text': 'Voici un "sans fil"...\nJe prends celui-là.',
+        'id': 277,
+        'spanish_text': 'Ahí va un "sin cable"...\nEsto me lo quedo yo.'},
+    {   'french_text': "-Tu vas le voler ?\nNon, ils l'ont perdu...",
+        'id': 278,
+        'spanish_text': '-¿Se lo vas a robar?\nNo, esto lo han perdido...'},
+    {   'french_text': '...les déménageurs.\n-Quels fils de pute, mec.',
+        'id': 279,
+        'spanish_text': '...l0s de la mudanza.\n-Qué hijos de puta, macho.'},
+    {'french_text': 'Je te le dis.', 'id': 280, 'spanish_text': 'Ya te digo.'},
+    {   'french_text': '-Je vais me prendre ça.\n'
+                       "-Si c'est une photo de la fille ....",
+        'id': 281,
+        'spanish_text': '-Pues yo me llevo esto.\n'
+                        '-Si esto es una foto de la chica...'},
+    {   'french_text': "On dirait que j'ai une petite amie.\n-Ah ! c'est vrai.",
+        'id': 282,
+        'spanish_text': 'Así parece que tengo novia.\n-¡Ah! Es verdad.'},
+    {   'french_text': 'Y aurait-il une photo de celle-ci\nseins nus ?',
+        'id': 283,
+        'spanish_text': '¿Habrá una foto de ésta\nen topless?'},
+    {   'french_text': 'Je ne sais pas, voyons voir...',
+        'id': 284,
+        'spanish_text': 'No sé, a ver...'},
+    {   'french_text': "-Il n'y a que des livres ici.",
+        'id': 285,
+        'spanish_text': '-Aquí no hay más que libros.'},
+    {'french_text': '-Bonjour.', 'id': 286, 'spanish_text': '-Buenos días.'},
+    {   'french_text': '-Mec... qui est-ce ?',
+        'id': 287,
+        'spanish_text': '-Macho... ¿quién es ésa?'},
+    {   'french_text': "-Une déesse, une couverture\nd'Interviú en mouvement,",
+        'id': 288,
+        'spanish_text': '-Una diosa, una portada\ndel Interviú en movimiento,'},
+    {   'french_text': "un phénomène... Je ne sais pas ce que c'est,\n"
+                       'mais ça me rend très malade.',
+        'id': 289,
+        'spanish_text': 'un fenómeno... No sé qué es,\npero me pone muy malo.'},
+    {   'french_text': "Qu'est-ce que tu regardes ?\n"
+                       'Doña Marisa, pouvez-vous marcher sur....',
+        'id': 290,
+        'spanish_text': '-¿Se puede saber qué miras?\n'
+                        'Doña Marisa, ¿puede pisar...'},
+    {   'french_text': "...C'est un peu mouillé, je nettoie ?\nIl était temps.",
+        'id': 291,
+        'spanish_text': '...lojito que estoy fregando?\nPues ya era hora.'},
+    {   'french_text': '-Comment vont les choses ?\n'
+                       "Qu'est-ce qui te préoccupe ?",
+        'id': 292,
+        'spanish_text': '-¿Qué tal todo?\n-¿Y ati qué te importa?'},
+    {   'french_text': "-C'est aussi vrai.\n-Oh mon Dieu, pas d'ascenseur.",
+        'id': 293,
+        'spanish_text': '-También es verdad.\n-Vaya por Dios, sin ascensor.'},
+    {   'french_text': 'Vous vous débrouillez bien avec le portail.\n'
+                       'Je vais parler au Président,',
+        'id': 294,
+        'spanish_text': 'Pues sí que llevas bien el portal.\n'
+                        'Voy a hablar con el Presidente,'},
+    {   'french_text': 'tu va ouvrir un bureau de tabac.\n'
+                       '-Un bureau de tabac ?',
+        'id': 295,
+        'spanish_text': 'que te va a poner un estanco.\n-¿Un estanco?'},
+    {   'french_text': '-Oui.\n-Pour quoi faire ?',
+        'id': 296,
+        'spanish_text': '-Sí.\n-¿Para qué?'},
+    {   'french_text': '-Pour que tu fumes.\n'
+                       '-Elle est très sexy. Vit-elle seule ?',
+        'id': 297,
+        'spanish_text': '-Para que fumes.\n-Está muy buena. ¿Vive sola?'},
+    {   'french_text': 'Celle-là non, avec sa soeur.\n'
+                       'Non, mec, celle avec la mini-jupe.',
+        'id': 298,
+        'spanish_text': '-Esta no, con la hermana.\n'
+                        '-No, hombre, la de la minifalda.'},
+    {   'french_text': "Non, elle vit avec Belén, l'amie laide typique qui n'a "
+                       'pas de...',
+        'id': 299,
+        'spanish_text': 'No, vive con Belén, la típica\n'
+                        'amiga fea que no se come...'},
+    {   'french_text': '...succès, elle est toute la journée\namer.',
+        'id': 300,
+        'spanish_text': '...UÑa rosca, está todo el día\namargada.'},
+    {'french_text': 'Belén...', 'id': 301, 'spanish_text': 'Belén...'},
+    {   'french_text': "Un autre Bélen, qui n'est pas cette Belén.",
+        'id': 302,
+        'spanish_text': 'Otra Belén, que no es esta Belén.'},
+    {   'french_text': 'Comment vas-tu, Belén ?\n-Très bien.',
+        'id': 303,
+        'spanish_text': '¿Qué tal, Belén?\n-Genial.'},
+    {   'french_text': "Rien de tel qu'un bon compliment\n"
+                       'pour égayer la journée.',
+        'id': 304,
+        'spanish_text': 'No hay nada como un buen piropo\n'
+                        'para alegrarla a una el día.'},
+    {   'french_text': '-Imbécile ! Les hommes !',
+        'id': 305,
+        'spanish_text': '-¡Imbécil! ¡Hombres!'},
+    {   'french_text': 'Travaillez-vous ici depuis longtemps ?\n-Sept ans.',
+        'id': 306,
+        'spanish_text': '-¿TÚ llevas mucho trabajando aquí?\n-Siete años.'},
+    {   'french_text': "-Miraculeux.\nOui, c'est vrai.",
+        'id': 307,
+        'spanish_text': '-Milagroso.\nPues sí.'},
+    {   'french_text': '-Chéri, je pense que cela ne va pas aller.',
+        'id': 308,
+        'spanish_text': '-Cariño, yo creo que eso no sale.'},
+    {   'french_text': "C'est le dessin des carreaux.\ntu as déjà terminé ?",
+        'id': 309,
+        'spanish_text': 'Es el dibujo de la baldosa.\n-¿Ya has terminado?'},
+    {   'french_text': "-Oui, j'en ai eu jusqu'aux couilles.",
+        'id': 310,
+        'spanish_text': '-Sí, he terminado hasta los huevos.'},
+    {   'french_text': 'Pourquoi ne pas aller manger quelque chose ?\n'
+                       '-Et si les déménageurs arrivent ?',
+        'id': 311,
+        'spanish_text': '¿Por qué no vamos a comer algo?\n'
+                        '-¿Y si vienen los de la mudanza?'},
+    {   'french_text': "-Zut, le déménagement !\nJe l'avais oublié.",
+        'id': 312,
+        'spanish_text': '-¡Ostras, la mudanza!\nSe me había olvidado.'},
+    {   'french_text': "Je préférerais qu'ils ne viennent pas.",
+        'id': 313,
+        'spanish_text': 'Yo prefiero que no vengan.'},
+    {   'french_text': "On peut savoir ce qui t'arrive ?\n"
+                       'Tu as été négatif toute la journée.',
+        'id': 314,
+        'spanish_text': '-¿Se puede saber qué te pasa?\n'
+                        'Llevas todo el día negativo.'},
+    {   'french_text': "Non, c'est juste que j'ai faim, mais je mouille.\n"
+                       "le balai dans le Fairy et ça s'en va.",
+        'id': 315,
+        'spanish_text': 'No, es que tengo hambre, pero mojo\n'
+                        'la balleta en Fairy y se me pasa.'},
+    {   'french_text': "Vous n'avez pas l'air d'être impatient\n"
+                       'de vivre ensemble.',
+        'id': 316,
+        'spanish_text': 'Parece que no te hace ilusión\nvivir juntos.'},
+    {   'french_text': "-Mais si, j'ai vraiment hâte,\n"
+                       "C'est juste que ça craint !",
+        'id': 317,
+        'spanish_text': '-Sí que me hace ilusión,\n'
+                        '¡es que esto es una mierda!'},
+    {   'french_text': '-Je vivais aussi très bien\nchez mes parents.',
+        'id': 318,
+        'spanish_text': '-Yo también vivía muy bien\ncon mis padres.'},
+    {   'french_text': 'Et pourquoi as-tu demandé à ton père\n'
+                       "d'acheter l'appartement ?",
+        'id': 319,
+        'spanish_text': '-¿Y por qué le pediste a tu padre\ncomprar el piso?'},
+    {   'french_text': '-Avant de nous marier, nous devrions voir\n'
+                       'si nous sommes compatibles.',
+        'id': 320,
+        'spanish_text': '-Antes de casarnos debemos ver\n'
+                        'si somos compatibles.'},
+    {   'french_text': '-Avant quoi ?\n'
+                       '-Eh bien, écoute, je vais faire les course...',
+        'id': 321,
+        'spanish_text': '-¿Antes de qué?\n-Bueno, mira, me voy a comprar...'},
+    {   'french_text': '...quelque chose à manger.\n'
+                       'Et je vais prendre un bain.',
+        'id': 322,
+        'spanish_text': '...algo para comer.\nY yo me voy a dar un baño.'},
+    {   'french_text': 'Avons-nous du gel ?\n-Nous avons du Fairy.',
+        'id': 323,
+        'spanish_text': '¿Tenemos gel?\n-Tenemos Fairy.'},
+    {   'french_text': 'Bonjour, comment vas-tu ?\n-Bonjour.',
+        'id': 324,
+        'spanish_text': 'Hola, ¿qué tal?\n-Hola.'},
+    {   'french_text': '-Comment se passe le déménagement ?\n'
+                       '-Très bien, merci.',
+        'id': 325,
+        'spanish_text': '-¿Cómo va la mudanza?\n-Bien, gracias.'},
+    {   'french_text': 'Et où vas-tu ?\n'
+                       '-Acheter des choses dont nous avons besoin.',
+        'id': 326,
+        'spanish_text': '-¿Y adónde vas?\n-A comprar cosas que necesitamos.'},
+    {   'french_text': "Il se trouve que j'ai tout.\n"
+                       "-Non, merci, comme ça je prends l'air.",
+        'id': 327,
+        'spanish_text': 'Pasa que yo tengo de todo.\n'
+                        '-No, gracias, así me da el aire.'},
+    {   'french_text': 'Entrez et je te ferai visiter.\n-Non, vraiment...',
+        'id': 328,
+        'spanish_text': 'Pasa y te enseño la casa.\n-No, de verdad...'},
+    {   'french_text': '-Venez, si tu le veux bien.\nEntre.',
+        'id': 329,
+        'spanish_text': '-Venga, si lo estás deseando.\nPasa para adentro.'},
+    {   'french_text': '-Juste un moment, hein ?\nAssieds-toi sur ce canapé,',
+        'id': 330,
+        'spanish_text': '-Sólo un rato, ¿eh?\n-Siéntate en este sofá,'},
+    {   'french_text': 'qui est en cuir.\nEh bien, je suis ravie...',
+        'id': 331,
+        'spanish_text': 'que es de cuero.\nPues yo estoy encantada...'},
+    {   'french_text': '...que tu sois ici.',
+        'id': 332,
+        'spanish_text': '...de que estés aquí.'},
+    {   'french_text': '-Toma.\n-Tu vas me payer des pipas ?',
+        'id': 333,
+        'spanish_text': '-Toma.\n-¿Me vas a pagar unas pipas...'},
+    {   'french_text': '...avec UN billet de 50 euros ?\n'
+                       '-Eh bien, des pipas et une sucette.',
+        'id': 334,
+        'spanish_text': '...COn UN billete de 50 euros?\n'
+                        '-Bueno, pipas y un chupa-chups.'},
+    {   'french_text': '-Allez, je vais chercher de la monnaie.\n'
+                       'Gardez-moi un oeil.',
+        'id': 335,
+        'spanish_text': '-Anda, voy a por cambio.\nVigilame esto un poco.'},
+    {   'french_text': "Mais dépêchez-vous,\nj'ai beaucoup à faire,",
+        'id': 336,
+        'spanish_text': 'Pero date prisa,\ntengo mucho que hacer,'},
+    {   'french_text': '-Bonjour, bonjour. Comment vas-tu ?\n'
+                       "-C'est la merde ! Mais bon...",
+        'id': 337,
+        'spanish_text': '-Hola, buenas tardes. ¿Cómo está?\n'
+                        '-¡Coño! Pero bueno...'},
+    {   'french_text': 'Tu es le Parlita !\nNon, je pense que tu confonds.',
+        'id': 338,
+        'spanish_text': '¡Tú eres el Parlita!\nNo, creo que te confundes.'},
+    {   'french_text': '-Oui, tu as fait ton service\n'
+                       " militaire avec moi à Cáceres. Je m'appelle Emilio.",
+        'id': 339,
+        'spanish_text': '-Que sí, tú hiciste conmigo\n'
+                        'la mili en Cáceres. Soy Emilio.'},
+    {   'french_text': "-Je n'ai pas fait de service militaire. Je suis\n"
+                       "insoumis, je n'ai jamais fait le service militaire.",
+        'id': 340,
+        'spanish_text': '-Yo no he hecho la mili. Yo soy\n'
+                        'insumiso, nunca he hecho la mili.'},
+    {   'french_text': '-Nous avons eu quelques altercations\ndans la caserne,',
+        'id': 341,
+        'spanish_text': '-Tuvimos un par de altercados\nen el cuartel,'},
+    {   'french_text': "mais pardonnons-nous, n'est-ce pas ?",
+        'id': 342,
+        'spanish_text': 'pero vamos a perdonarnos, ¿no?'},
+    {   'french_text': 'Je sais ce qui se passe, je te rappelle quelque chose\n'
+                       'je pense des films.',
+        'id': 343,
+        'spanish_text': 'Ya sé lo que pasa, te sueno de\n'
+                        'algo, creo que de las películas.'},
+    {   'french_text': '-Ça me fait de la peine que tu aies oublié\n'
+                       'de vieilles amitiés, mais...',
+        'id': 344,
+        'spanish_text': '-Me da pena que te olvides\n'
+                        'de las viejas amistades, pero...'},
+    {   'french_text': 'Comment puis-je faire pour toi ?\n'
+                       "-Je suis à la recherche d'un film...",
+        'id': 345,
+        'spanish_text': '¿en qué te puedo ayudar?\n'
+                        '-Estoy buscando una película...'},
+    {   'french_text': '...de Robert Aldrich,\n"L\'Empereur du Nord".',
+        'id': 346,
+        'spanish_text': '...de Robert Aldrich,\n"El Emperador del Norte".'},
+    {   'french_text': "-S'il est cochon, je le trouverai.\n"
+                       '-Ils sont tous cochon tout le temps,',
+        'id': 347,
+        'spanish_text': '-Si es guarra, yo la encuentro.\n'
+                        '-Están todos sucios todo el rato,'},
+    {   'french_text': "mais ce n'est pas très cochon.",
+        'id': 348,
+        'spanish_text': 'pero no es muy guarra.'},
+    {   'french_text': '-Voilà, Santiago Segura !',
+        'id': 349,
+        'spanish_text': '-¡Ahí va, Santiago Segura!'},
+    {   'french_text': 'Où est Paco ?\nJe lui ramène un film.',
+        'id': 350,
+        'spanish_text': '¿Dónde está Paco?\nLe traigo una película.'},
+    {   'french_text': 'Attend merde, tu êtes pressé.\n-Salut.',
+        'id': 351,
+        'spanish_text': 'Espérate, coño, con las prisas.\n-Hola.'},
+    {   'french_text': '-"Torrente 2", est moins bon que le\n'
+                       ' premier, hein ?\n',
+        'id': 352,
+        'spanish_text': '-\'Torrente 2", más floja que la\nprimera, ¿eh?'},
+    {   'french_text': "(Rires) - Comme c'est drôle !\n"
+                       "Petit, ta mère ne t'a pas dit...",
+        'id': 353,
+        'spanish_text': '(RÍE) -¡Qué gracioso!\n'
+                        'Niño, ¿no te ha dicho tu madre...'},
+    {   'french_text': '...Que "si en parlant on ne doit pas plaire,  ?\n'
+                       'il vaut mieux se taire" ?',
+        'id': 354,
+        'spanish_text': '...Que "si al hablar no has de\n'
+                        'agradar, es mejor callar"?'},
+    {   'french_text': 'Sais-tu que "Mortadelo y Filemón" ?\n'
+                       'vous bat au box-office ?',
+        'id': 355,
+        'spanish_text': '-¿Sabes que "Mortadelo y Filemón"\n'
+                        'te supera en taquilla?'},
+    {   'french_text': "-C'est un fait intéressant, \n"
+                       'Je désirais savoir quelque chose comme ça.',
+        'id': 356,
+        'spanish_text': '-Qué dato interesante, estaba\n'
+                        'deseando saber algo así.'},
+    {   'french_text': 'Mais, cher petit, il a dépassé\n'
+                       'au box-office car les billets...',
+        'id': 357,
+        'spanish_text': 'Pero, querido pequeño, ha superado\n'
+                        'en taquilla porque las entradas...'},
+    {   'french_text': "...sont plus chers à cause de l'euro.\n"
+                       'Mais en spectateurs,',
+        'id': 358,
+        'spanish_text': '...Valen más caras por lo del euro.\n'
+                        'Pero en espectadores,'},
+    {   'french_text': '"Torrente 2" est le premier.\n'
+                       '-Je pense que tu te trompes,',
+        'id': 359,
+        'spanish_text': '"Torrente 2" es la primera.\n-Creo que te equivocas,'},
+    {   'french_text': 'car en termes de spectateurs, le meilleur\n'
+                       'est celui des "Les Autres".',
+        'id': 360,
+        'spanish_text': 'porque en espectadores la mejor\n'
+                        'es la de "Los Otros".'},
+    {   'french_text': 'Mais cela a été tourné en anglais,\n'
+                       'donc ça ne compte pas.',
+        'id': 361,
+        'spanish_text': 'Pero esa se rodó en inglés,\nentonces no vale.'},
+    {   'french_text': "Ils avaient Nicole Kidman\net j'avais Gabino Diego.",
+        'id': 362,
+        'spanish_text': 'Ellos tenían a Nicole Kidman\n'
+                        'y yo tenía a Gabino Diego.'},
+    {   'french_text': 'tu vas rester ici longtemps ?\n'
+                       'Ce serait bien si tu pouvais faire...',
+        'id': 363,
+        'spanish_text': '¿Yas a estar aquí mucho rato?\n'
+                        'Estaría bien que te dieras...'},
+    {   'french_text': "...Un tour et vous t'aérer\nle cerveau.",
+        'id': 364,
+        'spanish_text': '...Una vuelta y airearas\ntu cerebro.'},
+    {   'french_text': 'Je ne trouve pas de monnaie, mec.\n'
+                       'Merde, Santiago Segura !',
+        'id': 365,
+        'spanish_text': 'No encuentro cambio, macho.\n¡Coño, Santiago Segura!'},
+    {   'french_text': 'Comment vas-tu ?\n-Quoi de neuf, mec ?',
+        'id': 366,
+        'spanish_text': '-¿Qué tal?\n-¿Qué pasa, tío?'},
+    {   'french_text': 'Ce type est célèbre ?\n-Beaucoup.',
+        'id': 367,
+        'spanish_text': '-¿Este tío es famoso?\n-Mogollón.'},
+    {   'french_text': "-Puisque vous ne pouvez pas m'aider,\n"
+                       'je reviendrai un autre jour.',
+        'id': 368,
+        'spanish_text': '-Como no puedes ayudarme,\nvuelvo otro día.'},
+    {   'french_text': '-Non !\nParlita, tu pourrais me présenter....',
+        'id': 369,
+        'spanish_text': '-¡No!\nParlita, tú podrías presentarme...'},
+    {   'french_text': "...Belén Esteban, que j'aime bien.\n"
+                       '-Oui, oui... Comme je suis célèbre,',
+        'id': 370,
+        'spanish_text': '...a Belén Esteban, que me gusta.\n'
+                        '-Sí, sí... Como yo soy famoso,'},
+    {   'french_text': 'Je connais toutes les célébrités.\n'
+                       'Belén Esteban, Rocío Jurado...',
+        'id': 371,
+        'spanish_text': 'conozco a todos los famosos.\n'
+                        'A Belén Esteban, Rocío Jurado...'},
+    {   'french_text': 'Je vais vous la présenter.\n'
+                       'Le Parlita ne vous a jamais fait défaut ?',
+        'id': 372,
+        'spanish_text': 'Te la voy a presentar. ¿Porque\n'
+                        'cuándo te ha fallado el Parlita?'},
+    {   'french_text': '-Tu vois à quoi tu ressembles ?\n-Bien sûr !',
+        'id': 373,
+        'spanish_text': '-¿Ves como eres tú?\n-¡Claro, hombre!'},
+    {   'french_text': 'Vous souvenez-vous ? Le nombre de garitas\n'
+                       'que nous avons sucé ensemble.',
+        'id': 374,
+        'spanish_text': '-¿ Te acuerdas? La de garitas\n'
+                        'que nos hemos chupado juntos.'},
+    {   'french_text': "-Vous ne m'avez pas trompé.\n"
+                       '-Je suis réalisateur de films.',
+        'id': 375,
+        'spanish_text': '-Tú a mí no me engañabas.\n'
+                        '-Oye, yo soy director de cine.'},
+    {   'french_text': "Nous étions peu nombreux et c'est grand-mère qui nous "
+                       'a mis au monde.\n'
+                       '-Je vais vous montrer mes courts métrages.',
+        'id': 376,
+        'spanish_text': '-Eramos pocos y parió la abuela.\n'
+                        '-Te voy a enseñar mis cortos.'},
+    {   'french_text': 'Oui, est-ce nécessaire ?\n-Ils sont très bons.',
+        'id': 377,
+        'spanish_text': 'Sí, ¿es necesario?\n-Son muy buenos.'},
+    {   'french_text': "-Je t'attends ici, je ne bouge pas.\n-D'accord !",
+        'id': 378,
+        'spanish_text': '-Aquí te espero, no me muevo.\n-¡Vale!'},
+    {   'french_text': '-Je me souviens du lieutenant Linares...\n'
+                       "-Qu'il envoie le short ici.",
+        'id': 379,
+        'spanish_text': '-Me acuerdo del Teniente Linares...\n'
+                        '-Que mande aquí los cortos.'},
+    {   'french_text': "Au revoir, très bien.\n-N'oublie pas Bélen.",
+        'id': 380,
+        'spanish_text': 'Adiós, muy simpático.\n'
+                        '-Que no se te olvide lo de Belén.'},
+    {   'french_text': 'Parlita, champion !\nIl a toujours été formidable.',
+        'id': 381,
+        'spanish_text': '¡Parlita, campeón!\nQué grande ha sido siempre.'},
+    {   'french_text': "-Il est parti ?\n-Oui, j'étais pressé.",
+        'id': 382,
+        'spanish_text': '-¿Se haido?\n-Sí, tenía prisa.'},
+    {   'french_text': "Ici, appelez-le ici.\n-C'est parti !",
+        'id': 383,
+        'spanish_text': 'Toma, que lo llames aquí.\n-¡Ahí va!'},
+    {   'french_text': "Comment avez-vous dit qu'il s'appelait ?\n"
+                       '-Santiago Segura.',
+        'id': 384,
+        'spanish_text': '-¿Cómo dices que se llamaba?\n'
+                        '-Coño, Santiago Segura.'},
+    {   'french_text': "-C'est le Parlita, mais il est devenu célèbre et a "
+                       'changé...\n'
+                       'célèbre et a changé...',
+        'id': 385,
+        'spanish_text': '-Este es el Parlita, pero se ha\n'
+                        'hecho famoso y se ha cambiado...'},
+    {   'french_text': '...le nom.\nAllez, donnez-moi les tuyaux.',
+        'id': 386,
+        'spanish_text': '...el nombre.\nVenga, dame las pipas.'},
+    {   'french_text': '(On entend des bulles)',
+        'id': 387,
+        'spanish_text': '(Se oye un burbujeo)'},
+    {   'french_text': "Décidez-vous maintenant qu'il me reste\n"
+                       'quatre portails.',
+        'id': 388,
+        'spanish_text': 'Decídete ya que aún me quedan\ncuatro portales.'},
+    {   'french_text': '-Je ne sais pas. Celui sur "L\'accordeur de piano", de '
+                       "quoi s'agit-il ?\n"
+                       "de quoi s'agit-il ?",
+        'id': 389,
+        'spanish_text': '-Es que no sé. Esta de "El afinador\n'
+                        'de pianos”, ¿de qué trata?'},
+    {   'french_text': "-Eh bien, de la part d'un accordeur de piano.\n"
+                       "Et qu'est-ce qu'il a ?",
+        'id': 390,
+        'spanish_text': '-Pues de uno que afina pianos.\n-¿Y qué le pasa?'},
+    {   'french_text': "Il aura une vie, n'est-ce pas ?\n"
+                       'Je ne sais pas, lisez-le et vous verrez.',
+        'id': 391,
+        'spanish_text': 'Tendrá una vida, ¿no?\n'
+                        '-No lo sé, léetelo y te enteras.'},
+    {   'french_text': '-Quelles sont les autres offres que vous avez\n'
+                       'ce mois-ci ?',
+        'id': 392,
+        'spanish_text': '-¿Qué otras ofertas tienes\neste mes?'},
+    {   'french_text': '-Une collection de vidéos de Jackie\n'
+                       'Chan et Ufito le dinosaure.',
+        'id': 393,
+        'spanish_text': '-Una colección de vídeos de Jackie\n'
+                        'Chan y Ufito el Dinosaurio.'},
+    {   'french_text': "-Maintenant, vous m'avez vraiment rendu la tâche "
+                       'difficile.\n'
+                       'difficile.',
+        'id': 394,
+        'spanish_text': '-Ahora sí que me lo has puesto\ndifícil.'},
+    {   'french_text': 'Avez-vous lu le rapport du mois dernier ?\n'
+                       'du mois dernier ?',
+        'id': 395,
+        'spanish_text': '-¿Te has leído ya lo del mes\npasado?'},
+    {   'french_text': '-Je suis trop paresseux pour lire.\n'
+                       'Et pourquoi devient-on membre... ?',
+        'id': 396,
+        'spanish_text': '-A mí leer me da mucha pereza.\n'
+                        '-¿Y para qué te haces socio...'},
+    {   'french_text': '...du Cercle ?\n-Pour vous rendre service.',
+        'id': 397,
+        'spanish_text': '...del Círculo?\n-Para hacerte un favor.'},
+    {   'french_text': "Papa, ne m'énerve pas parce que je pars tout de "
+                       'suite.\n'
+                       'tout de suite.',
+        'id': 398,
+        'spanish_text': 'Papá, no me hartes porque me voy\nahora mismo.'},
+    {   'french_text': "Ne menace pas ton père.\nNe faisons qu'une chose,",
+        'id': 399,
+        'spanish_text': 'A tu padre no le amenaces.\nYamos a hacer una cosa,'},
+    {   'french_text': 'Je vous laisse le catalogue.\n'
+                       'Vous le regardez, vous y réfléchissez et demain...',
+        'id': 400,
+        'spanish_text': 'te voy a dejar el catálogo.\n'
+                        'Lo miras, lo piensas y mañana...'},
+    {   'french_text': "...je recommence. D'accord ?\n"
+                       'Pardonnez-moi, je suis si tendue.',
+        'id': 401,
+        'spanish_text': '...Me paso otra vez. ¿Vale?\n'
+                        'Perdóname, es que estoy muy tenso.'},
+    {   'french_text': '-Assez de baisers.\nEt appelle ta mère, salaud.',
+        'id': 402,
+        'spanish_text': '-Vale ya con los besos.\n'
+                        'Y llama a tu madre, desgraciado.'},
+    {   'french_text': "-C'est vrai. Ne soyez pas pénible\navec les voisins,",
+        'id': 403,
+        'spanish_text': '-Es verdad. No seas pesado\nconlos vecinos,'},
+    {   'french_text': 'que le "brun" me tombe dessus par la suite.',
+        'id': 404,
+        'spanish_text': 'que después me cae el "marrón”.'},
+    {   'french_text': '-Ne soyez pas en retard.\nNon.',
+        'id': 405,
+        'spanish_text': '-No llegues tarde.\nNo.'},
+    {   'french_text': 'Sois gentil avec les autres enfants.\n'
+                       "Arrête de faire des bêtises. Maman, j'y vais.",
+        'id': 406,
+        'spanish_text': 'Pórtate bien con los demás niños.\n'
+                        'Déjate de cachondeo. Mamá, me voy.'},
+    {   'french_text': '-Mais tu sors encore, fiston ?\nJe plaisante.',
+        'id': 407,
+        'spanish_text': '-¿Pero vas a salir otra vez, hijo?\nDe cachondeo.'},
+    {   'french_text': 'Quand dormez-vous ?\n'
+                       '-Au bureau. Je suis en retard, ça me tue.',
+        'id': 408,
+        'spanish_text': '-¿Tú cuándo duermes?\n'
+                        '-En la oficina. Voy tarde, me mata.'},
+    {   'french_text': 'Qui rencontrez-vous ?\n-Avec un ami.',
+        'id': 409,
+        'spanish_text': '-¿Con quién has quedado?\n-Con una amiga.'},
+    {   'french_text': "-Je n'aime pas ça.\n-Je n'aime pas ça non plus,",
+        'id': 410,
+        'spanish_text': '-No me gusta.\n-A mí tampoco,'},
+    {   'french_text': "mais l'autre m'a fait faux bond.",
+        'id': 411,
+        'spanish_text': 'pero me ha fallado la otra.'},
+    {   'french_text': 'Il est clair que je suis superflu\ndans cette maison.',
+        'id': 412,
+        'spanish_text': 'Está claro que yo sobro\nen esta casa.'},
+    {   'french_text': '(On sonne à la porte)',
+        'id': 413,
+        'spanish_text': '(Suena el timbre)'},
+    {   'french_text': '-Putain, le mouvement.',
+        'id': 414,
+        'spanish_text': '-Joder, la mudanza.'},
+    {   'french_text': 'Bonjour.\n-Bonjour.',
+        'id': 415,
+        'spanish_text': 'Hola.\n-Hola.'},
+    {   'french_text': "Vous n'êtes pas Ciriaco Cánovas.\n"
+                       "-Eh bien, non. Vous l'êtes ?",
+        'id': 416,
+        'spanish_text': 'Usted no es Ciriaco Cánovas.\n-Pues no. ¿Y usted?'},
+    {   'french_text': '-Évidemment, moi non plus.\n'
+                       '-Oui, je veux dire... qui est-ce ?',
+        'id': 417,
+        'spanish_text': '-Evidentemente, yo tampoco.\n'
+                        '-Ya, quiero decir... ¿quién es?'},
+    {   'french_text': 'Du cercle des lecteurs. Je venais\n'
+                       'vous apporter la commande de ce mois.',
+        'id': 418,
+        'spanish_text': 'Del Círculo de Lectores. Venía\n'
+                        'a traerle el pedido de este mes.'},
+    {   'french_text': 'Ce Ciriaco a dû déménager ;\n'
+                       "car nous venons d'acheter la maison.",
+        'id': 419,
+        'spanish_text': 'Pues el tal Ciriaco debió mudarse;\n'
+                        'porque acabamos de comprar la casa.'},
+    {   'french_text': "Je sais. Et vous n'êtes pas intéressé\n"
+                       'à rejoindre le Cercle, bien sûr.',
+        'id': 420,
+        'spanish_text': 'Ya. Y a usted no le interesa\n'
+                        'hacerse del Círculo, claro.'},
+    {   'french_text': "-Je ne sais pas. Ça te dérange si j'y réfléchis avec "
+                       'plus de vêtements ?\n'
+                       'avec plus de vêtements ?',
+        'id': 421,
+        'spanish_text': '-Hombre, no lo sé. ¿Le importa que\n'
+                        'me lo piense con más ropa puesta?'},
+    {   'french_text': 'Non, par Dieu, je reviendrai un autre jour.\n'
+                       'Maintenant, il faut chercher Ciriaco,',
+        'id': 422,
+        'spanish_text': 'No, por Dios, ya vuelvo otro día.\n'
+                        'Ahora a buscar a Ciriaco,'},
+    {   'french_text': 'qui sait qui sait\noù il est allé.',
+        'id': 423,
+        'spanish_text': 'que vete a saber\ndónde se ha metido.'},
+    {'french_text': '-Téton.', 'id': 424, 'spanish_text': '-Coño.'},
+    {   'french_text': "Je n'arrive pas à y croire.",
+        'id': 425,
+        'spanish_text': 'No me lo puedo creer.'},
+    {   'french_text': '-Alicia ! Alicia, dépêche-toi,',
+        'id': 426,
+        'spanish_text': '-¡Alicia! Alicia, date prisa,'},
+    {   'french_text': "c'est la première fois en deux ans\n"
+                       "qu'un oncle m'attend. Alicia !",
+        'id': 427,
+        'spanish_text': 'es la primera vez en dos años\n'
+                        'que me espera un tío. ¡Alicia!'},
+    {   'french_text': 'Allez, femme.\n-Vous aimez ces chaussures ?',
+        'id': 428,
+        'spanish_text': 'Venga, mujer.\n-¿Te gustan estos zapatos?'},
+    {   'french_text': "-Non, mais nous n'avons pas le temps.",
+        'id': 429,
+        'spanish_text': '-No, pero no hay tiempo.'},
+    {'french_text': '-Bonjour.', 'id': 430, 'spanish_text': '-Hola.'},
+    {   'french_text': 'Comment cela se passe-t-il ?',
+        'id': 431,
+        'spanish_text': '¿Qué tal?'},
+    {   'french_text': "C'est un signe :\nla nuit est prometteuse.",
+        'id': 432,
+        'spanish_text': 'Esto es una señal:\nla noche promete.'},
+    {   'french_text': '-Je suis le nouveau voisin.\n-An !',
+        'id': 433,
+        'spanish_text': '-Soy el nuevo vecino.\n-¡An!'},
+    {   'french_text': "Et qu'est-ce que tu essaies de faire, qu'ils te "
+                       'nomment\n'
+                       'président de la communauté ?',
+        'id': 434,
+        'spanish_text': '¿Y qué intentas, que te hagan\n'
+                        'presidente de la comunidad?'},
+    {   'french_text': '-Je vote pour vous.\n-Non, voyons voir,',
+        'id': 435,
+        'spanish_text': '-Yo te voto.\n-No, vamos a ver,'},
+    {   'french_text': "ma porte est fermée à clé en ce moment et je n'ai pas\n"
+                       "et je n'ai pas de clés sur moi.",
+        'id': 436,
+        'spanish_text': 'se me ha cerrado la puerta ahora\n'
+                        'mismo y no llevo llaves encima.'},
+    {   'french_text': 'Je prenais un bain et...\n-¿Y... ?',
+        'id': 437,
+        'spanish_text': 'Estaba dándome un baño y...\n-¿Y...?'},
+    {   'french_text': "Et j'ai laissé le robinet ouvert.\n"
+                       '-Nous avons tous des problèmes.',
+        'id': 438,
+        'spanish_text': 'Y me he dejado el grifo abierto.\n'
+                        '-Bueno, todos tenemos problemas.'},
+    {   'french_text': 'A plus tard.\n'
+                       'Voulez-vous entrer et téléphoner ou quelque chose '
+                       'comme ça ?',
+        'id': 439,
+        'spanish_text': 'Hasta luego.\n-¿Quieres pasar y llamas o algo?'},
+    {   'french_text': '-Vous, dès que vous voyez un homme dans sa robe, vous '
+                       'voulez le faire entrer dans la maison.\n'
+                       'vous voulez le faire entrer dans la maison.',
+        'id': 440,
+        'spanish_text': '-Tú, en cuanto ves a un tipo en\n'
+                        'pelotas, lo quieres meter en casa.'},
+    {   'french_text': '-Vous avez de la chance. Bonne chance.\nA plus tard.',
+        'id': 441,
+        'spanish_text': '-Encantada. Suerte.\nHasta luego.'},
+    {   'french_text': "Qu'est-ce qui se passe, petits coquins ?\n"
+                       'Vous partez à la chasse ?',
+        'id': 442,
+        'spanish_text': '-¿Qué pasa, golfillas?\n¿Vais de cacería?'},
+    {   'french_text': '-Un garçon vous cherche\nen portant une serviette.',
+        'id': 443,
+        'spanish_text': '-Te busca un chico\nque lleva una toalla.'},
+    {   'french_text': '-Pour moi ? Pas du tout. Vous avez fait une erreur\n'
+                       'vous, Mlle Alicia.',
+        'id': 444,
+        'spanish_text': '-¿A mi? Imposible. Se ha equivocado\n'
+                        'usted, señorita Alicia.'},
+    {   'french_text': "Déjà en baisse, n'est-ce pas ?\nOui.",
+        'id': 445,
+        'spanish_text': 'Ya para abajo, ¿no?\nSí.'},
+    {   'french_text': '-Comme nous vivons bien ! Tout au long de la journée\n'
+                       'en haut, en bas...',
+        'id': 446,
+        'spanish_text': '-¡Qué bien vivimos! Todo el día\n'
+                        'de cachondeo, arriba, abajo...'},
+    {   'french_text': "C'est juste que Belén a un rendez-vous.\n"
+                       '-Quoi ? Quel miracle !',
+        'id': 447,
+        'spanish_text': 'Es que Belén tiene una cita.\n'
+                        '-¿Cómo? ¡Coño, un milagro!'},
+    {   'french_text': 'Pourquoi dites-vous à ce trou du cul\nà ce connard ?',
+        'id': 448,
+        'spanish_text': '-¿Para qué le cuentas nada\na este imbécil?'},
+    {   'french_text': "Que se passe-t-il ? Pourquoi s'est-il arrêté ?",
+        'id': 449,
+        'spanish_text': '-¿Qué pasa? ¿Por qué se ha parado?'},
+    {   'french_text': "-L'ascenseur est à nouveau en panne.\n"
+                       "l'ascenseur est à nouveau en panne.",
+        'id': 450,
+        'spanish_text': '-Vaya, ha vuelto a estropearse\nel ascensor.'},
+    {   'french_text': "Qu'est-ce que tu dis ? Je t'ai vu l'arrêter.\n"
+                       "-Non, il s'est arrêté tout seul.",
+        'id': 451,
+        'spanish_text': '-¿Qué dices? Te he visto pararlo.\n'
+                        '-Que no, que se ha parado solo.'},
+    {   'french_text': "Vous avez perdu la tête !\nJe t'ai vu arrêter !",
+        'id': 452,
+        'spanish_text': 'TÚ estás mal de la cabeza!\n¡Te he visto pararlo!'},
+    {   'french_text': "Détendez-vous, je n'ai rien vu.\n"
+                       'Il veut gâcher mon rendez-vous.',
+        'id': 453,
+        'spanish_text': '-Tranquila, yo no he visto nada.\n'
+                        '-Quiere fastidiarme la cita.'},
+    {   'french_text': '-Oui, je voulais lui faire une blague.',
+        'id': 454,
+        'spanish_text': '-Que sí, quería gastarle una broma.'},
+    {   'french_text': "Ce n'est pas drôle.\n"
+                       '-Mais nous descendons tout de suite, Mlle Alicia.',
+        'id': 455,
+        'spanish_text': 'No tiene gracia.\n-Pero ya bajamos, señorita Alicia.'},
+    {   'french_text': 'Que se passe-t-il maintenant ?\n'
+                       '-Eh bien, il ne descend pas.',
+        'id': 456,
+        'spanish_text': '-¿Y ahora qué pasa?\n-Pues que no baja.'},
+    {   'french_text': '-Pas de blagues avec moi.\n'
+                       '-Ce ne sont pas des blagues, je vous le jure.',
+        'id': 457,
+        'spanish_text': '-Conmigo bromas, no.\n'
+                        '-Que no son bromas, se lo juro.'},
+    {   'french_text': 'Je serai maudit.\n'
+                       'À quelle heure devions-nous nous rencontrer ?',
+        'id': 458,
+        'spanish_text': 'Me cago en la madre que me parió.\n'
+                        '-¿A qué hora habíamos quedado?'},
+    {   'french_text': '-Il y a dix minutes.',
+        'id': 459,
+        'spanish_text': '-Hace diez minutos.'},
+    {   'french_text': 'Parfait !',
+        'id': 460,
+        'spanish_text': 'Perfecto. ¡Perfecto!'},
+    {   'french_text': '-Je vais au match.\nAu revoir, grand-mère.',
+        'id': 461,
+        'spanish_text': '-Me voy a la partida.\n-Adiós, abuela.'},
+    {'french_text': '-Merde.', 'id': 462, 'spanish_text': '-Mierda.'},
+    {   'french_text': '-Qui est là ?',
+        'id': 463,
+        'spanish_text': '-¿Quién anda ahí?'},
+    {'french_text': 'Oups !', 'id': 464, 'spanish_text': '¡Huy!'},
+    {'french_text': '-Lucia !', 'id': 465, 'spanish_text': '-Lucía!'},
+    {   'french_text': '-Vicenta, voici Concha !',
+        'id': 466,
+        'spanish_text': '-¡Vicenta, aquí está Concha!'},
+    {   'french_text': 'Je suis déjà là pour le vice.\n'
+                       'Cette serviette est-elle à vous ?',
+        'id': 467,
+        'spanish_text': 'Ya estoy aquí para el vicio.\n¿Esta toalla es tuya?'},
+    {   'french_text': "Je l'ai trouvé dans l'escalier.\n"
+                       "-Oui, c'est le mien. Allez, buvez au corps.",
+        'id': 468,
+        'spanish_text': 'Me la he encontrado en la escalera.\n'
+                        '-Sí, es mía. Venga, copa al cuerpo.'},
+    {   'french_text': 'Commençons maintenant.\n-Attendez un peu.',
+        'id': 469,
+        'spanish_text': 'Vamos a empezar ya.\n-Esperad un momento.'},
+    {   'french_text': 'Ne commencez pas sans moi !\nJe reviens tout de suite,',
+        'id': 470,
+        'spanish_text': '¡No empecéis sin mí!\nEnseguida vuelvo,'},
+    {   'french_text': 'Je vais donner ces clés à Emilio.\n'
+                       '-Quelles sont ces clés ?',
+        'id': 471,
+        'spanish_text': 'voy a dar estas llaves a Emilio.\n-¿Qué llaves son?'},
+    {   'french_text': '-De la part des voisins,\n'
+                       'ils sont partis pour le week-end.',
+        'id': 472,
+        'spanish_text': '-De los vecinos,\nse han ido de fin de semana.'},
+    {   'french_text': "Ils ne l'ont pas trouvé et me l'ont donné.\n"
+                       'Je reviendrai.',
+        'id': 473,
+        'spanish_text': 'No lo encontraron y me las dieron.\nAhora vuelvo.'},
+    {   'french_text': '-Juste un instant,\n'
+                       'Tu ne veux pas te débarrasser de ça ?',
+        'id': 474,
+        'spanish_text': '-Un momento,\n¿no te apetece salir de dudas?'},
+    {   'french_text': '-A propos de quoi ?\n'
+                       'Que les voisins soient homosexuels ou non.',
+        'id': 475,
+        'spanish_text': '-¿De qué?\nDe si lo vecinos son gays o no.'},
+    {   'french_text': '-Allez, regardons.\n-Tu es fou ?',
+        'id': 476,
+        'spanish_text': '-Venga, vamos a echar un vistazo.\n-¿Estáis locas?'},
+    {   'french_text': 'Allez-vous faire des commérages dans une maison qui '
+                       "n'est pas la vôtre ?\n"
+                       "dans une maison qui n'est pas la vôtre ?",
+        'id': 477,
+        'spanish_text': '¿Vais a meteros a cotillear\n'
+                        'en una casa que no es vuestra?'},
+    {   'french_text': 'Je viens avec toi.',
+        'id': 478,
+        'spanish_text': 'Voy con vosotras.'},
+    {   'french_text': '-Qui a pris la serviette ?',
+        'id': 479,
+        'spanish_text': '-¿Quién ha cogido la toalla?'},
+    {   'french_text': "(On entend une porte s'ouvrir)",
+        'id': 480,
+        'spanish_text': '(Se oye abrirse una puerta)'},
+    {   'french_text': "Ne criez pas, s'il vous plaît,\n"
+                       "je vous en supplie, s'il vous plaît !",
+        'id': 481,
+        'spanish_text': '¡Por favor, no grites,\nte lo pido por favor!'},
+    {   'french_text': 'Pourquoi crierais-je ?',
+        'id': 482,
+        'spanish_text': '-¿Y yo por qué iba a gritar?'},
+    {   'french_text': 'Oh, et joli cul.',
+        'id': 483,
+        'spanish_text': 'Ah, y bonito culo.'},
+    {   'french_text': 'Allez, dépêche-toi.\n'
+                       "Tais-toi, je n'ai pas mes lunettes.",
+        'id': 484,
+        'spanish_text': 'Venga, date prisa.\n-Calla, que no tengo las gafas.'},
+    {'french_text': '-Attention !', 'id': 485, 'spanish_text': '-¡Cuidado!'},
+    {   'french_text': '-Bonjour.\n(TROIS) Bonjour !',
+        'id': 486,
+        'spanish_text': '-Hola.\n(LAS TRES) ¡Hola!'},
+    {   'french_text': 'Où ira cet enfant à cette heure-ci ?\n-Quels parents !',
+        'id': 487,
+        'spanish_text': '-¿Dónde irá esa niña a estas horas?\n-¡Vaya padres!'},
+    {   'french_text': 'Nous nous faisons prendre.\n'
+                       "Que fais-tu avec l'arrosoir ?",
+        'id': 488,
+        'spanish_text': 'Nos pillan.\n-¿Qué haces con la regadera?'},
+    {   'french_text': "-S'ils le demandent, nous disons\n"
+                       'que nous allons arroser les plantes.',
+        'id': 489,
+        'spanish_text': '-Si preguntan, decimos\n'
+                        'que vamos a regar las plantas.'},
+    {   'french_text': '-Mais quelles plantes ?\n'
+                       "-S'ils sont gays, ils auront des plantes.",
+        'id': 490,
+        'spanish_text': '-¿Pero qué plantas?\n-Si son gays, tendrán plantas.'},
+    {   'french_text': 'Je ne sais pas,\nTaisez-vous et rentrez.',
+        'id': 491,
+        'spanish_text': 'No sé,\n-Calla y vamos adentro.'},
+    {   'french_text': '-Cette chose que nous faisons\n'
+                       "n'est pas bonne du tout.",
+        'id': 492,
+        'spanish_text': '-Esto que estamos haciendo\nno está nada bien.'},
+    {   'french_text': 'Et quand allez-vous vous marier ?\n'
+                       'Avez-vous déjà une date ?',
+        'id': 493,
+        'spanish_text': '-¿Y cuándo os casáis?\n¿Ya tenéis fecha?'},
+    {   'french_text': 'Non, pas encore.\n'
+                       "-Dieu merci, vous m'avez surprise sans robe.",
+        'id': 494,
+        'spanish_text': 'No, todavía no.\n-Menos mal, me pillas sin vestido.'},
+    {   'french_text': "-J'y vais.\nJ'ai beaucoup de choses à acheter.",
+        'id': 495,
+        'spanish_text': '-Me voy.\nTengo muchas cosas que comprar.'},
+    {   'french_text': "Non, femme. Asseyez-vous,\nj'ai tout.",
+        'id': 496,
+        'spanish_text': 'No, mujer. Siéntate,\nque yo tengo de todo.'},
+    {   'french_text': "Alors, l'appartement\n"
+                       "votre père l'a acheté pour vous, bien sûr.",
+        'id': 497,
+        'spanish_text': 'Entonces, el piso\n'
+                        'te lo ha comprado tu padre, claro.'},
+    {   'french_text': "Et comment le savez-vous ?\n-Je l'ai imaginé.",
+        'id': 498,
+        'spanish_text': '-¿Y cómo lo sabes?\n-Me lo he imaginado.'},
+    {   'french_text': "C'est juste que les appartements sont maintenant...",
+        'id': 499,
+        'spanish_text': 'Es que están ahoralos pisos...'},
+    {   'french_text': 'Et combien a-t-il coûté ?\n'
+                       "-Je ne sais pas, car il s'agit d'un cadeau....",
+        'id': 500,
+        'spanish_text': '¿Y cuánto os ha costado?\n'
+                        '-No sé, como es un regalo...'},
+    {   'french_text': "-Comme c'est mignon ! Regarde-toi.",
+        'id': 501,
+        'spanish_text': '-¡Qué mona! Fijate.'},
+    {   'french_text': "Vous, pas d'hypothèque, rien,\nbien sûr.",
+        'id': 502,
+        'spanish_text': 'Vosotros, ni hipoteca ni nada,\nclaro.'},
+    {   'french_text': "Regardez comme c'est bon.",
+        'id': 503,
+        'spanish_text': 'Mira qué bien.'},
+    {   'french_text': "-Allons dans la chambre et voyons ce qu'il y a.\n"
+                       "-Quels nerfs, pour l'amour de Dieu !",
+        'id': 504,
+        'spanish_text': '-Yamos al dormitorio a ver qué hay.\n'
+                        '-¡Qué nervios, por Dios!'},
+    {   'french_text': 'Que faites-vous ?\n'
+                       '-Je crois que quelque chose est tombé.',
+        'id': 505,
+        'spanish_text': '-¿Pero qué haces?\n-Creo que se ha caído algo.'},
+    {   'french_text': '-Ne bougez pas ! Je vais accoucher.',
+        'id': 506,
+        'spanish_text': '-¡Quietas! Voy a dar la luz.'},
+    {   'french_text': '-Eh bien !\nEh bien, nous avons pris un bon départ.',
+        'id': 507,
+        'spanish_text': '-¡Bueno!\nPues sí que empezamos bien.'},
+    {   'french_text': "-Paloma, tu n'avais pas à le faire.\nJe dois y aller.",
+        'id': 508,
+        'spanish_text': '-Paloma, no hacía falta\n'
+                        'que sacaras nada; me tengo que ir.'},
+    {   'french_text': '-Non, femme,\nnous devons apprendre à nous connaître.',
+        'id': 509,
+        'spanish_text': '-Que no, mujer,\nque nos tenemos que ir conociendo.'},
+    {   'french_text': 'Quelle chance vous avez eue\n'
+                       'avec cet appartement. Ici, vous vivez...',
+        'id': 510,
+        'spanish_text': 'Qué suerte habéis tenido\n'
+                        'con este piso. Aquí se vive...'},
+    {   'french_text': 'Nous, qui pourrions vivre dans une villa\n'
+                       'dans une villa avec piscine et tout,',
+        'id': 511,
+        'spanish_text': 'Nosotros, que podríamos vivir\n'
+                        'en un chalet con piscina y todo,'},
+    {   'french_text': 'Cependant, nous préférons ceci.\n-Bien entendu.',
+        'id': 512,
+        'spanish_text': 'sin embargo, preferimos esto.\n-Claro.'},
+    {   'french_text': "-Alors, tu aimes mon appartement ? Je pense qu'il est\n"
+                       "qu'il est plus grand que le vôtre de quelques mètres.",
+        'id': 513,
+        'spanish_text': '-Bueno, ¿te gusta mi piso? Creo que\n'
+                        'tiene unos metros más que el tuyo.'},
+    {   'french_text': 'A première vue, je ne sais pas quoi vous dire,\n'
+                       'Je ne sais pas quoi vous dire.',
+        'id': 514,
+        'spanish_text': 'Pues así, a simple vista,\nno sé qué decirte.'},
+    {   'french_text': "-Oui, je vous le dis,\nparce que je l'ai regardé.",
+        'id': 515,
+        'spanish_text': '-Sí, te lo digo yo,\nporque lo estuve viendo.'},
+    {   'french_text': 'Nous voulions construire un duplex ; mais la '
+                       'rénovation\n'
+                       'pour en faire un duplex comme celui-ci...',
+        'id': 516,
+        'spanish_text': 'Queríamos hacer un dúplex; pero la\n'
+                        'reforma para dejarlo como éste...'},
+    {   'french_text': "...c'était très cher.\nPetit à petit.",
+        'id': 517,
+        'spanish_text': '...era muy cara.\nPoco a poco.'},
+    {   'french_text': '-Bien sûr, quand nous achèterons\n'
+                       'la maison de la plage,',
+        'id': 518,
+        'spanish_text': '-Claro, cuando compremos\nla casa de la playa,'},
+    {   'french_text': 'Nous engagerons le même décorateur.\n'
+                       'Est-ce un décorateur qui a fait cela ?',
+        'id': 519,
+        'spanish_text': 'contrataremos al mismo decorador.\n'
+                        '-¿Esto lo ha hecho un decorador?'},
+    {   'french_text': "-Non, idiot, c'est moi qui l'ai fait.",
+        'id': 520,
+        'spanish_text': '-No, tonta, esto lo he hecho yo.'},
+    {   'french_text': "L'avez-vous cru ?",
+        'id': 521,
+        'spanish_text': '¿Te lo habías creído?'},
+    {   'french_text': 'Mais buvez.\n-Je dois y aller.',
+        'id': 522,
+        'spanish_text': 'Pero bebe.\n-Es que me tengo que ir.'},
+    {   'french_text': "Mon petit ami m'attend.\n-Au fait, ton copain,",
+        'id': 523,
+        'spanish_text': 'Me está esperando mi novio.\n-Por cierto, tu novio,'},
+    {   'french_text': 'Que fait-il ?\n-Roberto est architecte.',
+        'id': 524,
+        'spanish_text': '¿a qué se dedica?\n-Roberto es arquitecto.'},
+    {   'french_text': 'Il travaille chez lui à dessiner des bandes '
+                       'dessinées.\n'
+                       '-Des bandes dessinées ? Je veux dire, vous le '
+                       'soutenez.',
+        'id': 525,
+        'spanish_text': 'Trabaja en casa dibujando cómics.\n'
+                        '-¿Tebeos? O sea, lo mantienes tú.'},
+    {   'french_text': 'Non, il gagne son argent.\n'
+                       '-Ah ! Hé, il est plus jeune que toi.',
+        'id': 526,
+        'spanish_text': 'No, él gana su dinero.\n'
+                        '-¡Ah! Oye, es más joven que tú.'},
+    {   'french_text': '-Non, il a un an de plus que moi.\n'
+                       "Il n'en a pas l'air,",
+        'id': 527,
+        'spanish_text': '-No, es un año mayor que yo.\n'
+                        'Fíjate, que no lo parece,'},
+    {   'french_text': "comme il est petit, il a l'air plus enfantin.\n"
+                       'Vous formez un bon couple,',
+        'id': 528,
+        'spanish_text': 'como es pequeño, se le ve más crío.\n'
+                        'Hacéis buena pareja,'},
+    {   'french_text': 'de cela, je comprends.\n-Je vous remercie.',
+        'id': 529,
+        'spanish_text': 'de eso entiendo.\n-Gracias.'},
+    {   'french_text': '-Les enfants, bien sûr, vont\n'
+                       'vous allez avoir des enfants de petite taille.',
+        'id': 530,
+        'spanish_text': '-Eso sí, los hijos\nte van a salir bajos.'},
+    {   'french_text': "Parce que vous voulez avoir des enfants, n'est-ce pas "
+                       '?',
+        'id': 531,
+        'spanish_text': 'Porque querréis tener hijos, ¿no?'},
+    {   'french_text': "Parce que vous voulez avoir des enfants, n'est-ce pas "
+                       '?',
+        'id': 532,
+        'spanish_text': 'Porque querréis tener hijos, ¿no?'},
+    {   'french_text': "-Les filles !\nRegardez ce que j'ai trouvé.",
+        'id': 533,
+        'spanish_text': '-¡Chicas!\nMirad lo que he encontrado.'},
+    {   'french_text': '-Quoi ?\n-Un pantalon.',
+        'id': 534,
+        'spanish_text': '-¿El qué?\n-Unos calzoncillos.'},
+    {   'french_text': '-Et alors ?\nJe ne sais pas,',
+        'id': 535,
+        'spanish_text': '-Bueno, ¿y qué?\nNo sé,'},
+    {   'french_text': "Très bien, Vicenta, donc au moins nous savons qu'ils "
+                       'portent des sous-vêtements.\n'
+                       "nous savons qu'ils portent des sous-vêtements.",
+        'id': 536,
+        'spanish_text': '-Muy bien, Vicenta, así al menos\n'
+                        'sabemos que usan ropa interior.'},
+    {   'french_text': 'Regardez, voici un album photo.\n'
+                       'Je suis sûr que... Ouch !',
+        'id': 537,
+        'spanish_text': 'Mira, aquí hay un álbum de fotos.\n'
+                        'Seguro que... ¡Ay!'},
+    {   'french_text': '-Hala, mes jolies ! Continuez à casser des choses.\n'
+                       "Qu'est-ce qu'on fait maintenant ?",
+        'id': 538,
+        'spanish_text': '-¡Hala, guapas! Seguid rompiendo\n'
+                        'cosas. ¿Y ahora qué hacemos?'},
+    {   'french_text': '-La meilleure chose à faire est de tout nettoyer et de '
+                       'le jeter.\n'
+                       "jeter. Peut-être qu'ils ne le remarquent pas.",
+        'id': 539,
+        'spanish_text': '-Lo mejor es limpiarlo todo y luego\n'
+                        'lo tiramos. Quizá no se dan cuenta.'},
+    {   'french_text': '-Bien sûr, ils le remarqueront,\nmême vous.',
+        'id': 540,
+        'spanish_text': '-Claro que se darán cuenta,\nlo harías hasta tú.'},
+    {   'french_text': '-Et pourquoi ne pas tout retourner\n'
+                       "comme s'ils étaient entrés par effraction ?",
+        'id': 541,
+        'spanish_text': '-¿Y por qué no revolvemos todo\n'
+                        'como si hubieran entrado a robar?'},
+    {   'french_text': "Je l'ai vu dans les films.\n-Supprimer.",
+        'id': 542,
+        'spanish_text': 'Lo he visto en las películas.\n-Quita.'},
+    {   'french_text': "-Ne comptez pas sur moi,\nje m'en vais tout de suite.",
+        'id': 543,
+        'spanish_text': '-Conmigo no cuentes,\nyo me voy ahora mismo.'},
+    {   'french_text': '-Oui, ils vont venir pour voler pour de vrai.\n'
+                       'pour voler pour de vrai.',
+        'id': 544,
+        'spanish_text': '-Sí que van a entrar\na robar de verdad.'},
+    {   'french_text': '(On entend des choses qui se cassent)',
+        'id': 545,
+        'spanish_text': '(Se oye romperse cosas)'},
+    {   'french_text': "Mais qu'est-ce qu'il y a maintenant ?\n"
+                       'Ecoute, je ferais mieux de rester avec toi.',
+        'id': 546,
+        'spanish_text': '-¿Pero qué pasa ahora?\n'
+                        'Mira, mejor me quedo con vosotras.'},
+    {   'french_text': "-D'accord. Allez, aidez-moi.",
+        'id': 547,
+        'spanish_text': '-Muy bien. Venga, ayúdame.'},
+    {'french_text': 'Tirez !', 'id': 548, 'spanish_text': '¡Hala!'},
+    {   'french_text': '-Man, le nouveau. Je suis Juan\n'
+                       'Cuesta, président de la communauté.',
+        'id': 549,
+        'spanish_text': '-Hombre, el chico nuevo. Soy Juan\n'
+                        'Cuesta, presidente de la comunidad.'},
+    {   'french_text': '-Je suis Paco,\nassistant du vidéoclub.',
+        'id': 550,
+        'spanish_text': '-Soy Paco,\ndependiente del videoclub.'},
+    {   'french_text': 'Recommandez-moi quelque chose pour ce soir.\n'
+                       'Un mystère...',
+        'id': 551,
+        'spanish_text': '-Recomiéndame algo para esta noche.\n'
+                        'Una de misterio...'},
+    {   'french_text': '-Mystère ? Eh bien...\nPrenez celui-ci.',
+        'id': 552,
+        'spanish_text': '-¿Misterio? Pues...\nLlévate ésta.'},
+    {   'french_text': '- Austin Powers".\n-Austin Powers".',
+        'id': 553,
+        'spanish_text': '-"Austín Poyers".\n-"Austin Powers".'},
+    {   'french_text': "Ce n'est pas un mystère, n'est-ce pas ?\n"
+                       '-Le mystère est de savoir comment il a réussi.',
+        'id': 554,
+        'spanish_text': '-Esta no es de misterio, ¿no?\n'
+                        '-El misterio es cómo tuvo éxito.'},
+    {   'french_text': 'Je prends celui-là,\n"Charlie\'s Angels".',
+        'id': 555,
+        'spanish_text': '-Me llevo ésta,\n"Los Ángeles de Charlie".'},
+    {   'french_text': '-Le meilleur est Robert de Niro.\n-Robert de Niro ?',
+        'id': 556,
+        'spanish_text': '-El mejor es Robert de Niro.\n-¿Robert de Niro?'},
+    {   'french_text': "Sinon, il sort.\nC'est bien, quel film !",
+        'id': 557,
+        'spanish_text': 'Sino sale.\nHace bien, ¡qué rollo de película!'},
+    {   'french_text': "Pourquoi l'avez-vous ?\nPorsila le veut.",
+        'id': 558,
+        'spanish_text': '-¿Por qué la tienes?\nPorsila quieren.'},
+    {   'french_text': '-Je le veux.\nEmmenez-la.',
+        'id': 559,
+        'spanish_text': '-Yo la quiero.\nLlévatela.'},
+    {   'french_text': "-Si vous dites que c'est ennuyeux.\n"
+                       'Pourquoi me faites-vous confiance ?',
+        'id': 560,
+        'spanish_text': '-Si dices que es un rollo.\n-¿Por qué te fías de mí?'},
+    {   'french_text': '-Pourquoi je vous fais confiance, bordel ?\n'
+                       '-Bien sûr que tu me fais confiance.',
+        'id': 561,
+        'spanish_text': '-Eso, ¿por qué coño me fío de ti?\n-Claro.'},
+    {   'french_text': 'Et que dites-vous faire ?\n'
+                       '-Je suis promoteur immobilier,',
+        'id': 562,
+        'spanish_text': '-¿Y a qué dices que te dedicas?\n'
+                        '-Soy promotora inmobiliaria,'},
+    {   'french_text': 'dans la holding de mon père.\n'
+                       "-Comme c'est agréable ! Travailler avec papa.",
+        'id': 563,
+        'spanish_text': 'en el holding de mi padre.\n'
+                        '-¡Qué bien! Trabajando con papá.'},
+    {'french_text': 'Attention !', 'id': 564, 'spanish_text': '¡Cuidado!'},
+    {   'french_text': 'Et que faites-vous dans la vie ?\n'
+                       "-Mon mari travaille dans l'enseignement ;",
+        'id': 565,
+        'spanish_text': '-¿Y tú en qué trabajas?\n'
+                        '-Mi marido trabaja en la enseñanza;'},
+    {   'french_text': 'est une éminence.\nIl est professeur.',
+        'id': 566,
+        'spanish_text': 'es una eminencia.\nEs catedrático.'},
+    {   'french_text': '-Oui, elle enseigne la gymnastique dans une école.\n'
+                       "dans une école. Les enfants l'adorent.",
+        'id': 567,
+        'spanish_text': '-Sí. Da clases de Gimnasia\n'
+                        'en un colegio. Los niños le adoran.'},
+    {   'french_text': "C'est bien payé, sinon comment\n"
+                       "il aurait l'appartement si bien aménagé.",
+        'id': 568,
+        'spanish_text': 'Está bien pagado, si no, cómo iba\n'
+                        'a tener el piso tan bien montado.'},
+    {   'french_text': '-Très bien.\nOui.',
+        'id': 569,
+        'spanish_text': '-Muy bonito.\nSí.'},
+    {   'french_text': 'Dans les locaux du rez-de-chaussée, je veux installer\n'
+                       'une activité, mais je ne vous dirai pas laquelle,',
+        'id': 570,
+        'spanish_text': 'En el local de abajo quiero poner\n'
+                        'un negocio, pero no te digo de qué,'},
+    {   'french_text': 'de peur que tu ne le dises à ton père\n'
+                       "ton père et qu'il me devance.",
+        'id': 571,
+        'spanish_text': 'no vaya a ser que se lo digas\n'
+                        'a tu padre y se me adelante.'},
+    {   'french_text': 'Maintenant, je dois vraiment y aller.\n'
+                       '-Tu ne prends rien avec toi ?',
+        'id': 572,
+        'spanish_text': 'Ahora sí que me tengo que ir.\n-¿No te llevas nada?'},
+    {   'french_text': '-Non ! Merci, vraiment.\n'
+                       'Je le faisais pour vous. Si tu veux,',
+        'id': 573,
+        'spanish_text': '-¡No! Gracias, de verdad.\n'
+                        'o hacía por ti. Si quieres,'},
+    {   'french_text': 'alors je viendrai chez toi pour un moment.\n'
+                       '-Non... Eh bien, oui...',
+        'id': 574,
+        'spanish_text': 'luego subo un rato a tu casa.\n-¡No...! Bueno, sí...'},
+    {   'french_text': "Merci beaucoup. Je m'en vais.",
+        'id': 575,
+        'spanish_text': 'Muchas gracias. Me voy.'},
+    {   'french_text': '-Quelle drôle de fille !',
+        'id': 576,
+        'spanish_text': '-¡Qué chica tan rara!'},
+    {'french_text': 'Juan !', 'id': 577, 'spanish_text': '¡Juan!'},
+    {'french_text': 'Juan !', 'id': 578, 'spanish_text': '¡Juan!'},
+    {'french_text': '-Roberto.', 'id': 579, 'spanish_text': '-Roberto.'},
+    {   'french_text': 'Roberto, chéri, tu es là ?',
+        'id': 580,
+        'spanish_text': 'Roberto, cariño, ¿estás ahí?'},
+    {'french_text': '-Emilio.', 'id': 581, 'spanish_text': '-Emilio.'},
+    {'french_text': 'Emilio ?', 'id': 582, 'spanish_text': '¿Emilio?'},
+    {'french_text': 'Baiser.', 'id': 583, 'spanish_text': 'Joder.'},
+    {   'french_text': 'Que font nos choses ici ?',
+        'id': 584,
+        'spanish_text': '¿Qué hacen nuestras cosas aquí?'},
+    {   'french_text': '-Quel emmerdeur ce nouveau venu !\n'
+                       'Comment ça se passe ici ?',
+        'id': 585,
+        'spanish_text': '-¡Qué pesado ese chico nuevo\n'
+                        'del videoclub! ¡Cómo está esto!'},
+    {   'french_text': '-De quoi est fait cet ascenseur ?\n'
+                       "Il n'y a pas de réception ici.",
+        'id': 586,
+        'spanish_text': '-¿De qué está hecho este ascensor?\n'
+                        'Aquí dentro no hay cobertura.'},
+    {   'french_text': '-Et vous ? Joue quelque chose là.\n'
+                       "-Oui, pour que j'aie une crampe...",
+        'id': 587,
+        'spanish_text': '-¿Y tú qué? Toca algo ahí.\n'
+                        '-Sí, para que me dé un calambre...'},
+    {   'french_text': '-Vous ne trouvez rien pour sortir.\n'
+                       "-Oui, j'ai un plan.",
+        'id': 588,
+        'spanish_text': '-No se te ocurre nada para salir.\n'
+                        '-Sí, tengo un plan.'},
+    {   'french_text': "Aide !\nY a-t-il quelqu'un ?",
+        'id': 589,
+        'spanish_text': '¡Socorro!\n¿Hay alguien ahí fuera?'},
+    {   'french_text': 'Ne serait-il pas préférable de frapper la cloche ?',
+        'id': 590,
+        'spanish_text': '-¿No será mejor darle a la campana?'},
+    {   'french_text': '(La sonnette retentit très doucement)\n'
+                       'Non. Continuez à crier.',
+        'id': 591,
+        'spanish_text': '(Suena el timbre muy bajo)\nNo. Sigue gritando.'},
+    {   'french_text': "-De l'aide, de l'aide, de l'aide !",
+        'id': 592,
+        'spanish_text': '-¡Socorro, socorro!'},
+    {   'french_text': '-Emilio ?\n-Monsieur Cuesta, Monsieur Cuesta !',
+        'id': 593,
+        'spanish_text': '-¿Emilio?\n-¡Señor Cuesta, señor Cuesta!'},
+    {   'french_text': 'Oui, dites-moi !\n-M. Cuesta,',
+        'id': 594,
+        'spanish_text': '-¡Sí, dime!\n-Señor Cuesta,'},
+    {   'french_text': "Nous sommes enfermés dans l'ascenseur.\n"
+                       '-Ce connard nous a enfermés.',
+        'id': 595,
+        'spanish_text': 'estamos encerrados en el ascensor.\n'
+                        '-Este imbécil nos ha encerrado.'},
+    {   'french_text': "D'accord, calmez-vous,\nje suis déjà là.",
+        'id': 596,
+        'spanish_text': '-Vale, tranquilos,\nque ya estoy yo aquí.'},
+    {   'french_text': 'Que dois-je faire ?\n'
+                       '-Vous devez déverrouiller la porte...',
+        'id': 597,
+        'spanish_text': '¿Qué hago?\n-Tiene que desbloquear la puerta...'},
+    {   'french_text': "...de l'ascenseur depuis l'extérieur.\n"
+                       "-D'accord. Comment le déverrouiller ?",
+        'id': 598,
+        'spanish_text': '...del ascensor desde fuera.\n'
+                        '-Correcto. ¿Cómo se desbloquea?'},
+    {   'french_text': '-En insérant une clé spéciale dans une\n'
+                       'dans une fente sur le côté.',
+        'id': 599,
+        'spanish_text': '-Metiendo una llave especial en\n'
+                        'una ranura que hay en el lateral.'},
+    {   'french_text': "D'accord. Où est la clé ?\nEh bien...",
+        'id': 600,
+        'spanish_text': 'Bien. ¿Dónde está la llave?\nPues...'},
+    {   'french_text': "Je l'ai ici.\n-Putain, c'est génial !",
+        'id': 601,
+        'spanish_text': 'La tengo yo aquí dentro.\n-¡Cojonudo!'},
+    {   'french_text': 'Comment puis-je déverrouiller la porte\n'
+                       'si vous avez la clé ?',
+        'id': 602,
+        'spanish_text': '¿Cómo voy a desbloquear la puerta\n'
+                        'si tienes tú la llave?'},
+    {   'french_text': "-C'est ce que je dis.\n"
+                       'Et moi ; et tous ceux qui le disent.',
+        'id': 603,
+        'spanish_text': '-Eso digo yo.\nY yo; y cualquiera lo dice.'},
+    {   'french_text': '-Tu vois quel connard il est ?\n'
+                       'Pourquoi as-tu la clé sur toi ?',
+        'id': 604,
+        'spanish_text': '-¿Lo ves como es un imbécil?\n'
+                        '¿Para qué llevas la llave encima?'},
+    {   'french_text': "-Parce que ce n'est pas censé l'être.\n"
+                       "qui est enfermé ici n'est pas moi.",
+        'id': 605,
+        'spanish_text': '-Porque se supone que quien\n'
+                        'se queda encerrado aquí no soy yo.'},
+    {   'french_text': 'Vous allez être enfermé ici\n'
+                       "jusqu'à la veille de Noël. Pas vous ;",
+        'id': 606,
+        'spanish_text': 'Tú vas a estar aquí encerrada\n'
+                        'hasta Nochebuena. Usted no;'},
+    {   'french_text': 'dès que possible, nous le ferons sortir.\n'
+                       'Que pensez-vous faire ?',
+        'id': 607,
+        'spanish_text': 'en cuanto podamos, la sacamos.\n¿Qué te has creído?'},
+    {   'french_text': "Aidez-moi, s'il vous plaît.\n"
+                       'Il est arrivé quelque chose à mon petit ami.',
+        'id': 608,
+        'spanish_text': 'Por favor, ayúdeme.\nA mi novio le ha pasado algo.'},
+    {   'french_text': 'Le robinet est ouvert\net il ne répond pas.',
+        'id': 609,
+        'spanish_text': 'Está el grifo abierto\ny no contesta.'},
+    {   'french_text': "-Ils sont enfermés dans l'ascenseur.",
+        'id': 610,
+        'spanish_text': '-Están encerrados en el ascensor.'},
+    {   'french_text': '-Juan !\nIl y a une fuite dans le salon.',
+        'id': 611,
+        'spanish_text': '-JJuan!\nTenemos una gotera en el salón.'},
+    {   'french_text': "-Connard ! Montons à l'étage.\n-Eh bien...",
+        'id': 612,
+        'spanish_text': '-¡Coño! Vamos arriba.\n-Bueno.'},
+    {   'french_text': 'Allons-y, allons-y !',
+        'id': 613,
+        'spanish_text': '-¡Vamos, vamos!'},
+    {   'french_text': '-Nous devrons abattre des murs.\n-Hé, ne partez pas !',
+        'id': 614,
+        'spanish_text': '-Habrá que picar paredes.\n-¡Oiga, no se vaya!'},
+    {   'french_text': "-Quel gâchis !\n-M. Cuesta, pour l'amour de Dieu !",
+        'id': 615,
+        'spanish_text': '-¡Qué follón!\n-¡Señor Cuesta, por Dios!'},
+    {   'french_text': '-Et ce salaud est\nprésident de la communauté ?',
+        'id': 616,
+        'spanish_text': '-¿Y este desgraciado es\n'
+                        'el presidente de la comunidad?'},
+    {   'french_text': "Oui, c'est le président.",
+        'id': 617,
+        'spanish_text': 'Sí, éste es el presidente.'},
+    {   'french_text': "Qu'a-t-il dit, qu'il allait prendre un bain ?\n"
+                       "Et s'il s'endormait et se noyait ?",
+        'id': 618,
+        'spanish_text': '-¿Qué te dijo, que se iba a bañar?\n'
+                        '¿Y si se durmió y se ha ahogado?'},
+    {   'french_text': '-Chérie, ne te mets pas dans la pire des situations.\n'
+                       "-Le pire, c'est qu'ils n'avaient pas d'assurance.",
+        'id': 619,
+        'spanish_text': '-Cariño, no te pongas en lo peor.\n'
+                        '-Lo peor es que no tuvieran seguro.'},
+    {   'french_text': '-Tu le vois ? Il ne répond pas.\n'
+                       'Laissez-moi voir, laissez-moi voir.',
+        'id': 620,
+        'spanish_text': '-¿Lo veis? No contesta.\n-A ver, déjame a mí.'},
+    {   'french_text': "C'est vrai, il ne répond pas.\n"
+                       "-C'est étrange, il a dû lui arriver quelque chose.",
+        'id': 621,
+        'spanish_text': 'Es verdad, no contesta.\n'
+                        '-Qué raro; ha debido pasarle algo.'},
+    {   'french_text': '-Bien sûr.\n-La porte doit être enfoncée.',
+        'id': 622,
+        'spanish_text': '-Claro.\n-Hay que tirar la puerta abajo.'},
+    {   'french_text': 'Oui, jette-le, jette-le, Juan !\nNotre fuite !',
+        'id': 623,
+        'spanish_text': '-Sí, tirala, ¡tirala, Juan!\n¡La gotera nuestra!'},
+    {   'french_text': '-Reculez,\nCela peut être dangereux.',
+        'id': 624,
+        'spanish_text': '-Apartaos,\nesto puede ser peligroso.'},
+    {   'french_text': 'Que vas-tu faire, Juan ?\n-Ce qui doit être fait.',
+        'id': 625,
+        'spanish_text': '-¿Qué vas a hacer, Juan?\n-Lo que hay que hacer.'},
+    {'french_text': 'Aïe !', 'id': 626, 'spanish_text': 'Ay!'},
+    {   'french_text': "-Je vais chercher de l'aide.",
+        'id': 627,
+        'spanish_text': '-Voy a buscar ayuda.'},
+    {   'french_text': 'Regardez-moi cet imbécile.',
+        'id': 628,
+        'spanish_text': '-Tío, mira ese idiota.'},
+    {   'french_text': "Oncle, qu'est-ce que tu fais ?\n"
+                       'Garçon, jette-moi des vêtements.',
+        'id': 629,
+        'spanish_text': '-Tío, ¿qué haces?\n-Chaval, tirame algo de ropa.'},
+    {   'french_text': 'Et vous, qui êtes-vous ?\n'
+                       '-Je vous donne dix euros si vous le faites.',
+        'id': 630,
+        'spanish_text': '-¿Y tú quién eres?\n'
+                        '-Te daré diez euros, si lo haces.'},
+    {   'french_text': 'Et où portez-vous votre portefeuille ?',
+        'id': 631,
+        'spanish_text': '-¿Y dónde llevas la cartera?'},
+    {   'french_text': "-Allez, minou, gamin,\nlance-moi n'importe quoi.",
+        'id': 632,
+        'spanish_text': '-Venga, coño, niño,\ntirame cualquier cosa.'},
+    {   'french_text': 'Merci, mon ami, je reviendrai vers vous.',
+        'id': 633,
+        'spanish_text': 'Gracias, majo, ya te pillaré.'},
+    {   'french_text': 'Mon oncle, cela appartient à ma grand-mère.',
+        'id': 634,
+        'spanish_text': '-Tío, que eso es de mi abuela.'},
+    {   'french_text': "-Sept heures de retard,\nà l'aéroport,",
+        'id': 635,
+        'spanish_text': '-Siete horas de retraso,\n'
+                        'esperando en el aeropuerto,'},
+    {   'french_text': "et juste au moment de l'enregistrement,\n"
+                       'tu as oublié tes billets.',
+        'id': 636,
+        'spanish_text': 'y justo cuando vamos a facturar,\n'
+                        'te has olvidado los billetes.'},
+    {   'french_text': '-Je jure que je les ai mis dans le vanity case.\n'
+                       'Oui. Et le vanity case ?',
+        'id': 637,
+        'spanish_text': '-Juro que los puse en el neceser.\n'
+                        'Ya. ¿Y el neceser?'},
+    {'french_text': '-A la maison.', 'id': 638, 'spanish_text': '-En casa.'},
+    {   'french_text': 'Pour un week-end\n'
+                       'que nous puissions sortir ensemble...',
+        'id': 639,
+        'spanish_text': '-Para un fin de semana\nque podemos salir juntos...'},
+    {   'french_text': 'Arrêtez de filmer avec la caméra !\n-Fin des vacances.',
+        'id': 640,
+        'spanish_text': '¡Deja ya de grabar con la cámara!\n'
+                        '-Fin de las vacaciones.'},
+    {   'french_text': '"A bientôt.',
+        'id': 641,
+        'spanish_text': '"See you soon."'},
+    {   'french_text': "Voici ce qu'il en est.",
+        'id': 642,
+        'spanish_text': 'Ahí va.'},
+    {   'french_text': 'Excusez-moi !\nVicenta, Vicenta !',
+        'id': 643,
+        'spanish_text': '-¡Perdonen!\nVicenta, ¡Vicenta!'},
+    {   'french_text': 'Mais que font-ils ?\n-Ils arrosent les plantes.',
+        'id': 644,
+        'spanish_text': '-¿Pero qué hacen?\n-Regando las plantas.'},
+    {   'french_text': '-Le lapin nous avait échappé\net nous le cherchions.',
+        'id': 645,
+        'spanish_text': '-Se nos había escapado el conejo\n'
+                        'y estábamos buscándolo.'},
+    {   'french_text': 'Mais il est dans la cage.\n'
+                       "-On peut dire qu'il a les pieds froids.",
+        'id': 646,
+        'spanish_text': 'Pero si está en la jaula.\n'
+                        '-Se ve que se ha acojonado.'},
+    {   'french_text': '-Voyons, je ne comprends rien.',
+        'id': 647,
+        'spanish_text': '-Vamos a ver, no entiendo nada.'},
+    {   'french_text': "-Nous avons besoin d'aide !\n"
+                       'Le nouveau est en train de se noyer.',
+        'id': 648,
+        'spanish_text': '-¡Necesitamos ayuda!\nSe está ahogando el nuevo.'},
+    {   'french_text': 'Courez, aidez-nous !\nOui.',
+        'id': 649,
+        'spanish_text': '-¡Corre, vamos a ayudar!\nSí.'},
+    {   'french_text': "Que s'est-il passé ici ?\nLa porte doit être enfoncée.",
+        'id': 650,
+        'spanish_text': '-¡Coño! ¿Qué ha pasado aquí?\n'
+                        'Hay que echarla puerta abajo.'},
+    {   'french_text': '-Au revoir.\n-Au revoir.',
+        'id': 651,
+        'spanish_text': '-Adiós.\n-Adiós.'},
+    {   'french_text': "Qu'avons-nous fait à ces gens ?\n"
+                       'Pourquoi nous détestent-ils à ce point ?',
+        'id': 652,
+        'spanish_text': '¿Qué le hemos hecho a esta gente?\n'
+                        '¿Por qué nos odian tanto?'},
+    {   'french_text': '-Ne demande pas. Allez, Mauri.',
+        'id': 653,
+        'spanish_text': '-No preguntes. Vamos, Mauri.'},
+    {'french_text': '-Baiser,', 'id': 654, 'spanish_text': '-Joder,'},
+    {   'french_text': '(ILS PARLENT TOUS EN MÊME TEMPS)\n'
+                       "-Un instant, s'il vous plaît.",
+        'id': 655,
+        'spanish_text': '(HABLAN TODOS A LA VEZ)\n-Un momento, por favor.'},
+    {   'french_text': 'Il faut appeler les pompiers.\n'
+                       "-Pas les pompiers. S'ils voient une fissure,",
+        'id': 656,
+        'spanish_text': 'Deberíamos llamar a los bomberos.\n'
+                        '-Bomberos, no. Si ven una grieta,'},
+    {   'french_text': 'ils nous envoient une inspection.\n'
+                       "-Si l'argent de la communauté...",
+        'id': 657,
+        'spanish_text': 'nos mandan una inspección.\n'
+                        '-Si el dinero de la comunidad...'},
+    {   'french_text': '...Il sera bien employé.\n'
+                       'Êtes-vous en train de dire que mon mari et moi avons '
+                       'volé ?',
+        'id': 658,
+        'spanish_text': '...Se empleara bien.\n'
+                        '-¿Dice que mi marido y yo robamos?'},
+    {   'french_text': "-D'autres détruisent des maisons.\n"
+                       "-Je t'avais dit que ce n'était pas une bonne idée.",
+        'id': 659,
+        'spanish_text': '-Otras destrozan casas.\n'
+                        '-Os dije que no era buena idea.'},
+    {   'french_text': '-Que vous êtes le premier à vouloir savoir\n'
+                       "s'ils étaient gays.",
+        'id': 660,
+        'spanish_text': '-Que tú eres la primera que quería\n'
+                        'saber si eran gays.'},
+    {   'french_text': 'Que dites-vous, madame ? Nous sommes amis.\n'
+                       'Voulez-vous vous taire ?',
+        'id': 661,
+        'spanish_text': '-¿Qué dice, señora? Somos amigos.\n'
+                        '-¿Os queréis callar?'},
+    {   'french_text': "Mon petit ami a besoin d'aide.\n"
+                       'Il a peut-être glissé...',
+        'id': 662,
+        'spanish_text': 'Mi novio necesita ayuda.\n'
+                        '-A lo mejor se ha resbalado...'},
+    {   'french_text': '...Et il a ouvert la tête.\n'
+                       "-Ou bien il s'est endormi et s'est noyé.",
+        'id': 663,
+        'spanish_text': '...Y Se ha abierto la cabeza.\n'
+                        '-O se ha dormido y se ha ahogado.'},
+    {   'french_text': "-C'est ce que j'ai déjà dit.\n"
+                       '-Pas de panique, mais 70%...',
+        'id': 664,
+        'spanish_text': '-Eso lo dije yo antes.\n'
+                        '-No te asustes, pero el 70%...'},
+    {   'french_text': '... des décès accidentels\n'
+                       'sont des accidents domestiques.',
+        'id': 665,
+        'spanish_text': '... de las muertes fortuitas\n'
+                        'son accidentes domésticos.'},
+    {   'french_text': "Cessez de l'inquiéter.\n"
+                       "Ou bien s'est-elle laissée déborder...",
+        'id': 666,
+        'spanish_text': 'Dejad de preocuparla.\nO se ha agobiado...'},
+    {   'french_text': '...Et il est parti sans rien dire.\n'
+                       "C'est arrivé à celui-ci.",
+        'id': 667,
+        'spanish_text': '...Y se ha ido sin decir nada.\nLe pasó a ésta.'},
+    {   'french_text': '-Dégagez le passage.\nAllez, dégagez !',
+        'id': 668,
+        'spanish_text': '-Quitaos de en medio.\n¡Venga, fuera!'},
+    {   'french_text': '-Ne fais pas ça, tu vas te faire mal.\n'
+                       'Tu vas te faire mal !',
+        'id': 669,
+        'spanish_text': '-No hagas eso, que te vas a hacer\n'
+                        'daño. ¡Que te vas a hacer daño!'},
+    {   'french_text': 'Tirez !\n-Roberto !',
+        'id': 670,
+        'spanish_text': '¡Hala!\n-¡Roberto!'},
+    {   'french_text': '-Ne bougez pas, attendez ici.',
+        'id': 671,
+        'spanish_text': '-Quietos, esperad aquí.'},
+    {   'french_text': 'Silence.\n-Hé ! Elle paiera pour les dégâts.',
+        'id': 672,
+        'spanish_text': 'Quietos.\n-¡Oye! El destrozo lo pagará ella.'},
+    {   'french_text': '-Bien sûr.\n-Sinon, dès que nous sommes négligents,',
+        'id': 673,
+        'spanish_text': '-Claro.\n-Si no, en cuanto nos descuidemos,'},
+    {   'french_text': 'Vous adoptez une loi qui nous fait couler.\n'
+                       '-Si la télévision arrive,',
+        'id': 674,
+        'spanish_text': 'pasas una factura que nos hundes.\n'
+                        '-Si viene la tele,'},
+    {   'french_text': "Je dois me coiffer.\n-Et s'il ne vient pas, aussi.",
+        'id': 675,
+        'spanish_text': 'tengo que peinarme.\n-Y si no viene, también.'},
+    {   'french_text': "-Il n'est pas là.\n-Comment ça, il n'est pas là ?",
+        'id': 676,
+        'spanish_text': '-No está.\n-¿Cómo que no está?'},
+    {   'french_text': "Vous avez fermé le robinet, n'est-ce pas ?\n"
+                       "-Cela n'a pas de sens.",
+        'id': 677,
+        'spanish_text': '-Habrá cerrado el grifo, ¿no?\n-No tiene sentido.'},
+    {   'french_text': 'Ma fille, as-tu des ennuis ?\n-Pas du tout !',
+        'id': 678,
+        'spanish_text': 'Hija, ¿tenéis problemas?\n-¡Qué va!'},
+    {   'french_text': '-Oui, je les ai entendus se disputer.\n'
+                       "-C'était une chose stupide à dire.",
+        'id': 679,
+        'spanish_text': '-Sí, que los he oído yo discutir.\n'
+                        '-Eso fue una tontería.'},
+    {   'french_text': "Celui-là aussi\net Manolo n'a pas réapparu.",
+        'id': 680,
+        'spanish_text': '-Lo de ésa también\n'
+                        'y Manolo no ha vuelto a aparecer.'},
+    {   'french_text': "Et qu'est-ce que ces gens en ont à faire\n"
+                       'de ce que Manolo a fait ?',
+        'id': 681,
+        'spanish_text': '-¿Y a esta gente qué le importa\n'
+                        'lo que haya hecho Manolo?'},
+    {'french_text': 'Désolé.', 'id': 682, 'spanish_text': 'Perdón.'},
+    {'french_text': 'Bonjour.', 'id': 683, 'spanish_text': 'Hola.'},
+    {   'french_text': 'Je suis là, ma chérie.',
+        'id': 684,
+        'spanish_text': 'Ya estoy aquí, cariño.'},
+    {   'french_text': 'Enchanté de vous rencontrer tous.\nBonsoir à tous.',
+        'id': 685,
+        'spanish_text': 'Encantado de conoceros a todos.\nBuenas noches.'},
+    {   'french_text': "-Bonjour.\nQu'est-ce qu'il y a ?",
+        'id': 686,
+        'spanish_text': '-Oye.\n-¿Qué?'},
+    {   'french_text': "Et que regardiez-vous ?\n-Rien, j'ai vu qu'il était...",
+        'id': 687,
+        'spanish_text': '-¿Y tú qué mirabas?\n-Nada, he visto que está...'},
+    {   'french_text': "...0de l'appendicite.",
+        'id': 688,
+        'spanish_text': '...0perado de apendicitis.'},
+    {'french_text': 'Passez.', 'id': 689, 'spanish_text': 'Pasa.'},
+    {   'french_text': "Non, n'entrez pas, juste un moment.\n"
+                       "Qu'est-ce qu'il y a ?",
+        'id': 690,
+        'spanish_text': 'No, no pases, un momento.\n-¿Qué pasa?'},
+    {   'french_text': 'Hé !\n-Juste une seconde.',
+        'id': 691,
+        'spanish_text': '¡Oye!\n-Un segundo.'},
+    {   'french_text': 'Maman, maman !',
+        'id': 692,
+        'spanish_text': 'Mamá, ¡mamá!'},
+    {   'french_text': "Qu'est-ce que vous faites ici ?\nAllez, sors.",
+        'id': 693,
+        'spanish_text': '¿Se puede saber qué haces tú aquí?\nVenga, fuera.'},
+    {   'french_text': "-Je t'attendais. Quelle heure est-il ?\n"
+                       'Je ne sais pas. Va te coucher, tu as sommeil.',
+        'id': 694,
+        'spanish_text': '-Te estaba esperando. ¿Qué hora es?\n'
+                        'No sé. Acuéstate, que te desvelas.'},
+    {'french_text': "-D'accord.", 'id': 695, 'spanish_text': '-Vale.'},
+    {   'french_text': "Je vais chercher un verre d'eau.\n"
+                       "-Ne vous inquiétez pas, je vous l'apporterai.",
+        'id': 696,
+        'spanish_text': 'Voy a por un vaso de agua.\n'
+                        '-No te preocupes, yo te lo llevo.'},
+    {   'french_text': "Mais attendez, qu'est-ce qui presse ?\n"
+                       'Allez, rendors-toi.',
+        'id': 697,
+        'spanish_text': 'Pero, espera. ¿A qué tanta prisa?\n'
+                        '-Venga, a seguir durmiendo.'},
+    {   'french_text': 'Tu vis vraiment, salope.\nArmando.',
+        'id': 698,
+        'spanish_text': 'Tú sí que vives, puñetera.\nArmando.'},
+    {   'french_text': 'Avez-vous enfermé une femme\ndans cette pièce ?',
+        'id': 699,
+        'spanish_text': '¿Has encerrado a una señora\nen esa habitación?'},
+    {   'french_text': '-Où ? Non, je ne...',
+        'id': 700,
+        'spanish_text': '-¿Dónde? No, yo no...'},
+    {   'french_text': '(CONCHA FRAPPE À LA PORTE)\n-Fils, ouvre la porte !',
+        'id': 701,
+        'spanish_text': '(CONCHA GOLPEA LA PUERTA)\n-¡Hijo, ábreme la puerta!'},
+    {   'french_text': "Qui est-ce ?\nCe sera ma mère, n'est-ce pas ?",
+        'id': 702,
+        'spanish_text': '-¿Quién es?\n-¿A que va a ser mi madre,'},
+    {   'french_text': 'qui aime se cacher ?\nJe ne vous le dis pas !',
+        'id': 703,
+        'spanish_text': 'que le encanta esconderse?\n¡No te digo!'},
+    {   'french_text': 'Entrez, mère, ne restez pas là.\n-Ne parlez pas fort,',
+        'id': 704,
+        'spanish_text': 'Pasa, mamá, no te quedes ahí.\n-No hables fuerte,'},
+    {   'french_text': "Vous allez réveiller l'enfant.\n"
+                       '-Je suis déjà réveillé.',
+        'id': 705,
+        'spanish_text': 'que vas a despertar al niño.\n'
+                        '-Si ya estoy despierto.'},
+    {   'french_text': '-Vous avez donc aussi un fils.',
+        'id': 706,
+        'spanish_text': '-O sea, que también tienes un hijo.'},
+    {   'french_text': "Oui, écoutez... J'ai oublié\n"
+                       'de vous en parler au dîner.',
+        'id': 707,
+        'spanish_text': 'Sí, mira... Se me había olvidado\n'
+                        'comentártelo en la cena.'},
+    {   'french_text': 'Quelle tête sur ma tête !\n'
+                       'Concha et Dani. Attends un peu.',
+        'id': 708,
+        'spanish_text': '¡Qué cabeza la mía! Te presento\n'
+                        'a Concha y a Dani. Espera.'},
+    {   'french_text': 'Pourquoi sors-tu ? Esther !',
+        'id': 709,
+        'spanish_text': '¿Para qué salís? ¡Esther!'},
+    {   'french_text': '-Un lézard en moins !\nMais elle était sexy.',
+        'id': 710,
+        'spanish_text': '-¡Una lagarta menos!\nPero estaba buena.'},
+    {'french_text': '-Dani !', 'id': 711, 'spanish_text': '-¡Dani!'},
+    {   'french_text': '-Eh bien, lequel des deux\n'
+                       'Vous dormez déjà sur le canapé ?',
+        'id': 712,
+        'spanish_text': '-Bueno, ¿cuál de los dos\nYa a dormir en el sofá?'},
+    {   'french_text': '-Pourquoi ?\n-Non, nous ne sommes que des amis.',
+        'id': 713,
+        'spanish_text': '-¿Por qué?\n-No, como sólo somos amigos.'},
+    {   'french_text': "Ne commençons pas. Qu'est-ce que cela peut faire ?\n"
+                       'que ces gens se soucient de ce que nous sommes ou ne '
+                       'sommes pas ?',
+        'id': 714,
+        'spanish_text': '-No empecemos. ¿Qué le importa\n'
+                        'a esta gente lo que somos 0 no?'},
+    {   'french_text': '-Je sais très bien qui je suis,\n'
+                       'mais il semble que vous ne le soyez pas.',
+        'id': 715,
+        'spanish_text': '-¡Eh! Yo tengo muy claro quién soy,\n'
+                        'pero parece ser que tú no.'},
+    {   'french_text': 'Viens ici, assieds-toi.',
+        'id': 716,
+        'spanish_text': '-Ven aquí, siéntate.'},
+    {   'french_text': 'Sclchame. Ils sont sur le point\n'
+                       "d'être promus au sein de l'entreprise ;",
+        'id': 717,
+        'spanish_text': 'Esclchame. Están a punto\n'
+                        'de ascenderme en el bufete;'},
+    {   'french_text': 'Je ne pense pas que ce soit le moment\n'
+                       "de sortir de l'armoire.",
+        'id': 718,
+        'spanish_text': 'no creo que sea el momento\nde salir del armario.'},
+    {   'french_text': "Ce n'est pas que vous ne voulez pas\n"
+                       "sortir de l'armoire,",
+        'id': 719,
+        'spanish_text': 'No es que tú no quieras\nsalir del armario,'},
+    {   'french_text': 'que vous avez caché dans votre tiroir à chaussettes\n'
+                       'tiroir à chaussettes. Je vais sur le canapé.',
+        'id': 720,
+        'spanish_text': 'te has escondido en el cajón\n'
+                        'de los calcetines. Me voy al sofá.'},
+    {   'french_text': "Vous n'allez rien faire ?\nJe vais devoir dormir ici ?",
+        'id': 721,
+        'spanish_text': '¿No piensas hacer nada?\n'
+                        '¿Voy a tener que dormir aquí?'},
+    {   'french_text': '-Allez, allez, imbécile.',
+        'id': 722,
+        'spanish_text': '-Anda, ven, tonto.'},
+    {   'french_text': "-D'accord, je te pardonne.\n"
+                       "Qu'est-ce que ça veut dire ?",
+        'id': 723,
+        'spanish_text': '-Vale, te perdono.\nTotal, ¿para qué?'},
+    {   'french_text': "-Marisa.\nQu'est-ce qu'il y a ?",
+        'id': 724,
+        'spanish_text': '-Marisa.\n-¿Qué?'},
+    {   'french_text': "C'est la première fois que je vois un pénis.",
+        'id': 725,
+        'spanish_text': 'Es la primera vez que veo un pene.'},
+    {   'french_text': "Qu'est-ce qu'il y a ?",
+        'id': 726,
+        'spanish_text': '-¿Y qué tal?'},
+    {   'french_text': "Je ne sais pas, je m'attendais à autre chose.",
+        'id': 727,
+        'spanish_text': 'No sé, yo me esperaba otra cosa.'},
+    {   'french_text': '-Cela nous arrive à tous, mon enfant.',
+        'id': 728,
+        'spanish_text': '-Eso nos pasa a todas, hija.'},
+    {   'french_text': "Eh bien, c'est bien\ncette histoire d'émancipation.",
+        'id': 729,
+        'spanish_text': 'Pues es bonito\nesto de emanciparse.'},
+    {   'french_text': 'Je comprends maintenant pourquoi nous avons\n'
+                       'nous avons attendu 30 ans.',
+        'id': 730,
+        'spanish_text': 'Ahora entiendo por qué\nhemos esperado 30 años.'},
+    {   'french_text': '-Tous les débuts\nsont toujours difficiles.',
+        'id': 731,
+        'spanish_text': '-Todos los comienzos\nsiempre son difíciles.'},
+    {   'french_text': 'Dans des années, nous nous souviendrons de cela\n'
+                       'nous nous en souviendrons et nous en rirons.',
+        'id': 732,
+        'spanish_text': 'Dentro de unos años, nos\n'
+                        'acordaremos de esto y nos reiremos.'},
+    {   'french_text': '-Je ne pense pas.\nAu fait, je dois appeler...',
+        'id': 733,
+        'spanish_text': '-Yo creo que no.\nPor cierto, tengo que llamar...'},
+    {   'french_text': "...de l'assurance, à ceux des\n"
+                       'déménageurs, qui ne sont pas venus...',
+        'id': 734,
+        'spanish_text': '...d los del seguro, a los de\n'
+                        'la mudanza, que no han venido...'},
+    {   'french_text': '-Oui, ils sont venus.\nNos affaires sont à la porte.',
+        'id': 735,
+        'spanish_text': '-Sí han venido.\nNuestras cosas están en el portal.'},
+    {   'french_text': "Pourquoi ne m'as-tu rien dit ?",
+        'id': 736,
+        'spanish_text': '-¿Y por qué no me has dicho nada?'},
+    {   'french_text': "-Désolé, j'étais trop occupé\n"
+                       'à montrer mon cul au voisinage.',
+        'id': 737,
+        'spanish_text': '-Lo siento, estaba muy ocupado\n'
+                        'enseñando el culo al vecindario.'},
+    {   'french_text': 'Vous, vous riez, mais ils vont penser que\n'
+                       'que je suis un dégénéré.',
+        'id': 738,
+        'spanish_text': 'Tú, ríete, pero van a pensar\nque soy un degenerado.'},
+    {   'french_text': '-Un dégénéré ?\nNe dites pas de bêtises.',
+        'id': 739,
+        'spanish_text': '-¿Un degenerado?\nNo digas tonterías.'},
+    {   'french_text': "-Un dégénéré, voilà ce qu'il est !\nUn dégénéré !",
+        'id': 740,
+        'spanish_text': '-JUn degenerado, eso es lo que es!\n¡Un degenerado!'},
+    {   'french_text': "Imaginez qu'elle le trouve\n"
+                       'notre enfant ; cela la traumatise.',
+        'id': 741,
+        'spanish_text': 'Imagina que lo encuentra\n'
+                        'nuestra niña; nos la traumatiza.'},
+    {   'french_text': "-Je pense qu'il a laissé le robinet ouvert exprès.\n"
+                       'volontairement.',
+        'id': 742,
+        'spanish_text': '-Creo que se dejó el grifo abierto\na posta.'},
+    {   'french_text': 'Pourquoi ferais-je cela ?\n-Envy.',
+        'id': 743,
+        'spanish_text': '-¿Por qué iba a hacer eso?\n-Envidia.'},
+    {   'french_text': '-Envieux de quoi ?\n'
+                       "-Elle s'est introduite dans la maison,",
+        'id': 744,
+        'spanish_text': '-¿Envidia de qué?\n-Si ella se ha colado en casa,'},
+    {   'french_text': 'juste pour voir comment je le porte.\n'
+                       "-C'est bon, c'est le premier jour.",
+        'id': 745,
+        'spanish_text': 'sólo para ver cómo la tengo puesta.\n'
+                        '-Está bien, es el primer día.'},
+    {   'french_text': 'Donnons-leur une marge de confiance.\n'
+                       '-Oui, vous leur donnez confiance....',
+        'id': 746,
+        'spanish_text': 'Démosles un margen de confianza.\n'
+                        '-Sí, tú dales confianza...'},
+    {   'french_text': '...et vous verrez comment ils la rendent\nprésidente.',
+        'id': 747,
+        'spanish_text': '...y ya verás como la hacen\npresidenta.'},
+    {   'french_text': '-En tant que président ?\nJe suis le président.',
+        'id': 748,
+        'spanish_text': '-¿Cómo presidenta?\nEl presidente soy yo.'},
+    {   'french_text': "Je vous vois dans l'opposition.\n-C'est très bien.",
+        'id': 749,
+        'spanish_text': 'Pues ya te veo en la oposición.\n-Está bien.'},
+    {   'french_text': "S'ils veulent la guerre, ils l'auront.\n"
+                       'Mercredi, réunion de quartier.',
+        'id': 750,
+        'spanish_text': 'Si quieren guerra, tendrán guerra.\n'
+                        'El miércoles, junta de vecinos.'},
+    {   'french_text': 'Ils ne savent pas\ndans quoi ils se sont fourrés !',
+        'id': 751,
+        'spanish_text': '¡Éstos no saben\ndónde se han metido!'},
+    {   'french_text': 'Dis oui, chérie.',
+        'id': 752,
+        'spanish_text': 'Di que sí, cariño.'},
+    {   'french_text': '-Ils ne vont pas nous sortir de là ?\n'
+                       "Nous allons manquer d'oxygène.",
+        'id': 753,
+        'spanish_text': '-¿Es que no van a sacarnos de aquí?\n'
+                        'Se nos va a acabar el oxígeno.'},
+    {   'french_text': 'Comment cela va-t-il se terminer ?\nIl est ventilé.',
+        'id': 754,
+        'spanish_text': '-¿Cómo se va a acabar?\nEstá ventilado.'},
+    {   'french_text': "Cela fait longtemps que je n'ai pas nettoyé la "
+                       'grille.\n'
+                       "que je n'ai pas nettoyé la grille.",
+        'id': 755,
+        'spanish_text': 'Con el tiempo que hace\nque no limpio la rejilla.'},
+    {   'french_text': "-Eh bien, c'est mon tour. Je vois, je vois.\n"
+                       "Qu'est-ce que tu vois ?",
+        'id': 756,
+        'spanish_text': '-Bueno, me toca. Veo, veo.\n-¿Qué ves?'},
+    {   'french_text': '-Un concierge trou du cul.\nAttention, Mlle Belén.',
+        'id': 757,
+        'spanish_text': '-Un portero gilipollas.\nCuidado, señorita Belén.'},
+    {   'french_text': '-Jouons pour de vrai.\n(EMILIO) - Allez, oui.',
+        'id': 758,
+        'spanish_text': '-Vamos a jugar en serio.\n(EMILIO) -Venga, sí.'},
+    {   'french_text': 'Je vois, je vois.\nQue voyez-vous ?',
+        'id': 759,
+        'spanish_text': 'Veo, veo.\n-¿Qué ves?'},
+    {   'french_text': '-Une personne qui a été laissée\nsans rendez-vous.',
+        'id': 760,
+        'spanish_text': '-Una que se ha quedado\nsin cita.'},
+    {   'french_text': "(Il n'y a personne de vivant ici,\npas ici.",
+        'id': 761,
+        'spanish_text': '(CANCIÓN) Aquí no hay quien viva,\naquí no.'}]

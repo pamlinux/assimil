@@ -43,7 +43,18 @@
             margin-left: 20%;
             padding: 1px 16px;
         }
+        
+        .hidden {
+            display: none;
+        }
+
+        .toggle-section {
+            cursor: pointer;
+        }
+
         {% block add_style %}{% endblock %}
+        
+
     </style>
     {% block header %}{% endblock %}
     <title>{% block title %}Espagnol{% endblock %}</title>
@@ -53,16 +64,45 @@
 </head>
 <body>
     <ul id="menu">
-        <li><a href="/spanish/" class="{% if active == 'home' %}active{% endif %}">Accueil Assimil</a></li>
-        
         {% for section in menu_items %}
-            <li><h3>{{ section.category }}</h3></li>
-            {% for item in section["items"] %}
-                <li><a href="{{ item.url }}" class="{% if active == item.key %}active{% endif %}">{{ item.name }}</a></li>
-            {% endfor %}
+            <li>
+                {% if section.get("toggleable") %}
+                    <h3 class="toggle-section" data-target="menu-{{ loop.index }}">{{ section["category"] }} ▼</h3>
+                    <ul id="menu-{{ loop.index }}" class="hidden">
+                        {% for item in section["items"] %}
+                            <li><a href="{{ item['url'] }}" class="{{ 'active' if active == item['key'] else '' }}">{{ item['name'] }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h3>{{ section["category"] }}</h3>
+                    {% for item in section["items"] %}
+                        <li><a href="{{ item['url'] }}" class="{{ 'active' if active == item['key'] else '' }}">{{ item['name'] }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
+
     <div id="main">
         {% block content %}{% endblock %}
     </div>
+
+    <script>
+        document.querySelectorAll(".toggle-section").forEach(header => {
+            header.addEventListener("click", function() {
+                let targetMenu = document.getElementById(this.dataset.target);
+                if (targetMenu) {
+                    targetMenu.classList.toggle("hidden");
+                }
+            });
+        });
+
+        // Vérifier si une section doit être affichée dès le début (si active)
+        document.querySelectorAll("ul[id^='menu-']").forEach(menu => {
+            if (menu.querySelector(".active")) {
+                menu.classList.remove("hidden");
+            }
+        });
+    </script>
+
 </body></html>
