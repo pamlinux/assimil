@@ -2,7 +2,11 @@ Leçon quarante
 Viens avec moi à Saint-Jacques (2ᵉ partie)
 1- Combien manque-t-il pour le prochain refuge ?
 2- Une heure ou deux (une paire d'heures) à peine.
+<<<<<<< HEAD
 3- Je (Me) meurs, je n'[en] peux plus. J'ai mal aux (Me font mal les) pieds et le sac à dos pèse une tonne (énormité).
+=======
+3- Je (Me) meurs, je n'[en] peux plus. J'ai mal aux (Me font- mal les) pieds et le sac à dos pèse une tonne (énormité).
+>>>>>>> b6391d5a6b24fa603be57d6b16bd207c38ac6fe7
 4- Ne pense pas à (en) tes pieds et profite du paysage, de la (le) campagne, des feuilles, des arbres et du ciel.
 5- Le ciel ou les nuages ? Il pleut (est en train de pleuvoir) sans [s']arrêter depuis (il-fait) trois jours !
 6- Que tu es pénible (Quel pénible tu es) ! Alors tu n'[en] as plus assez de la ville ?
