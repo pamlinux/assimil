@@ -1,0 +1,84 @@
+<form id="media-form" enctype="multipart/form-data">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 600px; margin: auto;">
+        <label for="title">Titre :</label>
+        <input type="text" id="title" name="title">
+
+        <label for="disc_number">Numéro du disque :</label>
+        <input type="number" id="disc_number" name="disc_number">
+
+        <label for="video_file">Fichier Vidéo :</label>
+        <input type="file" id="video_file" name="video_file" accept="video/*">
+
+        <label for="spanish_subtitles_file">Fichier de sous-titres espagnols :</label>
+        <input type="file" id="spanish_subtitles_file" name="spanish_subtitles_file" accept=".srt,.vtt,.ass,.ssa">
+
+        <label for="long_spanish_subtitles_file">Fichier de longs sous-titres espagnols :</label>
+        <input type="file" id="long_spanish_subtitles_file" name="long_spanish_subtitles_file" accept=".srt,.vtt,.ass,.ssa">
+
+        <label for="french_subtitle_file">Fichier de sous-titres français :</label>
+        <input type="file" id="french_subtitle_file" name="french_subtitle_file" accept=".srt,.vtt,.ass,.ssa">
+
+        <label for="long_french_subtitle_file">Fichier de longs sous-titres français :</label>
+        <input type="file" id="long_french_subtitle_file" name="long_french_subtitle_file" accept=".srt,.vtt,.ass,.ssa">
+
+        <label for="media_type">Type de Média :</label>
+        <select id="media_type" name="media_type" onchange="toggleSeriesFields()">
+            <option value="series" selected>Série</option>
+            <option value="movie">Film</option>
+        </select>
+
+        <!-- Conteneur des champs spécifiques aux séries -->
+        <div id="series-fields" style="display: contents;">
+            <label for="season">Saison :</label>
+            <input type="number" id="season" name="season">
+
+            <label for="series_number">Numéro de l’épisode :</label>
+            <input type="number" id="series_number" name="series_number">
+
+            <label for="series_title">Titre de la série :</label>
+            <input type="text" id="series_title" name="series_title">
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button type="button" onclick="saveToDatabase()">Enregistrer dans la base de données</button>
+    </div>
+</form>
+
+<script>
+    function toggleSeriesFields() {
+        const mediaType = document.getElementById("media_type").value;
+        const seriesFields = document.getElementById("series-fields").children;
+
+        for (let field of seriesFields) {
+            field.style.display = (mediaType === "series") ? "block" : "none";
+        }
+    }
+
+    function saveToDatabase() {
+        let formData = new FormData();
+        formData.append("title", document.getElementById("title").value);
+        formData.append("media_type", document.getElementById("media_type").value);
+        formData.append("season", document.getElementById("season").value);
+        formData.append("series_number", document.getElementById("series_number").value);
+        formData.append("video_file", document.getElementById("video_file").files[0]?.name || ""); 
+        formData.append("spanish_subtitles_file", document.getElementById("spanish_subtitles_file").files[0]?.name || ""); 
+        formData.append("long_spanish_subtitles_file", document.getElementById("long_spanish_subtitles_file").files[0]?.name || ""); 
+        formData.append("french_subtitles_file", document.getElementById("french_subtitle_file").files[0]?.name || ""); 
+        formData.append("long_french_subtitles_file", document.getElementById("long_french_subtitle_file").files[0]?.name || ""); 
+        formData.append("series_title", document.getElementById("series_title").value);
+        formData.append("disc_number", document.getElementById("disc_number").value);
+
+        fetch("http://127.0.0.1:8001/save-media", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(Object.fromEntries(formData))
+        })
+        .then(response => response.json())
+        .then(data => console.log("Résultat :", data))
+        .catch(error => console.error("Erreur :", error));
+    }
+
+ </script>

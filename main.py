@@ -1,4 +1,5 @@
 from typing import List
+from typing import Optional
 import eyed3
 import os
 from pathlib import Path
@@ -6,6 +7,7 @@ from datetime import date, datetime
 from dataclasses import dataclass
 from fastapi.responses import FileResponse
 from fastapi.responses import StreamingResponse
+from fastapi import HTTPException
 from fastapi import FastAPI, Request, Response, Depends, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -26,8 +28,8 @@ from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
 from database import NoSuchLesson, update_subtitle_french, get_es_and_fr_subtitles
-from database import get_fr_subtitles, get_es_subtitles
-from subtitles import get_subtitles_context, NoSuchTvSerie
+from database import MediaMetadata, get_fr_subtitles, get_es_subtitles, update_or_store_media
+from subtitles import get_subtitles_context, NoSuchTvSerie, store_media
 
 @dataclass
 class SimpleModel:
@@ -54,6 +56,7 @@ class ErrorItem(BaseModel):
 class SubtitleUpdate(BaseModel):
     id: int
     french_text: str
+
 
 app = FastAPI()
 
@@ -545,8 +548,45 @@ def get_subtitles():
 
 @app.get("/subtitles_es")
 def get_es_only_subtitles():
-    return get_es_subtitles(1)
+    return get_es_subtitles("media")
 
 @app.get("/subtitles_fr")
 def get_fr_only_subtitles():
     return get_fr_subtitles(1)
+
+@app.get("/search-media")
+def search_media_in_db(request: Request):
+    return templates.TemplateResponse(
+        request=request, name="store-media.jinja", context={"dummy" : 0})
+
+@app.post("/search-media")
+async def search_media(query: MediaMetadata):
+    filters = []
+    print(query)
+    return {"status": "OK"}
+    if query.title:
+        filters.append(Media.title.ilike(f"%{query.title}%"))
+    if query.media_type:
+        filters.append(Media.media_type == query.media_type)
+    if query.season is not None:
+        filters.append(Media.season == query.season)
+    if query.series_number is not None:
+        filters.append(Media.series_number == query.series_number)
+    if query.series_title:
+        filters.append(Media.series_title.ilike(f"%{query.series_title}%"))
+    if query.disc_number is not None:
+        filters.append(Media.disc_number == query.disc_number)
+    if query.subtitles_source:
+        filters.append(Media.subtitles_source.ilike(f"%{query.subtitles_source}%"))
+
+    #results = db.query(Media).filter(*filters).all()
+    return [{"id": m.id, "title": m.title, "media_type": m.media_type} for m in results]
+
+@app.post("/save-media")
+async def save_media_in_db(media_metadata: MediaMetadata):
+    try:
+        print(media_metadata)
+        store_media(media_metadata)
+        return {"status": "OK"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

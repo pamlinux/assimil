@@ -1,9 +1,11 @@
 from typing import List
 from typing import Optional
+import re
 import datetime
 import pickle
 import pytz
-from sqlalchemy import ForeignKey, select, String, and_, desc, exc
+from pydantic import BaseModel
+from sqlalchemy import ForeignKey, select, String, and_, desc, exc, UniqueConstraint
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
@@ -13,6 +15,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from paths import get_path
 import yaml
+
+class MediaMetadata(BaseModel):
+    title: str = ""
+    media_type: str = ""
+    disc_number: int | None = None
+    season: int | None = None
+    series_number: int | None = None
+    series_title: str = ""
+    video_file: str | None = None
+    spanish_subtitles_file: str | None = None
+    long_spanish_subtitles_file: str | None = None
+    french_subtitles_file: str | None = None
+    long_french_subtitles_file: str | None = None
 
 class NoSuchLesson(Exception):
     pass
@@ -121,21 +136,28 @@ class Media(Base):
     media_type: Mapped[str] # "movie" or "series"
     season: Mapped[Optional[int]]
     series_number: Mapped[Optional[int]] # Number of the series
-    series_title: Mapped[str]
+    series_title: Mapped[Optional[str]]
     disc_number: Mapped[Optional[int]] # Number of the DVD or Blu-ray
+    video_file: Mapped[Optional[str]]
+    spanish_subtitles_file: Mapped[Optional[str]]
+    french_subtitles_file: Mapped[Optional[str]]
+    long_spanish_subtitles_file: Mapped[Optional[str]]
+    long_french_subtitles_file: Mapped[Optional[str]]
     subtitles: Mapped[List["Subtitle"]] = relationship(
         back_populates="media", cascade="all, delete-orphan")
 
 class Subtitle(Base):
     __tablename__ = 'subtitles'
     id: Mapped[int] = mapped_column(primary_key=True)
+    index: Mapped[int]
+    subtitle_type: Mapped[str]  # "media" or "long"
     media_id: Mapped[int] = mapped_column(ForeignKey("media.id"))
     media: Mapped["Media"] = relationship(back_populates="subtitles")
-    source: Mapped[Optional[str]]
     start_time: Mapped[datetime.time]
     end_time: Mapped[datetime.time]
     spanish_text: Mapped[str]
     french_text: Mapped[Optional[str]]
+    __table_args__ = (UniqueConstraint('media_id', 'index', 'subtitle_type', name='unique_media_subtitle_index_type'),)
 
 
 def get_database_engine(name, echo=True):
@@ -148,6 +170,27 @@ database_name = get_path('database_name')
 
 global engine
 engine = get_database_engine(database_name, False)
+
+def parse_srt_time_range(timestamp: str):
+    """
+    Converts an SRT timestamp into start_time and end_time.
+
+    Example:
+    Input: "00:01:23,456 --> 00:01:25,789"
+    Output: (datetime.time(0, 1, 23, 456000), datetime.time(0, 1, 25, 789000))
+    """
+    pattern = r"(\d{2}):(\d{2}):(\d{2}),(\d{3})\s*-->\s*(\d{2}):(\d{2}):(\d{2}),(\d{3})"
+    match = re.match(pattern, timestamp)
+
+    if not match:
+        raise ValueError(f"Invalid timestamp format: {timestamp}")
+
+    h1, m1, s1, ms1, h2, m2, s2, ms2 = map(int, match.groups())
+
+    start_time = datetime.time(h1, m1, s1, ms1 * 1000)
+    end_time = datetime.time(h2, m2, s2, ms2 * 1000)
+
+    return start_time, end_time
 
 def fill_word_table(tonic_accent_word_dict, word_index_dict = {}):
     with Session(engine) as session:
@@ -473,8 +516,10 @@ def get_es_and_fr_subtitles(dvd: int):
 
     return subtitles
 
-def get_es_subtitles(dvd: int):
-    stmt = select(Subtitle)
+def get_es_subtitles(subtitle_type: str):
+    stmt = select(Subtitle).where(
+        Subtitle.subtitle_type == "media"
+    )
     
     subtitles = []
 
@@ -502,3 +547,110 @@ def get_fr_subtitles(dvd: int):
             })
 
     return subtitles
+
+def update_or_store_media(media: MediaMetadata):
+    stmt = select(Media).where(
+        and_(
+            Media.media_type == media.media_type,
+            Media.disc_number == media.disc_number,
+            Media.title == media.title,
+            Media.series_title == media.series_title,
+            Media.series_number == media.series_number,
+            Media.season == media.season
+        )
+    )
+
+    with Session(engine) as session:
+        try:
+            entry = session.scalars(stmt).one()
+            print(f"Media already exists : {entry}")
+        except exc.NoResultFound:
+            print("Media Does not exists {media}}")
+            entry = Media(
+                media_type = media.media_type,
+                disc_number = media.disc_number,
+                title = media.title,
+                series_title = media.series_title,
+                series_number = media.series_number,
+                season = media.season,
+                video_file = media.video_file,
+                spanish_subtitles_file = media.spanish_subtitles_file,
+                long_spanish_subtitles_file = media.long_spanish_subtitles_file,
+                french_subtitles_file = media.french_subtitles_file,
+                long_french_subtitles_file = media.long_french_subtitles_file
+             )
+            session.add(entry)
+            session.commit()
+            print(f"Media Created : {entry}")
+
+def lookup_media(media : MediaMetadata):
+    stmt = select(Media).where(
+        and_(
+            Media.media_type == media.media_type,
+            Media.disc_number == media.disc_number,
+            Media.title == media.title,
+            Media.series_title == media.series_title,
+            Media.series_number == media.series_number,
+            Media.season == media.season
+        )
+    )
+    
+    medias = []
+
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            media_data = MediaMetadata(
+                title = entry.title,
+                media_type = entry.media_type,
+                disc_number = entry.disc_number,
+                season = entry.season,
+                series_number = entry.series_number,
+                series_title = entry.series_title,
+                video_file = entry.video_file,
+                spanish_subtitles_file = entry.spanish_subtitles_file,
+                long_spanish_subtitles_file = entry.long_spanish_subtitles_file,
+                french_subtitles_file = entry.french_subtitles_file,
+                long_french_subtitles_file = entry.long_french_subtitles_file
+            )
+            medias.append(media_data)
+    return media_data
+   
+def store_subtitles(media_metadata: MediaMetadata, subtitle_type: str, es_subtitles: str, fr_subtitles: str):
+    stmt = select(Media).where(
+        and_(
+            Media.title == media_metadata.title,
+            Media.disc_number == media_metadata.disc_number,
+            Media.media_type == media_metadata.media_type,
+            Media.series_title == media_metadata.series_title,
+            Media.season == media_metadata.season,
+            Media.series_number == media_metadata.series_number
+        )
+    )
+
+    with Session(engine) as session:
+        media = session.scalars(stmt).one()
+        print(media.title)
+        print(media.id)
+        print(media.media_type)
+        print(media.series_title)
+        print(media.disc_number)
+    
+        for index, es_subtitle in enumerate(es_subtitles):
+            fr_subtitle = fr_subtitles[index]
+            start_time, end_time = parse_srt_time_range(es_subtitle['timestamp'])
+
+            print(start_time, end_time, es_subtitle['text'], fr_subtitle['text'])
+
+            entry = Subtitle(
+                index = index + 1,
+                media = media,
+                start_time = start_time,
+                end_time = end_time,
+                spanish_text = es_subtitle['text'],
+                french_text = fr_subtitle['text'],
+                subtitle_type = subtitle_type
+            )
+            session.add(entry)
+            
+        session.commit()
+
