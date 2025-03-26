@@ -540,8 +540,6 @@ async def serve_video(request: Request):
 
     return StreamingResponse(video_stream(start, end + 1), headers=headers, status_code=206)
 
-
-
 @app.get("/subtitles.srt")
 def get_subtitles():
     return FileResponse("Movies/Aquí No Hay Quien Viva 1/a1_t00_es.vtt", media_type="text/vtt")
