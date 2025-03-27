@@ -196,21 +196,27 @@
         const frSubDiv = document.getElementById("fr-sub");
 
         function updateActiveSubtitle() {
-            console.log("activeTab", activeTab);
-            if (lastActiveIndex >= 0) {
-                let esSub = subtitlesData["es"][lastActiveIndex] || { text: "" };
-                let frSub = findClosestSubtitle("fr", esSub.start) || { text: "" };
+            const currentSubtitleDiv = document.getElementById("current-subtitle");
+            currentSubtitleDiv.innerHTML = ""; // Réinitialiser avant d'ajouter du contenu
 
-                if (activeTab === "esfr" || activeTab === "esfrlong") {
-                    esSubDiv.innerText = esSub.text;
-                    frSubDiv.innerText = frSub.text;
-                } else {
-                    esSubDiv.innerText = activeTab.includes("es") ? esSub.text : "";
-                    frSubDiv.innerText = activeTab.includes("fr") ? frSub.text : "";
-                }
-            } else {
-                esSubDiv.innerText = "";
-                frSubDiv.innerText = "";
+            // Cas où l'on affiche un seul sous-titre
+            if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
+                const subDiv = document.createElement("div");
+                subDiv.textContent = subtitlesData[activeTab] || "";
+                currentSubtitleDiv.appendChild(subDiv);
+            } 
+            // Cas où l'on affiche ES + FR
+            else if (["esfr", "esfrlong"].includes(activeTab)) {
+                const esSubDiv = document.createElement("div");
+                esSubDiv.id = "es-sub";
+                esSubDiv.textContent = subtitlesData["es"] || "";
+
+                const frSubDiv = document.createElement("div");
+                frSubDiv.id = "fr-sub";
+                frSubDiv.textContent = subtitlesData["fr"] || "";
+
+                currentSubtitleDiv.appendChild(esSubDiv);
+                currentSubtitleDiv.appendChild(frSubDiv);
             }
         }
 
