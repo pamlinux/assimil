@@ -27,7 +27,7 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson, MediaMetadata, update_subtitle_french, get_es_and_fr_subtitles
+from database import NoSuchLesson, MediaMetadata, update_subtitle_french
 from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles
 from subtitles import get_subtitles_context, NoSuchTvSerie, store_media
 
@@ -552,10 +552,6 @@ def get_es_only_subtitles():
 def get_fr_only_subtitles():
     return get_fr_subtitles("media")
 
-@app.get("/subtitles_esfr")
-def get_esfr__subtitles():
-    return get_es_and_fr_subtitles("media")
-
 @app.get("/long_subtitles_es")
 def get_es_only_long_subtitles():
     return get_es_subtitles("long")
@@ -563,12 +559,6 @@ def get_es_only_long_subtitles():
 @app.get("/long_subtitles_fr")
 def get_fr_only_long_subtitles():
     return get_fr_subtitles("long")
-
-
-@app.get("/long_subtitles_esfr")
-def get_esfr_long_subtitles():
-    return get_es_and_fr_subtitles("long")
-
 
 @app.get("/search-media")
 def search_media_in_db(request: Request):

@@ -500,6 +500,20 @@ def format_srt_timestamp(start_time: datetime.time, end_time: datetime.time) -> 
     """Convert two objects datetime.time to one timestamp SRT."""
     return f"{start_time.strftime('%H:%M:%S.%f')[:-3]} --> {end_time.strftime('%H:%M:%S.%f')[:-3]}"
 
+def time_to_seconds(time_object: datetime.time) -> int:
+    """
+    Converts a datetime.time object to the total number of seconds since midnight.
+
+    Args:
+        time_object: The datetime.time object.
+
+    Returns:
+        The total number of seconds as an integer.
+    """
+    total_seconds = (time_object.hour * 3600) + (time_object.minute * 60) + time_object.second
+    return total_seconds
+
+
 def get_es_and_fr_subtitles(subtitle_type: str):
     stmt = select(Subtitle).where(
         Subtitle.subtitle_type == subtitle_type
@@ -529,8 +543,9 @@ def get_es_subtitles(subtitle_type: str):
         for entry in session.scalars(stmt):
             subtitles.append({
                 "id": entry.id,
-                "timestamp": format_srt_timestamp(entry.start_time, entry.end_time),
-                "spanish": entry.spanish_text,
+                "start": time_to_seconds(entry.start_time), 
+                "end": time_to_seconds(entry.end_time),
+                "text": entry.spanish_text,
             })
 
     return subtitles
@@ -546,9 +561,10 @@ def get_fr_subtitles(subtitle_type: str):
         for entry in session.scalars(stmt):
             subtitles.append({
                 "id": entry.id,
-                "timestamp": format_srt_timestamp(entry.start_time, entry.end_time),
-                "french": entry.french_text
-            })
+                "start": time_to_seconds(entry.start_time), 
+                "end": time_to_seconds(entry.end_time),
+                "text": entry.french_text,
+           })
 
     return subtitles
 

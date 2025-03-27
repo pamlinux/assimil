@@ -7,7 +7,6 @@
     <style>
         body { height: 100vh; margin: 0; overflow: hidden; }
         #container { display: flex; width: 100%; margin-top: 40px; }
-        #subtitles { width: 40%; scroll-padding-top: 80px; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; }
         #video-container { width: 60%; display: flex; flex-direction: column; align-items: center; }
         video { width: 100%; max-width: 720px; }
         .subtitle { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
@@ -29,6 +28,18 @@
             z-index: 1000; /* Pour s'assurer qu'elle est au-dessus des autres éléments */
         } 
 
+        #subtitles {
+            width: 40%;
+            scroll-padding-top: 80px;
+            border-right: 2px solid #ccc;
+            text-align: center;
+            margin-top: 10px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 80%;
+        }
+
         #subtitles, #video-container {
             max-height: calc(100vh - 80px); /* Ajuste la hauteur en soustrayant la barre du haut */
             overflow-y: auto;
@@ -48,16 +59,7 @@
             margin-top: 10px;
         }
 
-        #subtitles {
-            text-align: center;
-            margin-top: 10px;
-            max-height: 120px; /* Ajuste selon la place disponible */
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            padding: 10px;
-            width: 80%;
-        }
-
+ 
         #container {
             display: flex;
             width: 100%;
@@ -106,6 +108,20 @@
             font-size: 18px;
             font-weight: bold;
             text-align: center;
+            min-height: 30px;
+        }
+        #current-subtitle {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .sub-box {
+            width: 50%;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
             min-height: 30px;
         }
 
@@ -158,8 +174,12 @@
                 <div class="tab" data-type="esfrlong">ES + FR Long</div>
             </div>
 
-            <!-- Uniquement le sous-titre actif -->
-            <div id="current-subtitle"></div>
+                        <!-- Uniquement le sous-titre actif -->
+            <!-- Conteneur pour afficher les sous-titres actifs sous la vidéo -->
+            <div id="current-subtitle">
+                <div id="es-sub" class="sub-box"></div>
+                <div id="fr-sub" class="sub-box"></div>
+            </div>
         </div>
     </div>
 
@@ -168,9 +188,36 @@
         const video = document.getElementById("video");
         const subtitleContainer = document.getElementById("subtitles");
         const currentSubtitleDisplay = document.getElementById("current-subtitle");
-        let subtitlesData = { es: [], fr: [], esfr: [], eslong: [], frlong: [], esfrlong: [] };
+        let subtitlesData = { es: [], fr: [], eslong: [], frlong: [] };
         let activeType = "es";
         let lastActiveIndex = -1;
+
+        const esSubDiv = document.getElementById("es-sub");
+        const frSubDiv = document.getElementById("fr-sub");
+
+        function updateActiveSubtitle() {
+            if (lastActiveIndex >= 0) {
+                let esSub = subtitlesData["es"][lastActiveIndex] || { text: "" };
+                let frSub = findClosestSubtitle("fr", esSub.start) || { text: "" };
+
+                if (activeType === "esfr" || activeType === "esfrlong") {
+                    esSubDiv.innerText = esSub.text;
+                    frSubDiv.innerText = frSub.text;
+                } else {
+                    esSubDiv.innerText = activeType.includes("es") ? esSub.text : "";
+                    frSubDiv.innerText = activeType.includes("fr") ? frSub.text : "";
+                }
+            } else {
+                esSubDiv.innerText = "";
+                frSubDiv.innerText = "";
+            }
+        }
+
+        function findClosestSubtitle(lang, time) {
+            return subtitlesData[lang].reduce((closest, sub) => {
+                return Math.abs(sub.start - time) < Math.abs(closest.start - time) ? sub : closest;
+            }, subtitlesData[lang][0] || { text: "", start: 0 });
+        }
 
         // Changement d'onglet pour afficher le bon sous-titre sous la vidéo
         document.querySelectorAll(".tab").forEach(tab => {
@@ -178,6 +225,8 @@
                 document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
                 tab.classList.add("active");
                 activeType = tab.dataset.type;
+                displaySubtitles(); 
+                console.log("Affichage des sous-titres:", activeType);
                 updateActiveSubtitle();
             });
         });
@@ -196,7 +245,11 @@
         // Affichage de la liste des sous-titres à gauche
         function displaySubtitles() {
             subtitleContainer.innerHTML = "";
-            subtitlesData["es"].forEach((sub, index) => {
+            
+            let currentSubtitles = subtitlesData[activeType] || [];
+            console.log("Affichage des sous-titres:", activeType, currentSubtitles);
+
+            subtitlesData[activeType].forEach((sub, index) => {
                 const div = document.createElement("div");
                 div.classList.add("subtitle");
                 div.innerText = sub.text;
@@ -239,14 +292,6 @@
             });
         });
 
-        // Chargement des sous-titres depuis l'API
-        loadSubtitles("es", "http://127.0.0.1:8001/subtitles_es");
-        loadSubtitles("fr", "http://127.0.0.1:8001/subtitles_fr");
-        loadSubtitles("eslong", "http://127.0.0.1:8001/long_subtitles_es");
-        loadSubtitles("frlong", "http://127.0.0.1:8001/long_subtitles_fr");
-        loadSubtitles("esfr", "http://127.0.0.1:8001/subtitles_esfr");
-        loadSubtitles("esfrlong", "http://127.0.0.1:8001/long_subtitles_esfr");
-        
         function playVideo() {
             video.play();
             replayingSubtitle = false;
@@ -292,8 +337,6 @@
         loadSubtitles("fr", "http://127.0.0.1:8001/subtitles_fr");
         loadSubtitles("eslong", "http://127.0.0.1:8001/long_subtitles_es");
         loadSubtitles("frlong", "http://127.0.0.1:8001/long_subtitles_fr");
-        loadSubtitles("esfr", "http://127.0.0.1:8001/subtitles_esfr");
-        loadSubtitles("esfrlong", "http://127.0.0.1:8001/long_subtitles_esfr");
     </script>
 </body>
 </html>
