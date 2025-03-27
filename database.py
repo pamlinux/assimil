@@ -179,7 +179,7 @@ def parse_srt_time_range(timestamp: str):
     Input: "00:01:23,456 --> 00:01:25,789"
     Output: (datetime.time(0, 1, 23, 456000), datetime.time(0, 1, 25, 789000))
     """
-    pattern = r"(\d{2}):(\d{2}):(\d{2}),(\d{3})\s*-->\s*(\d{2}):(\d{2}):(\d{2}),(\d{3})"
+    pattern = r"(\d{2}):(\d{2}):(\d{2}).(\d{3})\s*-->\s*(\d{2}):(\d{2}):(\d{2}).(\d{3})"
     match = re.match(pattern, timestamp)
 
     if not match:
@@ -498,10 +498,12 @@ def update_subtitle_french(id: int, french_text: str):
 
 def format_srt_timestamp(start_time: datetime.time, end_time: datetime.time) -> str:
     """Convert two objects datetime.time to one timestamp SRT."""
-    return f"{start_time.strftime('%H:%M:%S,%f')[:-3]} --> {end_time.strftime('%H:%M:%S,%f')[:-3]}"
+    return f"{start_time.strftime('%H:%M:%S.%f')[:-3]} --> {end_time.strftime('%H:%M:%S.%f')[:-3]}"
 
-def get_es_and_fr_subtitles(dvd: int):
-    stmt = select(Subtitle)
+def get_es_and_fr_subtitles(subtitle_type: str):
+    stmt = select(Subtitle).where(
+        Subtitle.subtitle_type == subtitle_type
+    )
     
     subtitles = []
 
@@ -518,7 +520,7 @@ def get_es_and_fr_subtitles(dvd: int):
 
 def get_es_subtitles(subtitle_type: str):
     stmt = select(Subtitle).where(
-        Subtitle.subtitle_type == "media"
+        Subtitle.subtitle_type == subtitle_type
     )
     
     subtitles = []
@@ -533,8 +535,10 @@ def get_es_subtitles(subtitle_type: str):
 
     return subtitles
 
-def get_fr_subtitles(dvd: int):
-    stmt = select(Subtitle)
+def get_fr_subtitles(subtitle_type: str):
+    stmt = select(Subtitle).where(
+        Subtitle.subtitle_type == subtitle_type
+    )
     
     subtitles = []
 

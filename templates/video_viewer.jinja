@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Éditeur de sous-titres</title>
     <style>
-        body {  height: 100vh; margin: 0; overflow: hidden; }
-        #container {
-            display: flex;
-            width: 100%;
-            margin-top: 40px; /* Décale pour éviter le chevauchement */
-        }
-                #subtitles { width: 40%; scroll-padding-top: 80px; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; }
+        body { height: 100vh; margin: 0; overflow: hidden; }
+        #container { display: flex; width: 100%; margin-top: 40px; }
+        #subtitles { width: 40%; scroll-padding-top: 80px; overflow-y: auto; padding: 10px; border-right: 2px solid #ccc; }
         #video-container { width: 60%; display: flex; flex-direction: column; align-items: center; }
         video { width: 100%; max-width: 720px; }
         .subtitle { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
@@ -20,6 +16,9 @@
         .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; }
         .controls img { width: 24px; height: 24px; }
         #current-subtitle { margin-top: 10px; font-size: 18px; font-weight: bold; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
+        .tab { padding: 5px 10px; cursor: pointer; border: 1px solid #ddd; }
+        .tab.active { background-color: lightgray; }
         #top-bar {
             position: fixed;
             top: 0;
@@ -35,6 +34,81 @@
             overflow-y: auto;
         }
 
+        #video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #subtitles {
+            text-align: center;
+            margin-top: 10px;
+            max-height: 120px; /* Ajuste selon la place disponible */
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 80%;
+        }
+
+        #container {
+            display: flex;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        #subtitles-container {
+            width: 40%;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            padding: 10px;
+            border-right: 2px solid #ccc;
+        }
+
+        #video-container {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        video {
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .subtitle {
+            padding: 5px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .active {
+            background-color: yellow;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #current-subtitle {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 30px;
+        }
+
     </style>
 </head>
 <body>
@@ -45,12 +119,17 @@
     </div>
 
     <div id="container">
-        <div id="subtitles"></div>
+        <!-- Liste des sous-titres à gauche -->
+        <div id="subtitles-container">
+            <div id="subtitles"></div>
+        </div>
+
+        <!-- Vidéo + onglets sous la vidéo -->
         <div id="video-container">
             <video id="video" controls>
                 <source src="/simple-video.mp4" type="video/mp4">
                 <track src="subtitles.srt" kind="subtitles" srclang="fr" label="Français" default>
-             </video>
+            </video>
             <div class="controls">
                 <button onclick="prevSubtitle()">
                     <img src="{{ url_for('static', path='/icons/step-backward.svg') }}" alt="Backward">
@@ -68,76 +147,106 @@
                     <img src="{{ url_for('static', path='/icons/step-forward.svg') }}" alt="Forward">
                 </button>
             </div>
+
+            <!-- Onglets sous la vidéo -->
+            <div class="tabs">
+                <div class="tab active" data-type="es">ES</div>
+                <div class="tab" data-type="fr">FR</div>
+                <div class="tab" data-type="esfr">ES + FR</div>
+                <div class="tab" data-type="eslong">ES Long</div>
+                <div class="tab" data-type="frlong">FR Long</div>
+                <div class="tab" data-type="esfrlong">ES + FR Long</div>
+            </div>
+
+            <!-- Uniquement le sous-titre actif -->
             <div id="current-subtitle"></div>
         </div>
     </div>
+
 
     <script>
         const video = document.getElementById("video");
         const subtitleContainer = document.getElementById("subtitles");
         const currentSubtitleDisplay = document.getElementById("current-subtitle");
-        let subtitles = [];
-        let frenchSubtitles = [];
+        let subtitlesData = { es: [], fr: [], esfr: [], eslong: [], frlong: [], esfrlong: [] };
+        let activeType = "es";
         let lastActiveIndex = -1;
-        let replaySubtitleIndex = -1;
-        let replayingSubtitle = false;
 
-        // Fetch Spanish subtitles
-        fetch("http://127.0.0.1:8001/subtitles_es")
-            .then(response => response.json())
-            .then(data => {
-                subtitles = data.map(sub => {
-                    const [start, end] = sub.timestamp.split(' --> ').map(t => {
-                        const [h, m, s] = t.split(':').map(parseFloat);
-                        return h * 3600 + m * 60 + s;
-                    });
-                    return { id: sub.id, start, end, text: sub.spanish };
-                });
-                displaySubtitles();
-            })
-            .catch(error => console.error("Error loading Spanish subtitles:", error));
+        // Changement d'onglet pour afficher le bon sous-titre sous la vidéo
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+                activeType = tab.dataset.type;
+                updateActiveSubtitle();
+            });
+        });
 
-        // Fetch French subtitles
-        fetch("http://127.0.0.1:8001/subtitles_fr")
-            .then(response => response.json())
-            .then(data => {
-                frenchSubtitles = data;
-            })
-            .catch(error => console.error("Error loading French subtitles:", error));
+        // Chargement des sous-titres
+        function loadSubtitles(type, url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    subtitlesData[type] = data;
+                    if (type === "es") displaySubtitles(); // Afficher les sous-titres au démarrage
+                })
+                .catch(error => console.error("Error loading subtitles:", error));
+        }
 
-
+        // Affichage de la liste des sous-titres à gauche
         function displaySubtitles() {
             subtitleContainer.innerHTML = "";
-            subtitles.forEach((sub, index) => {
+            subtitlesData["es"].forEach((sub, index) => {
                 const div = document.createElement("div");
                 div.classList.add("subtitle");
-                div.innerHTML = sub.text.replace(/\n/g, "<br>");
+                div.innerText = sub.text;
                 div.dataset.start = sub.start;
                 div.dataset.index = index;
                 div.onclick = () => {
                     video.currentTime = sub.start;
-                    if (!video.paused) {
-                        video.play();
-                    }
+                    if (!video.paused) video.play();
                 };
                 subtitleContainer.appendChild(div);
             });
         }
 
+        // Met à jour le sous-titre actif sous la vidéo
+        function updateActiveSubtitle() {
+            if (lastActiveIndex >= 0 && subtitlesData[activeType][lastActiveIndex]) {
+                let sub = subtitlesData[activeType][lastActiveIndex];
+                if (activeType.includes("fr")) {
+                    currentSubtitleDisplay.innerText = `${sub.spanish || ""} - ${sub.french || ""}`;
+                } else {
+                    currentSubtitleDisplay.innerText = sub.text;
+                }
+            } else {
+                currentSubtitleDisplay.innerText = "";
+            }
+        }
+
+        // Synchronisation des sous-titres avec la vidéo
         video.addEventListener("timeupdate", () => {
-            subtitles.forEach((sub, index) => {
+            subtitlesData["es"].forEach((sub, index) => {
                 const div = subtitleContainer.children[index];
                 if (video.currentTime >= sub.start && video.currentTime < sub.end) {
-                    div.scrollIntoView({ behavior: "smooth", block: "center", inline: "start"});
+                    div.scrollIntoView({ behavior: "smooth", block: "center" });
                     div.classList.add("active");
-                    currentSubtitleDisplay.innerText = frenchSubtitles[index]?.french || "";
                     lastActiveIndex = index;
+                    updateActiveSubtitle();
                 } else {
                     div.classList.remove("active");
                 }
             });
         });
 
+        // Chargement des sous-titres depuis l'API
+        loadSubtitles("es", "http://127.0.0.1:8001/subtitles_es");
+        loadSubtitles("fr", "http://127.0.0.1:8001/subtitles_fr");
+        loadSubtitles("eslong", "http://127.0.0.1:8001/long_subtitles_es");
+        loadSubtitles("frlong", "http://127.0.0.1:8001/long_subtitles_fr");
+        loadSubtitles("esfr", "http://127.0.0.1:8001/subtitles_esfr");
+        loadSubtitles("esfrlong", "http://127.0.0.1:8001/long_subtitles_esfr");
+        
         function playVideo() {
             video.play();
             replayingSubtitle = false;
@@ -178,6 +287,13 @@
                 }
             }
         }
+
+        loadSubtitles("es", "http://127.0.0.1:8001/subtitles_es");
+        loadSubtitles("fr", "http://127.0.0.1:8001/subtitles_fr");
+        loadSubtitles("eslong", "http://127.0.0.1:8001/long_subtitles_es");
+        loadSubtitles("frlong", "http://127.0.0.1:8001/long_subtitles_fr");
+        loadSubtitles("esfr", "http://127.0.0.1:8001/subtitles_esfr");
+        loadSubtitles("esfrlong", "http://127.0.0.1:8001/long_subtitles_esfr");
     </script>
 </body>
 </html>
