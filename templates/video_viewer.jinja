@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Éditeur de sous-titres</title>
     <style>
-        body { height: 100vh; margin: 0; overflow: hidden; }
+        html, body { height: 100vh; margin: 0; overflow: hidden; }
         #container { display: flex; width: 100%; margin-top: 40px; }
         #video-container { width: 60%; display: flex; flex-direction: column; align-items: center; }
         video { width: 100%; max-width: 720px; }
@@ -26,6 +26,8 @@
             height: 40px; /* Ajuste selon ta div */
             background: white; /* Ajoute un fond si besoin */
             z-index: 1000; /* Pour s'assurer qu'elle est au-dessus des autres éléments */
+            display: flex;
+            align-items: center; /* Centre verticalement les boutons */
         } 
 
         #subtitles {
@@ -33,14 +35,12 @@
             scroll-padding-top: 80px;
             border-right: 2px solid #ccc;
             text-align: center;
-            margin-top: 10px;
             overflow-y: auto;
             border: 1px solid #ddd;
-            padding: 10px;
             width: 80%;
         }
 
-        #subtitles, #video-container {
+        #subtitles {
             max-height: calc(100vh - 80px); /* Ajuste la hauteur en soustrayant la barre du haut */
             overflow-y: auto;
         }
@@ -61,6 +61,7 @@
 
  
         #container {
+            overflow: hidden; /* Évite que le conteneur principal bouge */
             display: flex;
             width: 100%;
             margin-top: 40px;
@@ -70,7 +71,6 @@
             width: 40%;
             max-height: calc(100vh - 80px);
             overflow-y: auto;
-            padding: 10px;
             border-right: 2px solid #ccc;
         }
 
@@ -79,7 +79,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
+            position: sticky;
+            top: 40px; /* Même hauteur que la top-bar */
+            z-index: 999; /* Pour s'assurer qu'il reste au-dessus */
+            }
 
         video {
             width: 100%;
@@ -195,52 +198,83 @@
         const currentSubtitleDisplay = document.getElementById("current-subtitle");
         let subtitlesData = { es: [], fr: [], eslong: [], frlong: [] };
         let activeTab = "es";
-        let lastActiveIndex = -1;
+        let subtitles = subtitlesData["es"];
         let currentIndex = -1;
-
+        let replayingSubtitle = false;
+        
         const esSubDiv = document.getElementById("es-sub");
         const frSubDiv = document.getElementById("fr-sub");
+        const currentSubtitleDiv = document.getElementById("current-subtitle");
+
+        function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
+            //console.log("subtitles.length", subtitles.length);
+            let maxLimit = 0.0;
+            if (!subtitles || subtitles.length === 0) {
+                console.log("problem 1");
+                return -1;
+            }                                   
+
+            for (let i = 0; i < subtitles.length; i++) {
+                const currentSub = subtitles[i];
+                const start = currentSub.start;
+                const endWithDelta = currentSub.end + delta;
+
+                if (i + 1 < subtitles.length) {
+                    maxLimit = subtitles[i + 1].start;
+                } else {
+                    maxLimit = endWithDelta;
+                }
+                //console.log("currentTime", currentTime, "maxLimit", maxLimit);
+                if (currentTime >= start && currentTime < endWithDelta && currentTime < maxLimit) {
+                    return i; // Retourner l'index de l'élément courant
+                }
+            }
+            console.log("problem 2");
+            return -1; // Aucun sous-titre trouvé dans la marge delta
+        }
 
         function updateActiveSubtitle() {
-            const currentSubtitleDiv = document.getElementById("current-subtitle");
             currentSubtitleDiv.innerHTML = ""; // Réinitialiser avant d'ajouter du contenu
-
+            const delta = 0.5;
             // Trouver l'index correspondant pour les sous-titres longs
             if (["esfrlong", "eslong", "frlong"].includes(activeTab)) {
-                let subtitleIndex = subtitlesData["eslong"].findIndex(sub => 
-                    video.currentTime >= sub.start && video.currentTime < sub.end);
-                if (subtitleIndex > -1) {
-                    currentIndex = subtitleIndex;
-                }
-                console.log("currentIndex: ", currentIndex), "video.currentTime", video.currentTime;
+                subtitles = subtitlesData["eslong"];
             } else {
-                currentIndex = lastActiveIndex;
+                subtitles = subtitlesData["es"];
             }
+            currentIndex = findCurrentSubtitleIndexWithDelta(subtitles, video.currentTime, delta)
+            console.log("currentIndex: ", currentIndex), "video.currentTime", video.currentTime;
 
             // Cas où l'on affiche un seul sous-titre
             if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
                 const subDiv = document.createElement("div");
-                subDiv.textContent = subtitlesData[activeTab][currentIndex].text || "";
                 currentSubtitleDiv.appendChild(subDiv);
-            } 
+                if (currentIndex > -1) {
+                    subDiv.textContent = subtitlesData[activeTab][currentIndex].text || "";
+                } else {
+                    subDiv.textContent = "";
+                }
+            }
             // Cas où l'on affiche ES + FR
             else if (["esfr", "esfrlong"].includes(activeTab)) {
                 const esSubDiv = document.createElement("div");
                 esSubDiv.id = "es-sub";
-                if (activeTab == "esfr") {
-                    esSubDiv.textContent = subtitlesData["es"][currentIndex].text || "";
-                } else {
-                    esSubDiv.textContent = subtitlesData["eslong"][currentIndex].text || "";
+                if (currentIndex > -1) {
+                    if (activeTab == "esfr") {
+                        esSubDiv.textContent = subtitlesData["es"][currentIndex].text || "";
+                    } else {
+                        esSubDiv.textContent = subtitlesData["eslong"][currentIndex].text || "";
+                    }
+                    const frSubDiv = document.createElement("div");
+                    frSubDiv.id = "fr-sub";
+                    if (activeTab == "esfr") {
+                        frSubDiv.textContent = subtitlesData["fr"][currentIndex].text || "";
+                    } else {
+                        frSubDiv.textContent = subtitlesData["frlong"][currentIndex].text || "";
+                    }
+                    currentSubtitleDiv.appendChild(esSubDiv);
+                    currentSubtitleDiv.appendChild(frSubDiv);
                 }
-                const frSubDiv = document.createElement("div");
-                frSubDiv.id = "fr-sub";
-                if (activeTab == "esfr") {
-                    frSubDiv.textContent = subtitlesData["fr"][currentIndex].text || "";
-                } else {
-                    frSubDiv.textContent = subtitlesData["frlong"][currentIndex].text || "";
-                }
-                currentSubtitleDiv.appendChild(esSubDiv);
-                currentSubtitleDiv.appendChild(frSubDiv);
             }
         }
 
@@ -298,7 +332,6 @@
                 if (video.currentTime >= sub.start && video.currentTime < sub.end) {
                     div.scrollIntoView({ behavior: "smooth", block: "center" });
                     div.classList.add("active");
-                    lastActiveIndex = index;
                     updateActiveSubtitle();
                 } else {
                     div.classList.remove("active");
@@ -312,24 +345,18 @@
         }
 
         function replaySubtitle() {
-            if (!replayingSubtitle) {
-                replaySubtitleIndex = lastActiveIndex;
-            }
-            replayingSubtitle = true;
-            if (replaySubtitleIndex >= 0) {
-                video.currentTime = subtitles[replaySubtitleIndex].start - 1;
+            if (currentIndex >= 0) {
+                video.currentTime = subtitles[currentIndex].start - 1.0;
                 video.play();
                 setTimeout(() => {
                     video.pause();
-                }, ((subtitles[replaySubtitleIndex].end - subtitles[replaySubtitleIndex].start) + 2) * 1000);
+                }, ((subtitles[currentIndex].end - subtitles[currentIndex].start) + 2.0) * 1000);
             }
         }
 
         function prevSubtitle() {
-            replayingSubtitle = false;
-            if (lastActiveIndex > 0) {
-                delta = subtitles[lastActiveIndex - 1].end - subtitles[lastActiveIndex - 1].start
-                video.currentTime = subtitles[lastActiveIndex - 1].start + delta / 2;
+            if (currentIndex > 0) {
+                video.currentTime = subtitles[currentIndex - 1].start;
                 if (!video.paused) {
                     video.play();
                 }
@@ -337,10 +364,8 @@
         }
 
         function nextSubtitle() {
-            replayingSubtitle = false;
-            if (lastActiveIndex < subtitles.length - 1) {
-                delta = subtitles[lastActiveIndex + 1].end - subtitles[lastActiveIndex + 1].start
-                video.currentTime = subtitles[lastActiveIndex + 1].start + delta / 2;
+            if (currentIndex < subtitles.length - 1) {
+                video.currentTime = subtitles[currentIndex + 1].start;
                 if (!video.paused) {
                     video.play();
                 }
