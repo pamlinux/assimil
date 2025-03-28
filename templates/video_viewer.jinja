@@ -129,7 +129,7 @@
             width: 50%;
             text-align: center;
         }
-        
+
     </style>
 </head>
 <body>
@@ -196,6 +196,7 @@
         let subtitlesData = { es: [], fr: [], eslong: [], frlong: [] };
         let activeTab = "es";
         let lastActiveIndex = -1;
+        let currentIndex = -1;
 
         const esSubDiv = document.getElementById("es-sub");
         const frSubDiv = document.getElementById("fr-sub");
@@ -204,22 +205,40 @@
             const currentSubtitleDiv = document.getElementById("current-subtitle");
             currentSubtitleDiv.innerHTML = ""; // Réinitialiser avant d'ajouter du contenu
 
+            // Trouver l'index correspondant pour les sous-titres longs
+            if (["esfrlong", "eslong", "frlong"].includes(activeTab)) {
+                let subtitleIndex = subtitlesData["eslong"].findIndex(sub => 
+                    video.currentTime >= sub.start && video.currentTime < sub.end);
+                if (subtitleIndex > -1) {
+                    currentIndex = subtitleIndex;
+                }
+                console.log("currentIndex: ", currentIndex), "video.currentTime", video.currentTime;
+            } else {
+                currentIndex = lastActiveIndex;
+            }
+
             // Cas où l'on affiche un seul sous-titre
             if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
                 const subDiv = document.createElement("div");
-                subDiv.textContent = subtitlesData[activeTab][lastActiveIndex].text || "";
+                subDiv.textContent = subtitlesData[activeTab][currentIndex].text || "";
                 currentSubtitleDiv.appendChild(subDiv);
             } 
             // Cas où l'on affiche ES + FR
             else if (["esfr", "esfrlong"].includes(activeTab)) {
                 const esSubDiv = document.createElement("div");
                 esSubDiv.id = "es-sub";
-                esSubDiv.textContent = subtitlesData["es"][lastActiveIndex].text || "";
-
+                if (activeTab == "esfr") {
+                    esSubDiv.textContent = subtitlesData["es"][currentIndex].text || "";
+                } else {
+                    esSubDiv.textContent = subtitlesData["eslong"][currentIndex].text || "";
+                }
                 const frSubDiv = document.createElement("div");
                 frSubDiv.id = "fr-sub";
-                frSubDiv.textContent = subtitlesData["fr"][lastActiveIndex].text || "";
-
+                if (activeTab == "esfr") {
+                    frSubDiv.textContent = subtitlesData["fr"][currentIndex].text || "";
+                } else {
+                    frSubDiv.textContent = subtitlesData["frlong"][currentIndex].text || "";
+                }
                 currentSubtitleDiv.appendChild(esSubDiv);
                 currentSubtitleDiv.appendChild(frSubDiv);
             }

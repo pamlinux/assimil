@@ -500,19 +500,21 @@ def format_srt_timestamp(start_time: datetime.time, end_time: datetime.time) -> 
     """Convert two objects datetime.time to one timestamp SRT."""
     return f"{start_time.strftime('%H:%M:%S.%f')[:-3]} --> {end_time.strftime('%H:%M:%S.%f')[:-3]}"
 
-def time_to_seconds(time_object: datetime.time) -> int:
+import datetime
+
+def time_to_seconds(time_object: datetime.time) -> float:
     """
-    Converts a datetime.time object to the total number of seconds since midnight.
+    Converts a datetime.time object to the total number of seconds since midnight,
+    including microseconds as a fractional part.
 
     Args:
         time_object: The datetime.time object.
 
     Returns:
-        The total number of seconds as an integer.
+        The total number of seconds as a float.
     """
-    total_seconds = (time_object.hour * 3600) + (time_object.minute * 60) + time_object.second
+    total_seconds = (time_object.hour * 3600) + (time_object.minute * 60) + time_object.second + (time_object.microsecond / 1_000_000)
     return total_seconds
-
 
 def get_es_and_fr_subtitles(subtitle_type: str):
     stmt = select(Subtitle).where(
