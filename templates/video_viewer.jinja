@@ -188,6 +188,8 @@
                 <div id="es-sub" class="sub-box"></div>
                 <div id="fr-sub" class="sub-box"></div>
             </div>
+
+            <div id="edit"></div>
         </div>
     </div>
 
@@ -203,12 +205,10 @@
         let replayingSubtitle = false;
         let replayingSubtitleIndex = -1;
         
-        const esSubDiv = document.getElementById("es-sub");
-        const frSubDiv = document.getElementById("fr-sub");
+        let editSubtitleDiv = document.getElementById("edit");
         const currentSubtitleDiv = document.getElementById("current-subtitle");
 
         function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
-            //console.log("subtitles.length", subtitles.length);
             let maxLimit = 0.0;
             if (!subtitles || subtitles.length === 0) {
                 console.log("problem 1");
@@ -225,7 +225,7 @@
                 } else {
                     maxLimit = endWithDelta;
                 }
-                //console.log("currentTime", currentTime, "maxLimit", maxLimit);
+
                 if (currentTime >= start && currentTime < endWithDelta && currentTime < maxLimit) {
                     return i; // Retourner l'index de l'élément courant
                 }
@@ -244,8 +244,6 @@
                 subtitles = subtitlesData["es"];
             }
             currentIndex = findCurrentSubtitleIndexWithDelta(subtitles, video.currentTime, delta)
-            console.log("In updateActiveSubtitle currentIndex: ", currentIndex, "video.currentTime", video.currentTime);
-            console.log("-------------------");
             // Cas où l'on affiche un seul sous-titre
             if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
                 const subDiv = document.createElement("div");
@@ -277,6 +275,7 @@
                     currentSubtitleDiv.appendChild(frSubDiv);
                 }
             }
+            enableSubtitleEditing(); 
         }
 
         function findClosestSubtitle(lang, time) {
@@ -361,7 +360,7 @@
 
         function prevSubtitle() {
             currentIndex = currentIndex - 1;
-            console.log("currentIndex", currentIndex, "video.currentTime ", video.currentTime );
+            //console.log("currentIndex", currentIndex, "video.currentTime ", video.currentTime );
             if (currentIndex >= 0) {
                 replayingSubtitle = false;
                 video.currentTime = subtitles[currentIndex].start;
@@ -376,7 +375,7 @@
             if (currentIndex < subtitles.length - 1) {
                 replayingSubtitle = false;
                 video.currentTime = subtitles[currentIndex].start;
-                console.log(currentIndex, "!!! currentTime has just changed. video.currentTime :", video.currentTime);
+                //console.log(currentIndex, "!!! currentTime has just changed. video.currentTime :", video.currentTime);
                 if (!video.paused) {
                     video.play();
                 }
@@ -387,6 +386,125 @@
         loadSubtitles("fr", "http://127.0.0.1:8001/subtitles_fr");
         loadSubtitles("eslong", "http://127.0.0.1:8001/long_subtitles_es");
         loadSubtitles("frlong", "http://127.0.0.1:8001/long_subtitles_fr");
+
+        function enableSubtitleEditing() {
+            let currentSubtitleDiv = document.getElementById("current-subtitle");
+
+            if (!currentSubtitleDiv) return;
+
+            // Vérifie s'il y a déjà un bouton pour éviter les doublons
+            let existingButton = document.getElementById("edit-button");
+            if (existingButton) return;
+
+            // Création du bouton "Édition"
+            const editButton = document.createElement("button");
+            editSubtitleDiv.appendChild(editButton);
+            editButton.id = "edit-button";
+            editButton.textContent = "Édition";
+            editButton.style.display = "block";
+            editButton.style.margin = "10px auto"; // Centrage du bouton
+
+            editButton.onclick = () => enterEditMode();
+
+            // Ajouter le bouton sous les sous-titres
+            currentSubtitleDiv.appendChild(editButton);
+        }
+
+        function enterEditMode() {
+            let currentSubtitleDiv = document.getElementById("current-subtitle");
+            if (!currentSubtitleDiv) return;
+
+            // Identifier la bonne div selon activeTab
+            let subDiv;
+            if (["esfr", "esfrlong"].includes(activeTab)) {
+                subDiv = {
+                    es: document.getElementById("es-sub"),
+                    fr: document.getElementById("fr-sub")
+                };
+            } else {
+                subDiv = { es: currentSubtitleDiv }; // Pour les autres cas, la div principale contient le texte
+            }
+
+            // Rendre le(s) sous-titre(s) éditable(s)
+            if (subDiv.es) subDiv.es.contentEditable = "true";
+            if (subDiv.fr) subDiv.fr.contentEditable = "true";
+
+            // Vérifie s'il y a déjà les champs d'édition pour éviter les doublons
+            if (document.getElementById("start-time-input")) return;
+
+            // Création des champs d'édition pour les temps
+            let startTimeLabel = document.createElement("label");
+            startTimeLabel.textContent = "Début : ";
+            let startTimeInput = document.createElement("input");
+            startTimeInput.type = "number";
+            startTimeInput.id = "start-time-input";
+            startTimeInput.step = "0.1";
+            startTimeInput.value = subtitles[currentIndex].start; 
+
+            let endTimeLabel = document.createElement("label");
+            endTimeLabel.textContent = "Fin : ";
+            let endTimeInput = document.createElement("input");
+            endTimeInput.type = "number";
+            endTimeInput.id = "end-time-input";
+            endTimeInput.step = "0.1";
+            endTimeInput.value = subtitles[currentIndex].end; 
+
+            // Création du bouton "Sauver"
+            const saveButton = document.createElement("button");
+            saveButton.textContent = "Sauver";
+            saveButton.style.display = "block";
+            saveButton.style.margin = "10px auto"; // Centrage du bouton
+            saveButton.onclick = saveEdits;
+
+            // Ajout des éléments à la div des sous-titres
+            currentSubtitleDiv.appendChild(document.createElement("br"));
+            currentSubtitleDiv.appendChild(startTimeLabel);
+            currentSubtitleDiv.appendChild(startTimeInput);
+            currentSubtitleDiv.appendChild(endTimeLabel);
+            currentSubtitleDiv.appendChild(endTimeInput);
+            currentSubtitleDiv.appendChild(saveButton);
+        }
+
+
+        function saveEdits() {
+            let esSubDiv = document.getElementById("es-sub");
+            let frSubDiv = document.getElementById("fr-sub");
+
+            let startTimeInput = document.getElementById("start-time-input");
+            let endTimeInput = document.getElementById("end-time-input");
+
+            if (esSubDiv) subtitles[currentIndex].es = esSubDiv.innerText;
+            if (frSubDiv) subtitles[currentIndex].fr = frSubDiv.innerText;
+
+            subtitles[currentIndex].start = parseFloat(startTimeInput.value);
+            subtitles[currentIndex].end = parseFloat(endTimeInput.value);
+
+            // Envoyer les modifications au serveur
+            fetch("/update-subtitle", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(subtitles[currentIndex])
+            }).then(response => {
+                if (response.ok) {
+                    console.log("Sous-titre mis à jour !");
+                } else {
+                    console.error("Erreur de mise à jour !");
+                }
+            });
+
+            // Désactiver l'édition après sauvegarde
+            if (esSubDiv) esSubDiv.contentEditable = "false";
+            if (frSubDiv) frSubDiv.contentEditable = "false";
+
+            // Supprimer les champs d'édition
+            startTimeInput.remove();
+            endTimeInput.remove();
+            document.getElementById("edit-button").remove();
+            document.querySelector("button[textContent='Sauver']").remove();
+        }
+
     </script>
 </body>
 </html>
