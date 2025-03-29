@@ -201,6 +201,7 @@
         let subtitles = subtitlesData["es"];
         let currentIndex = -1;
         let replayingSubtitle = false;
+        let replayingSubtitleIndex = -1;
         
         const esSubDiv = document.getElementById("es-sub");
         const frSubDiv = document.getElementById("fr-sub");
@@ -243,8 +244,8 @@
                 subtitles = subtitlesData["es"];
             }
             currentIndex = findCurrentSubtitleIndexWithDelta(subtitles, video.currentTime, delta)
-            console.log("currentIndex: ", currentIndex), "video.currentTime", video.currentTime;
-
+            console.log("In updateActiveSubtitle currentIndex: ", currentIndex, "video.currentTime", video.currentTime);
+            console.log("-------------------");
             // Cas où l'on affiche un seul sous-titre
             if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
                 const subDiv = document.createElement("div");
@@ -345,18 +346,25 @@
         }
 
         function replaySubtitle() {
-            if (currentIndex >= 0) {
-                video.currentTime = subtitles[currentIndex].start - 1.0;
+            if (!replayingSubtitle) {
+                replayingSubtitleIndex = currentIndex;
+                replayingSubtitle = true;
+            }
+            if (replayingSubtitleIndex >= 0) {
+                video.currentTime = subtitles[replayingSubtitleIndex].start - 1.0;
                 video.play();
                 setTimeout(() => {
                     video.pause();
-                }, ((subtitles[currentIndex].end - subtitles[currentIndex].start) + 2.0) * 1000);
+                }, ((subtitles[replayingSubtitleIndex].end - subtitles[replayingSubtitleIndex].start) + 2.0) * 1000);
             }
         }
 
         function prevSubtitle() {
-            if (currentIndex > 0) {
-                video.currentTime = subtitles[currentIndex - 1].start;
+            currentIndex = currentIndex - 1;
+            console.log("currentIndex", currentIndex, "video.currentTime ", video.currentTime );
+            if (currentIndex >= 0) {
+                replayingSubtitle = false;
+                video.currentTime = subtitles[currentIndex].start;
                 if (!video.paused) {
                     video.play();
                 }
@@ -364,8 +372,11 @@
         }
 
         function nextSubtitle() {
+            currentIndex = currentIndex + 1;
             if (currentIndex < subtitles.length - 1) {
-                video.currentTime = subtitles[currentIndex + 1].start;
+                replayingSubtitle = false;
+                video.currentTime = subtitles[currentIndex].start;
+                console.log(currentIndex, "!!! currentTime has just changed. video.currentTime :", video.currentTime);
                 if (!video.paused) {
                     video.play();
                 }
