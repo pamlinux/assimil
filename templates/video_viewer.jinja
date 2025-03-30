@@ -135,7 +135,7 @@
 
         #gridContainer {
             display: none;
-            grid-template-columns: 1fr 1fr; /* Initialement 2 colonnes */
+            grid-template-columns: repeat(2, 1fr); /* Initialement 2 colonnes */
             grid-template-rows: auto auto;
             gap: 10px;
             justify-items: stretch;
@@ -152,6 +152,11 @@
         }
 
         #div3 {
+            grid-column: 1 / 3; /* Prend les 2 colonnes initialement */
+            justify-self: center;
+        }
+
+        #div6 {
             grid-column: 1 / 3; /* Prend les 2 colonnes initialement */
             justify-self: center;
         }
@@ -212,13 +217,13 @@
                 <div id="fr-sub" class="sub-box"></div>
             </div>
 
-            <div id="edit"></div>
-                <button id="toggleButton">Afficher/Cacher la Grille</button>
-                <button id="addColumnButton">Passer à 4 Divs</button>
-                <div id="gridContainer">
+            <button id="toggleButton">Afficher/Cacher la Grille</button>
+            <button id="changeDivsButton">4 Divs</button>
+            <div id="gridContainer">
                 <div id="div1">Div 1</div>
                 <div id="div2">Div 2</div>
                 <div id="div3">Div 3</div>
+                <div id="div6">Div 6</div>
             </div>
         </div>
     </div>
@@ -239,63 +244,80 @@
         const currentSubtitleDiv = document.getElementById("current-subtitle");
 
         const toggleButton = document.getElementById('toggleButton');
-        const changeDivsButton = document.getElementById('addColumnButton'); // Renommer l'ID pour plus de clarté
+        const changeDivsButton = document.getElementById('changeDivsButton');
         const gridContainer = document.getElementById('gridContainer');
         const div3 = document.getElementById('div3');
+        const div6 = document.getElementById('div6'); // Récupérer div6
 
-        let isFourDivs = false; // Variable pour suivre l'état (3 ou 4 divs sur la première ligne)
+        let isFourDivs = false;
 
         toggleButton.addEventListener('click', () => {
             gridContainer.style.display = gridContainer.style.display === 'grid' ? 'none' : 'grid';
         });
 
         changeDivsButton.addEventListener('click', () => {
-            isFourDivs = !isFourDivs; // Inverser l'état
+            isFourDivs = !isFourDivs;
 
             if (isFourDivs) {
             // Passer à 4 Divs
-                changeDivsButton.textContent = '3 Divs';
-                gridContainer.style.gridTemplateColumns = '1fr 1fr 1fr 1fr';
+            changeDivsButton.textContent = '3 Divs';
+            gridContainer.style.gridTemplateColumns = 'repeat(4, 1fr)'; // 4 colonnes
 
-                // Créer les deux nouvelles divs si elles n'existent pas
-                let div4 = document.getElementById('div4');
-                if (!div4) {
-                    div4 = document.createElement('div');
-                    div4.id = 'div4';
-                    div4.textContent = 'Div 4';
-                    gridContainer.insertBefore(div4, div3);
-                }
+            // Créer div4 et div5 si elles n'existent pas
+            let div4 = document.getElementById('div4');
+            if (!div4) {
+                div4 = document.createElement('div');
+                div4.id = 'div4';
+                div4.textContent = 'Div 4';
+                gridContainer.insertBefore(div4, div3);
+            }
 
-                let div5 = document.getElementById('div5');
-                if (!div5) {
-                    div5 = document.createElement('div');
-                    div5.id = 'div5';
-                    div5.textContent = 'Div 5';
-                    gridContainer.insertBefore(div5, div3);
-                }
+            let div5 = document.getElementById('div5');
+            if (!div5) {
+                div5 = document.createElement('div');
+                div5.id = 'div5';
+                div5.textContent = 'Div 5';
+                gridContainer.insertBefore(div5, div3);
+            }
 
-                if (div3) {
-                    div3.style.gridColumn = '1 / 5';
-                }
+            // div3 prend les 2 colonnes centrales (2 et 3) sur la 2ème ligne
+            if (div3) {
+                div3.style.gridColumn = '2 / 4';
+                div3.style.justifySelf = 'center'; // S'assurer du centrage
+            }
+
+            // div6 prend les colonnes extérieures (1 et 4) sur la 2ème ligne
+            if (div6) {
+                div6.style.gridColumn = '1 / 5'; // Prend toute la largeur pour le centrer
+                div6.style.justifySelf = 'center';
+            }
             } else {
-            // Revenir à 3 Divs
-                changeDivsButton.textContent = '4 Divs';
-                gridContainer.style.gridTemplateColumns = '1fr 1fr';
+            // Revenir à 3 Divs (2 sur la première ligne)
+            changeDivsButton.textContent = '4 Divs';
+            gridContainer.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2 colonnes
 
-                // Supprimer les divs 4 et 5 si elles existent
-                const div4 = document.getElementById('div4');
-                if (div4) {
-                    gridContainer.removeChild(div4);
-                }
+            // Supprimer div4 et div5 si elles existent
+            const div4 = document.getElementById('div4');
+            if (div4) {
+                gridContainer.removeChild(div4);
+            }
 
-                const div5 = document.getElementById('div5');
-                if (div5) {
-                    gridContainer.removeChild(div5);
-                }
+            const div5 = document.getElementById('div5');
+            if (div5) {
+                gridContainer.removeChild(div5);
+            }
 
-                if (div3) {
-                    div3.style.gridColumn = '1 / 3';
-                }
+            // div3 reprend les 2 colonnes sur la 2ème ligne
+            if (div3) {
+                div3.style.gridColumn = '1 / 3';
+                div3.style.justifySelf = 'center';
+            }
+
+            // div6 reprend les 2 colonnes sur la 2ème ligne
+            if (div6) {
+                div6.style.gridColumn = '1 / 3';
+                div6.style.justifySelf = 'center';
+            }
             }
         });
 
