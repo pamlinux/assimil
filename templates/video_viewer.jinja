@@ -136,7 +136,7 @@
         #gridContainer {
             display: none;
             grid-template-columns: repeat(2, 1fr); /* Initialement 2 colonnes */
-            grid-template-rows: auto auto;
+            grid-template-rows: auto auto; /* Deux lignes */
             gap: 10px;
             justify-items: stretch;
             align-items: start;
@@ -151,14 +151,13 @@
             border: 1px solid #ccc;
         }
 
+        /* Styles initiaux pour div3 et div6 pour 2 colonnes */
         #div3 {
-            grid-column: 1 / 3; /* Prend les 2 colonnes initialement */
-            justify-self: center;
+            grid-column: 1 / 2; /* Première colonne de la 2ème ligne */
         }
 
         #div6 {
-            grid-column: 1 / 3; /* Prend les 2 colonnes initialement */
-            justify-self: center;
+            grid-column: 2 / 3; /* 3ème colonne de la 2ème ligne */
         }
 
     </style>
@@ -247,7 +246,7 @@
         const changeDivsButton = document.getElementById('changeDivsButton');
         const gridContainer = document.getElementById('gridContainer');
         const div3 = document.getElementById('div3');
-        const div6 = document.getElementById('div6'); // Récupérer div6
+        const div6 = document.getElementById('div6');
 
         let isFourDivs = false;
 
@@ -280,15 +279,15 @@
                 gridContainer.insertBefore(div5, div3);
             }
 
-            // div3 prend les 2 colonnes centrales (2 et 3) sur la 2ème ligne
+            // div3 prend la 2ème colonne de la 2ème ligne
             if (div3) {
-                div3.style.gridColumn = '2 / 4';
-                div3.style.justifySelf = 'center'; // S'assurer du centrage
+                div3.style.gridColumn = '2 / 3';
+                div3.style.justifySelf = 'center';
             }
 
-            // div6 prend les colonnes extérieures (1 et 4) sur la 2ème ligne
+            // div6 prend la 3ème colonne de la 2ème ligne
             if (div6) {
-                div6.style.gridColumn = '1 / 5'; // Prend toute la largeur pour le centrer
+                div6.style.gridColumn = '3 / 4';
                 div6.style.justifySelf = 'center';
             }
             } else {
@@ -307,19 +306,20 @@
                 gridContainer.removeChild(div5);
             }
 
-            // div3 reprend les 2 colonnes sur la 2ème ligne
+            // div3 reprend la 1ère colonne de la 2ème ligne
             if (div3) {
-                div3.style.gridColumn = '1 / 3';
+                div3.style.gridColumn = '1 / 2';
                 div3.style.justifySelf = 'center';
             }
 
-            // div6 reprend les 2 colonnes sur la 2ème ligne
+            // div6 reprend la 2ème colonne de la 2ème ligne
             if (div6) {
-                div6.style.gridColumn = '1 / 3';
+                div6.style.gridColumn = '2 / 3';
                 div6.style.justifySelf = 'center';
             }
             }
         });
+
 
         function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
             let maxLimit = 0.0;
