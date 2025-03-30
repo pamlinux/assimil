@@ -133,6 +133,29 @@
             text-align: center;
         }
 
+        #gridContainer {
+            display: none;
+            grid-template-columns: 1fr 1fr; /* Initialement 2 colonnes */
+            grid-template-rows: auto auto;
+            gap: 10px;
+            justify-items: stretch;
+            align-items: start;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #gridContainer > div {
+            background-color: #eee;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        #div3 {
+            grid-column: 1 / 3; /* Prend les 2 colonnes initialement */
+            justify-self: center;
+        }
+
     </style>
 </head>
 <body>
@@ -190,6 +213,13 @@
             </div>
 
             <div id="edit"></div>
+                <button id="toggleButton">Afficher/Cacher la Grille</button>
+                <button id="addColumnButton">Passer à 4 Divs</button>
+                <div id="gridContainer">
+                <div id="div1">Div 1</div>
+                <div id="div2">Div 2</div>
+                <div id="div3">Div 3</div>
+            </div>
         </div>
     </div>
 
@@ -207,6 +237,67 @@
         
         let editSubtitleDiv = document.getElementById("edit");
         const currentSubtitleDiv = document.getElementById("current-subtitle");
+
+        const toggleButton = document.getElementById('toggleButton');
+        const changeDivsButton = document.getElementById('addColumnButton'); // Renommer l'ID pour plus de clarté
+        const gridContainer = document.getElementById('gridContainer');
+        const div3 = document.getElementById('div3');
+
+        let isFourDivs = false; // Variable pour suivre l'état (3 ou 4 divs sur la première ligne)
+
+        toggleButton.addEventListener('click', () => {
+            gridContainer.style.display = gridContainer.style.display === 'grid' ? 'none' : 'grid';
+        });
+
+        changeDivsButton.addEventListener('click', () => {
+            isFourDivs = !isFourDivs; // Inverser l'état
+
+            if (isFourDivs) {
+            // Passer à 4 Divs
+                changeDivsButton.textContent = '3 Divs';
+                gridContainer.style.gridTemplateColumns = '1fr 1fr 1fr 1fr';
+
+                // Créer les deux nouvelles divs si elles n'existent pas
+                let div4 = document.getElementById('div4');
+                if (!div4) {
+                    div4 = document.createElement('div');
+                    div4.id = 'div4';
+                    div4.textContent = 'Div 4';
+                    gridContainer.insertBefore(div4, div3);
+                }
+
+                let div5 = document.getElementById('div5');
+                if (!div5) {
+                    div5 = document.createElement('div');
+                    div5.id = 'div5';
+                    div5.textContent = 'Div 5';
+                    gridContainer.insertBefore(div5, div3);
+                }
+
+                if (div3) {
+                    div3.style.gridColumn = '1 / 5';
+                }
+            } else {
+            // Revenir à 3 Divs
+                changeDivsButton.textContent = '4 Divs';
+                gridContainer.style.gridTemplateColumns = '1fr 1fr';
+
+                // Supprimer les divs 4 et 5 si elles existent
+                const div4 = document.getElementById('div4');
+                if (div4) {
+                    gridContainer.removeChild(div4);
+                }
+
+                const div5 = document.getElementById('div5');
+                if (div5) {
+                    gridContainer.removeChild(div5);
+                }
+
+                if (div3) {
+                    div3.style.gridColumn = '1 / 3';
+                }
+            }
+        });
 
         function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
             let maxLimit = 0.0;
