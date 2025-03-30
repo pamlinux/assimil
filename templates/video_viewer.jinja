@@ -134,12 +134,12 @@
         }
 
         #gridContainer {
-            display: none;
-            grid-template-columns: repeat(2, 1fr); /* Initialement 2 colonnes */
-            grid-template-rows: auto auto; /* Deux lignes */
+            display: none; /* Initialement caché */
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
             gap: 10px;
             justify-items: stretch;
-            align-items: start;
+            align-items: stretch;
             width: 80%;
             margin: 20px auto;
         }
@@ -151,13 +151,17 @@
             border: 1px solid #ccc;
         }
 
-        /* Styles initiaux pour div3 et div6 pour 2 colonnes */
-        #div3 {
-            grid-column: 1 / 2; /* Première colonne de la 2ème ligne */
+        #divRegister {
+            grid-column: 1 / 2;
         }
 
-        #div6 {
-            grid-column: 2 / 3; /* 3ème colonne de la 2ème ligne */
+        #divCancel {
+            grid-column: 2 / 3;
+        }
+
+        #changeDivsButton {
+            display: none; /* Initialement caché */
+            margin-top: 10px;
         }
 
     </style>
@@ -216,15 +220,16 @@
                 <div id="fr-sub" class="sub-box"></div>
             </div>
 
-            <button id="toggleButton">Afficher/Cacher la Grille</button>
+
+            <button id="toggleEditionButton">Edition</button>
             <button id="changeDivsButton">4 Divs</button>
             <div id="gridContainer">
                 <div id="div1">Div 1</div>
                 <div id="div2">Div 2</div>
-                <div id="div3">Div 3</div>
-                <div id="div6">Div 6</div>
+                <div id="divRegister">Enregistrer</div>
+                <div id="divCancel">Abandonner</div>
             </div>
-        </div>
+       </div>
     </div>
 
 
@@ -242,84 +247,81 @@
         let editSubtitleDiv = document.getElementById("edit");
         const currentSubtitleDiv = document.getElementById("current-subtitle");
 
-        const toggleButton = document.getElementById('toggleButton');
+        const toggleEditionButton = document.getElementById('toggleEditionButton');
         const changeDivsButton = document.getElementById('changeDivsButton');
         const gridContainer = document.getElementById('gridContainer');
-        const div3 = document.getElementById('div3');
-        const div6 = document.getElementById('div6');
+        const divRegister = document.getElementById('divRegister');
+        const divCancel = document.getElementById('divCancel');
 
+        let isGridVisible = false;
         let isFourDivs = false;
 
-        toggleButton.addEventListener('click', () => {
-            gridContainer.style.display = gridContainer.style.display === 'grid' ? 'none' : 'grid';
+        toggleEditionButton.addEventListener('click', () => {
+            isGridVisible = !isGridVisible;
+            gridContainer.style.display = isGridVisible ? 'grid' : 'none';
+            changeDivsButton.style.display = isGridVisible ? 'inline-block' : 'none';
         });
 
         changeDivsButton.addEventListener('click', () => {
             isFourDivs = !isFourDivs;
 
             if (isFourDivs) {
-            // Passer à 4 Divs
-            changeDivsButton.textContent = '3 Divs';
-            gridContainer.style.gridTemplateColumns = 'repeat(4, 1fr)'; // 4 colonnes
+                changeDivsButton.textContent = '3 Divs';
+                gridContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
 
-            // Créer div4 et div5 si elles n'existent pas
-            let div4 = document.getElementById('div4');
-            if (!div4) {
-                div4 = document.createElement('div');
-                div4.id = 'div4';
-                div4.textContent = 'Div 4';
-                gridContainer.insertBefore(div4, div3);
-            }
+                let div4 = document.getElementById('div4');
+                if (!div4) {
+                    div4 = document.createElement('div');
+                    div4.id = 'div4';
+                    div4.textContent = 'Div 4';
+                    gridContainer.insertBefore(div4, divRegister);
+                }
 
-            let div5 = document.getElementById('div5');
-            if (!div5) {
-                div5 = document.createElement('div');
-                div5.id = 'div5';
-                div5.textContent = 'Div 5';
-                gridContainer.insertBefore(div5, div3);
-            }
+                let div5 = document.getElementById('div5');
+                if (!div5) {
+                    div5 = document.createElement('div');
+                    div5.id = 'div5';
+                    div5.textContent = 'Div 5';
+                    gridContainer.insertBefore(div5, divRegister);
+                }
 
-            // div3 prend la 2ème colonne de la 2ème ligne
-            if (div3) {
-                div3.style.gridColumn = '2 / 3';
-                div3.style.justifySelf = 'center';
-            }
-
-            // div6 prend la 3ème colonne de la 2ème ligne
-            if (div6) {
-                div6.style.gridColumn = '3 / 4';
-                div6.style.justifySelf = 'center';
-            }
+                if (divRegister) {
+                    divRegister.style.gridColumn = '2 / 3';
+                }
+                if (divCancel) {
+                    divCancel.style.gridColumn = '3 / 4';
+                }
             } else {
-            // Revenir à 3 Divs (2 sur la première ligne)
-            changeDivsButton.textContent = '4 Divs';
-            gridContainer.style.gridTemplateColumns = 'repeat(2, 1fr)'; // 2 colonnes
+                changeDivsButton.textContent = '4 Divs';
+                gridContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
 
-            // Supprimer div4 et div5 si elles existent
-            const div4 = document.getElementById('div4');
-            if (div4) {
-                gridContainer.removeChild(div4);
-            }
+                const div4 = document.getElementById('div4');
+                if (div4) {
+                    gridContainer.removeChild(div4);
+                }
 
-            const div5 = document.getElementById('div5');
-            if (div5) {
-                gridContainer.removeChild(div5);
-            }
+                const div5 = document.getElementById('div5');
+                if (div5) {
+                    gridContainer.removeChild(div5);
+                }
 
-            // div3 reprend la 1ère colonne de la 2ème ligne
-            if (div3) {
-                div3.style.gridColumn = '1 / 2';
-                div3.style.justifySelf = 'center';
-            }
-
-            // div6 reprend la 2ème colonne de la 2ème ligne
-            if (div6) {
-                div6.style.gridColumn = '2 / 3';
-                div6.style.justifySelf = 'center';
-            }
+                if (divRegister) {
+                    divRegister.style.gridColumn = '1 / 2';
+                }
+                if (divCancel) {
+                    divCancel.style.gridColumn = '2 / 3';
+                }
             }
         });
 
+        const hideGrid = () => {
+            gridContainer.style.display = 'none';
+            changeDivsButton.style.display = 'none';
+            isGridVisible = false;
+        };
+
+        divRegister.addEventListener('click', hideGrid);
+        divCancel.addEventListener('click', hideGrid);
 
         function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
             let maxLimit = 0.0;
