@@ -57,6 +57,8 @@ class SubtitleUpdate(BaseModel):
     id: int
     french_text: str
 
+class SubtitleUpdate(BaseModel):
+    text: str
 
 app = FastAPI()
 
@@ -596,3 +598,8 @@ async def save_media_in_db(media_metadata: MediaMetadata):
         return {"status": "OK"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/update-subtitle")
+async def update_subtitle_text(subtitle: SubtitleUpdate):
+    print("Sous-titre reçu:", subtitle.text)  # Debug
+    return {"message": "Sous-titre mis à jour", "text": subtitle.text}
