@@ -387,11 +387,11 @@ async def store_second_phase_lesson(item: MarkedSentencesItem, lesson_nb: int = 
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/test")
-async def test():
-    f = open("test/test.html")
-    html_text = f.read()
-    return html_text
+@app.get("/test", response_class=HTMLResponse)
+async def test(request: Request):
+   return templates.TemplateResponse(
+        request=request, name="test-grid.jinja", context= {"dummy" : "dummy"})
+
 
 @app.get("/correct-assimil-paragraphs/", response_class=HTMLResponse)
 async def correct_paragraphs(prog: str = "all" ):
@@ -504,9 +504,9 @@ async def get_video_a1_t00(request: Request):
     return templates.TemplateResponse(
         request=request, name="video_viewer.jinja", context={"dummy" : 0})
 
-
+videos_directory = get_path("videos_directory")
 #VIDEO_PATH = "Movies/Aquí No Hay Quien Viva 1/A1_t00.m4v" 
-VIDEO_PATH = "Movies/Aquí No Hay Quien Viva 1/A1_t00.m4v" 
+VIDEO_PATH = os.path.join(videos_directory, "Aquí No Hay Quien Viva 1/A1_t00.m4v" )
 
 def video_stream(start: int, end: int):
     with open(VIDEO_PATH, "rb") as video:

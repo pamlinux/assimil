@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur de Sous-titres</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        #container { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; padding: 20px; }
+        #tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 10px; }
+        .tab { cursor: pointer; padding: 5px 10px; border: 1px solid #ddd; }
+        .tab.active { background-color: lightgray; }
+        #subtitles { display: grid; gap: 5px; }
+        .subtitle { padding: 10px; border: 1px solid #ddd; cursor: pointer; }
+        .subtitle input { width: 100%; }
+        .controls { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div id="tabs">
+        <div class="tab active" data-type="es">ES</div>
+        <div class="tab" data-type="fr">FR</div>
+        <div class="tab" data-type="esfr">ES + FR</div>
+        <div class="tab" data-type="eslong">ES Long</div>
+        <div class="tab" data-type="frlong">FR Long</div>
+        <div class="tab" data-type="esfrlong">ES + FR Long</div>
+    </div>
+    <div id="container">
+        <div id="subtitles"></div>
+        <video id="video" controls>
+            <source src="/simple-video.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <script>
+        let subtitlesData = { es: [], fr: [], eslong: [], frlong: [], esfr: [], esfrlong: [] };
+        let activeTab = "es";
+        
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+                activeTab = tab.dataset.type;
+                displaySubtitles();
+            });
+        });
+
+        function displaySubtitles() {
+            const container = document.getElementById("subtitles");
+            container.innerHTML = "";
+            subtitlesData[activeTab].forEach((sub, index) => {
+                const div = document.createElement("div");
+                div.classList.add("subtitle");
+                div.innerHTML = `
+                    <input type="number" value="${sub.start}" class="start-time"> -
+                    <input type="number" value="${sub.end}" class="end-time"> <br>
+                    <input type="text" value="${sub.text}" class="subtitle-text">
+                    <button onclick="saveSubtitle(${index})">Sauver</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function saveSubtitle(index) {
+            const container = document.getElementById("subtitles").children[index];
+            subtitlesData[activeTab][index] = {
+                start: container.querySelector(".start-time").value,
+                end: container.querySelector(".end-time").value,
+                text: container.querySelector(".subtitle-text").value
+            };
+            console.log("Sous-titres sauvegardés:", subtitlesData);
+        }
+
+        // Exemple de données test
+        subtitlesData.es.push({ start: 0, end: 5, text: "Hola, ¿qué tal?" });
+        subtitlesData.fr.push({ start: 0, end: 5, text: "Bonjour, comment ça va?" });
+        displaySubtitles();
+    </script>
+</body>
+</html>
