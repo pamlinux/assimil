@@ -460,6 +460,8 @@
         }
 
         function replaySubtitle() {
+            div = subtitleContainer.children[currentIndex]
+            div.classList.remove("active")
             if (!replayingSubtitle) {
                 replayingSubtitleIndex = currentIndex;
                 replayingSubtitle = true;
@@ -474,6 +476,8 @@
         }
 
         function prevSubtitle() {
+            div = subtitleContainer.children[currentIndex]
+            div.classList.remove("active")
             currentIndex = currentIndex - 1;
             //console.log("currentIndex", currentIndex, "video.currentTime ", video.currentTime );
             if (currentIndex >= 0) {
