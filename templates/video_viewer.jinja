@@ -563,8 +563,11 @@
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ spanish_text: subtitles[currentIndex].es, 
-                                        french_text:  subtitles[currentIndex].fr})
+                body: JSON.stringify(
+                    { 
+                        id : currentIndex,
+                        spanish_text: subtitles[currentIndex].es, 
+                        french_text:  subtitles[currentIndex].fr})
             }).then(response => {
                 if (response.ok) {
                     console.log("Sous-titre mis à jour !");
