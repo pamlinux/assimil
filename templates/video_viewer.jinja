@@ -114,7 +114,7 @@
             min-height: 30px;
         }
         #current-subtitle {
-            display: flex;
+            display: grid;
             /*justify-content: center;*/
             justify-content: space-between;
             gap: 20px;
@@ -219,17 +219,8 @@
                 <div id="es-sub" class="sub-box"></div>
                 <div id="fr-sub" class="sub-box"></div>
             </div>
-
-
             <button id="toggleEditionButton">Edition</button>
-            <button id="changeDivsButton">4 Divs</button>
-            <div id="gridContainer">
-                <div id="div1">Div 1</div>
-                <div id="div2">Div 2</div>
-                <div id="divRegister">Enregistrer</div>
-                <div id="divCancel">Abandonner</div>
-            </div>
-       </div>
+
     </div>
 
 
@@ -245,95 +236,9 @@
         let replayingSubtitleIndex = -1;
         
         let editSubtitleDiv = document.getElementById("edit");
+        currentSubtitleDisplay.style.gridTemplateColumns = 'auto';
         const currentSubtitleDiv = document.getElementById("current-subtitle");
 
-        const toggleEditionButton = document.getElementById('toggleEditionButton');
-        const changeDivsButton = document.getElementById('changeDivsButton');
-        const gridContainer = document.getElementById('gridContainer');
-        const divRegister = document.getElementById('divRegister');
-        const divCancel = document.getElementById('divCancel');
-
-        let isGridVisible = false;
-        let isFourDivs = false;
-
-        toggleEditionButton.addEventListener('click', () => {
-            isGridVisible = !isGridVisible;
-            gridContainer.style.display = isGridVisible ? 'grid' : 'none';
-            changeDivsButton.style.display = isGridVisible ? 'inline-block' : 'none';
-            if (isGridVisible) {
-                enterEditMode();
-            }
-        });
-
-        changeDivsButton.addEventListener('click', () => {
-            isFourDivs = !isFourDivs;
-
-            if (isFourDivs) {
-                changeDivsButton.textContent = '2 Divs';
-                gridContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
-
-                let div4 = document.getElementById('div4');
-                if (!div4) {
-                    console.log("div4 about te be created")
-                    div4 = document.createElement('div');
-                    div4.id = 'div4';
-                    div4.textContent = 'Div 4';
-                    gridContainer.insertBefore(div4, divRegister);
-                }
-
-                let div5 = document.getElementById('div5');
-                if (!div5) {
-                    div5 = document.createElement('div');
-                    div5.id = 'div5';
-                    div5.textContent = 'Div 5';
-                    gridContainer.insertBefore(div5, divRegister);
-                }
-
-                if (divRegister) {
-                    divRegister.style.gridColumn = '2 / 3';
-                }
-                if (divCancel) {
-                    divCancel.style.gridColumn = '3 / 4';
-                }
-            } else {
-                changeDivsButton.textContent = '4 Divs';
-                gridContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
-
-                const div4 = document.getElementById('div4');
-                if (div4) {
-                    gridContainer.removeChild(div4);
-                }
-
-                const div5 = document.getElementById('div5');
-                if (div5) {
-                    gridContainer.removeChild(div5);
-                }
-
-                if (divRegister) {
-                    divRegister.style.gridColumn = '1 / 2';
-                }
-                if (divCancel) {
-                    divCancel.style.gridColumn = '2 / 3';
-                }
-            }
-        });
-
-        const hideGrid = () => {
-            gridContainer.style.display = 'none';
-            changeDivsButton.style.display = 'none';
-            isGridVisible = false;
-        };
-
-        function registerSubtitle() {
-            hideGrid()
-        }
-
-        function cancelEdition() {
-            hideGrid()
-        }
-
-        divRegister.addEventListener('click', registerSubtitle);
-        divCancel.addEventListener('click', hideGrid);
 
         function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
             let maxLimit = 0.0;
@@ -416,6 +321,12 @@
                 document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
                 tab.classList.add("active");
                 activeTab = tab.dataset.type;
+                if (["esfr", "esfrlong"].includes(activeTab)) {
+                    currentSubtitleDisplay.style.gridTemplateColumns = 'auto auto';
+
+                } else {
+                    currentSubtitleDisplay.style.gridTemplateColumns = 'auto';
+                }
                 displaySubtitles(); 
                 console.log("Affichage des sous-titres:", activeTab);
                 updateActiveSubtitle();
@@ -518,8 +429,7 @@
         loadSubtitles("frlong", "/long_subtitles_fr");
 
         function enterEditMode() {
-            let currentSubtitleDiv = document.getElementById("current-subtitle");
-            if (!currentSubtitleDiv) return;
+
 
             // Identifier la bonne div selon activeTab
             let subDiv;
