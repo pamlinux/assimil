@@ -4,6 +4,7 @@
 {% block add_style %}
   .searchBox {
     display: grid;
+    max-width: 600px;
     grid-template-columns: auto auto auto auto; /* Deux colonnes : auto pour les labels, 1fr pour les inputs */
     grid-template-rows: auto auto auto auto auto; /* Lignes automatiques pour chaque paire label/input et les boutons */
     gap: 20px; /* Espacement entre les lignes */
@@ -23,6 +24,15 @@
     align-items: center;
   }
   
+  .searchBox h1 {
+    grid-column: 1 / 5; /* Le bouton "Rechercher" s'étend sur les deux colonnes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    text-align: center;
+   }
+  
   .fast-access {
     grid-column: 1 / 5;
     margin-top: 20px;
@@ -33,10 +43,6 @@
     align-items: center;
   }
 
-  h1 {
-    padding-top: 0px;
-    text-align: center;
-  }
 {% endblock %}
 
 {% block header %}
@@ -44,9 +50,9 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Historique des sessions</h1>
   <p></p>
   <div class="searchBox">
+      <h1>Historique des sessions</h1>
       <label for="firstLesson">Première leçon :</label>
       <input type="number" id="firstLesson" name="firstLesson" value="1" min="1" max="100"/>
       <label for="lastLesson">Dernière leçon :</label>
