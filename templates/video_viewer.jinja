@@ -129,7 +129,7 @@
             min-height: 30px;
         }
         #es-sub, #fr-sub {
-            width: 50%;
+            width: 100%;
             text-align: center;
         }
 
@@ -227,7 +227,6 @@
     <script>
         const video = document.getElementById("video");
         const subtitleContainer = document.getElementById("subtitles");
-        const currentSubtitleDisplay = document.getElementById("current-subtitle");
         let subtitlesData = { es: [], fr: [], eslong: [], frlong: [] };
         let activeTab = "es";
         let subtitles = subtitlesData["es"];
@@ -236,8 +235,8 @@
         let replayingSubtitleIndex = -1;
         
         let editSubtitleDiv = document.getElementById("edit");
-        currentSubtitleDisplay.style.gridTemplateColumns = 'auto';
         const currentSubtitleDiv = document.getElementById("current-subtitle");
+        currentSubtitleDiv.style.gridTemplateColumns = 'auto';
 
 
         function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
@@ -280,6 +279,7 @@
             if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
                 const subDiv = document.createElement("div");
                 currentSubtitleDiv.appendChild(subDiv);
+                subDiv.style.gridColumn = '1 / 5';
                 if (currentIndex > -1) {
                     subDiv.textContent = subtitlesData[activeTab][currentIndex].text || "";
                 } else {
@@ -290,21 +290,25 @@
             else if (["esfr", "esfrlong"].includes(activeTab)) {
                 const esSubDiv = document.createElement("div");
                 esSubDiv.id = "es-sub";
+                esSubDiv.style.display = 'flex';
+                esSubDiv.style.gridColumn = '1 / 3';
+                currentSubtitleDiv.appendChild(esSubDiv);
+                const frSubDiv = document.createElement("div");
+                frSubDiv.style.display = 'flex';
+                frSubDiv.id = "fr-sub";
+                frSubDiv.style.gridColumn = '3 / 5';
+                currentSubtitleDiv.appendChild(frSubDiv);
                 if (currentIndex > -1) {
                     if (activeTab == "esfr") {
                         esSubDiv.textContent = subtitlesData["es"][currentIndex].text || "";
                     } else {
                         esSubDiv.textContent = subtitlesData["eslong"][currentIndex].text || "";
                     }
-                    const frSubDiv = document.createElement("div");
-                    frSubDiv.id = "fr-sub";
                     if (activeTab == "esfr") {
                         frSubDiv.textContent = subtitlesData["fr"][currentIndex].text || "";
                     } else {
                         frSubDiv.textContent = subtitlesData["frlong"][currentIndex].text || "";
                     }
-                    currentSubtitleDiv.appendChild(esSubDiv);
-                    currentSubtitleDiv.appendChild(frSubDiv);
                 }
             }
         }
@@ -322,10 +326,10 @@
                 tab.classList.add("active");
                 activeTab = tab.dataset.type;
                 if (["esfr", "esfrlong"].includes(activeTab)) {
-                    currentSubtitleDisplay.style.gridTemplateColumns = 'auto auto';
+                    currentSubtitleDiv.style.gridTemplateColumns = 'auto auto';
 
                 } else {
-                    currentSubtitleDisplay.style.gridTemplateColumns = 'auto';
+                    currentSubtitleDiv.style.gridTemplateColumns = 'auto';
                 }
                 displaySubtitles(); 
                 console.log("Affichage des sous-titres:", activeTab);
