@@ -237,7 +237,6 @@
         let replayingSubtitleIndex = -1;
         const gap = 4;
 
-        let editSubtitleDiv = document.getElementById("edit");
         const currentSubtitleDiv = document.getElementById("current-subtitle");
         //currentSubtitleDiv.style.gridTemplateColumns = "20 20 20 20";
         //currentSubtitleDiv.style.overflowWrap = "break-word"; 
@@ -289,10 +288,15 @@
                 const subDiv = document.createElement("div");
                 currentSubtitleDiv.appendChild(subDiv);
                 subDiv.style.gridColumn = '1 / 5';
+                if (["es", "eslong"].includes(activeTab)) {
+                    subDiv.id = "es-sub";
+                } else {
+                    subDiv.id = "fr-sub";
+                }
                 const editButton = document.createElement("button");
                 editButton.textContent = "Editer";
                 editButton.style.gridColumn = '1 / 5';
-                editButton.id = "edit-button-es"
+                editButton.id = `edit-button-${activeTab}`;
                 editButton.style.display = "block";
                 editButton.style.margin = "10px auto"; // Centrage du bouton
                 editButton.onclick = enterEditMode;
@@ -314,24 +318,6 @@
                 frSubDiv.id = "fr-sub";
                 frSubDiv.style.gridColumn = '3 / 5';
                 currentSubtitleDiv.appendChild(frSubDiv);
-
-                const edit_es_Button = document.createElement("button");
-                edit_es_Button.textContent = "Editer";
-                edit_es_Button.style.gridColumn = '1 / 3';
-                edit_es_Button.id = "edit-button-es"
-                edit_es_Button.style.display = "block";
-                edit_es_Button.style.margin = "10px auto"; // Centrage du bouton
-                edit_es_Button.onclick = enterEditMode;
-                currentSubtitleDiv.appendChild(edit_es_Button);
-
-                const edit_fr_Button = document.createElement("button");
-                edit_fr_Button.textContent = "Editer";
-                edit_fr_Button.style.gridColumn = '3 / 5';
-                edit_fr_Button.id = "edit-button-fr"
-                edit_fr_Button.style.display = "block";
-                edit_fr_Button.style.margin = "10px auto"; // Centrage du bouton
-                edit_fr_Button.onclick = enterEditMode;
-                currentSubtitleDiv.appendChild(edit_fr_Button);
                 if (currentIndex > -1) {
                     if (activeTab == "esfr") {
                         esSubDiv.textContent = subtitlesData["es"][currentIndex].text || "";
@@ -343,6 +329,35 @@
                     } else {
                         frSubDiv.textContent = subtitlesData["frlong"][currentIndex].text || "";
                     }
+
+                const edit_es_Button = document.createElement("button");
+                edit_es_Button.textContent = "Editer";
+                edit_es_Button.style.gridColumn = '1 / 3';
+                if (activeTab == "esfr") {
+                    edit_es_Button.id = "edit-button-es"
+                } else {
+                    edit_es_Button.id = "edit-button-eslong"
+                }
+                edit_es_Button.style.display = "block";
+                edit_es_Button.style.margin = "10px auto"; // Centrage du bouton
+                edit_es_Button.onclick = enterEditMode;
+                currentSubtitleDiv.appendChild(edit_es_Button);
+                console.log("edit_es_Button: ", edit_es_Button);
+
+                const edit_fr_Button = document.createElement("button");
+                edit_fr_Button.textContent = "Editer";
+                edit_fr_Button.style.gridColumn = '3 / 5';
+                if (activeTab == "esfr") {
+                    edit_fr_Button.id = "edit-button-fr"
+                } else {
+                    edit_fr_Button.id = "edit-button-frlong"
+                }
+                edit_fr_Button.style.display = "block";
+                edit_fr_Button.style.margin = "10px auto"; // Centrage du bouton
+                edit_fr_Button.onclick = enterEditMode;
+                currentSubtitleDiv.appendChild(edit_fr_Button);
+                console.log("edit_fr_Button", edit_fr_Button);
+                
                 }
             }
         }
@@ -460,41 +475,85 @@
         loadSubtitles("eslong", "/long_subtitles_es");
         loadSubtitles("frlong", "/long_subtitles_fr");
 
-        function enterEditMode() {
+        function enterEditMode(event) {
+            console.log("event", event);
+            clickedButton = event.target;
+            clickedButtonId = clickedButton.id;
+            console.log("clickedButtonId", clickedButtonId);
+            currentSubtitleDiv.removeChild(clickedButton)
+            const idSuffix = clickedButton.id.replace("edit-button-", "");
 
-
-            // Identifier la bonne div selon activeTab
-            let subDiv;
-            if (["esfr", "esfrlong"].includes(activeTab)) {
-                subDiv = {
-                    es: document.getElementById("es-sub"),
-                    fr: document.getElementById("fr-sub")
-                };
+            if (["es",  "eslong"].includes(idSuffix)) {
+                editDiv = document.getElementById("es-sub");
             } else {
-                subDiv = { es: currentSubtitleDiv }; // Pour les autres cas, la div principale contient le texte
+                editDiv = document.getElementById("fr-sub");
             }
 
-            // Rendre le(s) sous-titre(s) éditable(s)
-            if (subDiv.es) subDiv.es.contentEditable = "true";
-            if (subDiv.fr) subDiv.fr.contentEditable = "true";
+            editDiv.contentEditable = "true";
 
             // Vérifie s'il y a déjà les champs d'édition pour éviter les doublons
            // Création du bouton "Sauver"
-            const editButton = document.createElement("button");
-            editButton.textContent = "Sauver";
-            editButton.id = "edit-button"
-            editButton.style.display = "block";
-            editButton.style.margin = "10px auto"; // Centrage du bouton
-            editButton.onclick = editEdits;
+            const saveButton = document.createElement("button");
+            saveButton.textContent = "Sauver";
+            saveButton.id = `save-button-${idSuffix}`
+            saveButton.style.display = "block";
+            saveButton.style.margin = "10px auto"; // Centrage du bouton
+            saveButton.onclick = saveEdit;
+            
+            const cancelButton = document.createElement("button");
+            cancelButton.textContent = "Abandonner";
+            cancelButton.id = `save-button-${idSuffix}`
+            cancelButton.style.display = "block";
+            cancelButton.style.margin = "10px auto"; // Centrage du bouton
+            cancelButton.onclick = cancelEdit;
+
+            if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
+                saveButton.style.gridColumn = '2 / 3';
+                cancelButton.style.gridColumn = '3 / 4';
+            } else if (activeTab == "esfr") {
+                if (idSuffix == "es") {
+                    saveButton.style.gridColumn = '1 / 2';
+                    cancelButton.style.gridColumn = '2 / 3';
+                    saveButton.style.gridRow = '2';
+                    cancelButton.style.gridRow = '2';
+                } else {
+                    saveButton.style.gridColumn = '3 / 4';
+                    cancelButton.style.gridColumn = '4 / 5';
+                }
+            } else {
+                if (idSuffix == 'eslong') {
+                    saveButton.style.gridColumn = '1 / 2';
+                    cancelButton.style.gridColumn = '2 / 3';
+                    saveButton.style.gridRow = '2';
+                    cancelButton.style.gridRow = '2';
+                } else {
+                    saveButton.style.gridColumn = '3 / 4';
+                    cancelButton.style.gridColumn = '4 / 5';
+                }
+            }
 
             // Ajout des éléments à la div des sous-titres
-            currentSubtitleDiv.appendChild(editButton);
+            currentSubtitleDiv.appendChild(saveButton);
+            currentSubtitleDiv.appendChild(cancelButton);
         }
 
 
-        function editEdits() {
-            let esSubDiv = document.getElementById("es-sub");
-            let frSubDiv = document.getElementById("fr-sub");
+        function saveEdit(event) {
+            console.log("event", event);
+            console.log("In saveEdits with edit button : ", event.target);
+            saveButtonId = event.target.id;
+            console.log("saveButtonId: ", saveButtonId)
+
+
+            if (["edit-button-es", "edit-button-fr"].includes(saveButtonId)) {
+                editDiv = currentSubtitleDiv;
+            } else if (saveButtonId == "edit-button-es") {
+                editDiv = document.getElementById("es-sub");
+            } else {
+                editDiv = document.getElementById("fr-sub");
+            }
+
+            console.log("editDiv", editDiv);
 
             if (esSubDiv) subtitles[currentIndex].es = esSubDiv.innerText;
             if (frSubDiv) subtitles[currentIndex].fr = frSubDiv.innerText;
@@ -528,6 +587,9 @@
             document.getElementById("edit-button").remove();
         }
 
+        function cancelEdit(event) {
+            console.log("In cancelEdit with event ", event);
+        }
     </script>
 </body>
 </html>
