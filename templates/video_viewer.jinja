@@ -257,6 +257,9 @@
                 if (abandon) {
                     isEditingEs = false;
                     isEditingFr = false;
+                    return true;
+                } else {
+                    return false;
                 }
             }
             return true;
@@ -569,7 +572,6 @@
             console.log("saveButtonId", saveButtonId);
             currentSubtitleDiv.removeChild(saveButton)
             const idSuffix = saveButton.id.replace("save-button-", "");
-            const cancelButton = document.getElementById("`save-button-${idSuffix}`")
 
 
 
@@ -610,7 +612,25 @@
         }
 
         function cancelEdit(event) {
+            cancelButton = event.target;
+            cancelButtonId = cancelButton.id;
+            console.log("cancelButtonId", cancelButtonId);
+            currentSubtitleDiv.removeChild(cancelButton)
+            const idSuffix = cancelButton.id.replace("cancel-button-", "");
             console.log("In cancelEdit with event ", event);
+            if (["es",  "eslong"].includes(idSuffix)) {
+                editDiv = document.getElementById("es-sub");
+                isEditingEs = false;
+            } else {
+                editDiv = document.getElementById("fr-sub");
+                isEditingFr = false;
+            }
+            // Désactiver l'édition après sauvegarde
+            editDiv.contentEditable = "false";
+            if (!isEditingEs && !isEditingFr) {
+                updateActiveSubtitle();
+            }
+
         }
     </script>
 </body>
