@@ -235,6 +235,9 @@
         let currentIndex = -1;
         let replayingSubtitle = false;
         let replayingSubtitleIndex = -1;
+        let isEditingEs = false;
+        let isEditingFr = false;
+
         const gap = 4;
 
 
@@ -246,6 +249,17 @@
         function updateCurrenrSubtitleColumns(numberOfItems, gapInPercent) {
             currentSubtitleDiv.style.setProperty('--num-cols', numberOfItems);
             currentSubtitleDiv.style.setProperty('--col-gap', `${gapInPercent}%`);
+        }
+
+        function canSwitchSubtitle() {
+            if (isEditingEs || isEditingFr) {
+                abandon = window.confirm("Vous avez des modifications non enregistrées. Voulez-vous vraiment changer de sous-titre ?");
+                if (abandon) {
+                    isEditingEs = false;
+                    isEditingFr = false;
+                }
+            }
+            return true;
         }
 
         function findCurrentSubtitleIndexWithDelta(subtitles, currentTime, delta) {
@@ -275,6 +289,12 @@
         }
 
         function updateActiveSubtitle() {
+            if (isEditingEs || isEditingFr) {
+                const confirmation = window.confirm("Vous avez des modifications non enregistrées. Voulez-vous vraiment changer de sous-titre ?");
+                if (!confirmation) {
+                    return; // Annule le changement de sous-titre
+                }
+            }
             currentSubtitleDiv.innerHTML = ""; // Réinitialiser avant d'ajouter du contenu
             const delta = 0.5;
             // Trouver l'index correspondant pour les sous-titres longs
@@ -446,11 +466,11 @@
         }
 
         function prevSubtitle() {
-            div = subtitleContainer.children[currentIndex]
-            div.classList.remove("active")
-            currentIndex = currentIndex - 1;
-            //console.log("currentIndex", currentIndex, "video.currentTime ", video.currentTime );
-            if (currentIndex >= 0) {
+            if (currentIndex > 0 && canSwitchSubtitle()) {
+                div = subtitleContainer.children[currentIndex]
+                div.classList.remove("active")
+                currentIndex -= 1;
+                //console.log("currentIndex", currentIndex, "video.currentTime ", video.currentTime );
                 replayingSubtitle = false;
                 video.currentTime = subtitles[currentIndex].start;
                 if (!video.paused) {
@@ -460,8 +480,8 @@
         }
 
         function nextSubtitle() {
-            currentIndex = currentIndex + 1;
-            if (currentIndex < subtitles.length - 1) {
+            if (currentIndex < subtitles.length - 1 && canSwitchSubtitle()) {
+                currentIndex += 1;
                 replayingSubtitle = false;
                 video.currentTime = subtitles[currentIndex].start;
                 //console.log(currentIndex, "!!! currentTime has just changed. video.currentTime :", video.currentTime);
@@ -486,8 +506,10 @@
 
             if (["es",  "eslong"].includes(idSuffix)) {
                 editDiv = document.getElementById("es-sub");
+                isEditingEs = true;
             } else {
                 editDiv = document.getElementById("fr-sub");
+                isEditingFr = true;
             }
 
             editDiv.contentEditable = "true";
@@ -549,13 +571,6 @@
             const idSuffix = saveButton.id.replace("save-button-", "");
             const cancelButton = document.getElementById("`save-button-${idSuffix}`")
 
-            if (["es", "fr"].includes(idSuffix)) {
-                editDiv = currentSubtitleDiv;
-            } else if (idSuffix == "es") {
-                editDiv = document.getElementById("es-sub");
-            } else {
-                editDiv = document.getElementById("fr-sub");
-            }
 
 
             subtitleToSave = subtitlesData[idSuffix][currentIndex]
@@ -571,21 +586,27 @@
                     { 
                         languageVariant : idSuffix,
                         id : currentIndex,
-                        text:  subtitleToSave.text
+                        text: subtitleToSave.text
                     })
             }).then(response => {
                 if (response.ok) {
                     console.log("Sous-titre mis à jour !");
+                    if (["es",  "eslong"].includes(idSuffix)) {
+                        editDiv = document.getElementById("es-sub");
+                        isEditingEs = false;
+                    } else {
+                        editDiv = document.getElementById("fr-sub");
+                        isEditingFr = false;
+                    }
+                    // Désactiver l'édition après sauvegarde
+                    editDiv.contentEditable = "false";
+                    if (!isEditingEs && !isEditingFr) {
+                        updateActiveSubtitle();
+                    }
                 } else {
                     console.error("Erreur de mise à jour !");
                 }
             });
-
-            // Désactiver l'édition après sauvegarde
-            editDiv.contentEditable = "false";
-            updateActiveSubtitle();
-            // Supprimer les champs d'édition
-
         }
 
         function cancelEdit(event) {
