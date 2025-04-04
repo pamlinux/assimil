@@ -487,12 +487,24 @@ def get_note(level, lesson_nb, note_number):
         else:
             return None
 
-def update_subtitle_french(id: int, french_text: str):
+def update_subtitle(id: int, languageVariant: str, text: str):
+    if languageVariant in ["es", "fr"]:
+        subtitle_type = "media"
+    elif  languageVariant in ["eslong", "frlong"]:
+        subtitle_type = "long"
+
     stmt = select(Subtitle).where(Subtitle.id == id)
                         
     with Session(engine) as session:
         entry = session.scalars(stmt).one()
-        entry.french_text = french_text
+        if subtitle_type != entry.subtitle_type:
+            raise
+        if languageVariant in ["es", "eslong"]:
+            entry.spanish_text = text
+        elif languageVariant in ["eslong", "frlong"]:
+            entry.french_text = text
+        else:
+            raise
         #print(entry.id, entry.spanish_text, entry.french_text)
         session.commit()
 

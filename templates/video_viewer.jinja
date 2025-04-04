@@ -345,43 +345,37 @@
                 if (currentIndex > -1) {
                     if (activeTab == "esfr") {
                         esSubDiv.textContent = subtitlesData["es"][currentIndex].text || "";
-                    } else {
-                        esSubDiv.textContent = subtitlesData["eslong"][currentIndex].text || "";
-                    }
-                    if (activeTab == "esfr") {
                         frSubDiv.textContent = subtitlesData["fr"][currentIndex].text || "";
                     } else {
+                        esSubDiv.textContent = subtitlesData["eslong"][currentIndex].text || "";
                         frSubDiv.textContent = subtitlesData["frlong"][currentIndex].text || "";
                     }
 
-                const edit_es_Button = document.createElement("button");
-                edit_es_Button.textContent = "Editer";
-                edit_es_Button.style.gridColumn = '1 / 3';
-                if (activeTab == "esfr") {
-                    edit_es_Button.id = "edit-button-es"
-                } else {
-                    edit_es_Button.id = "edit-button-eslong"
-                }
-                edit_es_Button.style.display = "block";
-                edit_es_Button.style.margin = "10px auto"; // Centrage du bouton
-                edit_es_Button.onclick = enterEditMode;
-                currentSubtitleDiv.appendChild(edit_es_Button);
-                console.log("edit_es_Button: ", edit_es_Button);
+                    const edit_es_Button = document.createElement("button");
+                    edit_es_Button.textContent = "Editer";
+                    edit_es_Button.style.gridColumn = '1 / 3';
+                    if (activeTab == "esfr") {
+                        edit_es_Button.id = "edit-button-es"
+                    } else {
+                        edit_es_Button.id = "edit-button-eslong"
+                    }
+                    edit_es_Button.style.display = "block";
+                    edit_es_Button.style.margin = "10px auto"; // Centrage du bouton
+                    edit_es_Button.onclick = enterEditMode;
+                    currentSubtitleDiv.appendChild(edit_es_Button);
 
-                const edit_fr_Button = document.createElement("button");
-                edit_fr_Button.textContent = "Editer";
-                edit_fr_Button.style.gridColumn = '3 / 5';
-                if (activeTab == "esfr") {
-                    edit_fr_Button.id = "edit-button-fr"
-                } else {
-                    edit_fr_Button.id = "edit-button-frlong"
-                }
-                edit_fr_Button.style.display = "block";
-                edit_fr_Button.style.margin = "10px auto"; // Centrage du bouton
-                edit_fr_Button.onclick = enterEditMode;
-                currentSubtitleDiv.appendChild(edit_fr_Button);
-                console.log("edit_fr_Button", edit_fr_Button);
-                
+                    const edit_fr_Button = document.createElement("button");
+                    edit_fr_Button.textContent = "Editer";
+                    edit_fr_Button.style.gridColumn = '3 / 5';
+                    if (activeTab == "esfr") {
+                        edit_fr_Button.id = "edit-button-fr"
+                    } else {
+                        edit_fr_Button.id = "edit-button-frlong"
+                    }
+                    edit_fr_Button.style.display = "block";
+                    edit_fr_Button.style.margin = "10px auto"; // Centrage du bouton
+                    edit_fr_Button.onclick = enterEditMode;
+                    currentSubtitleDiv.appendChild(edit_fr_Button);
                 }
             }
         }
@@ -395,12 +389,14 @@
         // Changement d'onglet pour afficher le bon sous-titre sous la vidéo
         document.querySelectorAll(".tab").forEach(tab => {
             tab.addEventListener("click", () => {
-                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-                tab.classList.add("active");
-                activeTab = tab.dataset.type;
-                displaySubtitles(); 
-                console.log("Affichage des sous-titres:", activeTab);
-                updateActiveSubtitle();
+                if (canSwitchSubtitle()) {
+                    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+                    activeTab = tab.dataset.type;
+                    displaySubtitles(); 
+                    console.log("Affichage des sous-titres:", activeTab);
+                    updateActiveSubtitle();
+                }
             });
         });
 
@@ -573,6 +569,11 @@
             currentSubtitleDiv.removeChild(saveButton)
             const idSuffix = saveButton.id.replace("save-button-", "");
 
+            if (["es",  "eslong"].includes(idSuffix)) {
+                editDiv = document.getElementById("es-sub");
+            } else {
+                editDiv = document.getElementById("fr-sub");
+            }
 
 
             subtitleToSave = subtitlesData[idSuffix][currentIndex]
@@ -584,30 +585,40 @@
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(
-                    { 
-                        languageVariant : idSuffix,
-                        id : currentIndex,
-                        text: subtitleToSave.text
-                    })
-            }).then(response => {
-                if (response.ok) {
-                    console.log("Sous-titre mis à jour !");
-                    if (["es",  "eslong"].includes(idSuffix)) {
-                        editDiv = document.getElementById("es-sub");
-                        isEditingEs = false;
-                    } else {
-                        editDiv = document.getElementById("fr-sub");
-                        isEditingFr = false;
-                    }
-                    // Désactiver l'édition après sauvegarde
-                    editDiv.contentEditable = "false";
-                    if (!isEditingEs && !isEditingFr) {
-                        updateActiveSubtitle();
-                    }
-                } else {
-                    console.error("Erreur de mise à jour !");
+                body: JSON.stringify({ 
+                    languageVariant : idSuffix,
+                    id : subtitleToSave.id,
+                    text: editDiv.innerHTML
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erreur de mise à jour !");
                 }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Sous-titre mis à jour !");
+                if (["es",  "eslong"].includes(idSuffix)) {
+                    editDiv = document.getElementById("es-sub");
+                    isEditingEs = false;
+                } else {
+                    editDiv = document.getElementById("fr-sub");
+                    isEditingFr = false;
+                }
+                // Désactiver l'édition après sauvegarde
+                editDiv.contentEditable = "false";
+                subtitlesData[idSuffix][currentIndex].text = editDiv.innerHTML;
+                if (!isEditingEs && !isEditingFr) {
+                    console.log("Just before updateActiveSubtitle in (!isEditingEs && !isEditingFr)")
+                    updateActiveSubtitle();
+                }
+                console.log(data.message);           // "Sous-titre mis à jour"
+                console.log(data.languageVariant);   // Valeur de subtitle.languageVariant
+                console.log(data.text);              // Le texte retourné
+            })
+            .catch(error => {
+                console.error("Erreur lors de la requête :", error);
             });
         }
 

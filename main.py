@@ -27,7 +27,7 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson, MediaMetadata, update_subtitle_french
+from database import NoSuchLesson, MediaMetadata, update_subtitle
 from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles
 from subtitles import get_subtitles_context, NoSuchTvSerie, store_media
 
@@ -486,11 +486,11 @@ def get_both_subtitles():
     return get_es_and_fr_subtitles(1)
 
 @app.post("/subtitles/update")
-def update_subtitle_in_database(updates: List[SubtitleUpdate]):
+def update_subtitle_in_database(languageVariant, updates: List[SubtitleUpdate]):
     print(updates)
     for update in updates:
-        update_subtitle_french(update.id, update.french_text)
-        print(update.id, update.french_text)
+        update_subtitle(update.id, languageVariant, update.text)
+        print(update.id, update.text)
 
 
     #for update in updates:
@@ -600,4 +600,6 @@ async def save_media_in_db(media_metadata: MediaMetadata):
 @app.post("/update-subtitle")
 async def update_subtitle_text(subtitle: SubtitleUpdate):
     print(f"subtitle : {subtitle}")
+    update_subtitle(subtitle.id, subtitle.languageVariant, subtitle.text)
+
     return {"message": "Sous-titre mis à jour", "languageVariant": subtitle.languageVariant,  "text": subtitle.text}
