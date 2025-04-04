@@ -237,6 +237,7 @@
         let replayingSubtitleIndex = -1;
         const gap = 4;
 
+
         const currentSubtitleDiv = document.getElementById("current-subtitle");
         //currentSubtitleDiv.style.gridTemplateColumns = "20 20 20 20";
         //currentSubtitleDiv.style.overflowWrap = "break-word"; 
@@ -502,7 +503,7 @@
             
             const cancelButton = document.createElement("button");
             cancelButton.textContent = "Abandonner";
-            cancelButton.id = `save-button-${idSuffix}`
+            cancelButton.id = `cancel-button-${idSuffix}`
             cancelButton.style.display = "block";
             cancelButton.style.margin = "10px auto"; // Centrage du bouton
             cancelButton.onclick = cancelEdit;
@@ -541,24 +542,25 @@
         function saveEdit(event) {
             console.log("event", event);
             console.log("In saveEdits with edit button : ", event.target);
-            saveButtonId = event.target.id;
-            console.log("saveButtonId: ", saveButtonId)
+            saveButton = event.target;
+            saveButtonId = saveButton.id;
+            console.log("saveButtonId", saveButtonId);
+            currentSubtitleDiv.removeChild(saveButton)
+            const idSuffix = saveButton.id.replace("save-button-", "");
+            const cancelButton = document.getElementById("`save-button-${idSuffix}`")
 
-
-            if (["edit-button-es", "edit-button-fr"].includes(saveButtonId)) {
+            if (["es", "fr"].includes(idSuffix)) {
                 editDiv = currentSubtitleDiv;
-            } else if (saveButtonId == "edit-button-es") {
+            } else if (idSuffix == "es") {
                 editDiv = document.getElementById("es-sub");
             } else {
                 editDiv = document.getElementById("fr-sub");
             }
 
-            console.log("editDiv", editDiv);
 
-            if (esSubDiv) subtitles[currentIndex].es = esSubDiv.innerText;
-            if (frSubDiv) subtitles[currentIndex].fr = frSubDiv.innerText;
-
-            console.log(subtitles[currentIndex]);
+            subtitleToSave = subtitlesData[idSuffix][currentIndex]
+            console.log("subtitleToSave", subtitleToSave);
+  
             // Envoyer les modifications au serveur
             fetch("/update-subtitle", {
                 method: "POST",
@@ -567,9 +569,10 @@
                 },
                 body: JSON.stringify(
                     { 
+                        languageVariant : idSuffix,
                         id : currentIndex,
-                        spanish_text: subtitles[currentIndex].es, 
-                        french_text:  subtitles[currentIndex].fr})
+                        text:  subtitleToSave.text
+                    })
             }).then(response => {
                 if (response.ok) {
                     console.log("Sous-titre mis à jour !");
@@ -579,12 +582,10 @@
             });
 
             // Désactiver l'édition après sauvegarde
-            if (esSubDiv) esSubDiv.contentEditable = "false";
-            if (frSubDiv) frSubDiv.contentEditable = "false";
-
+            editDiv.contentEditable = "false";
+            updateActiveSubtitle();
             // Supprimer les champs d'édition
 
-            document.getElementById("edit-button").remove();
         }
 
         function cancelEdit(event) {

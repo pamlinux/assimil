@@ -54,9 +54,9 @@ class ErrorItem(BaseModel):
         oldestLesson : str
 
 class SubtitleUpdate(BaseModel):
+    languageVariant: str
     id: int
-    spanish_text: str
-    french_text: str
+    text: str
 
 app = FastAPI()
 
@@ -599,6 +599,5 @@ async def save_media_in_db(media_metadata: MediaMetadata):
 
 @app.post("/update-subtitle")
 async def update_subtitle_text(subtitle: SubtitleUpdate):
-    print(f"Sous-titre reçu, espagnol: {subtitle.spanish_text}, français: {subtitle.french_text}")  # Debug
     print(f"subtitle : {subtitle}")
-    return {"message": "Sous-titre mis à jour", "spanish text": subtitle.spanish_text}
+    return {"message": "Sous-titre mis à jour", "languageVariant": subtitle.languageVariant,  "text": subtitle.text}
