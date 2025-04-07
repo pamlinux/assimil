@@ -1,0 +1,38 @@
+<div>
+  <textarea id="subtitleInput" rows="2" cols="60"></textarea>
+  <button id="recordButton">🎤 Parler</button>
+</div>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+document.getElementById('recordButton').addEventListener('click', async () => {
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  mediaRecorder = new MediaRecorder(stream);
+  audioChunks = [];
+
+  mediaRecorder.ondataavailable = event => {
+    audioChunks.push(event.data);
+  };
+
+  mediaRecorder.onstop = async () => {
+    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+    const formData = new FormData();
+    formData.append('audio', audioBlob, 'audio.webm');
+
+    const response = await fetch('/transcribe-audio', {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await response.json();
+    document.getElementById('subtitleInput').value = data.text;
+  };
+
+  mediaRecorder.start();
+
+  // Stop après 5 secondes
+  setTimeout(() => mediaRecorder.stop(), 5000);
+});
+</script>

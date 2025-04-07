@@ -278,6 +278,25 @@
             return -1;
         }
 
+        function findClosestSubtitleIndex(currentTime) {
+            if (!subtitles || subtitles.length === 0) {
+                return -1;
+            }
+
+            let closestIndex = 0;
+            let smallestDiff = Math.abs(currentTime - subtitles[0].start);
+
+            for (let i = 1; i < subtitles.length; i++) {
+                const diff = Math.abs(currentTime - subtitles[i].start);
+                if (diff < smallestDiff) {
+                    smallestDiff = diff;
+                    closestIndex = i;
+                }
+            }
+
+            return closestIndex;
+        }
+
         function findClosestPreviousSubtitleIndex(currentTime) {
             for (let i = subtitles.length - 1; i >= 0; i--) {
                 if (subtitles[i].end < currentTime - epsilon) {
@@ -311,7 +330,9 @@
             } else {
                 subtitles = subtitlesData["es"];
             }
-            currentIndex = findCurrentSubtitleIndex(subtitles, video.currentTime)
+            currentIndex = findCurrentSubtitleIndex(video.currentTime)
+            if (currentIndex < 0) return;
+            //console.log("In updateActiveSubtitle ", currentIndex, subtitles[currentIndex]);
             // Cas où l'on affiche un seul sous-titre
             if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
                 const subDiv = document.createElement("div");
@@ -436,12 +457,13 @@
 
         // Synchronisation des sous-titres avec la vidéo
         video.addEventListener("timeupdate", () => {
+            //console.log("In anonymus hndler");
+            updateActiveSubtitle();
             subtitlesData["es"].forEach((sub, index) => {
                 const div = subtitleContainer.children[index];
                 if (video.currentTime >= sub.start && video.currentTime < sub.end) {
                     div.scrollIntoView({ behavior: "smooth", block: "center" });
                     div.classList.add("active");
-                    updateActiveSubtitle();
                 } else {
                     div.classList.remove("active");
                 }

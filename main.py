@@ -8,11 +8,14 @@ from dataclasses import dataclass
 from fastapi.responses import FileResponse
 from fastapi.responses import StreamingResponse
 from fastapi import HTTPException
-from fastapi import FastAPI, Request, Response, Depends, Form
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Request, Response, Depends, Form, File, UploadFile
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
+import shutil
+import whisper
+import tempfile
 from main_menu import MENU_ITEMS
 from database import get_errors, get_default_lesson, get_note
 from tonic_accent import get_html_lessons_directory, get_lesson_audio_files_directory, get_title 
@@ -603,3 +606,23 @@ async def update_subtitle_text(subtitle: SubtitleUpdate):
     update_subtitle(subtitle.id, subtitle.languageVariant, subtitle.text)
 
     return {"message": "Sous-titre mis à jour", "languageVariant": subtitle.languageVariant,  "text": subtitle.text}
+
+@app.get("/test-audio/")
+async def test_audio(request: Request):
+    return templates.TemplateResponse(
+        request=request, name="test-audio.html", context={"dummy" : "dummy"}
+    )
+
+model = whisper.load_model("base")  # ou "small", "medium", selon ta machine
+
+@app.post("/transcribe-audio")
+async def transcribe_audio(audio: UploadFile = File(...)):
+    print("POST /transcribe-audio received")
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as tmp:
+        content = await audio.read()
+        tmp.write(content)
+        tmp_path = tmp.name
+
+    result = model.transcribe(tmp_path)
+    return JSONResponse({"text": result["text"]})
