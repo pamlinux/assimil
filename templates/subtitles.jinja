@@ -33,11 +33,6 @@
         }
 
 
-        .subtitle-spanish {
-            white-space: pre-line; /* Respecte les retours à la ligne */
-            font-style: italic;
-        }
-
         .right-text {
             text-align: right;
         }
@@ -77,6 +72,10 @@
 
     <h1>Éditeur de sous-titres</h1>
     <div id="top-bar">
+        <select id="subtitle-source">
+            <option value="media">Sous-titres du média</option>
+            <option value="audio">Sous-titres tirés de l'audio</option>
+        </select>
         <button id="save-all">Tout Sauver</button>
         <input type="number" id="subtitle-number" placeholder="Numéro">
         <button id="go-to-subtitle">Aller</button>
@@ -94,46 +93,17 @@
             const subtitleContainer = document.getElementById("subtitles-container");
 
             // Charger les sous-titres depuis le serveur
-            fetch("http://127.0.0.1:8001/subtitles")
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(subtitle => {
-                        const div = document.createElement("div");
-                        div.classList.add("subtitle-row");
-
-                        div.innerHTML = `
-                            <div class="right-text"><strong>${subtitle.id}</strong></div>
-                            <div class="subtitle-pair">
-                                <div class="subtitle-box">
-                                    <p><div class="subtitle-spanish" data-subtitle-number=${subtitle.id}>${subtitle.spanish.replace(/\n/g, "<br>")}</div></p>
-                                </div>
-                                    <textarea class="subtitle-input subtitle-box" data-id="${subtitle.id}">${subtitle.french}</textarea>
-                            </div>
-                            <div><strong>${subtitle.timestamp}</strong></div>
-                    `;
-
-                        subtitleContainer.appendChild(div);
-                    });
-
-                    // Activer le suivi des modifications
-                    document.querySelectorAll(".subtitle-input").forEach(input => {
-                        input.addEventListener("input", () => {
-                            input.dataset.modified = "true";
-                            hasUnsavedChanges = true;
-                        });
-                    });
-                });
 
             // Sauvegarder toutes les modifications
             saveButton.addEventListener("click", () => {
                 const updates = [];
                 console.log("In saveButton listener")
                 document.querySelectorAll(".subtitle-input").forEach(input => {
-                    console.log("In saveButton listener input found")
                     if (input.dataset.modified === "true") {
                         updates.push({
-                            id: input.dataset.id,
-                            french_text: input.value
+                            id: parseInt(input.dataset.id),
+                            languageVariant: input.dataset.variant,
+                            text: input.value
                         });
                         input.dataset.modified = "false";
                     }
@@ -161,13 +131,59 @@
                     event.returnValue = "Vous avez des modifications non sauvegardées. Voulez-vous vraiment quitter ?";
                 }
             });
+
+            document.getElementById("subtitle-source").addEventListener("change", function () {
+                loadAndDisplaySubtitles(this.value);
+            });
+
+            function loadAndDisplaySubtitles(sourceType) {
+                let esType = sourceType === "audio" ? "eslong" : "es";
+                let frType = sourceType === "audio" ? "frlong" : "fr";
+
+                Promise.all([
+                    fetch(`/subtitles/${esType}`).then(res => res.json()),
+                    fetch(`/subtitles/${frType}`).then(res => res.json())
+                ])
+                .then(([esSubtitles, frSubtitles]) => {
+                    subtitleContainer.innerHTML = "";  // Nettoyer l’ancien affichage
+
+                    esSubtitles.forEach((spanishSub, index) => {
+                        const frenchSub = frSubtitles[index];
+                        const div = document.createElement("div");
+                        div.classList.add("subtitle-row");
+                        div.setAttribute("data-subtitle-id", spanishSub.id);
+
+                        div.innerHTML = `
+                            <div class="right-text"><strong>${spanishSub.id}</strong></div>
+                            <div class="subtitle-pair">
+                                <textarea class="subtitle-input subtitle-box" data-id="${spanishSub.id}" data-variant="${esType}">${spanishSub.text}</textarea>
+                                <textarea class="subtitle-input subtitle-box" data-id="${spanishSub.id}" data-variant="${frType}">${frenchSub.text}</textarea>
+                            </div>
+                            <div><strong>${spanishSub.timestamp}</strong></div>
+                        `;
+                        subtitleContainer.appendChild(div);
+                    });
+
+                    document.querySelectorAll(".subtitle-input").forEach(input => {
+                        input.addEventListener("input", () => {
+                            input.dataset.modified = "true";
+                            hasUnsavedChanges = true;
+                        });
+                    });
+                });
+            }
+
+            loadAndDisplaySubtitles("media");
+
         });
 
-        document.getElementById("go-to-subtitle").addEventListener("click", function() {
-            let num = document.getElementById("subtitle-number").value;
-            if (!num) return; // Si rien n'est entré, ne rien faire
+        document.getElementById("go-to-subtitle").addEventListener("click", function () {
+            const num = document.getElementById("subtitle-number").value;
+            if (!num) return;
 
-            let target = document.querySelector(`[data-subtitle-number="${num}"]`);
+            let target = document.querySelector(`[data-subtitle-id="${num}"]`);
+            console.log("Recherche du sous-titre", num, target);
+
             if (target) {
                 target.scrollIntoView({ behavior: "smooth", block: "center" });
             } else {
@@ -175,43 +191,6 @@
             }
         });
 
-        async function loadSubtitles() {
-            const response = await fetch("http://127.0.0.1:8001/subtitles");
-            const subtitles = await response.json();
-
-            const table = document.getElementById("subtitle-table");
-            table.innerHTML = "";
-
-            subtitles.forEach(subtitle => {
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${subtitle.id}</td>
-                    <td>${subtitle.timestamp}</td>
-                    <td>${subtitle.spanish.replace(/\n/g, "<br>")}</td>
-                    <td><textarea id="fr-${subtitle.id}">${subtitle.french}</textarea></td>
-                    <td><button onclick="updateSubtitle('${subtitle.id}')">Save</button></td>
-                `;
-
-                table.appendChild(row);
-            });
-        }
-
-        async function updateSubtitle(id) {
-            const frenchText = document.getElementById(`fr-${id}`).value;
-
-            const response = await fetch("http://127.0.0.1:8001/subtitles/update", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, french: frenchText })
-            });
-
-            const result = await response.json();
-            alert(result.message);
-        }
-
-        // Load subtitles on page load
-        //loadSubtitles();
     </script>
 
 </body>

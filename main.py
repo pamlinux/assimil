@@ -7,7 +7,7 @@ from datetime import date, datetime
 from dataclasses import dataclass
 from fastapi.responses import FileResponse
 from fastapi.responses import StreamingResponse
-from fastapi import HTTPException
+from fastapi import HTTPException, Body
 from fastapi import FastAPI, Request, Response, Depends, Form, File, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -30,7 +30,7 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson, MediaMetadata, update_subtitle
+from database import NoSuchLesson, MediaMetadata, update_subtitle, fetch_subtitles_from_db
 from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles
 from subtitles import get_subtitles_context, NoSuchTvSerie, store_media
 
@@ -486,21 +486,21 @@ async def get_subtitles_of_television_serie(request: Request, dvd : int =1):
 
 @app.get("/subtitles")
 def get_both_subtitles():
-    return get_es_and_fr_subtitles(1)
+    return get_es_and_fr_subtitles("long")
 
 @app.post("/subtitles/update")
-def update_subtitle_in_database(languageVariant, updates: List[SubtitleUpdate]):
+def update_subtitles_in_database(updates: List[SubtitleUpdate] = Body(...)):
     print(updates)
     for update in updates:
-        update_subtitle(update.id, languageVariant, update.text)
-        print(update.id, update.text)
+        update_subtitle(update.id, update.languageVariant, update.text)
+        print(update.id, update.languageVariant, update.text)
 
 
     #for update in updates:
     #    for subtitle in subtitles:
     #        update_subtitle(subtitle)
     #raise HTTPException(status_code=404, detail="Subtitle not found")
-    return {"message": "Subtitle updated successfully"}
+    return {"status" : "ok", "message": "Subtitle updated successfully"}
 
 @app.get("/video_viewer")
 async def get_video_a1_t00(request: Request):
@@ -562,6 +562,17 @@ def get_es_only_long_subtitles():
 @app.get("/long_subtitles_fr")
 def get_fr_only_long_subtitles():
     return get_fr_subtitles("long")
+
+@app.get("/subtitles/{variant}")
+def get_subtitles_by_variant(variant: str):
+    print("variant received", variant)
+    allowed_variants = ["es", "fr", "eslong", "frlong"]
+    if variant not in allowed_variants:
+        raise HTTPException(status_code=400, detail="Invalid subtitle variant")
+
+    subtitles = fetch_subtitles_from_db(variant)
+    return subtitles
+    #return {"status": "ok", "variant": variant}
 
 @app.get("/search-media")
 def search_media_in_db(request: Request):

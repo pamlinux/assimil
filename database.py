@@ -501,7 +501,7 @@ def update_subtitle(id: int, languageVariant: str, text: str):
             raise
         if languageVariant in ["es", "eslong"]:
             entry.spanish_text = text
-        elif languageVariant in ["eslong", "frlong"]:
+        elif languageVariant in ["fr", "frlong"]:
             entry.french_text = text
         else:
             raise
@@ -542,6 +542,32 @@ def get_es_and_fr_subtitles(subtitle_type: str):
                 "timestamp": format_srt_timestamp(entry.start_time, entry.end_time),
                 "spanish": entry.spanish_text,
                 "french": entry.french_text
+            })
+
+    return subtitles
+
+def fetch_subtitles_from_db(variant: str):
+    if variant in ["eslong", "frlong"]:
+        subtitle_type = "long"
+    else:
+        subtitle_type = "media"
+
+    stmt = select(Subtitle).where(
+        Subtitle.subtitle_type == subtitle_type
+    )
+    
+    subtitles = []
+
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            if variant in ["es", "eslong"]:
+                text = entry.spanish_text
+            else:
+                text = entry.french_text
+            subtitles.append({
+                "id": entry.id,
+                "timestamp": format_srt_timestamp(entry.start_time, entry.end_time),
+                "text": text
             })
 
     return subtitles
