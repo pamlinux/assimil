@@ -458,8 +458,9 @@
                     activeTab = tab.dataset.type;
                     displaySubtitles(); 
                     console.log("Affichage des sous-titres:", activeTab);
+                    displayedSubtitleIndex = -1; //Force updateActiveSubtitle()
                     updateActiveSubtitle();
-                }
+                 }
             });
         });
 
