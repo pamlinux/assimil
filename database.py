@@ -136,13 +136,9 @@ class Media(Base):
     media_type: Mapped[str] # "movie" or "series"
     season: Mapped[Optional[int]]
     series_number: Mapped[Optional[int]] # Number of the series
-    series_title: Mapped[Optional[str]]
+    episode_title: Mapped[Optional[str]]
     disc_number: Mapped[Optional[int]] # Number of the DVD or Blu-ray
-    video_file: Mapped[Optional[str]]
-    spanish_subtitles_file: Mapped[Optional[str]]
-    french_subtitles_file: Mapped[Optional[str]]
-    long_spanish_subtitles_file: Mapped[Optional[str]]
-    long_french_subtitles_file: Mapped[Optional[str]]
+    video_filename: Mapped[Optional[str]]
     subtitles: Mapped[List["Subtitle"]] = relationship(
         back_populates="media", cascade="all, delete-orphan")
 
