@@ -583,6 +583,7 @@ def get_es_subtitles(subtitle_type: str):
         for entry in session.scalars(stmt):
             subtitles.append({
                 "id": entry.id,
+                "index": entry.index,
                 "start": time_to_seconds(entry.start_time), 
                 "end": time_to_seconds(entry.end_time),
                 "text": entry.spanish_text,
@@ -601,6 +602,7 @@ def get_fr_subtitles(subtitle_type: str):
         for entry in session.scalars(stmt):
             subtitles.append({
                 "id": entry.id,
+                "index": entry.index,
                 "start": time_to_seconds(entry.start_time), 
                 "end": time_to_seconds(entry.end_time),
                 "text": entry.french_text,
