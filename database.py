@@ -4,6 +4,7 @@ import re
 import datetime
 import pickle
 import pytz
+import yaml
 from pydantic import BaseModel
 from sqlalchemy import ForeignKey, select, String, and_, desc, exc, UniqueConstraint
 from sqlalchemy.orm import DeclarativeBase
@@ -14,26 +15,13 @@ from sqlalchemy.sql import func
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from paths import get_path
-import yaml
-
-class MediaMetadata(BaseModel):
-    title: str = ""
-    media_type: str = ""
-    disc_number: int | None = None
-    season: int | None = None
-    series_number: int | None = None
-    series_title: str = ""
-    video_file: str | None = None
-    spanish_subtitles_file: str | None = None
-    long_spanish_subtitles_file: str | None = None
-    french_subtitles_file: str | None = None
-    long_french_subtitles_file: str | None = None
+from schemas.media import MediaMetadata
+from models.media import Media, Subtitle
 
 class NoSuchLesson(Exception):
     pass
 
-class Base(DeclarativeBase):
-    pass
+from models import Base
 
 class Word(Base):
     __tablename__ = "word_dict"
@@ -129,31 +117,6 @@ class GrammarNote(Base):
     def __repr__(self) -> str:
         return f"level : {self.level}, lessons_nb : {self.lesson_nb}, note_number : {self.note_number}, note : {self.note}"
     
-class Media(Base):
-    __tablename__ = 'media'
-    id: Mapped[int] = mapped_column(primary_key=True)
-    title: Mapped[str]
-    media_type: Mapped[str] # "movie" or "series"
-    season: Mapped[Optional[int]]
-    series_number: Mapped[Optional[int]] # Number of the series
-    episode_title: Mapped[Optional[str]]
-    disc_number: Mapped[Optional[int]] # Number of the DVD or Blu-ray
-    video_filename: Mapped[Optional[str]]
-    subtitles: Mapped[List["Subtitle"]] = relationship(
-        back_populates="media", cascade="all, delete-orphan")
-
-class Subtitle(Base):
-    __tablename__ = 'subtitles'
-    id: Mapped[int] = mapped_column(primary_key=True)
-    index: Mapped[int]
-    subtitle_type: Mapped[str]  # "media" or "long"
-    media_id: Mapped[int] = mapped_column(ForeignKey("media.id"))
-    media: Mapped["Media"] = relationship(back_populates="subtitles")
-    start_time: Mapped[datetime.time]
-    end_time: Mapped[datetime.time]
-    spanish_text: Mapped[str]
-    french_text: Mapped[Optional[str]]
-    __table_args__ = (UniqueConstraint('media_id', 'index', 'subtitle_type', name='unique_media_subtitle_index_type'),)
 
 
 def get_database_engine(name, echo=True):
