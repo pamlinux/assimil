@@ -1,4 +1,4 @@
-# models.py
+# media.py
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy import Integer, String, ForeignKey, UniqueConstraint
 from typing import Optional, List
@@ -11,7 +11,7 @@ class Media(Base):
     title: Mapped[str]
     media_type: Mapped[str] # "movie" or "series"
     season: Mapped[Optional[int]]
-    series_number: Mapped[Optional[int]] # Number of the series
+    episode_number: Mapped[Optional[int]] # Number of the series
     episode_title: Mapped[Optional[str]]
     disc_number: Mapped[Optional[int]] # Number of the DVD or Blu-ray
     video_filename: Mapped[Optional[str]]

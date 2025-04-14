@@ -30,9 +30,10 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson, MediaMetadata, update_subtitle, fetch_subtitles_from_db
+from database import NoSuchLesson, update_subtitle, fetch_subtitles_from_db
 from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles
 from subtitles import get_subtitles_context, NoSuchTvSerie, store_media
+from schemas.media import MediaMetadata
 
 @dataclass
 class SimpleModel:
@@ -509,7 +510,7 @@ async def get_video_a1_t00(request: Request):
 
 videos_directory = get_path("videos_directory")
 #VIDEO_PATH = "Movies/Aquí No Hay Quien Viva 1/A1_t00.m4v" 
-VIDEO_PATH = os.path.join(videos_directory, "Aquí No Hay Quien Viva 1/A1_t00.m4v" )
+VIDEO_PATH = os.path.join(videos_directory, "Aquí no hay quien viva 1/A1_t00.m4v" )
 
 def video_stream(start: int, end: int):
     with open(VIDEO_PATH, "rb") as video:
@@ -545,7 +546,7 @@ async def serve_video(request: Request):
 
 @app.get("/subtitles.srt")
 def get_subtitles():
-    return FileResponse("Movies/Aquí No Hay Quien Viva 1/a1_t00_es.vtt", media_type="text/vtt")
+    return FileResponse(os.path.join(videos_directory, "Aquí no hay quien viva 1/a1_t00_es.vtt"), media_type="text/vtt")
 
 @app.get("/subtitles_es")
 def get_es_only_subtitles():
@@ -605,6 +606,8 @@ async def search_media(query: MediaMetadata):
 @app.post("/save-media")
 async def save_media_in_db(media_metadata: MediaMetadata):
     try:
+        print("In /save-media")
+
         print(media_metadata)
         store_media(media_metadata)
         return {"status": "OK"}

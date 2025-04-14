@@ -6,20 +6,8 @@
         <label for="disc_number">Numéro du disque :</label>
         <input type="number" id="disc_number" name="disc_number">
 
-        <label for="video_file">Fichier Vidéo :</label>
-        <input type="file" id="video_file" name="video_file" accept="video/*">
-
-        <label for="spanish_subtitles_file">Fichier de sous-titres espagnols :</label>
-        <input type="file" id="spanish_subtitles_file" name="spanish_subtitles_file" accept=".srt,.vtt,.ass,.ssa">
-
-        <label for="long_spanish_subtitles_file">Fichier de longs sous-titres espagnols :</label>
-        <input type="file" id="long_spanish_subtitles_file" name="long_spanish_subtitles_file" accept=".srt,.vtt,.ass,.ssa">
-
-        <label for="french_subtitle_file">Fichier de sous-titres français :</label>
-        <input type="file" id="french_subtitle_file" name="french_subtitle_file" accept=".srt,.vtt,.ass,.ssa">
-
-        <label for="long_french_subtitle_file">Fichier de longs sous-titres français :</label>
-        <input type="file" id="long_french_subtitle_file" name="long_french_subtitle_file" accept=".srt,.vtt,.ass,.ssa">
+        <label for="video_filename">Fichier Vidéo :</label>
+        <input type="file" id="video_filename" name="video_filename" accept="video/*">
 
         <label for="media_type">Type de Média :</label>
         <select id="media_type" name="media_type" onchange="toggleSeriesFields()">
@@ -32,11 +20,11 @@
             <label for="season">Saison :</label>
             <input type="number" id="season" name="season">
 
-            <label for="series_number">Numéro de l’épisode :</label>
-            <input type="number" id="series_number" name="series_number">
+            <label for="episode_number">Numéro de l’épisode :</label>
+            <input type="number" id="episode_number" name="episode_number">
 
-            <label for="series_title">Titre de la série :</label>
-            <input type="text" id="series_title" name="series_title">
+            <label for="episode_title">Titre de L'épisode :</label>
+            <input type="text" id="episode_title" name="episode_title">
         </div>
     </div>
 
@@ -60,14 +48,10 @@
         formData.append("title", document.getElementById("title").value);
         formData.append("media_type", document.getElementById("media_type").value);
         formData.append("season", document.getElementById("season").value);
-        formData.append("series_number", document.getElementById("series_number").value);
-        formData.append("video_file", document.getElementById("video_file").files[0]?.name || ""); 
-        formData.append("spanish_subtitles_file", document.getElementById("spanish_subtitles_file").files[0]?.name || ""); 
-        formData.append("long_spanish_subtitles_file", document.getElementById("long_spanish_subtitles_file").files[0]?.name || ""); 
-        formData.append("french_subtitles_file", document.getElementById("french_subtitle_file").files[0]?.name || ""); 
-        formData.append("long_french_subtitles_file", document.getElementById("long_french_subtitle_file").files[0]?.name || ""); 
-        formData.append("series_title", document.getElementById("series_title").value);
         formData.append("disc_number", document.getElementById("disc_number").value);
+        formData.append("episode_number", document.getElementById("episode_number").value);
+        formData.append("episode_title", document.getElementById("episode_title").value);
+        formData.append("video_filename", document.getElementById("video_filename").files[0]?.name || ""); 
 
         fetch("http://127.0.0.1:8001/save-media", {
             method: "POST",

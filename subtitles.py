@@ -2,7 +2,8 @@ import os
 import re
 import datetime
 import json
-from database import MediaMetadata, update_or_store_media, store_subtitles
+from schemas.media import MediaMetadata
+from database import update_or_store_media, store_subtitles
 from paths import get_path
 
 videos_directory = get_path("videos_directory")
@@ -163,7 +164,9 @@ def get_subtitles_context(dvd : int, directory=""):
     return context
 
 def store_media(media: MediaMetadata):
+    print(media)
     update_or_store_media(media)
-    spanish_subs, french_subs, long_spanish_subs, long_french_subs = get_es_and_fr_subtitles_from_files(media)
-    store_subtitles(media, "media", spanish_subs, french_subs)
-    store_subtitles(media, "long", long_spanish_subs, long_french_subs)
+    #spanish_subs, french_subs, long_spanish_subs, long_french_subs = get_es_and_fr_subtitles_from_files(media)
+    #store_subtitles(media, "media", spanish_subs, french_subs)
+    #store_subtitles(media, "long", long_spanish_subs, long_french_subs)
+

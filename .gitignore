@@ -1,12 +1,20 @@
+# Dossiers à ignorer
 Sentences/
-FULL\ Lessons/
-__pycache__
+FULL Lessons/
+__pycache__/
 **/.DS_Store
+
+# Fichiers vidéo/audio volumineux
 *.mp4
 *.m4v
+*.mkv
+*.ac3
+*.mpga
+*.flac
+*.mp3
+
+# Fichiers spécifiques
 audio_extrait.mpga
 Movies/audio_extrait.mp3
 extrait_audio_converted_16bit.flac
-extrait_audio.mpga
 Untitled2.ipynb
-__pycache__/

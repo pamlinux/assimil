@@ -6,4 +6,5 @@ class Base(DeclarativeBase):
 
 # Importer tous les modèles ici pour que Alembic les détecte
 from .media import Media, Subtitle
+
 # Tu pourras rajouter d'autres fichiers ici plus tard

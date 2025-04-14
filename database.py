@@ -17,107 +17,12 @@ from sqlalchemy.orm import Session
 from paths import get_path
 from schemas.media import MediaMetadata
 from models.media import Media, Subtitle
+from models.assimil import Paragraph, LessonSession, MarkedParagraph, User, GeneralParameters, GrammarNote
 
 class NoSuchLesson(Exception):
     pass
 
 from models import Base
-
-class Word(Base):
-    __tablename__ = "word_dict"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    word: Mapped[str] 
-    tonic_accent: Mapped[str]
-    comment: Mapped[Optional[str]]
-    index_ref_entries: Mapped[List["IndexEntry"]] = relationship(
-        back_populates="word", cascade="all, delete-orphan"
-    )
-    def __repr__(self) -> str:
-        return f"Word(id={self.id!r}, word={self.word!r}, comment={self.comment!r})"
-
-class IndexEntry(Base):
-    __tablename__ = "word_index"
-    id : Mapped[int] = mapped_column(primary_key=True)
-    level : Mapped[int]
-    lesson_nb : Mapped[int]
-    line_nb : Mapped[int]
-    position : Mapped[Optional[int]]
-    word_id : Mapped[int] = mapped_column(ForeignKey("word_dict.id"))
-    word : Mapped["Word"] = relationship(back_populates="index_ref_entries")
-    def __repr__(self) -> str:
-        return f"IndexEntry(id={self.id!r}, word={self.word!r}, word_id={self.word_id}, lesson={self.lesson!r}, line={self.line!r}), position={self.position!r}"
-        
-class Paragraph(Base):
-    __tablename__ = "paragraphs"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    level : Mapped[int]
-    section : Mapped[int]
-    lesson_nb : Mapped[int]
-    line_nb : Mapped[int]
-    paragraph: Mapped[str]
-    translation: Mapped[str]
-    has_dash_dialogue: Mapped[bool]
-    grammar_indexes: Mapped[Optional[str]]
-    data: Mapped[Optional[str]]
-    def __repr__(self) -> str:
-        return f"Paragraph(id={self.id!r}, level={self.level!r}, section={self.section!r}, lesson_nb={self.lesson_nb!r}, line_nb={self.line_nb!r}, paragraph ={self.paragraph!r}, grammar_indexes : {self.grammar_indexes!r}, data = {self.data!r})"
-
-class LessonSession(Base):
-    __tablename__ = "lesson_sessions"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    user: Mapped["User"] = relationship(back_populates="sessions")
-    level: Mapped[int]
-    lesson_nb: Mapped[int]
-    date_time: Mapped[datetime.datetime]
-    errors_number: Mapped[int]
-    user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
-    errored_paragraphs : Mapped[List["MarkedParagraph"]] = relationship(
-        back_populates="session", cascade="all, delete-orphan")
-    def __repr__(self) -> str:
-        return f"date time : {self.date_time!r}, level : {self.level!r}, lesson {self.lesson_nb!r} errors number : {self.errors_number!r}"
-
-class MarkedParagraph(Base):
-    __tablename__ = "marked_paragraphs"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    paragraph: Mapped[str] 
-    comment: Mapped[Optional[str]]
-    line_nb : Mapped[int]
-    session_id : Mapped[int] = mapped_column(ForeignKey("lesson_sessions.id"))
-    session : Mapped["LessonSession"] = relationship(back_populates="errored_paragraphs")
-    def __repr__(self) -> str:
-        return f"Paragraph(id={self.id!r}, line={self.line_nb!r}, paragraph ={self.paragraph!r}, comment={self.comment!r})"
-
-class User(Base):
-    __tablename__ = "user_account"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    username: Mapped[str]
-    password: Mapped[str]
-    fullname: Mapped[str]
-    email: Mapped[str]
-    parameters: Mapped[str]
-    parameters_version: Mapped[str]
-    sessions: Mapped[List["LessonSession"]] = relationship(
-        back_populates="user", cascade="all, delete-orphan")
-    def __repr__(self) -> str:
-        return f"username : {self.username!r}, password : {self.password!r}, full name :{self.fullname}"
-
-class GeneralParameters(Base):
-    __tablename__ = "parameters"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    version: Mapped[str]
-    instance: Mapped[str]
-
-class GrammarNote(Base):
-    __tablename__ = "grammar_note"
-    id: Mapped[int] = mapped_column(primary_key=True)
-    level: Mapped[int]
-    lesson_nb: Mapped[int]
-    note_number: Mapped[int]
-    note: Mapped[str]
-    def __repr__(self) -> str:
-        return f"level : {self.level}, lessons_nb : {self.lesson_nb}, note_number : {self.note_number}, note : {self.note}"
-    
-
 
 def get_database_engine(name, echo=True):
     engine = create_engine(name, echo = echo)   
@@ -570,13 +475,14 @@ def get_fr_subtitles(subtitle_type: str):
     return subtitles
 
 def update_or_store_media(media: MediaMetadata):
+    print("in update_or_store_media")
     stmt = select(Media).where(
         and_(
             Media.media_type == media.media_type,
             Media.disc_number == media.disc_number,
             Media.title == media.title,
-            Media.series_title == media.series_title,
-            Media.series_number == media.series_number,
+            Media.episode_title == media.episode_title,
+            Media.episode_number == media.episode_number,
             Media.season == media.season
         )
     )
@@ -591,14 +497,10 @@ def update_or_store_media(media: MediaMetadata):
                 media_type = media.media_type,
                 disc_number = media.disc_number,
                 title = media.title,
-                series_title = media.series_title,
-                series_number = media.series_number,
+                episode_title = media.episode_title,
+                episode_number = media.episode_number,
                 season = media.season,
-                video_file = media.video_file,
-                spanish_subtitles_file = media.spanish_subtitles_file,
-                long_spanish_subtitles_file = media.long_spanish_subtitles_file,
-                french_subtitles_file = media.french_subtitles_file,
-                long_french_subtitles_file = media.long_french_subtitles_file
+                video_filename = media.video_filename,
              )
             session.add(entry)
             session.commit()
@@ -610,8 +512,8 @@ def lookup_media(media : MediaMetadata):
             Media.media_type == media.media_type,
             Media.disc_number == media.disc_number,
             Media.title == media.title,
-            Media.series_title == media.series_title,
-            Media.series_number == media.series_number,
+            Media.episode_title == media.episode_title,
+            Media.episode_number == media.episode_number,
             Media.season == media.season
         )
     )
@@ -625,13 +527,9 @@ def lookup_media(media : MediaMetadata):
                 media_type = entry.media_type,
                 disc_number = entry.disc_number,
                 season = entry.season,
-                series_number = entry.series_number,
-                series_title = entry.series_title,
-                video_file = entry.video_file,
-                spanish_subtitles_file = entry.spanish_subtitles_file,
-                long_spanish_subtitles_file = entry.long_spanish_subtitles_file,
-                french_subtitles_file = entry.french_subtitles_file,
-                long_french_subtitles_file = entry.long_french_subtitles_file
+                episode_number = entry.episode_number,
+                episode_title = entry.episode_title,
+                video_filename = entry.video_filename,
             )
             medias.append(media_data)
     return media_data
@@ -642,9 +540,9 @@ def store_subtitles(media_metadata: MediaMetadata, subtitle_type: str, es_subtit
             Media.title == media_metadata.title,
             Media.disc_number == media_metadata.disc_number,
             Media.media_type == media_metadata.media_type,
-            Media.series_title == media_metadata.series_title,
+            Media.episode_title == media_metadata.episode_title,
             Media.season == media_metadata.season,
-            Media.series_number == media_metadata.series_number
+            Media.episode_number == media_metadata.episode_number
         )
     )
 
@@ -653,7 +551,7 @@ def store_subtitles(media_metadata: MediaMetadata, subtitle_type: str, es_subtit
         print(media.title)
         print(media.id)
         print(media.media_type)
-        print(media.series_title)
+        print(media.episode_title)
         print(media.disc_number)
     
         for index, es_subtitle in enumerate(es_subtitles):
