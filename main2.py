@@ -38,7 +38,7 @@ def select_media(request: Request,
     with Session(engine) as session:
         results = session.scalars(stmt).all()
     
-    return templates.TemplateResponse("select_media.jinja", {
+    return templates.TemplateResponse("media_search.jinja", {
         "request": request,
         "results": results,
         "filters": {

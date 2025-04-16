@@ -610,3 +610,32 @@ def get_media_titles(q: str):
     stmt = select(Media.title).where(Media.title.ilike(f"%{q}%")).distinct().limit(10)
     with Session(engine) as session:
         return session.scalars(stmt).all()
+
+def search_media(p: MediaMetadata):
+    
+    filters = []
+    media_list = []
+
+    if p.title:
+        filters.append(Media.title.ilike(f"%{p.title}%"))
+    if p.disc_number is not None:
+        filters.append(Media.disc_number == p.disc_number)
+    if p.media_type:
+        filters.append(Media.media_type == p.media_type)
+    if p.season is not None:
+        filters.append(Media.season == p.season)
+    if p.episode_number is not None:
+        filters.append(Media.episode_number == p.episode_number)
+    if p.episode_title:
+        filters.append(Media.episode_title.ilike(f"%{p.episode_title}%"))
+
+    stmt = select(Media)
+    if filters:
+        stmt = stmt.where(and_(*filters))
+
+    with Session(engine) as session:
+        results = session.scalars(stmt).all()
+        for media in results:
+            media_list.append(MediaMetadata(**media.__dict__))
+    
+    return media_list

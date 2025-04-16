@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Choisir une vidéo</title>
+</head>
+<body>
+    <h1>Filtrer les vidéos</h1>
+    <form id="search-form" method="get">
+        <label>Titre : <input type="text" name="title" value="{{ filters.title }}"></label><br>
+        <label>Numéro du disque : <input type="number" name="disc_number" value="{{ filters.disc_number }}"></label><br>
+        <label>Type de média :
+            <select name="media_type">
+                <option value="" {% if not filters.media_type %}selected{% endif %}>--</option>
+                <option value="series" {% if filters.media_type == 'series' %}selected{% endif %}>Série</option>
+                <option value="movie" {% if filters.media_type == 'movie' %}selected{% endif %}>Film</option>
+            </select>
+        </label><br>
+        <label>Saison : <input type="number" name="season" value="{{ filters.season }}"></label><br>
+        <label>Numéro de l’épisode : <input type="number" name="episode_number" value="{{ filters.episode_number }}"></label><br>
+        <label>Titre de l’épisode : <input type="text" name="episode_title" value="{{ filters.episode_title }}"></label><br>
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <h2>Résultats</h2>
+    <div id="media-search-results">
+        {% include "media_results.jinja" %}
+    </div>
+
+    <script>
+        document.getElementById("search-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+
+            const formData = new FormData(this);
+            const params = new URLSearchParams(formData).toString();
+
+            fetch(`/media_search?${params}`)
+                .then(response => response.text())
+                .then(html => {
+                    // Remplacer le contenu du conteneur avec les nouveaux résultats
+                    document.getElementById("media-search-results").innerHTML = html;
+                })
+                .catch(error => {
+                    console.error("Erreur lors du chargement des résultats :", error);
+                });
+        });
+    </script>
+</body>
+</html>

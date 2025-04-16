@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Vidéo</title>
+    <style>
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #eee;
+            cursor: pointer;
+        }
+        .tab-button.active {
+            background-color: #fff;
+            border-bottom: 2px solid #007BFF;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tabs">
+        <button class="tab-button active" onclick="showTab('search-tab')">Recherche</button>
+    </div>
+
+    <div id="search-tab" class="tab-content active">
+        {% include "media_search.jinja" %}
+    </div>
+
+    <!-- L'onglet Visionneuse sera ajouté dynamiquement ici -->
+
+    <script>
+
+        document.addEventListener("click", function(event) {
+            const link = event.target.closest(".media-link");
+            if (link) {
+                event.preventDefault(); // Empêche la navigation par défaut
+                const mediaId = link.getAttribute("data-media-id");
+                const title = link.getAttribute("data-title");
+                onVideoSelected(mediaId, title);
+            }
+        });
+
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+
+            const button = Array.from(document.querySelectorAll('.tab-button'))
+                .find(btn => btn.textContent === (tabId === 'search-tab' ? 'Recherche' : 'Visionneuse'));
+            if (button) button.classList.add('active');
+
+            const tab = document.getElementById(tabId);
+            if (tab) tab.classList.add('active');
+        }
+
+        function onVideoSelected(mediaId, title) {
+            console.log("In onVideoSelected", media_id, title)
+            // Vérifie si l'onglet existe déjà
+            if (!document.getElementById("viewer-tab")) {
+                // Crée l'onglet
+                const viewerButton = document.createElement("button");
+                viewerButton.textContent = "Visionneuse";
+                viewerButton.classList.add("tab-button");
+                viewerButton.onclick = () => showTab("viewer-tab");
+                document.querySelector(".tabs").appendChild(viewerButton);
+
+                // Crée le contenu
+                const viewerTab = document.createElement("div");
+                viewerTab.id = "viewer-tab";
+                viewerTab.classList.add("tab-content");
+                viewerTab.innerHTML = `<div id="viewer-container">Chargement...</div>`;
+                document.body.appendChild(viewerTab);
+            }
+
+            // Charge et affiche la visionneuse
+            fetch(`/video_viewer_partial?media_id=${mediaId}`)
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("viewer-tab").innerHTML = html;
+                    showTab("viewer-tab");
+                });
+        }
+    </script>
+</body>
+</html>

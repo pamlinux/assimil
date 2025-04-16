@@ -20,6 +20,13 @@ MENU_ITEMS = [
         ]
     },
     {
+        "category": "Vidéo",
+        "items": [
+            {"name": "Recherche de video", "url": "/video", "key": "video-search"},
+            {"name": "dernière vidéo", "url": "/video", "key": "last-video"}
+        ]
+    },
+    {
         "category": "Maintenance",
         "toggleable": True,  # Permet d'afficher/masquer les items
         "items": [

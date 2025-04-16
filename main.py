@@ -30,7 +30,7 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson, update_subtitle, fetch_subtitles_from_db, get_subtitles
+from database import NoSuchLesson, update_subtitle, fetch_subtitles_from_db, get_subtitles, search_media
 from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles, get_media_titles
 from subtitles import get_subtitles_context, NoSuchTvSerie, store_media, get_subtitle_vtt_path, get_video_path
 from schemas.media import MediaMetadata
@@ -579,29 +579,6 @@ def search_media_in_db(request: Request):
     return templates.TemplateResponse(
         request=request, name="store-media.jinja", context={"dummy" : 0})
 
-@app.post("/search-media")
-async def search_media(query: MediaMetadata):
-    filters = []
-    print(query)
-    return {"status": "OK"}
-    if query.title:
-        filters.append(Media.title.ilike(f"%{query.title}%"))
-    if query.media_type:
-        filters.append(Media.media_type == query.media_type)
-    if query.season is not None:
-        filters.append(Media.season == query.season)
-    if query.series_number is not None:
-        filters.append(Media.series_number == query.series_number)
-    if query.series_title:
-        filters.append(Media.series_title.ilike(f"%{query.series_title}%"))
-    if query.disc_number is not None:
-        filters.append(Media.disc_number == query.disc_number)
-    if query.subtitles_source:
-        filters.append(Media.subtitles_source.ilike(f"%{query.subtitles_source}%"))
-
-    #results = db.query(Media).filter(*filters).all()
-    return [{"id": m.id, "title": m.title, "media_type": m.media_type} for m in results]
-
 @app.post("/save-media")
 async def save_media_in_db(media_metadata: MediaMetadata):
     try:
@@ -645,3 +622,37 @@ def get_titles_from_database(q: str = Query(..., min_length=1)):
     results = get_media_titles(q)
     print(f"{type(results)}, results: {results}")
     return JSONResponse(content=results)
+
+@app.get("/video", response_class=HTMLResponse)
+async def display_video_panel(request: Request):
+    return templates.TemplateResponse(
+        request=request, name="video_panel.jinja", context={
+            "filters": {
+                "title": "Aqu",
+                "disc_number": 1,
+                "media_type": "series",
+                "season": 1,
+                "episode_number": 1,
+                "episode_title": ""
+            }
+        }
+)
+
+from fastapi import Request
+
+@app.get("/video_viewer_partial", response_class=HTMLResponse)
+def video_viewer_partial(request: Request, media_id: int):
+    print("In video_viewer_partial, with media_id:", media_id)
+    return templates.TemplateResponse("video_viewer.jinja", {
+        "request": request,
+        "media_id": media_id
+    })
+
+@app.get("/media_search", response_class=HTMLResponse)
+def search_media_in_db(request: Request):
+    params = dict(request.query_params)
+    meta_data = MediaMetadata(**params)
+    print(meta_data)
+    results = search_media(meta_data)
+    print("results", results)
+    return templates.TemplateResponse("media_results.jinja", { "request": request, "results" : results})
