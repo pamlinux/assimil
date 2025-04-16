@@ -185,8 +185,8 @@
         <!-- Vidéo + onglets sous la vidéo -->
         <div id="video-container">
             <video id="video" controls>
-                <source src="/simple-video.mp4" type="video/mp4">
-                <track src="subtitles.srt" kind="subtitles" srclang="fr" label="Français" default>
+                <source src="/simple-video.mp4?media_id={{ media_id}}" type="video/mp4">
+                <track src="subtitles.srt?media_id={{ media_id }}" kind="subtitles" srclang="fr" label="Français" default>
             </video>
             <div class="controls">
                 <button onclick="previousSubtitle()">
@@ -242,12 +242,12 @@
         let subtitles = [];
 
         // Chargement des sous-titres
-        function loadSubtitles(type, url) {
-            fetch(url)
+        function loadSubtitles(variant) {
+            fetch(`/subtitles?media_id={{ media_id }}&variant=${variant}`)
                 .then(response => response.json())
                 .then(data => {
-                    subtitlesData[type] = data;
-                    if (type === "es") {
+                    subtitlesData[variant] = data;
+                    if (variant === "es") {
                         subtitles = subtitlesData["es"];
                         displaySubtitles(); // Afficher les sous-titres au démarrage
                     }
@@ -255,10 +255,10 @@
                 .catch(error => console.error("Error loading subtitles:", error));
         }
 
-        loadSubtitles("es", "/subtitles_es");
-        loadSubtitles("fr", "/subtitles_fr");
-        loadSubtitles("eslong", "/long_subtitles_es");
-        loadSubtitles("frlong", "/long_subtitles_fr");
+        loadSubtitles("es");
+        loadSubtitles("fr");
+        loadSubtitles("eslong");
+        loadSubtitles("frlong");
 
         const currentSubtitleDiv = document.getElementById("current-subtitle");
         //currentSubtitleDiv.style.gridTemplateColumns = "20 20 20 20";
@@ -357,8 +357,8 @@
             }
             console.log("in updateActiveSubtitle 1", currentIndex, displayedSubtitleIndex)
             currentIndex = findCurrentSubtitleIndex(video.currentTime)
-            if (currentIndex == displayedSubtitleIndex) return;
             console.log("in updateActiveSubtitle 2", currentIndex, displayedSubtitleIndex)
+            if (currentIndex == displayedSubtitleIndex) return;
             console.log("in updateActiveSubtitle 3", currentIndex, displayedSubtitleIndex)
             if (isEditingEs || isEditingFr) {
                 const confirmation = window.confirm("Vous avez des modifications non enregistrées. Voulez-vous vraiment changer de sous-titre ?");

@@ -1,6 +1,6 @@
-1
+﻿1
 00:00:00,000 --> 00:00:02,000
-Ici, ici, ici, il ne faut pas y aller vivant !
+Ici, ici, ici, il ne faut pas vivre !
 
 2
 00:00:02,000 --> 00:00:04,000
@@ -36,499 +36,499 @@ Pas ici, pas ici !
 
 10
 00:00:18,000 --> 00:00:20,000
-Pas ici, pas ici ! Pas ici, pas ici ! Pas ici, pas ici ! Pas ici, pas ici ! Pas ici, pas ici !
+Pas ici, pas ici !
 
 11
 00:00:20,000 --> 00:00:22,000
-Vicenta, as-tu vu comment tu te sers de la télécommande à distance ?
+Pas ici, pas ici !
 
 12
 00:00:22,000 --> 00:00:24,000
-Elle est dans le salon !
+Pas ici, pas ici !
 
 13
 00:00:24,000 --> 00:00:26,000
-Non, ma fille, elle est pleine de morsures.
+Pas ici, pas ici !
 
 14
 00:00:26,000 --> 00:00:28,000
-C'est que j'apprends à Valentina à l'apporter.
+Pas ici, pas ici !
 
 15
 00:00:28,000 --> 00:00:30,000
-Eh bien ma fille, d'ici qu'elle apprenne, ça ne marchera plus.
+Pas ici, pas ici !
 
 16
 00:00:38,000 --> 00:00:41,000
-Que veux-tu comme sandwich pour demain ?
+Vicenta, as-tu vu comment tu es en train de téléphoner à distance ?
 
 17
 00:00:41,000 --> 00:00:43,000
-Je te l'ai déjà dit, je ne veux pas y aller, j'ai déjà fait l'excursion des retraités !
+Il est dans le salon !
 
 18
 00:00:43,000 --> 00:00:45,000
-Écoute, je t'ai acheté le billet, ça m'a coûté 6 euros !
+Non, ma fille, il est couvert de morsures.
 
 19
 00:00:45,000 --> 00:00:47,000
-Alors, fais de la revente à la porte du bus.
+Je suis en train d'apprendre à Valentina à l'apporter.
 
 20
 00:00:47,000 --> 00:00:49,000
-Ça va être plein de veufs !
+Eh bien ma fille, quand tu l'auras appris, ça ne marchera plus déjà.
 
 21
 00:00:49,000 --> 00:00:51,000
-Je n'ai pas envie de parcourir 200 kilomètres pour me retrouver lâchée dans les champs comme Heidi et Carmen. Ça va être très amusant ? Il y aura une fête de village avec des taureaux ? Une fête de village. Ceux du centre d'insertion ne savent vraiment plus quoi faire.
+De quoi veux-tu le sandwich pour demain ?
 
 22
 00:00:51,000 --> 00:00:53,600
-pour se débarrasser des vieux.
+Et voilà, je ne veux pas y aller, j'ai déjà fait une excursion de retraité !
 
 23
 00:00:53,600 --> 00:00:56,000
-Qu'est-ce qu'elle va bien venir faire ici, celle-là ? Pourquoi tu ne viendrais pas toi ?
+Hé, je te l'achète, le ticket m'a coûté 6 euros !
 
 24
 00:00:56,000 --> 00:00:58,399
-Allez, allez. Bon, j’arrive. Mais arrête de parler, maintenant.
+Eh bien, regarde, il revend des billets à la porte du bus.
 
 25
 00:00:58,479 --> 00:01:00,480
-Et dis à ce chien de ne pas me suivre.
+Qu'est-ce qui va être rempli de veufs ?
 
 26
 00:01:00,560 --> 00:01:02,560
-Et ne me suis pas, Valentin, ça suffit maintenant.
+Que je ne veux pas marcher 200 kilomètres
 
 27
 00:01:02,640 --> 00:01:05,200
-Madame, tout ce que je vous dis, c'est de ne pas monopoliser toute la corde à linge.
+pour me lâcher dans les champs comme Heidi et Vicenta.
 
 28
 00:01:05,280 --> 00:01:07,760
-Moi, j'en ai plus besoin.
+Qu'est-ce qui va être très amusant ? Y aura-t-il une course de taureaux ?
 
 29
 00:01:07,840 --> 00:01:08,840
-Toi, tu as un sèche-linge, je peux le voir d'ici.
+Une capea.
 
 30
 00:01:08,920 --> 00:01:10,920
-Si seulement vous ne voyiez pas...
+Ces gens du service d'insertion ne savent plus quoi faire
 
 31
 00:01:11,000 --> 00:01:12,760
-Tu es en train de me traiter de commère ? Oui.
+pour se débarrasser des vieux.
 
 32
 00:01:12,840 --> 00:01:15,240
-Eh bien, regarde ça...
+Qu'est-ce qui va venir à cette foutaise ? Comment ne vas-tu pas venir toi ?
 
 33
 00:01:15,319 --> 00:01:17,319
-Je te le lance.
+Allez, allez. Bon, j’y vais. Mais tais-toi maintenant.
 
 34
 00:01:17,400 --> 00:01:19,200
-Mais qu'est-ce qu'il fait ?
+Et dis à ce chien de ne pas me suivre.
 
 35
 00:01:19,280 --> 00:01:21,280
-Juan ! Juan !
+Et ne me suis pas, Valentin, ça suffit maintenant.
 
 36
 00:01:21,359 --> 00:01:24,359
-Les enfants !
+Madame, tout ce que je vous demande c'est de ne pas prendre toute la corde.
 
 37
 00:01:24,400 --> 00:01:25,840
-Pour que ce soit clair, c'est vous qui avez commencé.
+Moi, j'en ai plus besoin.
 
 38
 00:01:25,920 --> 00:01:28,400
-Oh, mon chemisier !
+Tu as un sèche-linge, je le vois d'ici.
 
 39
 00:01:28,480 --> 00:01:29,959
-S'il y a une tache, il faut le laver à la main.
+Si ce que vous ne voyez pas...
 
 40
 00:01:30,039 --> 00:01:32,239
-Que se passe-t-il ?
+Tu es en train de me traiter de commère ? Oui.
 
 41
 00:01:32,319 --> 00:01:34,519
-La voisine jette tous mes vêtements.
+Eh bien, regarde, ça...
 
 42
 00:01:34,599 --> 00:01:36,120
-Je ne sais pas pourquoi elle s'est mise à me prendre en grippe.
+Je te le lance.
 
 43
 00:01:36,200 --> 00:01:37,799
-Et toi, évidemment, tu ne me défends pas.
+Mais qu'est-ce qu'il fait ?
 
 44
 00:01:37,879 --> 00:01:39,480
-Quel est ce vacarme, Paloma ?
+Juan ! Juan !
 
 45
 00:01:39,560 --> 00:01:41,799
-Cette dame ne tourne pas rond.
+Enfants !
 
 46
 00:01:41,879 --> 00:01:44,560
-Fais quelque chose, Juan, car je ne peux pas vivre comme ça.
+Pour que ce soit clair, c'est vous qui avez commencé.
 
 47
 00:01:44,640 --> 00:01:46,920
-Je ne peux pas vivre comme ça !
+Oh là là, mon chemisier !
 
 48
 00:01:47,000 --> 00:01:49,000
-Papapapa !
+Si c'est un plus, il faut se laver la main.
 
 49
 00:01:49,079 --> 00:01:50,079
-Que faisons-nous ?
+Qu'est-ce qui se passe ?
 
 50
 00:01:50,159 --> 00:01:52,519
-Papapapa !
+La voisine qui est en train de me jeter tous mes vêtements.
 
 51
 00:01:52,560 --> 00:01:54,560
-Allez, à demain.
+Je ne sais pas pourquoi il s'est mis à me détester.
 
 52
 00:01:54,640 --> 00:01:56,959
-Papatatata !
+Et toi, bien sûr, tu ne me défends jamais.
 
 53
 00:01:57,039 --> 00:01:58,679
-Bonsoir.
+Quels sont ces cris, Paloma ?
 
 54
 00:01:58,759 --> 00:02:00,759
-Quelques rondelles, quelques rondelles de pepperoni.
+Cette dame qui ne va pas bien dans sa tête.
 
 55
 00:02:00,840 --> 00:02:03,159
-Eh bien, un peu de s'il vous plaît !
+Fais quelque chose, Juan, car je ne peux pas vivre ainsi.
 
 56
 00:02:03,239 --> 00:02:04,759
-Ça vous coûte quoi de vous essuyer les pieds à l'entrée ?
+Je ne peux pas vivre comme ça !
 
 57
 00:02:04,840 --> 00:02:07,840
-Si c'est simplement faire un peu comme ça, comme Michael Yasso. Oui, Emilio, bien sûr. Non, vraiment, ne m'ignorez pas. Ce portail est à moi et c'est moi qui commande ici. Et si je dis qu'ici tout le monde s'essuie les pieds,
+Papapapa !
 
 58
 00:02:07,920 --> 00:02:08,919
-eh bien, tout le monde les nettoie et c'est tout.
+Que faisons-nous ?
 
 59
 00:02:09,000 --> 00:02:10,000
-Salut, comment ça va ?
+Papapapa !
 
 60
 00:02:10,079 --> 00:02:11,439
-Comment ça va ?
+Allez, à demain.
 
 61
 00:02:11,519 --> 00:02:13,000
-Et à celui-là tu ne dis rien ou quoi ?
+Papapapa !
 
 62
 00:02:13,079 --> 00:02:14,079
-Eh bien, celui-là m’a échappé, regarde comment il va.
+Bonsoir.
 
 63
 00:02:15,680 --> 00:02:18,280
-Elle est vraiment bien, non ?
+Quelques fines tranches, quelques fines tranches de pepperoni.
 
 64
 00:02:18,359 --> 00:02:19,960
-Non, maintenant ne me fais pas de compliments, ça ne sert plus à rien.
+Oh là là, un peu de s’il vous plaît !
 
 65
 00:02:20,039 --> 00:02:22,319
-Et qu'est-ce qu'il me plaît, ce type !
+Pourquoi est-ce si difficile de vous essuyer les pieds en entrant ?
 
 66
 00:02:22,439 --> 00:02:24,959
-Je ne sais pas, il a quelque chose.
+S'il suffit de faire un peu comme ça, comme Michael Yasso.
 
 67
 00:02:25,039 --> 00:02:26,039
-Oui, un copain, et ils vivent ensemble.
+Oui, Emilio, que oui.
 
 68
 00:02:26,120 --> 00:02:27,680
-Et voilà !
+Non, mais oui, non, ne m'ignorez pas.
 
 69
 00:02:27,759 --> 00:02:29,199
-Chaque fois que tu vois un mec beau, il doit être gay.
+Ce portail est à moi et ici, c'est moi qui commande.
 
 70
 00:02:29,280 --> 00:02:31,359
-Malheureusement, oui. Allez, passe.
+Et si je dis qu'ici tout le monde s'essuie les pieds,
 
 71
 00:02:31,439 --> 00:02:32,959
-Non, je prends les escaliers, ça fait du bien aux fesses.
+eh bien, tout le monde les nettoie et c'est tout.
 
 72
 00:02:33,039 --> 00:02:34,039
-Attends, je viens avec toi.
+Salut, comment ça va ?
 
 73
 00:02:34,120 --> 00:02:35,120
-Ça alors, et maintenant vous laissez la porte de l'ascenseur ouverte, décidément vous n'avez pas de remède. Oh là là ! Oh là là ! Oh là là !
+Comment ça va ?
 
 74
 00:02:35,199 --> 00:02:36,759
-Oh là là !
+Et à celui-là, tu ne dis rien ou quoi ?
 
 75
 00:02:36,840 --> 00:02:38,759
-Salut.
+Homme, celui-là m'a échappé, regarde comme il file.
 
 76
 00:02:38,840 --> 00:02:40,039
-Salut.
+Elle est vraiment bonne, non ?
 
 77
 00:02:40,120 --> 00:02:42,719
-Quoi, tu loues un film ?
+Non, maintenant ne commence pas à me cirer les pompes, cela ne sert plus à rien.
 
 78
 00:02:42,799 --> 00:02:44,400
-Non, je fais exprès de traîner pour rentrer tard à la maison.
+Et comment j'aime ce type ?
 
 79
 00:02:44,479 --> 00:02:45,919
-et j'ai jeûné avec mon père.
+Je ne sais pas, vous avez quelque chose ?
 
 80
 00:02:46,000 --> 00:02:47,599
-Ah, très bien.
+Oui, petit ami et elle vit avec lui.
 
 81
 00:02:47,680 --> 00:02:48,680
-Comment ça se passe avec ta copine ?
+Et encore !
 
 82
 00:02:48,759 --> 00:02:51,280
-Hein ?
+C'est que chaque fois que tu vois un mec beau, il doit être gay.
 
 83
 00:02:51,520 --> 00:02:53,479
-Ma copine ?
+Malheureusement, oui. Viens, entre.
 
 84
 00:02:53,560 --> 00:02:55,960
-Bien, bien, très bien.
+Non, je vais par les escaliers, c'est bon pour les fesses.
 
 85
 00:03:00,560 --> 00:03:02,159
-Je ne te vois pas suffisamment mature émotionnellement
+Attends, je viens avec toi.
 
 86
 00:03:02,240 --> 00:03:04,599
-pour entretenir une relation stable.
+Ça, et maintenant vous laissez la porte de l'ascenseur ouverte,
 
 87
 00:03:04,680 --> 00:03:06,479
-Ah, non ?
+si c'est que vous n'avez pas de solution.
 
 88
 00:03:06,560 --> 00:03:07,560
-Non, je pense que si tu t'engages, tu finiras par le regretter.
+Oh là là !
 
 89
 00:03:07,639 --> 00:03:08,639
-mais il sera déjà trop tard.
+Oh là là !
 
 90
 00:03:08,719 --> 00:03:09,719
-Tu auras gaspillé les meilleures années de ta vie
+Oh là là !
 
 91
 00:03:09,800 --> 00:03:10,800
-et tu seras devenu le père de famille typique.
+Oh là là !
 
 92
 00:03:16,879 --> 00:03:17,879
-C'est triste, non ?
+Salut.
 
 93
 00:03:17,960 --> 00:03:18,960
-Je te le dis.
+Bonjour.
 
 94
 00:03:22,280 --> 00:03:24,039
-Les âges de Lulu ?
+Pourquoi, en train de louer un film ?
 
 95
 00:03:24,120 --> 00:03:26,560
-Hein ?
+Non, je fais exprès pour rentrer tard à la maison.
 
 96
 00:03:26,640 --> 00:03:27,920
-Quoi ? Quelle Lulu ? Non.
+et me moquer de mon père.
 
 97
 00:03:28,000 --> 00:03:29,520
-Je suis ici avec la ruche.
+Ah, très bien.
 
 98
 00:03:29,599 --> 00:03:30,960
-Bon, je m'en vais, il est vingt.
+Comment ça va avec ta copine ?
 
 99
 00:03:31,039 --> 00:03:32,039
-On continuerait à parler, non ?
+Hein ?
 
 100
 00:03:32,120 --> 00:03:33,120
-Comment va la fille du président, hein ?
+Ma copine ?
 
 101
 00:03:33,199 --> 00:03:35,199
-Hé, j'ai une petite amie.
+Bien, bien, très bien.
 
 102
 00:03:35,280 --> 00:03:37,039
-Et moi...
+Je ne te trouve pas émotionnellement mature.
 
 103
 00:03:37,120 --> 00:03:38,920
-Bonjour.
+pour maintenir une relation stable.
 
 104
 00:03:39,000 --> 00:03:40,000
-Bon, quoi ?
+Ah, non ?
 
 105
 00:03:40,080 --> 00:03:43,159
-Quoi ?
+Non, je pense que si tu t'engages, tu finiras par le regretter,
 
 106
 00:03:43,240 --> 00:03:44,879
-Quoi ?
+mais ce sera déjà trop tard.
 
 107
 00:03:44,960 --> 00:03:47,280
-Quoi ?
+Tu auras gâché les meilleures années de ta vie.
 
 108
 00:03:47,360 --> 00:03:49,840
-Quoi d'autre ?
+et tu seras devenu le père de famille typique.
 
 109
 00:03:49,879 --> 00:03:50,879
-Eh bien, alors, chéri ? Il a déjà choisi ?
+C'est triste, non ?
 
 110
 00:03:52,159 --> 00:03:53,159
-Il y réfléchit.
+Je te dis.
 
 111
 00:03:53,960 --> 00:03:54,960
-Non, non, j'ai déjà choisi.
+Les âges de Lulú ?
 
 112
 00:03:55,039 --> 00:03:56,039
-D'accord.
+Hein ?
 
 113
 00:03:56,120 --> 00:03:58,120
-Bon, je t'attends à la maison.
+Quoi ? Quelle Lulu ? Non.
 
 114
 00:03:59,199 --> 00:04:00,719
-Bien sûr, elle est aussi très bien.
+Je suis ici avec la ruche.
 
 115
 00:04:00,800 --> 00:04:02,280
-Oui, mais elle a un petit ami.
+Bon, je m'en vais, il est déjà vingt.
 
 116
 00:04:02,360 --> 00:04:03,879
-Et alors ?
+On continuera à parler, non ?
 
 117
 00:04:05,960 --> 00:04:08,520
-Ici, ici, ici personne ne peut vivre
+Comment va la fille du président, hein ?
 
 118
 00:04:08,599 --> 00:04:10,599
-Ici non, ici non
+Hé, j'ai une copine.
 
 119
 00:04:10,680 --> 00:04:11,680
-Tous les jours sont ainsi
+Et moi...
 
 120
 00:04:11,759 --> 00:04:13,759
-Je ne pouvais pas l'imaginer quand je suis venu ici
+Bonjour.
 
 121
 00:04:13,840 --> 00:04:14,840
-Je cherchais juste un peu de compagnie
+Alors, quoi ?
 
 122
 00:04:14,920 --> 00:04:15,920
-Je m'aventure chaque jour au milieu d'un ouragan
+Quoi ?
 
 123
 00:04:16,000 --> 00:04:17,000
-Ici, ici, personne ne peut vivre
+Quoi ?
 
 124
 00:04:17,079 --> 00:04:18,079
-Pas ici, pas ici
+Quoi ?
 
 125
 00:04:18,120 --> 00:04:19,120
-Ici, ici, ici, personne ne peut vivre
+Quoi de neuf ?
 
 126
 00:04:19,199 --> 00:04:21,399
-Pas ici, pas ici
+Alors, chéri, qu'en penses-tu ? L'as-tu déjà choisi ?
 
 127
 00:04:21,479 --> 00:04:23,479
-La maison s'effondre sur moi
+Il y réfléchit.
 
 128
 00:04:23,560 --> 00:04:25,560
-Je ne peux pas trouver le concierge
+Non, non, j'ai déjà choisi.
 
 129
 00:04:25,639 --> 00:04:26,639
-Les voisins me surveillent et écoutent
+Bien sûr.
 
 130
 00:04:28,039 --> 00:04:30,039
-Descendant à cet endroit
+D'accord, je t'attends à la maison.
 
 131
 00:04:31,639 --> 00:04:34,639
-Ils me voient avec une coupe
+Bien sûr, celle-ci est aussi très bonne.
 
 132
 00:04:34,719 --> 00:04:36,719
-Un tremblement de terre et un sac
+Oui, mais elle a un petit ami.
 
 133
 00:04:36,799 --> 00:04:37,799
-Et derrière, cet escalier
+Et moi ?
 
 134
 00:04:40,399 --> 00:04:42,599
@@ -536,4237 +536,4633 @@ Ici, ici, ici personne ne peut vivre
 
 135
 00:04:42,680 --> 00:04:44,159
-Ici non, ici non
+Pas ici, pas ici
 
 136
 00:04:44,240 --> 00:04:46,839
-Ici, ici, ici personne ne peut vivre
+Tous les jours sont comme ça
 
 137
 00:04:46,879 --> 00:04:49,279
-Ici non, ici non
+Je ne pouvais pas l'imaginer quand je suis venu ici.
 
 138
 00:04:49,359 --> 00:04:51,359
-Ici, ici, ici personne ne peut vivre
+Je cherchais juste un peu de paix
 
 139
 00:04:51,439 --> 00:04:53,839
-Toc, toc
+Chaque jour, j'ose au milieu d'un ouragan
 
 140
 00:04:53,919 --> 00:04:56,199
-Nous sommes déjà là
+Ici, ici, ici, personne ne peut vivre
 
 141
 00:04:56,279 --> 00:04:58,279
-Eh bien, quelle ponctualité
+Pas ici, pas ici
 
 142
 00:04:58,359 --> 00:05:00,759
-Pour la fille du patron, tout ce qu'il faut
+Ici, ici, ici, personne ne peut vivre ici
 
 143
 00:05:00,839 --> 00:05:02,839
-Allez, vous pouvez faire passer le matériel
+Pas ici, pas ici
 
 144
 00:05:02,919 --> 00:05:04,919
-Ana, fais attention !
+La maison au-dessus de moi s'effondre
 
 145
 00:05:05,000 --> 00:05:07,000
-Tu vas casser la porte !
+Je ne peux pas trouver le gardien de but
 
 146
 00:05:07,079 --> 00:05:09,559
-Ne t'inquiète pas, je te le demanderai plus tard.
+Les voisins me surveillent et écoutent
 
 147
 00:05:09,639 --> 00:05:12,639
-Benito, la meule là-bas au fond
+Descendant à cet endroit
 
 148
 00:05:12,719 --> 00:05:16,719
-Et mets-moi les bâches, s'il te plaît.
+On me voit avec un shakeur.
 
 149
 00:05:16,839 --> 00:05:19,839
-Bon, voyons, par où vas-tu commencer ?
+Train une tremblement de terre et un airbags
 
 150
 00:05:21,919 --> 00:05:25,919
-Bon, voyons, par où vas-tu commencer ?
+Et derrière cet escalier
 
 151
 00:05:26,000 --> 00:05:28,199
-Eh bien, d'abord, ce mur là-bas
+Ici, ici, ici personne ne peut vivre
 
 152
 00:05:28,279 --> 00:05:30,279
-On déblaye, on enlève le crépi
+Pas ici, pas ici
 
 153
 00:05:30,359 --> 00:05:32,759
-On peint ce mur bien lisse
+Ici, ici, ici personne ne peut vivre
 
 154
 00:05:32,839 --> 00:05:34,839
-Nous soulevons le sol et nous attaquons la cuisine
+Pas ici, pas ici
 
 155
 00:05:34,919 --> 00:05:37,919
-Et combien de temps vas-tu prendre ?
+Ici, ici, ici personne ne peut vivre
 
 156
 00:05:47,839 --> 00:05:49,839
-Eh bien, plus vite que rapidement
+Toc, toc
 
 157
 00:05:52,919 --> 00:05:54,919
-C'est comme ça que j'aime
+Nous sommes déjà là.
 
 158
 00:05:55,000 --> 00:05:57,000
-Pardon
+Eh bien, quelle ponctualité !
 
 159
 00:05:57,079 --> 00:05:59,079
-Antonio, regarde, excuse-moi
+À la fille du patron tout ce qu'il faut
 
 160
 00:05:59,159 --> 00:06:01,159
-C'est Roberto
+Allez, vous pouvez passer le matériel maintenant.
 
 161
 00:06:01,239 --> 00:06:03,239
-Allez, mon gars
+Ana, célibataire !
 
 162
 00:06:03,319 --> 00:06:05,319
-Dans dix jours, tu emménages dans ta nouvelle maison
+Tu vas casser la porte !
 
 163
 00:06:05,399 --> 00:06:07,399
-Mais, comment vas-tu commencer ?
+Ne t'inquiète pas, je te demanderai ça plus tard.
 
 164
 00:06:07,479 --> 00:06:09,479
-Quoi ?
+Benito, la perceuse à l'arrière
 
 165
 00:06:09,559 --> 00:06:11,559
-Mais, pouvons-nous parler un petit moment ?
+Et mettre les plastiques
 
 166
 00:06:11,639 --> 00:06:13,639
-Oui
+Bon, voyons, par où vas-tu commencer ?
 
 167
 00:06:13,719 --> 00:06:15,719
-Hé, Antonio, n'oublie pas les moulures
+Alors, voyons, par où vas-tu commencer ?
 
 168
 00:06:15,720 --> 00:06:17,720
-Oui, oui, c'est commandé
+Eh bien, tout d'abord, ce tabic qui était dehors
 
 169
 00:06:17,800 --> 00:06:19,800
-Qu'est-ce que c'est ?
+Nous débarrassons les décombres, enlevons le crépi
 
 170
 00:06:19,880 --> 00:06:21,880
-Antonio, le contremaître
+Nous peignons ce mur bien lisse
 
 171
 00:06:21,960 --> 00:06:23,960
-Non, non, que font ces gens ici ? Que se passe-t-il ?
+Nous soulevons le sol et nous attaquons à la cuisine
 
 172
 00:06:24,040 --> 00:06:26,040
-Des rénovations ?
+Et combien de temps vas-tu prendre ?
 
 173
 00:06:26,120 --> 00:06:28,120
-Des rénovations ?
+Eh bien, plus vite que rapidement
 
 174
 00:06:28,200 --> 00:06:30,200
-Mais tu ne te souviens pas que je te l'ai dit
+Comme j'aime ça
 
 175
 00:06:30,280 --> 00:06:32,280
-Ah, ils viennent de l'entreprise de construction de mon père
+Pardon
 
 176
 00:06:32,360 --> 00:06:34,360
-Ils nous ont trouvé un créneau
+Antonio, regarde, désolé
 
 177
 00:06:34,440 --> 00:06:36,440
-Tu es sûr qu'on en a déjà parlé, toi et moi ?
+Il est Roberto
 
 178
 00:06:36,520 --> 00:06:38,520
-Sûr, c'est que tu ne m'écoutes jamais quand je te parle
+Allez, gamin
 
 179
 00:06:38,600 --> 00:06:40,600
-D'accord, si je descends avec toi, je dois passer par l'entrepôt pour prendre du matériel. D'accord, je vous laisse avec ça, allez, on s'en reparle. Bon, chéri, au revoir. Ok, je t'appelle plus tard, tu me racontes, hein ? Bonne chance.
+Que dans dix jours tu emménages dans ta nouvelle maison
 
 180
 00:06:40,680 --> 00:06:42,680
-Bon, vous savez ce que vous devez faire ?
+Mais, comment vas-tu commencer ?
 
 181
 00:06:42,760 --> 00:06:44,760
-Oui, oui, oui
+Quoi ?
 
 182
 00:06:45,159 --> 00:06:47,159
-D'accord
+Mais, pouvons-nous parler un petit moment ?
 
 183
 00:06:47,240 --> 00:06:49,240
-Jusqu'à quelle heure allez-vous rester à peu près ?
+Oui
 
 184
 00:06:49,319 --> 00:06:51,319
-Oui, oui, oui
+Écoute, Antonio, n'oublie pas pour les moulures.
 
 185
 00:06:51,399 --> 00:06:53,399
-Vous parlez espagnol
+Oui, oui, c'est commandé
 
 186
 00:06:53,480 --> 00:06:55,480
-Oui, oui, oui
+Qu'est-ce que c'est ?
 
 187
 00:06:55,560 --> 00:06:57,560
-Ça va être amusant
+Antonio, le contremaître
 
 188
 00:06:57,639 --> 00:06:59,639
-Oui, oui, oui
+Non, non, que font ces gens ici ? Que se passe-t-il ?
 
 189
 00:06:59,719 --> 00:07:01,719
-Allez, chéri, déjeune, sinon on va être en retard
+De quelle manière ?
 
 190
 00:07:01,800 --> 00:07:03,800
-Natalia, on y va
+De réforme ?
 
 191
 00:07:03,879 --> 00:07:05,879
-Et dis à papa de sortir de la salle de bain
+Mais tu ne te souviens pas que je te l'ai dit
 
 192
 00:07:05,959 --> 00:07:07,959
-Oui, oui, j'arrive
+Ah, ils appartiennent à l'entreprise de construction de mon père.
 
 193
 00:07:08,039 --> 00:07:10,039
-Mais ma chérie, enlève ce rouge à lèvres, tu vas à l'école
+Ils nous ont fait de la place
 
 194
 00:07:10,120 --> 00:07:12,120
-Allez, on part
+Es-tu sûr que toi et moi avons parlé de ça ?
 
 195
 00:07:12,199 --> 00:07:14,199
-Putain, quelle enfance vous me faites vivre tous ensemble
+Bien sûr, c'est que tu ne m'écoutes jamais quand je te parle.
 
 196
 00:07:14,199 --> 00:07:16,199
-Taisez-vous, taisez-vous, vous entendez ?
+D'accord, si je descends avec toi, je dois aller à l'entrepôt.
 
 197
 00:07:16,279 --> 00:07:18,279
-Ce sont des travaux
+pour un matériau
 
 198
 00:07:18,360 --> 00:07:20,360
-Juan, Juan, des travaux, des travaux
+Je vous laisse avec ça, allez, vas-y, tape dessus.
 
 199
 00:07:20,439 --> 00:07:22,439
-Oui, oui, je les entends déjà, ce sont les nouveaux
+D'accord, chéri, au revoir
 
 200
 00:07:22,519 --> 00:07:24,519
-Et ces gens-là se sont mis à abattre des cloisons.
+D'accord, je t'appelle plus tard, tu me raconteras, hein ? Bonne chance
 
 201
 00:07:28,120 --> 00:07:30,120
-Eh bien, on ne m'a rien dit.
+Bon, vous savez ce que vous devez faire ?
 
 202
 00:07:30,199 --> 00:07:32,199
-Moi non plus, c'est une honte.
+Oui, oui, oui
 
 203
 00:07:32,279 --> 00:07:34,279
-Quand vous avez fait des travaux, vous n'avez prévenu personne non plus.
+D'accord
 
 204
 00:07:34,360 --> 00:07:36,360
-Bien sûr, comme je suis le président, je vais leur parler tout de suite.
+Jusqu'à quelle heure allez-vous être là plus ou moins ?
 
 205
 00:07:36,439 --> 00:07:38,439
-Prends les papiers, chéri
+Oui, oui, oui
 
 206
 00:07:38,519 --> 00:07:40,519
-Je ne peux pas, les papiers, j'ai un rendez-vous chez le gynécologue
+Parlez-vous castillan ?
 
 207
 00:07:40,599 --> 00:07:42,599
-Juan, il n'y a pas de rush, j'ai un examen
+Oui, oui, oui
 
 208
 00:07:43,560 --> 00:07:45,560
-Et moi ? Eh bien, allez, tu ne manges plus
+Ça va être amusant
 
 209
 00:07:45,640 --> 00:07:47,640
-Voilà, c'est fini ?
+Oui, oui, oui
 
 210
 00:07:49,160 --> 00:07:51,160
-Maman, tu me tapes sur les nerfs.
+Allez, chéri, prends ton petit-déjeuner, on va être en retard
 
 211
 00:07:51,240 --> 00:07:53,240
-Ah, c'est moi qui vais vraiment te taper sur les nerfs.
+Natalia, on y va
 
 212
 00:07:53,320 --> 00:07:55,320
-Comme une Natalia, s'il te plaît, aide-moi.
+Et à papa de sortir de la salle de bain
 
 213
 00:07:55,400 --> 00:07:57,400
-Lucía, Lucía, vous m'entendez ?
+Oui, oui, j'arrive
 
 214
 00:07:57,480 --> 00:07:59,480
-Lucía, regarde, voici le message que je te laisse, appelle-moi.
+Mais ma fille, enlève ce rouge à lèvres, tu vas à l'école.
 
 215
 00:07:59,560 --> 00:08:01,560
-Je pense que ces gars qu'ils ont amenés
+Toi, qu'on n'y va pas
 
 216
 00:08:01,640 --> 00:08:03,640
-pensent qu'ils peuvent faire ce qu'ils veulent
+Putain, quelle enfance vous me faites passer avec vous tous.
 
 217
 00:08:03,720 --> 00:08:05,720
-Un bisou
+Taisez-vous, taisez-vous, vous entendez ?
 
 218
 00:08:05,800 --> 00:08:07,800
-Mais enfin, c'est quoi ça ?
+Ce sont des œuvres
 
 219
 00:08:07,879 --> 00:08:09,879
-Quoi ? Selon l'article 17
+Jean, Jean, travaux, travaux
 
 220
 00:08:09,960 --> 00:08:11,960
-de la loi sur la copropriété, paragraphe cinq
+Oui, oui, je les entends déjà, ce sont les nouveaux
 
 221
 00:08:12,039 --> 00:08:14,039
-Les travaux doivent être notifiés au président de la copropriété
+Et ceux d'en haut ont commencé à abattre des cloisons.
 
 222
 00:08:14,120 --> 00:08:16,120
-au moins une semaine avant de commencer.
+Eh bien, on ne me l'a pas dit.
 
 223
 00:08:16,199 --> 00:08:18,199
-Je suis le président de la copropriété
+Moi non plus, quelle honte
 
 224
 00:08:18,279 --> 00:08:20,279
-et je n'étais pas au courant.
+Quand vous avez fait des travaux, vous n'avez prévenu personne non plus.
 
 225
 00:08:20,359 --> 00:08:22,359
-Je ne le savais pas, moi qui vis ici, et tu le verras dans un mois.
+Bien sûr, étant donné que je suis le président, je vais leur parler tout de suite.
 
 226
 00:08:22,439 --> 00:08:24,439
-Bon, au moins tu auras une autorisation en bonne et due forme de la mairie, non ?
+Prends les papiers, chéri
 
 227
 00:08:24,519 --> 00:08:26,519
-Un papier vert, la copie.
+Je ne peux pas, des papiers, j'ai rendez-vous chez le gynécologue.
 
 228
 00:08:26,599 --> 00:08:28,599
-Ah, oui, oui, oui, oui.
+Juan, il n'y a pas de précipitation, j'ai un examen
 
 229
 00:08:28,679 --> 00:08:30,679
-Ah, oui, oui, oui quoi ? Qu'on ne l'a pas ?
+Et moi ? Alors vas-y, tu ne manges plus.
 
 230
 00:08:30,759 --> 00:08:32,759
-Celle qui conduit ce chantier est ma copine et elle travaille, et elle ne répond pas au téléphone. Eh bien, il faut arrêter les travaux jusqu'à ce que ce soit éclairci. Allez, arrêtez de travailler. Pas de bousculades, pas de bousculades.
+Alors, c'est fini ?
 
 231
 00:08:32,840 --> 00:08:34,840
-Arrêtez de travailler, hein ?
+Maman, tu me saoules
 
 232
 00:08:34,919 --> 00:08:36,919
-Non, non, ne vous embêtez pas, si vous ne parlez pas espagnol
+Je vais vraiment te griffer comme il faut.
 
 233
 00:08:37,000 --> 00:08:39,000
-Pick, pick, stop
+Comme une est Natalia, s'il te plaît, aide-moi
 
 234
 00:08:39,079 --> 00:08:41,079
-Pas de cueillette
+Lucía, Lucía, vous m'entendez ?
 
 235
 00:08:41,080 --> 00:08:43,080
-Rien à faire, mais je l'ai essayé moi-même
+Lucía, regarde, voici le message que je te laisse, appelle-moi
 
 236
 00:08:43,160 --> 00:08:45,160
-ils ne parlent pas anglais non plus
+Que je pense que ces types qu'ils ont amenés
 
 237
 00:08:45,240 --> 00:08:47,240
-Eh bien, il faut parler des langues, n'est-ce pas ?
+qu'ils peuvent faire ce qu'ils veulent
 
 238
 00:08:47,320 --> 00:08:49,320
-Oui !
+Un baiser
 
 239
 00:08:49,400 --> 00:08:51,400
-C'est fini
+Mais enfin, c'est quoi ça ?
 
 240
 00:08:51,480 --> 00:08:53,480
-Terminé ! Maintenant à la maison
+Quoi ? Selon l'article 17
 
 241
 00:08:53,560 --> 00:08:55,560
-Vacances
+de la loi sur la copropriété, paragraphe cinq
 
 242
 00:08:55,639 --> 00:08:57,639
-Les vacances, d'accord ?
+Les travaux doivent être notifiés au président de la communauté
 
 243
 00:08:57,720 --> 00:08:59,720
-Allez, allez, allez
+au moins une semaine avant le début
 
 244
 00:08:59,800 --> 00:09:01,800
-Tu vois comment on me comprend ?
+Je suis le président de la communauté
 
 245
 00:09:01,879 --> 00:09:03,879
-C'est là que ta prononciation te fait défaut, c'est sûr
+et je ne savais rien.
 
 246
 00:09:03,960 --> 00:09:05,960
-Quel bazar
+Je ne le savais pas, moi qui vis ici et tu vas le voir dans un mois
 
 247
 00:09:06,040 --> 00:09:08,040
-Poum-ta-da-da-poum-ta-poum-ta-ta
+Eh bien, au moins tu auras une autorisation municipale, non ?
 
 248
 00:09:08,120 --> 00:09:10,120
-Ici, c'est invivable, oh là là
+Un papier vert, la copie
 
 249
 00:09:10,200 --> 00:09:12,200
-Alors, les Drôles de Dames
+Ah, oui, oui, oui, oui
 
 250
 00:09:12,279 --> 00:09:14,279
-Comment s'est passée l'excursion ?
+Ah, oui, oui, oui, quoi ? Que nous ne l'avons pas.
 
 251
 00:09:14,360 --> 00:09:16,360
-Très bien, on nous a fait monter dans un bus, on nous a emmené dans un terrain vague
+Celle qui conduit ce bateau est ma copine et elle travaille
 
 252
 00:09:16,440 --> 00:09:18,440
-On nous a donné un sandwich
+et il ne répond pas à mes appels
 
 253
 00:09:18,519 --> 00:09:20,519
-Et ils ont essayé de nous vendre une cocotte-minute
+Eh bien, il faut arrêter les travaux jusqu'à ce que cela s'éclaircisse.
 
 254
 00:09:20,600 --> 00:09:22,600
-Journée magnifique
+Allons-y, arrêtez de travailler
 
 255
 00:09:22,679 --> 00:09:24,679
-Tu as surveillé les deux chipies d'en haut?
+Pas de folies, pas de folies
 
 256
 00:09:24,759 --> 00:09:26,759
-Je ne les ai pas vues de toute la journée aujourd'hui, Madame Concha.
+Arrêtez de travailler, hein ?
 
 257
 00:09:26,840 --> 00:09:28,840
-Je vais voir ce qu'elles sont en train de faire.
+Rien, rien, ne vous inquiétez pas, s'ils ne parlent pas espagnol.
 
 258
 00:09:28,919 --> 00:09:30,919
-Tu aurais dû voir Tareando dans la chapelle.
+Pic, pic, stop
 
 259
 00:09:31,000 --> 00:09:33,000
-Heureusement qu'ils ont enlevé la vachette de dessus rapidement,
+Pas de cueillette
 
 260
 00:09:33,080 --> 00:09:35,080
-sinon elle l'aurait tuée.
+Rien que non, mais si je l'ai essayé moi-même
 
 261
 00:09:35,159 --> 00:09:37,159
-Ce n'était qu'une aventure d'un soir
+ils ne parlent pas anglais non plus
 
 262
 00:09:37,240 --> 00:09:39,240
-Allez ! Allez ! Pourquoi tant de hâte ?
+Eh bien, il faut parler des langues, hein ?
 
 263
 00:09:40,200 --> 00:09:42,200
-Comme si on avait quelque chose à faire
+Oui !
 
 264
 00:09:42,279 --> 00:09:44,279
-La trois a l'air chouette avec sa casquette
+C'est fini
 
 265
 00:09:44,360 --> 00:09:46,360
-Oh là là, quelle journée !
+¡Terminé ! Maintenant, à la maison
 
 266
 00:09:46,440 --> 00:09:48,440
-Oh là là ! Je suis tellement fatiguée !
+Vacances
 
 267
 00:09:48,519 --> 00:09:50,519
-Il m'a fallu une heure pour trouver tes chaussures.
+Vacances, d'accord ?
 
 268
 00:09:50,600 --> 00:09:52,600
-Ce soir, je vais préparer des petites blettes.
+Allez, vas-y, vas-y
 
 269
 00:09:54,680 --> 00:09:56,680
-Vicenta, as-tu laissé la porte ouverte ?
+Tu vois comme on me comprend bien ?
 
 270
 00:09:56,759 --> 00:09:58,759
-Moi ? Non ! Comment ça, non ?
+C'est là que ta prononciation échoue, c'est sûr
 
 271
 00:09:59,879 --> 00:10:01,879
-Sinon, tu as laissé la porte ouverte ?
+Quel bordel
 
 272
 00:10:01,960 --> 00:10:03,960
-Des voleurs sont entrés.
+Poum-ta-da-da-poum-ta-poum-ta-ta
 
 273
 00:10:04,039 --> 00:10:06,039
-Oh mon Dieu ! Ils sont entrés chez nous !
+Ici, personne ne peut vivre, polémique
 
 274
 00:10:06,120 --> 00:10:08,120
-Mais qu'est-ce qui s'est passé ! Ils ont forcé la porte !
+Homme, Charlie's Angels
 
 275
 00:10:08,200 --> 00:10:10,200
-Regarde ! Quelle racaille rôde dans les parages !
+Comment s'est passée l'excursion ?
 
 276
 00:10:10,279 --> 00:10:12,279
-Mon Dieu ! J'avais bien dit qu'il ne fallait pas faire cette excursion.
+Très bien, on nous a fait monter dans un bus, on nous a emmenés dans un terrain vague
 
 277
 00:10:12,360 --> 00:10:14,360
-Quel genre de gardien de chien es-tu ?
+On nous a donné un sandwich
 
 278
 00:10:14,440 --> 00:10:16,440
-Comment ça va ? Comment ça va ?
+Et ils ont essayé de nous vendre une cocotte-minute
 
 279
 00:10:16,519 --> 00:10:18,519
-Commercial, formateur, charpentier, commercial...
+Belle journée
 
 280
 00:10:18,600 --> 00:10:20,600
-Qu'est-ce que tu fais ? Tu cherches du travail ?
+Tu as surveillé les deux pétasses d'en haut
 
 281
 00:10:20,679 --> 00:10:22,679
-Non, regarde les avis de décès, pour voir si mon ex apparaît
+Je ne les ai pas vues de toute la journée aujourd'hui, madame Concha
 
 282
 00:10:22,759 --> 00:10:24,759
-Comment s'est passé le casting ? Je n'ai pas décroché le rôle
+Je vais voir ce qu'ils font.
 
 283
 00:10:24,840 --> 00:10:26,840
-Mais je suis retombée sur Fernando dans l'entrée
+Tu as dû voir Tareando dans la chapelle
 
 284
 00:10:26,919 --> 00:10:28,919
-Ah, c'est sympa ! On n'arrive pas à joindre les deux bouts et toi tu penses au voisin
+Heureusement qu'ils ont vite enlevé le taureau de dessus.
 
 285
 00:10:29,000 --> 00:10:31,000
-Oh ! Je suis perdue
+Que si elle ne la tue pas
 
 286
 00:10:31,080 --> 00:10:33,080
-C'est la première fois qu'un mec qui me plaît ne fait pas attention à moi
+Ce n'était qu'une simple aventure.
 
 287
 00:10:33,159 --> 00:10:35,159
-Tu t'y habitueras
+Allez ! Allez ! Quelle hâte !
 
 288
 00:10:35,240 --> 00:10:37,240
-Je vais devoir prendre l'initiative
+Comme si on avait quelque chose à faire
 
 289
 00:10:37,799 --> 00:10:39,799
-Ça met un peu de piquant, non ?
+Que la numéro trois soit jolie, avec sa casquette
 
 290
 00:10:39,879 --> 00:10:41,879
-Je te le dis parce que je suis ton amie
+Oh là là, quelle journée j'ai passée !
 
 291
 00:10:41,960 --> 00:10:43,960
-Tu vas te prendre une claque
+Mon Dieu, mon Dieu ! Que je suis fatiguée !
 
 292
 00:10:44,039 --> 00:10:46,039
-Allez, on y va ? On va où ?
+J'ai une heure pour te préparer les chaussures.
 
 293
 00:10:46,120 --> 00:10:48,120
-J'ai eu une idée super originale pour parler à Fernando
+Que ce soir je vais préparer quelques blettes
 
 294
 00:10:48,200 --> 00:10:50,200
-Laquelle ?
+Vicenta, as-tu laissé la porte ouverte ?
 
 295
 00:10:50,279 --> 00:10:52,279
-Salut, tu as du sel ?
+Moi, non ? Comment ça, non ?
 
 296
 00:10:52,360 --> 00:10:54,360
-Oui, bien sûr, un moment
+Sinon, tu as laissé la porte ouverte ?
 
 297
 00:10:54,440 --> 00:10:56,440
-Tatie, c'est super original, hein
+Des voleurs sont entrés
 
 298
 00:10:56,519 --> 00:10:58,519
-Alicia, c'est pathétique, partons
+Oh mon Dieu ! Ils se sont introduits chez nous !
 
 299
 00:10:58,600 --> 00:11:00,600
-Ce que tu veux, mais ça marche. Regarde, tu verras comment ils forment une file d'attente
+Mais qu'est-ce qui s'est passé ? On a forcé notre porte !
 
 300
 00:11:00,680 --> 00:11:02,680
-Tiens
+Regarde ! Quelle racaille traîne dans les parages !
 
 301
 00:11:02,759 --> 00:11:04,759
-Et fais attention au sel, hein
+Mon Dieu ! J'avais bien dit qu'il ne fallait pas partir en excursion.
 
 302
 00:11:04,840 --> 00:11:06,840
-Ça retient beaucoup de liquides Merci
+Quel drôle de gardien de chien !
 
 303
 00:11:06,920 --> 00:11:08,920
-Très bien !
+Comment ça va ? Comment ça va ?
 
 304
 00:11:09,000 --> 00:11:13,000
-Ça fonctionne, hein
+Commercial, formatic, charpentier, commercial...
 
 305
 00:11:13,080 --> 00:11:15,080
-Ce que je n'ai pas très bien compris, c'est à quelle heure vous avez rendez-vous
+Que fais-tu ? Tu cherches du travail ?
 
 306
 00:11:15,160 --> 00:11:17,160
-Chan chan, chan chan, chan chan
+Non, regarde les avis de décès, pour voir si mon ex apparaît
 
 307
 00:11:17,240 --> 00:11:19,240
-Nooooon !
+Comment s'est passé le casting ? Je n'ai pas été pris
 
 308
 00:11:19,320 --> 00:11:21,320
-Eh bien oui, ils ont forcé la porte
+Mais je suis encore tombé sur Fernando dans le hall
 
 309
 00:11:21,399 --> 00:11:24,440
-Je ne sais pas pourquoi, mais ils ont forcé la porte
+Ah très bien ! On n'arrive pas à joindre les deux bouts et toi, tu t'occupes du voisin.
 
 310
 00:11:24,519 --> 00:11:26,519
-Bon, au moins ils n'ont rien emporté.
+Oh là là ! Je suis confuse.
 
 311
 00:11:26,600 --> 00:11:28,600
-Je pense qu'ils ont vu Valentín et ont pris peur.
+C'est la première fois qu'un gars qui me plaît ne me calcule pas
 
 312
 00:11:28,680 --> 00:11:30,680
-Ça doit être ça. Et tu n'as vu personne d'étrange entrer?
+Tu finis par t'y habituer
 
 313
 00:11:30,759 --> 00:11:32,759
-Non. À part vous, non.
+Je devrai prendre l'initiative
 
 314
 00:11:32,840 --> 00:11:34,840
-Mais qu'est-ce qu'ils voulaient, de toute façon, nous n'avons rien.
+Quel frisson, n'est-ce pas !
 
 315
 00:11:35,080 --> 00:11:37,080
-Eh bien, vous avez eu de la chance de ne pas être à la maison.
+Je te le dis parce que je suis ton amie
 
 316
 00:11:37,160 --> 00:11:39,160
-Si vous êtes là,
+Tu vas te prendre une baffe
 
 317
 00:11:39,240 --> 00:11:41,240
-On pourrait vous violer, vous tuer toutes les deux.
+Allons-y, où allons-nous ?
 
 318
 00:11:41,320 --> 00:11:43,320
-Je ne sais pas comment vous pouvez vivre tranquillement au premier étage.
+J'ai eu une idée super originale pour parler avec Fernando.
 
 319
 00:11:43,399 --> 00:11:45,399
-Un de ces jours, quelqu'un entrera par la fenêtre et ce sera trop tard.
+Lequel ?
 
 320
 00:11:46,840 --> 00:11:48,840
-Moi, je vis au deuxième étage.
+Salut, tu as du sel ?
 
 321
 00:11:48,920 --> 00:11:50,920
-Et puis il y a mon fils
+Oui, bien sûr, un instant
 
 322
 00:11:51,000 --> 00:11:53,000
-Sinon, il y a longtemps que j'aurais installé une alarme
+Tante, c'est super original, hein
 
 323
 00:11:53,080 --> 00:11:55,080
-Et combien coûte une de ces alarmes ?
+Alicia est pathétique, partons.
 
 324
 00:11:55,160 --> 00:11:57,960
-Bonjour chéri
+Ce que tu veux, mais ça marche. Observe, tu verras comment une file se forme.
 
 325
 00:11:58,040 --> 00:12:00,040
-Oh, ne me fais pas ça
+Prends
 
 326
 00:12:00,120 --> 00:12:02,120
-Que fais-tu ?
+Et fais attention au sel, hein
 
 327
 00:12:02,200 --> 00:12:04,200
-Que fais-tu ?
+Qui retient énormément de liquides Merci
 
 328
 00:12:04,200 --> 00:12:06,200
-Oh là là
+Très bien !
 
 329
 00:12:08,440 --> 00:12:10,440
-Mais comment ont-ils pu laisser ça comme ça
+Ça marche, hein
 
 330
 00:12:10,520 --> 00:12:12,520
-Enfin quelqu'un qui parle ma langue
+Ce qui n'est pas très clair pour moi, c'est à quelle heure vous vous êtes donnés rendez-vous.
 
 331
 00:12:13,720 --> 00:12:15,720
-Qu'est-ce qui s'est passé s'ils n'ont rien fait ?
+Chan chan, chan chan, chan chan
 
 332
 00:12:15,800 --> 00:12:17,800
-Eh bien, le président de la copropriété est arrivé
+Noooooon !
 
 333
 00:12:18,840 --> 00:12:20,840
-Et ils se sont arrêtés sur je ne sais quel paragraphe de je ne sais quel article
+Eh bien, oui, ils ont forcé la porte.
 
 334
 00:12:20,920 --> 00:12:22,920
-Ils ont arrêté nos travaux
+Je ne sais pas pourquoi, mais ils ont forcé la porte.
 
 335
 00:12:24,040 --> 00:12:26,040
-Il a fait quoi ?
+Eh bien, au moins ils n'ont rien emporté.
 
 336
 00:12:26,120 --> 00:12:28,120
-Bonjour Lucía, justement il va monter...
+Je crois qu'ils ont vu Valentin et qu'il a pris peur.
 
 337
 00:12:28,200 --> 00:12:30,200
-Mais pour qui vous prenez-vous pour arrêter mes travaux ?
+Ça doit être ça. Et toi, tu n'as vu personne de bizarre entrer ?
 
 338
 00:12:30,280 --> 00:12:32,280
-Eh bien, je suis le président de la copropriété.
+Non. À part vous, non.
 
 339
 00:12:32,759 --> 00:12:34,759
-Non, vous n'avez aucun droit de vous immiscer dans ma maison pour donner votre avis.
+C’est ce qu'ils voulaient, alors que nous n'avons rien.
 
 340
 00:12:34,839 --> 00:12:36,839
-Je ne sais pas si vous savez que pour faire des travaux chez soi...
+Eh bien, vous avez eu de la chance de ne pas être à la maison.
 
 341
 00:12:36,919 --> 00:12:38,919
-Vous avez besoin d'un permis de construire de la mairie.
+Que si vous arrivez à être
 
 342
 00:12:39,000 --> 00:12:41,000
-Ah oui ? Et c'est quoi ça ?
+Ils peuvent tout aussi bien vous violer que vous tuer toutes les deux
 
 343
 00:12:41,079 --> 00:12:43,079
-À première vue, cela ressemble à un permis de construire de la mairie.
+Je ne sais pas comment vous pouvez vivre tranquillement au premier étage
 
 344
 00:12:43,159 --> 00:12:45,159
-Et maintenant ?
+Le jour où vous vous y attendez le moins, ils entreront par la fenêtre et sinon, avec le temps.
 
 345
 00:12:45,240 --> 00:12:47,240
-Allez-vous me payer le retard ?
+Je parce que je vis au deuxième
 
 346
 00:12:47,319 --> 00:12:49,319
-Écoutez, je ne pense pas que ce soit pour...
+Et puis il y a mon fils
 
 347
 00:12:49,399 --> 00:12:51,399
-La prochaine fois que vous voudrez entrer chez moi
+Sinon, il y a longtemps que j'aurais mis une alarme
 
 348
 00:12:51,480 --> 00:12:53,480
-Appelez-nous d'abord
+Et ça coûte combien, une alarme comme ça ?
 
 349
 00:12:53,559 --> 00:12:55,559
-Merci
+Salut mon chéri
 
 350
 00:12:55,639 --> 00:12:57,639
-Quel est ce scandale ? Quelles sont ces voix ?
+Oh, ne me fais pas ça
 
 351
 00:12:57,720 --> 00:12:59,720
-Rien, Madame Concha, rien du tout
+Que fais-tu ?
 
 352
 00:12:59,799 --> 00:13:01,799
-Oh là là, ce n'est pas une heure!
+Que fais-tu ?
 
 353
 00:13:01,879 --> 00:13:03,879
-Quoi? Et vous, qu'est-ce que vous regardez?
+Oh
 
 354
 00:13:03,959 --> 00:13:05,959
-Juan, ne te laisse pas faire, hein?
+Mais comment ont-ils laissé ça comme ça ?
 
 355
 00:13:06,039 --> 00:13:08,039
-Ne te laisse pas faire!
+Enfin quelqu'un qui parle ma langue
 
 356
 00:13:08,120 --> 00:13:10,120
-Marisa, tu dors ?
+Qu'est-ce qui s'est passé s'ils n'ont rien fait ?
 
 357
 00:13:10,199 --> 00:13:12,199
-Nooon
+Eh bien, le président de la communauté est arrivé.
 
 358
 00:13:12,279 --> 00:13:14,279
-Hé, qu'est-ce qu'on va faire s'ils reviennent ?
+Et ils se sont arrêtés à je ne sais quel paragraphe de je ne sais quel article
 
 359
 00:13:14,359 --> 00:13:16,359
-Qui ça ?
+Les travaux ont été arrêtés.
 
 360
 00:13:16,439 --> 00:13:18,439
-Ceux qui ont cassé notre porte.
+Qu'a-t-il fait quoi ?
 
 361
 00:13:24,039 --> 00:13:26,039
-Et qui te dit qu'ils vont revenir s'ils n'ont rien emporté ?
+Bonjour Lucía, justement ça va monter...
 
 362
 00:13:26,120 --> 00:13:28,120
-Bien sûr, parce que peut-être qu'ils nous recherchent
+Mais pour qui vous prenez-vous pour arrêter mes travaux ?
 
 363
 00:13:28,199 --> 00:13:30,199
-Ils m'ont vue en couverture de l'Interviú et ils se sont entichés
+Homme, je suis le président de la copropriété
 
 364
 00:13:30,280 --> 00:13:32,280
-Je parle sérieusement
+Non, vous n'avez aucun droit de vous immiscer chez moi pour donner votre avis sur quoi que ce soit.
 
 365
 00:13:32,360 --> 00:13:34,360
-Allez, dors et laisse-moi tranquille
+Je ne sais pas si vous savez que pour faire des rénovations à la maison
 
 366
 00:13:34,440 --> 00:13:36,440
-Quel est ce bruit ?
+Vous avez besoin d'un permis de construire de la mairie.
 
 367
 00:13:36,520 --> 00:13:38,520
-Valentín, cherche, cherche, cherche
+Ah oui ? Et c'est quoi ça ?
 
 368
 00:13:38,600 --> 00:13:40,600
-Ce soir, je ferais mieux de dormir avec mon dentier
+À première vue, cela ressemble à un permis de construire de la mairie.
 
 369
 00:13:40,680 --> 00:13:42,680
-Au cas où je devrais mordre quelqu'un
+Et maintenant, quoi ?
 
 370
 00:13:42,759 --> 00:13:44,759
-Doubi doubi doubi doum doum doum !
+Allez-vous me payer le retard ?
 
 371
 00:13:44,840 --> 00:13:46,840
-Mais qui peut se lever pour travailler à 8 heures du matin à part Iñaki Capilondo Moi Oh, pardon, si je dis ça c'est que... Pardon, Fernando, un bisou
+Homme, je ne pense pas non plus que ce soit pour...
 
 372
 00:13:46,920 --> 00:13:48,920
-Donne-moi un bisou
+Regarde, la prochaine fois qu'il voudra entrer chez moi
 
 373
 00:13:49,000 --> 00:13:51,000
-Oh ! Attention !
+Il nous appelle d'abord
 
 374
 00:13:51,080 --> 00:13:53,080
-Tu pourras descendre me laver les draps ?
+Merci
 
 375
 00:13:55,160 --> 00:13:57,160
-Oui, oui, oui
+Quel scandale est-ce ? Quelles voix sont celles-là ?
 
 376
 00:13:57,240 --> 00:13:59,240
-Oh !
+Rien madame Concha, rien
 
 377
 00:13:59,320 --> 00:14:01,320
-Qu'ils en ont déjà fini avec le pisco
+Oh là là, ce n'est pas une heure !
 
 378
 00:14:04,519 --> 00:14:06,519
-Regarde, regarde !
+Quoi ? Et vous, qu'est-ce que vous regardez ?
 
 379
 00:14:07,879 --> 00:14:09,879
-Ordario !
+Juan, ne te laisse pas faire, hein ?
 
 380
 00:14:09,960 --> 00:14:11,960
-Tailleur !
+Ne te laisse pas faire !
 
 381
 00:14:13,080 --> 00:14:15,080
-Tailleur !
+Marisa, tu dors ?
 
 382
 00:14:15,159 --> 00:14:17,159
-Frotter !
+Nooon
 
 383
 00:14:17,240 --> 00:14:19,240
-Frotter !
+Hé, que va-t-on faire s'ils reviennent ?
 
 384
 00:14:19,320 --> 00:14:21,320
-Frotter !
+Qui ?
 
 385
 00:14:21,399 --> 00:14:23,399
-Frotter !
+Ceux qui ont brisé notre porte
 
 386
 00:14:23,480 --> 00:14:25,480
-Frotter !
+Et qui te dit qu'ils vont revenir s'ils n'ont rien emporté ?
 
 387
 00:14:25,560 --> 00:14:27,560
-Frotter !
+Bien sûr, parce qu'ils nous cherchent peut-être.
 
 388
 00:14:27,639 --> 00:14:29,639
-Frotter !
+Ils m'ont vu en couverture du magazine Interviú et se sont entichés
 
 389
 00:14:29,719 --> 00:14:31,719
-Eh, eh, eh
+Je suis sérieux
 
 390
 00:14:31,799 --> 00:14:33,799
-Hé, pas là
+Regarde, endors-toi et laisse-moi tranquille
 
 391
 00:14:36,679 --> 00:14:38,679
-Pas là, l'ascenseur non, l'ascenseur c'est pour les personnes
+Quel est ce bruit ?
 
 392
 00:14:38,759 --> 00:14:40,759
-Je le sors par l'escalier sans faire de tache
+Valentín, cherche, cherche, cherche
 
 393
 00:14:40,839 --> 00:14:42,839
-Allez, tire, on y va
+Aujourd'hui, je ferais mieux de dormir avec le dentier.
 
 394
 00:14:42,919 --> 00:14:44,919
-Regarde comment il me salit le port...
+Il ne faudrait pas que je doive mordre quelqu'un
 
 395
 00:14:45,000 --> 00:14:47,000
-Mais ce type est idiot, gamin
+Dubi dubi dubi dum dum dum !
 
 396
 00:14:51,079 --> 00:14:53,079
-Le sac dehors, bon sang
+Mais qui peut se lever pour travailler à 8 heures du matin ?
 
 397
 00:14:53,159 --> 00:14:55,159
-Ils sont là
+apart de Iñaki Capilondo
 
 398
 00:14:55,239 --> 00:14:57,239
-Le sac est dehors, par l'escalier je te dis
+Moi
 
 399
 00:14:58,200 --> 00:15:00,200
-Descends par l'escalier
+Oh, pardon, si je le dis ainsi, c'est que...
 
 400
 00:15:00,279 --> 00:15:02,279
-Merde... par ici, bon sang
+Pardon, Fernando, un baiser
 
 401
 00:15:02,360 --> 00:15:04,360
-Passe par ici, descends par là maintenant
+Donne-moi un bisou
 
 402
 00:15:09,960 --> 00:15:11,960
-Celle qui est près de la glace, ce type là-bas
+Oh là là ! Attention !
 
 403
 00:15:12,039 --> 00:15:14,039
-Je vais te sortir d'ici
+Voyons si tu descends pour laver mes draps.
 
 404
 00:15:14,120 --> 00:15:16,120
-Putain
+Oui, oui, oui
 
 405
 00:15:27,240 --> 00:15:29,240
-Bon, oui
+Oh là là !
 
 406
 00:15:29,320 --> 00:15:31,320
-Voyons voir
+Qu'ils ont déjà fini avec le pisco.
 
 407
 00:15:35,080 --> 00:15:37,080
-On ne peut pas arriver et arrêter les travaux, ce n'est pas possible
+Regarde, regarde !
 
 408
 00:15:37,159 --> 00:15:39,159
-J'ai déjà essayé, mais ce n'est pas possible
+Ordario !
 
 409
 00:15:39,240 --> 00:15:41,240
-C'est insupportable, bon sang
+Sculpter !
 
 410
 00:15:41,320 --> 00:15:43,320
-Je perds mes cheveux à cause du stress
+Sculpter !
 
 411
 00:15:43,399 --> 00:15:45,399
-Tout est dans un état déplorable
+Sculpter !
 
 412
 00:15:45,480 --> 00:15:47,480
-Mais bon, ils ne sont pas obligés de nous prévenir
+Tailler !
 
 413
 00:15:47,560 --> 00:15:49,560
-Personne n'est venu me dire quoi que ce soit
+Tailler !
 
 414
 00:15:49,639 --> 00:15:51,639
-Parce que ce monsieur fait très mal son travail
+Sculpter !
 
 415
 00:15:51,720 --> 00:15:53,720
-Écoutez, mon mari en fait déjà beaucoup
+Sculpter !
 
 416
 00:15:53,799 --> 00:15:55,799
-Qu'il ne gagne pas un sou pour tout ça
+Sculpter !
 
 417
 00:15:55,799 --> 00:15:57,799
-Eh bien, il faudra vérifier les comptes
+Sculpter !
 
 418
 00:16:01,879 --> 00:16:03,879
-Qu'il ne tienne pas, il est sept heures et ils s'en allaient déjà
+Eh, eh, eh
 
 419
 00:16:03,959 --> 00:16:05,959
-Selon la loi, ils peuvent travailler jusqu'à neuf heures du soir
+Hé, pas là
 
 420
 00:16:06,039 --> 00:16:08,039
-Oui, mais ils commencent à huit heures et ils passent toute la journée là à marteler
+Pas là, pas l'ascenseur, l'ascenseur est pour les personnes
 
 421
 00:16:08,120 --> 00:16:10,120
-Eh bien, grignoter entre les repas, c'est très mauvais.
+Je le sors par l'escalier sans faire de taches.
 
 422
 00:16:10,199 --> 00:16:12,199
-Bon, un petit snack pour se détendre.
+Allez, tire, on y va
 
 423
 00:16:12,279 --> 00:16:14,279
-Comme c'est drôle.
+Regarde comment le port me met...
 
 424
 00:16:14,359 --> 00:16:16,359
-Eh bien, on s'est fait cambrioler chez nous.
+Mais ce type est stupide, gamin
 
 425
 00:16:16,439 --> 00:16:18,439
-Parce que la porte de l'immeuble est ouverte toute la sainte journée.
+Enlève ce foutu sac
 
 426
 00:16:18,519 --> 00:16:20,519
-Et tout est dans un état déplorable.
+Ils sont là
 
 427
 00:16:20,599 --> 00:16:22,599
-Oui, doña Vicenta, oui, ma chère, nous vous avons déjà entendue.
+Le sac dehors, par l'escalier je te dis
 
 428
 00:16:22,679 --> 00:16:24,679
-Bon, je ne sais pas quelle est la solution, mais il faudra bien faire quelque chose.
+Jette-toi déjà par l'escalier
 
 429
 00:16:24,759 --> 00:16:26,759
-Je comprends que c'est gênant pour tout le monde, pour moi le premier.
+Merde alors... par ici, putain
 
 430
 00:16:26,839 --> 00:16:28,839
-Mais on m'a promis qu'ils allaient finir rapidement.
+Va par ici, va déjà par là-bas
 
 431
 00:16:28,919 --> 00:16:30,919
-Hé, vous en avez encore pour longtemps
+Celle avec la glace, ce type-là
 
 432
 00:16:31,000 --> 00:16:33,000
-Oui, oui, oui
+Je vais te sortir de là maintenant.
 
 433
 00:16:35,079 --> 00:16:37,079
-C'est qu'il ne parle pas espagnol
+Putain de merde
 
 434
 00:16:37,159 --> 00:16:39,159
-Quel président
+Merde, ton...
 
 435
 00:16:39,239 --> 00:16:41,239
-Monsieur le policier, vous savez que voler des lettres est un délit
+Eh bien, oui
 
 436
 00:16:41,319 --> 00:16:43,319
-Si je vais la lui rendre
+Voyons voir
 
 437
 00:16:43,399 --> 00:16:45,399
-Puis je descends chez lui et je lui dis qu'ils se sont trompés de boîte aux lettres
+On ne peut pas arriver et arrêter les travaux, ce n'est pas possible
 
 438
 00:16:45,479 --> 00:16:47,479
-C'est pire que ce qui s'est passé dans la salle
+Je l'ai déjà essayé, mais ce n'est pas possible
 
 439
 00:16:47,559 --> 00:16:49,559
-Il te dépasse par moments
+C'est insupportable, mec
 
 440
 00:16:49,639 --> 00:16:51,639
-Je t'en prie, sors-la, sors-la, sors-la
+Je perds mes cheveux à cause du stress
 
 441
 00:16:51,719 --> 00:16:53,719
-Pardon
+Tout est en pagaille
 
 442
 00:16:53,879 --> 00:16:55,879
-Je crois que c'est notre boîte aux lettres
+Mais bon, ils n'ont pas l'obligation de nous prévenir.
 
 443
 00:16:55,960 --> 00:16:57,960
-Non, et la lettre
+Eh bien, ici personne n'est venu me dire quoi que ce soit.
 
 444
 00:16:58,040 --> 00:17:00,040
-Regarde, mon nom
+Parce que ce monsieur fait très mal son travail
 
 445
 00:17:00,120 --> 00:17:02,120
-Tu vois ?
+Écoutez, mon mari en fait déjà beaucoup
 
 446
 00:17:02,200 --> 00:17:04,200
-Pour ça, il n'y aurait pas la clé, si ce n'est pas notre boîte aux lettres.
+Qui ne prend pas un centime pour tout cela
 
 447
 00:17:04,279 --> 00:17:06,279
-Ah, mais tu es maladroit, allez.
+Eh bien, nous devrons examiner les comptes.
 
 448
 00:17:06,360 --> 00:17:08,360
-Mais tu es en retard sur quoi ?
+Qu'il n'en puisse plus, il est sept heures et ils partent encore
 
 449
 00:17:08,440 --> 00:17:10,440
-Qu'est-ce que j'en sais ?
+Selon la loi, ils peuvent travailler jusqu'à neuf heures du soir
 
 450
 00:17:10,519 --> 00:17:12,519
-Toi, tu ne vas rien comprendre puisque tu ne saisis jamais rien.
+Oui, mais le problème c'est qu'ils commencent à huit heures et passent toute la journée à marteler là-bas
 
 451
 00:17:12,600 --> 00:17:14,600
-Mesdames
+Eh bien, grignoter entre les repas, c'est vraiment mauvais.
 
 452
 00:17:16,200 --> 00:17:18,200
-Félicitations pour votre choix
+Bon, un petit coup pour se détendre.
 
 453
 00:17:18,279 --> 00:17:20,279
-Ce système d'alarme comprend trois détecteurs de mouvement
+Quel drôle
 
 454
 00:17:20,360 --> 00:17:22,360
-Situés un dans le salon, deux dans la cuisine, trois dans la chambre
+Eh bien, on est entrées chez nous pour nous voler.
 
 455
 00:17:22,519 --> 00:17:24,519
-Vous devez maintenant entrer un code secret de quatre chiffres
+Pourquoi le portail est-il ouvert toute la sainte journée ?
 
 456
 00:17:24,599 --> 00:17:26,599
-Qu'en aucun cas, ils ne doivent le dire à personne.
+Et tout est dans un état déplorable
 
 457
 00:17:26,679 --> 00:17:28,679
-Lequel met-on ?
+Oui, madame Vicenta, oui, ma belle, oui, nous vous avons déjà entendue auparavant
 
 458
 00:17:28,759 --> 00:17:30,759
-Celui de la carte de crédit 4547.
+Eh bien, je ne sais pas quelle est la solution, mais il faudra bien faire quelque chose.
 
 459
 00:17:30,839 --> 00:17:32,839
-Tais-toi, mets celui que tu veux, puis tu me le dis.
+Je comprends que c'est inconfortable pour tout le monde, pour moi le premier
 
 460
 00:17:32,919 --> 00:17:34,919
-Regarde par là-bas.
+Mais ils m'ont promis qu'ils finiront bientôt
 
 461
 00:17:35,000 --> 00:17:37,000
-C'est prêt
+Écoutez, il vous reste encore beaucoup de temps ?
 
 462
 00:17:37,079 --> 00:17:39,079
-Je répète
+Oui, oui, oui
 
 463
 00:17:39,159 --> 00:17:41,159
-Vous ne devez
+C'est qu'il ne parle pas espagnol
 
 464
 00:17:41,240 --> 00:17:43,240
-Vous ne devez le dire à personne
+Quel président
 
 465
 00:17:46,599 --> 00:17:48,599
-Et maintenant je vais vous expliquer comment ça fonctionne
+Policier, tu sais bien que voler des lettres est un délit
 
 466
 00:17:48,679 --> 00:17:50,679
-C'est très simple
+Si je vais la lui rendre
 
 467
 00:17:51,640 --> 00:17:53,640
-Pour activer le système et connecter l'alarme dans toute la maison
+Puis il descend chez lui et je lui dis qu'ils se sont trompés d'emplacement pour notre boîte aux lettres.
 
 468
 00:17:53,720 --> 00:17:55,720
-Tapez votre identification personnelle ou code secret, puis appuyez
+C’est pire que ce qui s'est passé dans la salle
 
 469
 00:17:55,799 --> 00:17:57,799
-Ensuite, sur la touche entrée, située dans le coin inférieur droit
+Il te surpasse par moments
 
 470
 00:17:57,880 --> 00:17:59,880
-Si vous souhaitez seulement désactiver une zone, pour connecter l'alarme lorsque vous êtes
+Oh, je t'en prie, enlève-la, enlève-la, enlève-la
 
 471
 00:17:59,960 --> 00:18:01,960
-Entrée à l'intérieur de l'habitation
+Pardon
 
 472
 00:18:02,039 --> 00:18:04,039
-Tapez votre identification personnelle ou code secret puis appuyez sur
+Je pense que c'est notre boîte aux lettres.
 
 473
 00:18:04,120 --> 00:18:06,120
-La touche bypass, située dans le coin supérieur gauche du panneau de contrôle
+Non, et la lettre
 
 474
 00:18:06,200 --> 00:18:08,200
-Et le numéro de la zone à désactiver
+Regarde, mon nom
 
 475
 00:18:08,279 --> 00:18:10,279
-Un pour le salon, deux pour la cuisine, trois pour la chambre
+Tu vois ?
 
 476
 00:18:10,360 --> 00:18:12,360
-Suivi de la touche majuscule, située dans le coin supérieur droit du panneau de contrôle
+Pour cela, il n'y aurait pas la clé, si ce n'est pas notre boîte aux lettres.
 
 477
 00:18:12,440 --> 00:18:14,440
-Le numéro de la zone qui désactive une zone pour activer l'arme lorsque vous êtes
+Oh là là, tu es vraiment maladroit, allez
 
 478
 00:18:14,519 --> 00:18:16,519
-À l'intérieur de la maison
+Mais est-ce que tu sais de quoi il s'agit ?
 
 479
 00:18:16,600 --> 00:18:18,600
-Saisissez votre identification personnelle ou votre code secret, puis appuyez sur
+Qu'est-ce que j'en sais ?
 
 480
 00:18:18,679 --> 00:18:20,679
-La touche entrée, située dans le coin inférieur droit du panneau de contrôle
+Toi, qu'est-ce que tu en sais si tu ne comprends jamais rien ?
 
 481
 00:18:20,759 --> 00:18:22,759
-C'est tout.
+Mesdames
 
 482
 00:18:22,839 --> 00:18:24,839
-Avez-vous compris ?
+Félicitations pour votre choix
 
 483
 00:18:24,919 --> 00:18:26,919
-Félicitations.
+Ce système d'alarme se compose de trois détecteurs de mouvement.
 
 484
 00:18:27,000 --> 00:18:29,000
-Tu es à nouveau avec la Fidez ?
+Situés un dans le salon, deux dans la cuisine, trois dans la chambre
 
 485
 00:18:29,079 --> 00:18:31,079
-Comment tous les voisins se sont-ils acharnés sur moi ?
+Maintenant, ils doivent entrer un code secret de quatre chiffres
 
 486
 00:18:31,159 --> 00:18:33,159
-Je ne comprends pas.
+Qu’en aucun cas elles ne doivent le dire à personne
 
 487
 00:18:33,240 --> 00:18:35,240
-Quelle faute ai-je si ceux d'en haut se lancent dans ces manigances ?
+Lequel mettons-nous ?
 
 488
 00:18:35,319 --> 00:18:37,319
-Voyons.
+Celui de la carte de crédit 4547
 
 489
 00:18:37,399 --> 00:18:39,399
-Tout ce que je dis, c'est qu'avec cette attitude, tu vas te mettre tout le voisinage à dos.
+Tais-toi, mets celui qui te plaît, puis tu me le diras
 
 490
 00:18:39,480 --> 00:18:41,480
-Quelle attitude ?
+Regardez là-bas
 
 491
 00:18:41,559 --> 00:18:43,559
-Voyons voir, qui commande ici ?
+C’est fait.
 
 492
 00:18:43,639 --> 00:18:45,639
-Toi
+Je répète
 
 493
 00:18:45,719 --> 00:18:47,719
-Non, dans la communauté
+Ils ne doivent pas
 
 494
 00:18:47,799 --> 00:18:49,799
-Ah, moi, moi
+Vous ne devez le dire à personne.
 
 495
 00:18:49,880 --> 00:18:51,880
-Eh bien impose-toi, je suis sûre que ceux d'en haut font quelque chose d'illégal.
+Et maintenant, je vais vous expliquer comment cela fonctionne.
 
 496
 00:18:51,960 --> 00:18:53,960
-N'étaient-ils pas en train d'abattre un mur ?
+C'est très simple
 
 497
 00:18:54,039 --> 00:18:56,039
-Oui
+Pour activer le système et connecter l'arme dans toute la maison
 
 498
 00:18:56,120 --> 00:18:58,120
-Eh bien, c'est un mur porteur
+Saisissez votre identifiant personnel ou code secret en appuyant
 
 499
 00:18:58,200 --> 00:19:00,200
-Et alors, comment le sais-tu ou non ? Dis juste que c'est un mur porteur
+Ensuite, la touche Entrée, située dans le coin inférieur droit.
 
 500
 00:19:00,279 --> 00:19:02,279
-Bien sûr
+Si tu désactive simplement une zone pour connecter l'arme quand tu es prêt
 
 501
 00:19:02,360 --> 00:19:04,360
-Et alors, ils ont besoin d'un architecte pour signer le projet.
+Trouvé à l'intérieur de la maison
 
 502
 00:19:04,440 --> 00:19:06,440
-Et qu'importe si elle veut changer les fenêtres ?
+Tapez votre code d'identification personnel ou votre code secret, puis appuyez sur entrer.
 
 503
 00:19:06,519 --> 00:19:08,519
-Et qu'elle veut fermer la terrasse.
+La touche de contournement, située dans le coin supérieur gauche du panneau de commande
 
 504
 00:19:08,600 --> 00:19:10,600
-Modification des parties communes.
+Et le numéro de la zone à désactiver
 
 505
 00:19:10,680 --> 00:19:12,680
-Demain, tu montes et tu vérifies bien ce qu'ils font.
+Un pour le salon, deux pour la cuisine, trois pour la chambre
 
 506
 00:19:12,759 --> 00:19:14,759
-Ceux-là ne savent toujours pas qui nous sommes, les Cuesta
+Suivi de la touche Maj, située dans le coin supérieur droit du panneau de contrôle
 
 507
 00:19:14,839 --> 00:19:16,839
-Mais ils vont le découvrir
+Le numéro de la zone qui désactive une zone pour connecter l'arme lorsque vous êtes
 
 508
 00:19:16,920 --> 00:19:18,920
-Marisa
+Trouvée à l'intérieur de la maison
 
 509
 00:19:19,000 --> 00:19:21,000
-Marisa
+Tapez votre code personnel ou mot de passe, puis appuyez ensuite sur
 
 510
 00:19:21,079 --> 00:19:23,079
-Tu t'es endormie ?
+La touche Entrée, située dans le coin inférieur droit du panneau de contrôle
 
 511
 00:19:23,160 --> 00:19:25,160
-Non, je suis en train de regarder la télévision
+C'est tout
 
 512
 00:19:25,240 --> 00:19:27,240
-Allez, allons au lit, il faut mettre le réveil
+L'ont-ils compris ?
 
 513
 00:19:27,319 --> 00:19:29,319
-Allez, bon sang
+Félicitations
 
 514
 00:19:35,400 --> 00:19:37,400
-Voyons comment c'est
+Tu es encore avec la Fidez ?
 
 515
 00:19:37,480 --> 00:19:39,480
-Code
+Comment tous les voisins se sont-ils acharnés contre moi ?
 
 516
 00:19:39,559 --> 00:19:41,559
-Zone, entrez
+Je ne le comprends pas
 
 517
 00:19:41,640 --> 00:19:43,640
-Et maintenant nous avons 10 secondes pour sortir du salon ?
+Quelle faute ai-je, moi, si ceux d'en haut se mettent à faire des machinations ?
 
 518
 00:19:43,800 --> 00:19:45,800
-Allez, courez dans la chambre, allez
+Voyons voir
 
 519
 00:19:45,880 --> 00:19:47,880
-Allez, on y va, oui, oui
+Tout ce que je dis, c'est qu'avec cette attitude, tu vas te mettre tout le quartier à dos.
 
 520
 00:19:47,960 --> 00:19:49,960
-Mais sans pousser
+Quelle attitude ?
 
 521
 00:19:50,040 --> 00:19:52,040
-Mon petit verre à droite
+Voyons voir, qui commande ici ?
 
 522
 00:19:52,120 --> 00:19:53,320
-Laisse-le, il n'y a pas de temps
+Toi
 
 523
 00:19:53,400 --> 00:19:55,400
-Non, non, mais si, il y a du temps
+Non, dans la communauté
 
 524
 00:19:55,480 --> 00:19:57,480
-Sinon, je ne m'endors pas
+Ah, moi, moi
 
 525
 00:19:57,560 --> 00:19:59,560
-Non, vite, vite, on n'a pas le temps
+Impose-toi, je suis sûre que ceux d'en haut font quelque chose d'illégal.
 
 526
 00:19:59,640 --> 00:20:01,640
-Aïe!
+Ne renversaient-ils pas un mur ?
 
 527
 00:20:01,720 --> 00:20:03,720
-Aïe!
+Oui
 
 528
 00:20:03,800 --> 00:20:05,800
-Aïe, t'es cool toi ! Je te l'ai déjà dit !
+Eh bien, il est rechargeable.
 
 529
 00:20:05,880 --> 00:20:07,880
-Ceci est le cône
+Et alors, peu importe comment tu le sais ou pas ? Dis que c'est du fret.
 
 530
 00:20:07,960 --> 00:20:09,960
-Il installe aussi l'alarme sans ma permission
+Bien sûr
 
 531
 00:20:10,040 --> 00:20:12,040
-Sucre !
+Et donc, ils ont besoin d'un architecte pour signer le projet.
 
 532
 00:20:12,119 --> 00:20:14,119
-Sucre !
+Et alors, qu'est-ce que ça change qu'elle veuille changer les fenêtres ?
 
 533
 00:20:14,200 --> 00:20:16,200
-Sucre !
+Et il veut enclore la terrasse
 
 534
 00:20:16,279 --> 00:20:18,279
-Maintenant, pour l'amour de Dieu, le téléphone
+Altération des éléments communs
 
 535
 00:20:18,359 --> 00:20:20,359
-Éteins ! C'est ça que je t'ai dit !
+Demain même tu montes et tu observes bien ce qu'ils sont en train de faire.
 
 536
 00:20:20,440 --> 00:20:22,440
-Éteins !
+Ceux-là n'ont pas encore découvert qui nous sommes, les Cuesta.
 
 537
 00:20:22,519 --> 00:20:24,519
-Qui est-ce maintenant ?
+Mais ils vont le découvrir
 
 538
 00:20:24,599 --> 00:20:26,599
-Emilio ?
+Marisa
 
 539
 00:20:26,680 --> 00:20:28,680
-Oui, dites-moi. Qu'est-ce que c'est ce bruit ?
+Marisa
 
 540
 00:20:28,759 --> 00:20:30,759
-Quel bruit ? Ce vacarme qu'il y a là en bas.
+Tu t'es endormie ou quoi ?
 
 541
 00:20:30,839 --> 00:20:32,839
-Ce sont les filles en or, Monsieur Juan, qui ont déclenché une alarme.
+Non, je te dis que je regarde la télévision.
 
 542
 00:20:32,920 --> 00:20:34,920
-Allez, monte voir ce qui se passe.
+Allons, allons au lit, il faut régler l'alarme
 
 543
 00:20:35,000 --> 00:20:37,000
-Oui, oui, j'y vais tout de suite, Monsieur Juan.
+Vas-y bordel
 
 544
 00:20:37,079 --> 00:20:39,079
-Monte avec ta sœur, celle d'Alcalá de Henares.
+Voyons comment c'est fait.
 
 545
 00:20:39,159 --> 00:20:41,159
-Crétin.
+Code
 
 546
 00:20:41,480 --> 00:20:43,480
-Appelle-moi à deux heures du matin
+Zone, entrez
 
 547
 00:20:43,560 --> 00:20:45,560
-Tu es vraiment spécial, mec
+Et maintenant, nous avons 10 secondes pour sortir du salon ?
 
 548
 00:20:45,640 --> 00:20:47,640
-Le papier ! Prends le papier !
+Allez, cours à la chambre, vite
 
 549
 00:20:47,720 --> 00:20:49,720
-Prends le papier !
+Allez, on y va, oui, oui
 
 550
 00:20:49,800 --> 00:20:51,800
-Merde, mais qu'est-ce qui se passe maintenant ?
+Mais sans pousser
 
 551
 00:20:51,880 --> 00:20:53,880
-C'est une alarme
+Mon petit verre droit
 
 552
 00:20:53,960 --> 00:20:55,960
-Je vais voir ce qu'il se passe
+Laisse tomber, on n'a pas le temps
 
 553
 00:20:56,040 --> 00:20:58,040
-Non, n'y va pas
+Non, non, qu'il y a encore du temps, vraiment
 
 554
 00:20:58,120 --> 00:21:00,120
-T'inquiète pas, il ne m'arrivera rien
+Sinon, je ne m'endors pas
 
 555
 00:21:00,200 --> 00:21:02,200
-Rendors-toi
+Non, cours, cours, non
 
 556
 00:21:02,279 --> 00:21:04,279
-Mais je n'y arrive pas !
+Oh là là !
 
 557
 00:21:04,360 --> 00:21:06,360
-Je l'ai mis ! Mais je ne sais pas où j'ai appuyé !
+Oh là là !
 
 558
 00:21:06,440 --> 00:21:08,440
-Je vais demander de l'aide
+Oh, toi, tu es cool ! Je te l'ai déjà dit !
 
 559
 00:21:08,519 --> 00:21:10,519
-Laisse, laisse, ils dorment !
+Ceci est le cône
 
 560
 00:21:10,759 --> 00:21:12,759
-Comment peuvent-ils dormir ? On dirait qu'on est bombardé
+Il installe aussi l'alarme sans ma permission.
 
 561
 00:21:12,839 --> 00:21:14,839
-Est-ce que tout va bien ? Il se passe quelque chose ?
+Sucre !
 
 562
 00:21:14,920 --> 00:21:16,920
-Oui, je ne sais pas, c'est ce qui a été fait avec l'alarme
+Sucre !
 
 563
 00:21:17,000 --> 00:21:19,000
-Viens, mon fils, veux-tu boire quelque chose ?
+Sucre !
 
 564
 00:21:19,079 --> 00:21:21,079
-Voyons, dites-moi le code
+Maintenant, mon Dieu, le téléphone
 
 565
 00:21:21,160 --> 00:21:23,160
-Non, non, non, c'est secret, nous ne pouvons le dire à personne.
+Éteins! C'est ce qu'il t'a dit !
 
 566
 00:21:23,240 --> 00:21:25,240
-Non, madame, je suis votre voisin
+Éteins !
 
 567
 00:21:25,319 --> 00:21:27,319
-Vicenta, à mon époque, dites-le-nous
+Qui est-ce maintenant ?
 
 568
 00:21:27,400 --> 00:21:29,400
-Qu'est-ce qui s'est passé ? Qui est entré chez nous ?
+Emilio ?
 
 569
 00:21:29,480 --> 00:21:31,480
-Celui-ci ?
+Oui, dites-moi, qu'est-ce que ça fait ?
 
 570
 00:21:31,559 --> 00:21:33,559
-Donc, vous avez installé une alarme et ne m'en avez pas informé.
+Le quoi ? Le scandale qu'il y a là-bas en bas
 
 571
 00:21:33,639 --> 00:21:35,639
-Ce qu'il manquait !
+Ce sont les filles en or, Monsieur Juan, qui ont installé une alarme
 
 572
 00:21:35,720 --> 00:21:37,720
-Mais pourquoi ne la déconnectent-ils pas déjà ?
+Allons, monte voir ce qui se passe.
 
 573
 00:21:37,799 --> 00:21:39,799
-Parce qu'ils ne veulent pas me donner le code
+Oui, oui, j'arrive tout de suite, Monsieur Juan.
 
 574
 00:21:40,759 --> 00:21:42,759
-Vicenta, dites-le-nous, vous le changerez ensuite et c'est tout
+Monte avec ta sœur, celle d'Alcalá de Henares
 
 575
 00:21:42,839 --> 00:21:44,839
-Non, je connais très bien ce code, car c'est ma date de naissance.
+Abruti
 
 576
 00:21:44,919 --> 00:21:46,919
-Et quel âge avez-vous ?
+Appelle-moi à deux heures du matin
 
 577
 00:21:47,000 --> 00:21:49,000
-65 ans, pourquoi ?
+Tu seras un banal, mec
 
 578
 00:21:49,079 --> 00:21:51,079
-Quel soulagement !
+Le papier ! Prends le papier !
 
 579
 00:21:51,159 --> 00:21:53,159
-Comment avez-vous fait ?
+Prends le papier !
 
 580
 00:21:53,240 --> 00:21:55,240
-Bon, allez, ça suffit, allons tous nous coucher.
+Merde, mais qu'est-ce qui se passe maintenant ?
 
 581
 00:21:55,319 --> 00:21:57,319
-Bonsoir
+C'est une alarme
 
 582
 00:21:57,399 --> 00:21:59,399
-Eh bien, quelle sécurité, n'importe qui pourrait l'enlever
+Je vais voir ce qui se passe
 
 583
 00:21:59,480 --> 00:22:01,480
-Allez, allons nous coucher, hein
+Non, non, ne pars pas.
 
 584
 00:22:01,559 --> 00:22:03,559
-Allons au lit
+Ne t'inquiète pas, il ne m'arrivera rien.
 
 585
 00:22:03,639 --> 00:22:05,639
-Cha-la-pe-cha-cha-pe-cha
+Tu dors
 
 586
 00:22:05,720 --> 00:22:07,720
-Voyons, c'est clair ? Oui, oui
+Mais je ne peux pas !
 
 587
 00:22:07,720 --> 00:22:09,720
-Je me suis touché le front comme ça... Je dis ma phrase
+Je l'ai mis ! Mais je ne sais pas où j'ai appuyé !
 
 588
 00:22:09,799 --> 00:22:11,799
-Mais quelle est ta phrase ? J'ai beaucoup sali le bâtiment
+Je vais demander de l'aide
 
 589
 00:22:11,880 --> 00:22:13,880
-Mais oui, je t'ai agacé comme si ça te dérangeait
+Laisse, laisse, ils sont en train de dormir !
 
 590
 00:22:13,960 --> 00:22:15,960
-Non, mais ça me dérange vraiment
+Comment vont-ils dormir ? On dirait qu'ils ne se bombardent pas.
 
 591
 00:22:18,039 --> 00:22:20,039
-Bien, allons-y, allons-y, allez, je me touche le front
+Ça va ? Il y a un problème ?
 
 592
 00:22:20,120 --> 00:22:22,120
-Et toi, que dis-tu ? J'ai beaucoup sali le bâtiment
+Oui, je ne sais pas, il y a ce qu'il a fait avec l'alarme.
 
 593
 00:22:22,200 --> 00:22:24,200
-Mieux, mieux, allez, continuons à répéter
+Entre, mon fils, tu veux boire quelque chose ?
 
 594
 00:22:24,279 --> 00:22:26,279
-Je me touche le front et tu dis... J'ai beaucoup sali le bâtiment
+Voyons, donnez-moi le code s'il vous plaît.
 
 595
 00:22:26,360 --> 00:22:28,360
-C'est ça
+Non, non, non, c'est un secret, on ne peut le dire à personne
 
 596
 00:22:28,440 --> 00:22:30,440
-Allons, monsieur, j'ai inscrit Seasquilla au théâtre quand il était petit
+Non, madame, je suis votre voisin.
 
 597
 00:22:30,519 --> 00:22:32,519
-Et pourquoi as-tu arrêté ? Parce que ma mère disait que c'était pour les fillettes
+Vicenta, de mon temps, dis-le-nous
 
 598
 00:22:32,600 --> 00:22:34,600
-Écoute-moi, ne continue pas à peindre, s'il te plaît
+Qu'est-ce qui s'est passé ? Qui est entré chez nous ?
 
 599
 00:22:34,680 --> 00:22:36,680
-Cette couleur ne plaît pas à ma copine
+Celui-ci ?
 
 600
 00:22:36,759 --> 00:22:38,759
-Cette couleur est affreuse
+Donc, vous installez une alarme et vous ne me le communiquez pas ?
 
 601
 00:22:38,840 --> 00:22:40,840
-Oui, oui, oui, oui, oui
+Ce qu'il manquait !
 
 602
 00:22:40,920 --> 00:22:42,920
-Oui, oui, oui, oui, oui, mais tu continues de peindre
+Mais pourquoi ne la déconnectent-ils pas déjà ?
 
 603
 00:22:43,000 --> 00:22:45,000
-En plus, tu es en train de me ruiner le parc, mets un peu de plastique, allez
+Parce qu'ils ne veulent pas me donner le code
 
 604
 00:22:45,080 --> 00:22:47,080
-Bonjour
+Vicenta, dites-le-nous, ensuite vous le changez et c'est tout.
 
 605
 00:22:47,160 --> 00:22:49,160
-Ah, Juan Cuesta, président de la copropriété
+Non, je connais très bien ce code, car c'est ma date de naissance.
 
 606
 00:22:49,240 --> 00:22:51,240
-Effectivement
+Et quel âge avez-vous ?
 
 607
 00:22:51,320 --> 00:22:53,320
-Je dois vous informer que nous avons détecté certaines irrégularités
+65 ans, pourquoi ?
 
 608
 00:22:58,440 --> 00:23:00,440
-dans ce document
+Quel soulagement !
 
 609
 00:23:00,519 --> 00:23:02,519
-Le souhait de toute la communauté est que les travaux se terminent immédiatement
+Comment a-t-il fait ça ?
 
 610
 00:23:02,600 --> 00:23:04,600
-Je suis d'accord
+Bon, allez, ça suffit, allons tous au lit.
 
 611
 00:23:04,679 --> 00:23:06,679
-Maintenant, dites-leur, s'il vous plaît
+Bonsoir
 
 612
 00:23:06,759 --> 00:23:08,759
-Vous causez beaucoup de problèmes
+Eh bien, quelle sécurité, n'importe qui peut l'enlever.
 
 613
 00:23:08,839 --> 00:23:10,839
-Et vous salissez beaucoup l'immeuble
+Allez, allons au lit, hein
 
 614
 00:23:10,919 --> 00:23:12,919
-Tu as raison, Emilio
+Allons au lit
 
 615
 00:23:13,000 --> 00:23:15,000
-Mais bon, vous voilà encore ici ?
+Cha-la-pe-cha-cha-pe-cha
 
 616
 00:23:15,079 --> 00:23:17,079
-Que voulez-vous ? Vous me laissez entrer ?
+Voyons, est-ce clair ? Oui, oui
 
 617
 00:23:17,159 --> 00:23:19,159
-Je disais à votre copain que vous avez abattu un mur porteur
+Je me suis touché le front comme ça... Je dis ma phrase
 
 618
 00:23:19,240 --> 00:23:21,240
-Un mur porteur ? Un mur porteur ? Que dites-vous ?
+Mais quelle est ta phrase ? Je me suis beaucoup sali l'immeuble.
 
 619
 00:23:21,319 --> 00:23:23,319
-Et pour cela, il faut un projet et la signature d'un architecte
+Mais bien sûr, je t'ai énervé comme si je t'avais dérangé
 
 620
 00:23:23,399 --> 00:23:25,399
-Eh bien, Roberto est architecte
+Non, mais c'est que ça m'agace.
 
 621
 00:23:25,480 --> 00:23:27,480
-Hein ?
+D'accord, allons-y, allons-y, viens, je me touche le front
 
 622
 00:23:27,559 --> 00:23:29,559
-Ah, bon, bon, ce que je voulais dire
+Et toi, qu'en dis-tu ? J'ai beaucoup sali le bâtiment
 
 623
 00:23:29,639 --> 00:23:31,639
-Et je me suis sali dans l'immeuble
+Mieux, mieux, allez, continuons à répéter.
 
 624
 00:23:31,719 --> 00:23:33,719
-Allez, qu'est-ce qui se passe avec l'immeuble, les éditeurs ?
+Je me touche le front et tu dis... J'ai beaucoup sali le bâtiment.
 
 625
 00:23:33,799 --> 00:23:35,799
-Ils vont le nettoyer quand ils auront fini
+C'est ça
 
 626
 00:23:35,880 --> 00:23:37,880
-Ah, et en plus, vous allez changer les fenêtres.
+Allons, monsieur, j'ai mis Seasquilla petit vers le théâtre.
 
 627
 00:23:37,960 --> 00:23:39,960
-Eh bien oui, nous allons changer les fenêtres, pourquoi ?
+Et pourquoi as-tu arrêté ? Parce que ma mère disait que c'était pour les marins
 
 628
 00:23:40,039 --> 00:23:42,039
-Parce que c'est une modification des parties communes.
+Écoute-moi, ne continue pas à peindre, s'il te plaît
 
 629
 00:23:42,120 --> 00:23:44,120
-N'importe quel voisin pourrait s'en offusquer et vous dénoncer.
+Que ma petite amie n'aime pas cette couleur.
 
 630
 00:23:44,200 --> 00:23:46,200
-Est-ce qu'il nous menace ?
+Cette couleur est horrible
 
 631
 00:23:46,279 --> 00:23:48,279
-Non, non, non, non, non
+Oui, oui, oui, oui, oui
 
 632
 00:23:48,360 --> 00:23:50,360
-Mieux vaut, parce que sinon je vais signaler le deuxième B
+Oui, oui, oui, oui, oui, mais tu continues à peindre
 
 633
 00:23:50,440 --> 00:23:52,440
-pour l'antenne parabolique, le premier B
+De plus, tu es en train de détruire le parc, arrange un peu le plastique, allez
 
 634
 00:23:52,519 --> 00:23:54,519
-pour la climatisation et le premier A
+Bonjour
 
 635
 00:23:54,600 --> 00:23:56,600
-pour accrocher les pots de fleurs à l'extérieur du balcon
+Homme, Juan Cuesta, président de la communauté
 
 636
 00:23:56,680 --> 00:23:58,680
-Et aussi, parce que les extincteurs n'ont pas passé les 5 dernières inspections
+Effectivement
 
 637
 00:23:58,759 --> 00:24:00,759
-et cet ascenseur n'a aucune mesure de sécurité
+Je dois vous informer que nous avons détecté certaines irrégularités.
 
 638
 00:24:00,839 --> 00:24:02,839
-Bon, je ne pense pas non plus que ce soit pour ça, oui
+de cette façon
 
 639
 00:24:02,919 --> 00:24:04,919
-Maintenant, de quoi parlons-nous
+Le souhait de toute la communauté est que les travaux se terminent immédiatement.
 
 640
 00:24:05,000 --> 00:24:07,000
-Et vous me salissez beaucoup l'immeuble.
+Je suis d'accord
 
 641
 00:24:07,079 --> 00:24:09,079
-Tu veux bien te taire maintenant, Emilio ?
+Maintenant, dites-leur, s'il vous plaît.
 
 642
 00:24:09,159 --> 00:24:11,159
-Eh bien, je n'ai pas de migraine pour le moment.
+Vous provoquez beaucoup de problèmes.
 
 643
 00:24:11,240 --> 00:24:13,240
-Et ce monsieur vit dans une zone commune qui, selon les plans de l'immeuble, est un local à poubelles.
+Et vous salissez beaucoup mon immeuble
 
 644
 00:24:13,319 --> 00:24:15,319
-Que je vis dans un débarras à ordures ?
+Tu as raison, Emilio
 
 645
 00:24:15,399 --> 00:24:17,399
-Allez, j'appelle la mairie, ils font une inspection
+Mais enfin, vous êtes déjà de retour ici ?
 
 646
 00:24:17,480 --> 00:24:19,480
-et dès demain, ce monsieur est à la rue.
+Qu'est-ce qu'il veut ? Tu me laisses entrer ?
 
 647
 00:24:19,559 --> 00:24:21,559
-Monsieur Juan, ils veulent me mettre dehors.
+Je disais à ton copain que vous avez abattu un mur porteur.
 
 648
 00:24:21,639 --> 00:24:23,639
-Un instant, un instant, écoute chérie
+Un mur porteur ? Un mur porteur ? Qu'est-ce qu'il dit ?
 
 649
 00:24:23,720 --> 00:24:25,720
-Si nous allons parler des choses, parlons des choses.
+Et pour cela, il faut un projet et la signature d'un architecte
 
 650
 00:24:25,799 --> 00:24:27,799
-Très bien, étant donné votre attitude,
+Eh bien, Roberto est architecte.
 
 651
 00:24:27,879 --> 00:24:29,879
-je n'ai pas d'autre choix que de convoquer une assemblée extraordinaire des voisins.
+Hein ?
 
 652
 00:24:29,959 --> 00:24:31,959
-Très bien.
+Ah, bon, bon, ce que je voulais dire
 
 653
 00:24:31,960 --> 00:24:33,960
-Au revoir.
+Et j'ai sali beaucoup le bâtiment.
 
 654
 00:24:34,039 --> 00:24:36,039
-Hé, ne me mettez pas dehors s'il vous plaît
+Allez, qu'est-ce qui se passe, éditeurs, avec le bâtiment ?
 
 655
 00:24:36,120 --> 00:24:38,120
-Ce n'est peut-être qu'une pièce à ordures, mais je m'y suis attaché, bon sang
+Qu’ils vont le nettoyer quand ils auront fini
 
 656
 00:24:38,200 --> 00:24:40,200
-Emilio !
+Ah, et en plus, vous allez changer les fenêtres.
 
 657
 00:24:40,279 --> 00:24:42,279
-J'arrive, j'arrive
+Eh bien, oui, nous allons changer les fenêtres, et alors ?
 
 658
 00:24:42,360 --> 00:24:44,360
-Un peu de charité humaine
+Eh bien, c'est une altération des éléments communs.
 
 659
 00:24:44,440 --> 00:24:46,440
-Osterosa
+N'importe quel voisin pourrait en être contrarié.
 
 660
 00:24:46,519 --> 00:24:48,519
-Eh bien, pourquoi laisses-tu peindre le mur de cette couleur ?
+et vous dénoncer
 
 661
 00:24:48,600 --> 00:24:50,600
-Tu parles !
+Nous menace-t-il ?
 
 662
 00:24:50,680 --> 00:24:52,680
-Voilà
+Non, non, non, non, non
 
 663
 00:24:52,759 --> 00:24:54,759
-Mais qu'est-ce qui s'est passé ? Qu'est-ce qui s'est passé ?
+Mieux, parce que sinon je vais dénoncer le deuxième B
 
 664
 00:24:54,840 --> 00:24:56,840
-Oui, qu'est-ce qui s'est passé ? Ça va être le chaos.
+par l'antenne parabolique, au premier B
 
 665
 00:24:56,920 --> 00:24:58,920
-Les nouveaux voisins nous menacent de nous dénoncer tous.
+par la climatisation et au premier A
 
 666
 00:24:59,000 --> 00:25:01,000
-Et nous, pourquoi ?
+pour suspendre les pots de fleurs à l'extérieur du balcon
 
 667
 00:25:01,079 --> 00:25:03,079
-Toi et lui, à cause des géraniums que tu as installés sur le balcon.
+Et voilà, car les extincteurs n’ont pas passé les 5 dernières inspections
 
 668
 00:25:03,160 --> 00:25:05,160
-Tu vois ? Je t'avais dit de ne pas les prendre dans le parc.
+et cet ascenseur n'a pas la moindre mesure de sécurité
 
 669
 00:25:05,240 --> 00:25:07,240
-Si personne ne m'a vu
+Eh bien, je ne pense pas non plus qu'il s'arrête pour ça, oui
 
 670
 00:25:07,319 --> 00:25:09,319
-Non, non, ils les ont accrochés à l'extérieur
+Maintenant, de quoi parlons-nous
 
 671
 00:25:09,400 --> 00:25:11,400
-et c'est interdit, imagine qu'un pot de fleurs tombe
+Et vous salissez beaucoup mon immeuble
 
 672
 00:25:11,480 --> 00:25:13,480
-Ça pourrait tomber sur la tête de quelqu'un et lui ouvrir le crâne
+Veux-tu te taire, Emilio ?
 
 673
 00:25:13,559 --> 00:25:15,559
-Oui, oui, oui, de l'intérieur on ne le voit pas
+Eh bien, je ne suis pas avec une gueule de bois pour le front
 
 674
 00:25:15,640 --> 00:25:17,640
-Oui, et ils vont bientôt retirer la parabole.
+Et ce monsieur vit dans une zone commune
 
 675
 00:25:17,720 --> 00:25:19,720
-Tu vois ? Je t'avais dit qu'il fallait demander l'autorisation pour l'installer.
+qui, selon les plans du bâtiment, est une salle à ordures
 
 676
 00:25:19,799 --> 00:25:21,799
-Mais ils veulent me chasser du local de la conciergerie en disant que c'est un débarras.
+Que je vis dans une pièce à ordures ?
 
 677
 00:25:21,880 --> 00:25:23,880
-Mais personne ne se soucie de ça.
+Allez, j'appelle la mairie, ils font une inspection
 
 678
 00:25:23,960 --> 00:25:25,960
-Et pour vous deux, l'air
+et demain même ce monsieur sera dans la rue
 
 679
 00:25:26,039 --> 00:25:28,039
-Oui, oui, la climatisation, que vous avez installée sous la fenêtre
+Monsieur Juan, ils veulent me virer
 
 680
 00:25:28,119 --> 00:25:30,119
-et ça, c'est strictement interdit
+Un moment, un moment, écoute chérie
 
 681
 00:25:30,119 --> 00:25:32,119
-Voyons voir, qui veut nous l'enlever ?
+Si nous allons parler des choses, parlons des choses
 
 682
 00:25:32,199 --> 00:25:34,199
-Les nouveaux voisins
+D'accord, compte tenu de votre attitude
 
 683
 00:25:34,279 --> 00:25:36,279
-Eh bien, qu'ils s'en achètent un eux-mêmes, mais voyons, qu'est-ce qu'on leur a fait pour qu'ils veuillent tous nous dénoncer ?
+je n'ai pas d'autre choix que de convoquer une assemblée extraordinaire des voisins
 
 684
 00:25:36,359 --> 00:25:38,359
-Le président de la copropriété est devenu désagréable.
+Très bien
 
 685
 00:25:38,439 --> 00:25:40,439
-Et il veut stopper les travaux.
+Au revoir
 
 686
 00:25:44,439 --> 00:25:46,439
-Et donc, elle s'est vexée.
+Hé, ne me jetez pas, s'il vous plaît
 
 687
 00:25:46,519 --> 00:25:48,519
-Et apparemment, ces bourgeoises, quand elles se vexent, sont...
+Ça peut bien être un dépotoir, mais je m'y suis attaché, bordel
 
 688
 00:25:48,599 --> 00:25:50,599
-Eh bien moi, je ne les retire pas, ces milliers de panneaux
+Emilio !
 
 689
 00:25:50,679 --> 00:25:52,679
-Si je dois aller en prison, j'irai en prison
+J'arrive, j'arrive
 
 690
 00:25:52,759 --> 00:25:54,759
-Et moi, avec toi
+Un peu de charité humaine
 
 691
 00:25:54,839 --> 00:25:56,839
-Bon, mais ce n’est pas tout, ils disent que le bâtiment est en ruine
+Osterosa
 
 692
 00:25:57,799 --> 00:25:59,799
-Qu’ils vont appeler un inspecteur, et qu’il va falloir même payer des amendes
+Eh bien, pourquoi laisses-tu peindre le mur de cette couleur ?
 
 693
 00:26:03,879 --> 00:26:05,879
-Jusqu'à ce que l'Espagne gagne à nouveau le Concours Eurovision de la Chanson
+Quel dicton
 
 694
 00:26:05,959 --> 00:26:07,959
-Comment voyez-vous cela ?
+Voilà
 
 695
 00:26:08,039 --> 00:26:10,039
-Eh, toi, l'avocat ? Ça peut arriver ?
+Mais que s'est-il passé ? Qu'est-ce qui s'est passé ?
 
 696
 00:26:10,119 --> 00:26:12,119
-Gagner l'Eurovision ? Eh bien, c'est compliqué.
+Oui, qu'est-ce qui s'est passé ? Ça va créer une
 
 697
 00:26:12,199 --> 00:26:14,199
-Non, non, qu'on nous poursuive en justice et qu'on doive continuer à payer pour ces affaires-là.
+Les nouveaux voisins vont nous dénoncer tous
 
 698
 00:26:14,279 --> 00:26:16,279
-Eh bien, oui, en vérité
+Et pourquoi nous ?
 
 699
 00:26:16,359 --> 00:26:18,359
-Si c'est vraiment sérieux, ils pourraient nous causer de gros problèmes
+À vous deux pour les géraniums qui ont choisi votre balcon
 
 700
 00:26:18,439 --> 00:26:20,439
-Mais qu'est-ce que tu racontes ?
+Tu vois ? Je t'avais dit de ne pas nous prendre du parc.
 
 701
 00:26:20,519 --> 00:26:22,519
-Bonsoir
+Si personne ne m'a vu
 
 702
 00:26:22,599 --> 00:26:24,599
-Alicia, veux-tu bien m'expliquer ce que je fais ici ?
+Non, non, c'est qu’on les a éraflés de l'extérieur.
 
 703
 00:26:24,679 --> 00:26:26,679
-Fais le ridicule toute seule ?
+et cela est interdit, pourquoi cela risque-t-il de faire tomber un pot ?
 
 704
 00:26:26,680 --> 00:26:28,680
-En fait, le t-shirt que j'ai jeté, c'est le tien
+Ils tirent n'importe qui à la tête et l'ouvrent
 
 705
 00:26:28,759 --> 00:26:30,759
-Oups
+Oui, oui, oui, à l'intérieur ça ne se voit pas
 
 706
 00:26:30,840 --> 00:26:32,840
-Salut
+Oui, et bientôt ils vont lui enlever la parabole.
 
 707
 00:26:32,920 --> 00:26:34,920
-Salut, désolée, c'est qu'on était en train de trier les vêtements
+Tu vois ? Je t'avais dit que tu devais demander la permission pour l'installer.
 
 708
 00:26:35,000 --> 00:26:37,000
-Et Belén a fait tomber un t-shirt sur votre corde.
+Mais on veut me mettre à la porte de la loge
 
 709
 00:26:37,080 --> 00:26:39,080
-Oui, je l'ai fait tomber.
+pourquoi disent-ils que c'est un débarras
 
 710
 00:26:39,160 --> 00:26:41,160
-Celui-ci, non ?
+Mais ça, personne ne s'en soucie
 
 711
 00:26:41,240 --> 00:26:43,240
-Oui, c'est ça.
+Et pour vous deux l'air
 
 712
 00:26:43,320 --> 00:26:45,320
-Comme je ne savais pas à qui il appartenait, je vais le descendre au concierge.
+Oui, oui, la climatisation, que vous avez mise sous la fenêtre
 
 713
 00:26:45,400 --> 00:26:47,400
-Non, pas au gardien, il la garde pour lui
+et cela est strictement interdit
 
 714
 00:26:47,480 --> 00:26:49,480
-Bon, eh bien
+Voyons voir, qui veut nous l'enlever ?
 
 715
 00:26:49,560 --> 00:26:51,560
-Eh bien, rien
+Les nouveaux voisins
 
 716
 00:26:51,640 --> 00:26:53,640
-Un jour, on pourrait se retrouver tous les quatre et prendre un verre
+Eh bien, qu'ils s'en achètent un, mais voyons, qu'est-ce qu'on leur a fait pour qu'ils veuillent nous poursuivre tous ?
 
 717
 00:26:53,720 --> 00:26:55,720
-Oui, oui, d'accord, quand vous voulez
+Le président de la communauté qui est devenu arrogant
 
 718
 00:26:55,799 --> 00:26:57,799
-Ce soir
+Et il veut arrêter les travaux.
 
 719
 00:26:57,880 --> 00:26:59,880
-Demain
+Et alors, elle a vraiment explosé
 
 720
 00:26:59,960 --> 00:27:01,960
-Ça te va à 10h ?
+Et ces bourges-là quand elles s'énervent, apparemment elles sont
 
 721
 00:27:02,039 --> 00:27:04,039
-Oui, chez vous
+Eh bien moi, mille généraux, je ne les enlève pas.
 
 722
 00:27:04,120 --> 00:27:06,120
-Non, mieux ici, non ?
+Si je dois aller en prison, j'irai en prison.
 
 723
 00:27:06,200 --> 00:27:08,200
-Dis-le à ton ami, hein ?
+Et moi avec toi
 
 724
 00:27:08,279 --> 00:27:10,279
-À Mauri, oui, oui, je vais lui dire.
+Eh bien, mais ce n'est pas tout, on dit que l'immeuble est en ruine.
 
 725
 00:27:10,360 --> 00:27:12,360
-Allez, il va être ravi.
+Qu'ils appelleront un inspecteur et qu'il ira jusqu'à payer avec des brindilles
 
 726
 00:27:12,440 --> 00:27:14,440
-Quoi, quoi ? Mais pourquoi as-tu pris rendez-vous avec elles ?
+Jusqu'à ce que l'Espagne gagne à nouveau le Concours Eurovision de la Chanson.
 
 727
 00:27:14,519 --> 00:27:16,519
-Mais que voulais-tu que je fasse ?
+Comment le voyez-vous ?
 
 728
 00:27:16,600 --> 00:27:18,600
-Je n'ai trouvé aucune excuse
+Hé, toi, avocat ? Ça peut arriver ?
 
 729
 00:27:18,680 --> 00:27:20,680
-Eh bien, il y en a de très bonnes, comme dire que tu es gay, que tu as un copain, ou une relation stable
+Gagner l'Eurovision ? Mec, c'est compliqué
 
 730
 00:27:20,759 --> 00:27:22,759
-Mais si ça ne te dérange pas, on peut les rencontrer, discuter un peu
+Non, mec, non, ils vont nous dénoncer et on devra continuer à payer pour des trucs comme ça.
 
 731
 00:27:22,839 --> 00:27:24,839
-Prendre un verre et rester amis
+Eh bien, oui, en effet
 
 732
 00:27:24,919 --> 00:27:26,919
-Non, non, non, ne compte pas sur moi
+S'ils sont sérieux, ça peut vraiment nous causer des ennuis.
 
 733
 00:27:27,000 --> 00:27:29,000
-Je n'ai vraiment rien d'autre à faire à cet âge que de courir partout dans la vie
+Mais qu'est-ce que tu racontes ?
 
 734
 00:27:33,079 --> 00:27:35,079
-Non, non
+Bonsoir
 
 735
 00:27:47,079 --> 00:27:49,079
-Mais qu'est-ce qu'il y a, je ne peux pas avoir d'amies ou quoi ?
+Alicia, veux-tu m'expliquer ce que je fais ici ?
 
 736
 00:27:49,159 --> 00:27:51,159
-Si, si, elles sont lesbiennes
+Fais le ridicule toute seule ?
 
 737
 00:27:51,240 --> 00:27:53,240
-De quoi tu ris ? Allez, dis-moi, de quoi tu ris ?
+C'est que le T-shirt que j'ai jeté est à toi
 
 738
 00:27:54,200 --> 00:27:56,200
-C'est que ça me paraît tellement absurde que ça me fait rire.
+Oups
 
 739
 00:27:56,279 --> 00:27:58,279
-Ah, oui ? Tu sais ce qui t'arrive ? C'est que tu l'aimes bien.
+Bonjour
 
 740
 00:27:58,359 --> 00:28:00,359
-Ne dis pas de bêtises, Mauri.
+Salut, désolé, c'est qu'on était en train d'avoir le linge
 
 741
 00:28:00,440 --> 00:28:02,440
-Oui, tu veux savoir ce que ça fait de coucher avec une femme.
+Et Belén a fait tomber un t-shirt sur votre corde à linge.
 
 742
 00:28:02,519 --> 00:28:04,519
-Je me suis déjà couché avec une femme.
+Oui, je l'ai fait tomber
 
 743
 00:28:04,599 --> 00:28:06,599
-Ne me le rappelle pas, s'il te plaît, ce n'est pas nécessaire.
+Celle-ci, non ?
 
 744
 00:28:06,680 --> 00:28:08,680
-Tu sais ce que je te dis ?
+Oui, exactement
 
 745
 00:28:08,759 --> 00:28:10,759
-Lapin
+Comme je ne sais pas à qui c'était, il va la donner au gardien
 
 746
 00:28:10,839 --> 00:28:12,839
-Si tu veux jeter cinq ans de relation par-dessus bord,
+Non, pas au gardien, il va la garder.
 
 747
 00:28:14,920 --> 00:28:16,920
-Vas-y, fais-le. Comme tu veux.
+Eh bien, alors
 
 748
 00:28:17,000 --> 00:28:19,000
-Je m'en prends trois
+Eh bien, rien
 
 749
 00:28:21,079 --> 00:28:23,079
-Tu as autre chose ? Ils m'ont paru interminables
+Un jour, nous pourrions nous retrouver tous les quatre et prendre un verre.
 
 750
 00:28:23,079 --> 00:28:25,079
-Tu sais quoi, Fernando ? Je m'en vais
+Oui, oui, allez, quand vous voulez.
 
 751
 00:28:25,159 --> 00:28:27,159
-Où ça ? Je n'en ai pas la moindre idée, mais je pars
+Ce soir
 
 752
 00:28:27,240 --> 00:28:29,240
-Bon, c'est moi
+Demain
 
 753
 00:28:29,319 --> 00:28:31,319
-Mauri
+Ça te va à 10 heures ?
 
 754
 00:28:31,399 --> 00:28:33,399
-Ouh, ouh, ouh
+Oui, chez vous
 
 755
 00:28:33,480 --> 00:28:35,480
-Ouh, ouh, ouh
+Non, c'est mieux ici, non ?
 
 756
 00:28:35,559 --> 00:28:37,559
-Chéri
+Dis-le à ton ami, d'accord ?
 
 757
 00:28:37,639 --> 00:28:39,639
-Tu penses vraiment quitter mon quartier ?
+À Mauri, oui, oui, je le lui dis déjà
 
 758
 00:28:39,720 --> 00:28:41,720
-Mais bien sûr que non, pourquoi ?
+Allons-y, il va être ravi.
 
 759
 00:28:41,799 --> 00:28:43,799
-Parce que nous n'allons pas sortir vivants d'ici
+Quoi, quoi ? Mais pourquoi as-tu rendez-vous avec elles ?
 
 760
 00:28:43,879 --> 00:28:45,879
-Calme-toi, je voulais juste lui faire peur
+Mais qu'est-ce que tu voulais que je fasse ?
 
 761
 00:28:45,960 --> 00:28:47,960
-Oui, mais c'est moi que tu as effrayé
+Je n'ai trouvé aucune excuse.
 
 762
 00:28:48,039 --> 00:28:50,039
-La rumeur a dû se répandre parce que dans le hall ils m'ont dédié
+Eh bien, il y en a de très bonnes, que tu es gay, que tu as un petit ami, une relation stable...
 
 763
 00:28:50,119 --> 00:28:52,119
-quelques regards affectueux
+Mais s'il ne se passe rien, on les rejoint, on discute un peu
 
 764
 00:28:52,199 --> 00:28:54,199
-D'accord, et tu voulais que je fasse quoi ?
+On prend un verre et on est copains
 
 765
 00:28:54,279 --> 00:28:56,279
-C'est ce type d'en bas qui me rend malade
+Non, non, non, non, ne compte pas sur moi
 
 766
 00:28:56,359 --> 00:28:58,359
-Eh bien, je ne sais pas, mais au moins consulte-moi
+À ce stade, je n'ai rien d'autre à faire que de courir partout comme un fou
 
 767
 00:28:58,439 --> 00:29:00,439
-Peut-être que je n'ai pas envie de vivre en conflit avec tous les voisins
+Non, non
 
 768
 00:29:00,519 --> 00:29:02,519
-J'en ai déjà pas mal avec les travaux.
+Mais qu'est-ce qui se passe, je ne peux pas avoir d'amies ou quoi ?
 
 769
 00:29:02,599 --> 00:29:04,599
-D'accord.
+Oui, oui, elles sont lesbiennes
 
 770
 00:29:04,679 --> 00:29:06,679
-Je me sens un peu intense.
+De quoi tu ris ? Allez, non, de quoi tu ris ?
 
 771
 00:29:06,759 --> 00:29:08,759
-Tendu ?
+C'est que je trouve ça tellement absurde que ça me fait rire
 
 772
 00:29:08,839 --> 00:29:10,839
-Non, pas du tout.
+Ah, oui ? Tu sais ce qui t'arrive ? C'est que celle-là, tu l'aimes bien.
 
 773
 00:29:10,919 --> 00:29:12,919
-Je ne me suis pas taillé les veines parce qu'avec le chaos, je ne trouve pas la lame.
+Ne dis pas de bêtises, Mauri
 
 774
 00:29:13,000 --> 00:29:15,000
-Non
+Oui, tu veux savoir ce que ça fait de coucher avec une femme
 
 775
 00:29:15,079 --> 00:29:17,079
-Mais je veux aussi me détendre un peu.
+Je suis déjà allé au lit avec une femme.
 
 776
 00:29:17,159 --> 00:29:19,159
-Hm ?
+Ne me le rappelle pas, s'il te plaît, ce n'est pas nécessaire
 
 777
 00:29:19,239 --> 00:29:21,239
-Ne te fâche pas.
+Tu sais ce que je te dis ?
 
 778
 00:29:21,400 --> 00:29:23,400
-Ne te fâche pas
+Lapin
 
 779
 00:29:23,480 --> 00:29:25,480
-Ne te fâche pas
+Si tu veux jeter cinq ans de relation par-dessus bord
 
 780
 00:29:25,559 --> 00:29:27,559
-Ne te fâche pas
+Que tu les jettes, qu'est-ce qui se passe ? Fais comme tu veux.
 
 781
 00:29:27,640 --> 00:29:29,640
-Ne te fâche pas
+Nous en avons pris trois
 
 782
 00:29:29,720 --> 00:29:31,720
-Ne te fâche pas
+Tu n'as rien de plus ? Ils m'ont paru interminables
 
 783
 00:29:31,799 --> 00:29:33,799
-Ne vous énervez pas
+Tu sais quoi Fernando ? Je m'en vais
 
 784
 00:29:33,880 --> 00:29:35,880
-Ne vous énervez pas
+Où ça ? Je n'en ai pas la moindre idée, mais je pars.
 
 785
 00:29:35,960 --> 00:29:37,960
-Voyons, madame
+Eh bien, c'est moi
 
 786
 00:29:38,039 --> 00:29:40,039
-Je ne peux pas venir désactiver l'alarme à chaque fois qu'elle se déclenche
+Mauri
 
 787
 00:29:40,120 --> 00:29:42,120
-Voyons, s'il vous plaît, j'ai les enfants qui dorment, hein ?
+Ouh là là
 
 788
 00:29:42,200 --> 00:29:44,200
-Entre ça et les travaux, il n'y a vraiment pas moyen de rester ici.
+Ouh là là
 
 789
 00:29:46,279 --> 00:29:48,279
-Cette fois, ce n'était pas nous ; nous étions dans la chambre, n'est-ce pas ?
+Chéri
 
 790
 00:29:48,359 --> 00:29:50,359
-Je ne sais même plus où je suis, je suis terriblement fatiguée.
+Tu penses vraiment quitter mon quartier ?
 
 791
 00:29:50,359 --> 00:29:52,359
-Alors, qui ça peut être ?
+Bien sûr que non, pourquoi ?
 
 792
 00:29:52,439 --> 00:29:54,439
-Vicenta, si tu laisses le chien se promener, l'alarme se déclenche.
+Parce que nous n'allons pas sortir vivants d'ici
 
 793
 00:29:54,519 --> 00:29:56,519
-Pourquoi ?
+Calme-toi, je voulais juste lui mettre la peur au ventre.
 
 794
 00:29:56,599 --> 00:29:58,599
-Valentín n'est pas un voleur.
+Ouais, mais tu me l'as fait à moi
 
 795
 00:29:58,679 --> 00:30:00,679
-Non, mais il bouge.
+La nouvelle a dû se répandre car à l'entrée on m'a dédié
 
 796
 00:30:00,759 --> 00:30:02,759
-Et ça, c'est un capteur de mouvement.
+quelques regards affectueux
 
 797
 00:30:02,839 --> 00:30:04,839
-Tu ne vois pas que ce n'est pas une caméra, et toi, à chaque fois que tu passes devant, tu lui fais un signe. Oh, Juan, ça ne peut pas continuer comme ça, tu sais ? Écoute, si vous ne savez pas utiliser l'alarme, ne la mettez pas en marche. Comment ça, non ? Et s'ils entrent ?
+Déjà, et que voulais-tu que je fasse ?
 
 798
 00:30:04,919 --> 00:30:06,919
-Toi, personne ne t'approche depuis 68
+C'est ce type d'en bas qui me rend malade
 
 799
 00:30:07,000 --> 00:30:09,000
-Bon, allez, allons-y
+Eh bien, je ne sais pas, mais au moins consulte-moi
 
 800
 00:30:09,079 --> 00:30:11,079
-Tout le monde au lit
+Peut-être que je n'ai pas envie de vivre en conflit avec tous les voisins
 
 801
 00:30:11,159 --> 00:30:13,159
-Mais regarde, elle est en train de se reconnecter ?
+J'ai déjà assez avec les travaux
 
 802
 00:30:13,240 --> 00:30:15,240
-Bien sûr, on va utiliser la caméra
+D'accord
 
 803
 00:30:17,240 --> 00:30:19,240
-Allez, tout le monde dehors, allez, dehors, nous avons dix secondes !
+Je remarque que j'ai des cheveux intenses
 
 804
 00:30:19,240 --> 00:30:21,240
-Toi, allez, prends le chien
+Tendu ?
 
 805
 00:30:21,319 --> 00:30:23,319
-Allons, Valentin
+Non, pas du tout !
 
 806
 00:30:23,400 --> 00:30:25,400
-Mesdames, pour l'amour de Dieu, cette alarme
+Je ne me suis pas taillé les veines parce qu'avec le chaos je ne trouve pas la lame.
 
 807
 00:30:25,480 --> 00:30:27,480
-Il y en a qui doivent se lever tôt
+Non
 
 808
 00:30:27,559 --> 00:30:29,559
-Salut
+Mais je veux aussi me détendre un peu
 
 809
 00:30:29,640 --> 00:30:31,640
-Nous sommes enfin là, désolé pour le retard
+Hm ?
 
 810
 00:30:31,720 --> 00:30:33,720
-C'est que Tascó nous a pris de court
+Ne te fâche pas
 
 811
 00:30:33,799 --> 00:30:35,799
-Passe-le
+Ne te fâche pas
 
 812
 00:30:35,880 --> 00:30:37,880
-Qu'apporte cette bouteille de whisky ?
+Ne te fâche pas
 
 813
 00:30:37,960 --> 00:30:39,960
-Ah, très bien, merci beaucoup. Je vous sers, d'accord ? Moi, je préfère le vin. Asseyez-vous ! Quelle maison chouette, hein ! Très jolie, avec...
+Ne te fâche pas
 
 814
 00:30:40,039 --> 00:30:42,039
-Eh, María est montée à la réunion des voisins
+Ne te fâche pas
 
 815
 00:30:42,120 --> 00:30:44,120
-Elle ne va pas pouvoir venir
+Ne te fâche pas
 
 816
 00:30:44,200 --> 00:30:46,200
-Mais bon, ce n'est pas grave, on boit un verre tous les trois
+Ne te fâche pas
 
 817
 00:30:46,279 --> 00:30:48,279
-Oui, oui, ce n'est pas grave
+Ne te fâche pas
 
 818
 00:30:49,240 --> 00:30:51,240
-Une fois que j'aurai surmonté cette sensation d'insignifiance
+Voyons, madame
 
 819
 00:30:51,319 --> 00:30:53,319
-Je suis sûr que je vais bien m'amuser
+Je ne peux pas venir désactiver l'alarme à chaque fois qu'elle se déclenche.
 
 820
 00:30:53,399 --> 00:30:55,399
-Tu as remarqué, non ?
+Homme, s'il te plaît, j'ai les enfants qui dorment, hein ?
 
 821
 00:30:55,480 --> 00:30:57,480
-Même ceux qui ne me plaisent pas, ils ne me calculent pas, Alicia
+C'est que entre ça et les travaux
 
 822
 00:30:57,559 --> 00:30:59,559
-Non, Fernando a dit à Mauri de partir
+ici, personne ne peut s'arrêter
 
 823
 00:30:59,639 --> 00:31:01,639
-Pour qu'on reste seuls
+Cette fois, ce n'était pas nous, nous étions dans la chambre, n'est-ce pas ?
 
 824
 00:31:01,720 --> 00:31:03,720
-Betty, Betty
+Je ne sais même plus où je suis, j'ai un sommeil terrible
 
 825
 00:31:03,799 --> 00:31:05,799
-Comment ça, je dois partir ?
+Alors, qui cela a-t-il été ?
 
 826
 00:31:05,879 --> 00:31:07,879
-Mais tu veux rester là comme une potiche ?
+Vicenta, si tu laisses le chien en liberté, l'alarme se déclenche.
 
 827
 00:31:07,960 --> 00:31:09,960
-Eh bien, comme d'habitude, dès que vous commencez à vous bécoter
+Et pourquoi ?
 
 828
 00:31:10,039 --> 00:31:12,039
-Je peux regarder la télé.
+Si Valentin n'est pas un voleur
 
 829
 00:31:12,119 --> 00:31:14,119
-Non, Betty, ne le dis pas
+Non, mais ça bouge
 
 830
 00:31:14,200 --> 00:31:16,200
-On ne le fait pas comme ça, je ne sais pas pourquoi tu dis ça
+Et ça, c'est un détecteur de mouvement
 
 831
 00:31:16,279 --> 00:31:18,279
-Merci
+Tu ne vois pas comment ce n'est pas une caméra
 
 832
 00:31:18,360 --> 00:31:20,360
-Bon, le vin
+et toi, chaque fois qu'il passe devant toi, tu le salues
 
 833
 00:31:20,440 --> 00:31:22,440
-Oui
+Oh, Juan, ça ne peut pas continuer comme ça, hein ?
 
 834
 00:31:22,519 --> 00:31:24,519
-Et des petites chips ou quelque chose ?
+Voyons, si vous ne savez pas utiliser l'alarme, ne la branchez pas.
 
 835
 00:31:24,600 --> 00:31:26,600
-Non !
+Comment ça, non ? Et s’ils ne rentrent pas ?
 
 836
 00:31:26,680 --> 00:31:28,680
-Vous allez tous bien ? Vous avez besoin de quelque chose ?
+Personne n'est entré chez toi depuis 68.
 
 837
 00:31:28,759 --> 00:31:30,759
-Un cendrier
+Bon, allons-y, allons-y maintenant.
 
 838
 00:31:30,840 --> 00:31:32,840
-Oh, ça non, on ne peut pas fumer.
+Tous au lit
 
 839
 00:31:32,920 --> 00:31:34,920
-Ou à shakeshIt avec l'Europe, cela délimite
+Mais regarde, il la connecte encore une fois ?
 
 840
 00:31:35,000 --> 00:31:37,000
-Il est interdit de fumer lors des réunions de copropriétaires
+Bien sûr, nous passons à la caméra.
 
 841
 00:31:37,080 --> 00:31:39,080
-Je suis désolé, nous commençons tout de suite
+Allez, tout le monde dehors, allez, dehors, il nous reste dix secondes !
 
 842
 00:31:39,160 --> 00:31:41,160
-Mais venez grignoter, Chef
+Toi, allez, prends le chien.
 
 843
 00:31:41,240 --> 00:31:43,240
-Mangez-les, ils sont faits pour être dégustés, pas pour être regardés
+Allons-y, Valentin
 
 844
 00:31:47,160 --> 00:31:49,160
-Maintenant, œuf
+Mesdames, au nom de Dieu, cette alarme
 
 845
 00:31:49,240 --> 00:31:51,240
-Quels canapés ?
+Qu'il y en a qui se lèvent tôt.
 
 846
 00:32:05,319 --> 00:32:07,319
-J'ai déjà tout mis, même du beurre.
+Bonjour
 
 847
 00:32:07,400 --> 00:32:09,400
-Il y a un homme ? Je n'ai pas faim, moi.
+Nous sommes déjà là, désolé pour le retard.
 
 848
 00:32:09,480 --> 00:32:11,480
-Eh bien, quelle tension dans l'air.
+C'est que Tascó nous a pris au dépourvu
 
 849
 00:32:11,559 --> 00:32:13,559
-Bon, voyons voir, j'ai déjà fait les calculs.
+Fais passer
 
 850
 00:32:17,160 --> 00:32:19,160
-Si une inspection a lieu et que nous devons réparer l'ascenseur,
+Que contient cette bouteille de whisky ?
 
 851
 00:32:19,240 --> 00:32:21,240
-l'escalier, la peinture, les fissures, les extincteurs
+Ah, très bien, merci beaucoup
 
 852
 00:32:21,319 --> 00:32:23,319
-et remplacer la chaudière, cela nous coûtera environ 18.000 euros.
+Je vous sers, d'accord ? Moi, je préfère le vin.
 
 853
 00:32:23,400 --> 00:32:25,400
-Trois millions de pesetas.
+Asseyez-vous !
 
 854
 00:32:25,480 --> 00:32:27,480
-Ah, eh bien, entre tous, ce n'est pas tant que ça ?
+Quelle maison super chouette, hein !
 
 855
 00:32:27,559 --> 00:32:29,559
-Non, trois millions de pesetas par appartement.
+Très jolie, avec...
 
 856
 00:32:29,640 --> 00:32:31,640
-Oh mon Dieu, qu'est-ce qu'il dit ! Comment allons-nous payer ça ?
+Eh, María a rejoint le conseil de quartier
 
 857
 00:32:31,720 --> 00:32:33,720
-Je préfère que le toit s'effondre et nous tue tous.
+Il ne pourra pas venir.
 
 858
 00:32:33,799 --> 00:32:35,799
-La faute revient à cet imbécile de président que nous avons.
+Mais bon, ce n'est pas grave, nous allons prendre un verre tous les trois.
 
 859
 00:32:35,880 --> 00:32:37,880
-Et toi, quoi ? Tu ne dis rien ?
+Oui, oui, pas de problème
 
 860
 00:32:37,960 --> 00:32:39,960
-Si, je m’en vais.
+Quand cette sensation de solitude me passera-t-elle ?
 
 861
 00:32:40,039 --> 00:32:42,039
-Comment ça tu t’en vas ? Où vas-tu ? Il faut voter.
+Je suis sûr que je vais bien m'amuser.
 
 862
 00:32:42,120 --> 00:32:44,120
-Il y a toujours un transfuge.
+Tu t'en es rendu compte, n'est-ce pas ?
 
 863
 00:32:44,359 --> 00:32:46,359
-Attends, attends, attends, attends.
+C'est que même ceux qui ne me plaisent pas ne me prêtent pas attention, Alicia
 
 864
 00:32:46,439 --> 00:32:48,439
-Si tu arrives maintenant, ça va sembler que tu es jaloux.
+Non, Fernando a dit à Mauri de partir.
 
 865
 00:32:48,519 --> 00:32:50,519
-Et tu n'es pas jaloux, Mauri.
+Pour que nous restions seuls
 
 866
 00:32:50,599 --> 00:32:52,599
-Qu'il fasse ce qu'il veut, peu importe.
+Betty, Betty
 
 867
 00:32:52,679 --> 00:32:54,679
-Eh bien, c'est aussi ma maison et je peux entrer et sortir quand je veux.
+Comment ça, je dois partir ?
 
 868
 00:32:54,759 --> 00:32:56,759
-Mera, je ne pensais pas que c'était si tôt.
+Mais qu'est-ce que tu veux, rester ici à tenir la chandelle ?
 
 869
 00:32:56,839 --> 00:32:58,839
-Regarde, je vais descendre.
+Eh bien, comme d'habitude, dès que vous commencez à vous bécoter
 
 870
 00:32:58,919 --> 00:33:00,919
-En plus, en descendant, je suis avec elle.
+Je peux regarder la télé
 
 871
 00:33:01,000 --> 00:33:03,000
-Être avocat, ça sonne très bien, non ?
+Non, Betty, ne le dis pas
 
 872
 00:33:03,079 --> 00:33:05,079
-Au début, tu crois que tu vas changer le monde.
+Nous ne le faisons pas ainsi, je ne sais pas à quoi cela sert
 
 873
 00:33:05,159 --> 00:33:07,159
-Le monde est pourri.
+Merci
 
 874
 00:33:07,239 --> 00:33:09,239
-Je n'ai pas de travail.
+Eh bien, le vin
 
 875
 00:33:09,319 --> 00:33:11,319
-Lui non plus.
+Oui
 
 876
 00:33:11,399 --> 00:33:13,399
-Avec mes parents, je ne parle même pas.
+Et des petites chips ou quelque chose ?
 
 877
 00:33:13,400 --> 00:33:15,400
-Les hommes, vous êtes tous des immatures.
+Non !
 
 878
 00:33:19,400 --> 00:33:21,400
-Hé, Benés va devoir partir.
+Est-ce que tout le monde va bien ? Avez-vous besoin de quelque chose ?
 
 879
 00:33:21,480 --> 00:33:23,480
-Il ne se sent pas bien, il me l'a dit tout à l'heure.
+Un cendrier
 
 880
 00:33:24,120 --> 00:33:25,400
-Bon, eh bien, c'est comme ça.
+Oh non, pas ça, parce qu'on ne peut pas fumer
 
 881
 00:33:25,480 --> 00:33:27,480
-Eh bien, on se revoit un autre jour alors.
+Ou à shakeshIt avec l'Europe, frontière
 
 882
 00:33:27,560 --> 00:33:29,560
-Non, mais ce n'est pas si grave.
+Il est interdit de fumer lors des réunions de quartier.
 
 883
 00:33:29,640 --> 00:33:31,640
-Reste un moment, ma chérie.
+Je suis désolé, nous commençons tout de suite
 
 884
 00:33:31,720 --> 00:33:34,040
-Je suis là.
+Mais comme chaque Chef
 
 885
 00:33:34,120 --> 00:33:36,120
-D'accord.
+À manger, car ils sont faits pour être dévorés, pas pour être regardés
 
 886
 00:33:37,080 --> 00:33:39,080
-Excusez-moi pour le retard, mais...
+Maintenant, œuf
 
 887
 00:33:39,080 --> 00:33:41,080
-Je viens de croiser mon ex-petite amie.
+Quels canapés ?
 
 888
 00:33:41,079 --> 00:33:42,720
-et elle m'a fait une scène...
+J'ai même déjà mis du beurre et tout.
 
 889
 00:33:42,799 --> 00:33:44,799
-Que me racontes-tu ? Ce que j'ai dit.
+Poisser un homme ? Je n’ai pas faim, moi.
 
 890
 00:33:44,879 --> 00:33:46,879
-Elle s'est énervée
+Eh bien, quelle tension règne dans l'air.
 
 891
 00:33:46,960 --> 00:33:48,960
-et a essayé de se couper les veines avec la carte de transport.
+Bon, voyons voir, j'ai déjà fait les calculs.
 
 892
 00:33:49,039 --> 00:33:52,159
-Très désagréable.
+S'il y a une inspection et que nous devons réparer l'ascenseur,
 
 893
 00:33:52,240 --> 00:33:55,519
-Tu n'étais pas à la réunion ? Non, je n'y étais pas.
+l'échelle, la peinture, les fissures, les extincteurs
 
 894
 00:33:55,599 --> 00:33:58,720
-Nous pensions que tu ne viendrais plus.
+et changer la chaudière, cela nous coûte environ 18 000 euros.
 
 895
 00:33:58,799 --> 00:34:00,119
-Eh bien, je suis là.
+Trois millions de pesetas.
 
 896
 00:34:00,199 --> 00:34:01,919
-Belén n'a pas cessé de demander de tes nouvelles.
+Ah, mais si on partage, ce n'est pas tant que ça, non ?
 
 897
 00:34:02,000 --> 00:34:03,919
-Bon, j'ai posé quelques questions...
+Non, trois millions de pesetas par appartement.
 
 898
 00:34:04,000 --> 00:34:06,599
-Ne sois pas timide, ma chère.
+Oh là là, qu'est-ce qu'il dit ! Comment allons-nous payer ça ?
 
 899
 00:34:06,679 --> 00:34:09,000
-Bon, je vais mettre quelque chose.
+Je préfère que le toit s'écroule et nous tue tous.
 
 900
 00:34:09,039 --> 00:34:12,800
-Oui.
+La faute en revient à cet imbécile de président que nous avons.
 
 901
 00:34:12,880 --> 00:34:14,599
-Vous voulez plus de glace, non ?
+Et toi, alors ? Tu ne dis rien ?
 
 902
 00:34:14,679 --> 00:34:16,559
-Moi, oui.
+Oui, je m'en vais.
 
 903
 00:34:16,639 --> 00:34:19,199
-Oui.
+Comment vas-tu partir ? Où vas-tu ? Faut-il voter ?
 
 904
 00:34:19,280 --> 00:34:20,639
-On me met des glaçons ?
+Il y a toujours un transfuge.
 
 905
 00:34:23,199 --> 00:34:25,000
-Nous sommes tous très nerveux.
+Arrête, arrête, arrête, arrête.
 
 906
 00:34:25,079 --> 00:34:27,440
-Et depuis quand aimes-tu le whisky ?
+Si tu arrives maintenant, ça va sembler que tu es jaloux.
 
 907
 00:34:27,519 --> 00:34:30,119
-Depuis que tu aimes les femmes.
+Et tu n'es pas jaloux, Mauri.
 
 908
 00:34:30,199 --> 00:34:31,760
-Tu verras comme on va bien s’amuser.
+Qu'il fasse ce qu'il veut.
 
 909
 00:34:32,840 --> 00:34:35,400
-Tout le monde est arrivé.
+Eh bien, c'est aussi ma maison et je peux entrer dans ma maison.
 
 910
 00:34:35,480 --> 00:34:37,000
-Il manque les œufs.
+et sortir quand je veux.
 
 911
 00:34:37,239 --> 00:34:39,239
-Ont-ils peur ?
+Mera, je ne pensais pas que c'était si tôt.
 
 912
 00:34:40,719 --> 00:34:41,920
-Ils ont vu que tous les voisins me soutiennent.
+Écoute, je vais descendre.
 
 913
 00:34:42,000 --> 00:34:44,239
-et ils ont fait marche arrière.
+De plus, en descendant, comme ça je suis avec toi.
 
 914
 00:34:44,320 --> 00:34:46,199
-Je ne voulais pas en arriver là.
+Être avocat, ça sonne plutôt bien, non ?
 
 915
 00:34:46,280 --> 00:34:48,440
-Paloma, tu ne devineras jamais. Oui.
+Au début, tu crois que tu vas arranger le monde.
 
 916
 00:34:48,519 --> 00:34:49,760
-On m'a forcé ? Oui, chérie.
+Le monde est une merde.
 
 917
 00:34:50,480 --> 00:34:51,679
-Allez !
+Je n'ai pas de travail.
 
 918
 00:34:51,760 --> 00:34:53,159
-Allez !
+Il est si peu présent.
 
 919
 00:34:53,239 --> 00:34:54,840
-À triompher !
+Avec mes parents, je ne parle même pas.
 
 920
 00:34:54,920 --> 00:34:56,719
-Courage !
+Les hommes, vous êtes tous immatures.
 
 921
 00:34:56,800 --> 00:34:58,679
-À triompher !
+Hé, Benés va devoir partir.
 
 922
 00:34:58,760 --> 00:35:01,079
-Olé, mon président !
+C’est qu'il ne se sent pas bien, il me l’a dit avant.
 
 923
 00:35:01,159 --> 00:35:02,599
-Salut tout le monde !
+Eh bien, voilà.
 
 924
 00:35:02,679 --> 00:35:04,440
-Bonsoir, bienvenue à tous.
+Eh bien, nous nous retrouverons un autre jour.
 
 925
 00:35:04,519 --> 00:35:06,199
-Nous allons commencer la réunion extraordinaire.
+Non, mais ce n'est pas si grave.
 
 926
 00:35:06,239 --> 00:35:07,599
-Il manque les œufs !
+Reste un moment, femme.
 
 927
 00:35:10,000 --> 00:35:11,000
-Les œufs ?
+Je suis déjà là.
 
 928
 00:35:11,559 --> 00:35:12,559
-Nous sommes propriétaires pour que le vote soit valide.
+D'accord.
 
 929
 00:35:13,439 --> 00:35:15,079
-Alors, nous allons commencer.
+Excusez-moi pour le retard, mais...
 
 930
 00:35:16,039 --> 00:35:17,719
-Veuillez éteindre votre téléphone portable et ne pas fumer.
+C’est que je suis tombé sur mon ex-petite amie
 
 931
 00:35:17,799 --> 00:35:19,159
-Pour parler, levez la main.
+et il m'a fait toute une scène...
 
 932
 00:35:19,239 --> 00:35:20,839
-Et pour insulter, levez-la aussi.
+Qu'est-ce que tu me racontes ? Ce que tu entends.
 
 933
 00:35:20,919 --> 00:35:22,480
-Ordre du jour.
+C'est qu'elle est devenue nerveuse
 
 934
 00:35:22,559 --> 00:35:25,039
-Premier point.
+et elle a essayé de se couper les veines avec son pass Navigo.
 
 935
 00:35:25,119 --> 00:35:26,439
-Vote pour...
+Très désagréable.
 
 936
 00:35:26,519 --> 00:35:29,000
-Bonsoir.
+Tu n'étais pas à la réunion ? Non, pas moi.
 
 937
 00:35:29,079 --> 00:35:30,439
-Désolé pour le retard.
+Nous pensions que tu ne viendrais plus.
 
 938
 00:35:30,519 --> 00:35:31,519
-Bonjour, bonsoir.
+Eh bien, me voilà.
 
 939
 00:35:32,399 --> 00:35:34,359
-Bonsoir.
+Belén n'a pas cessé de demander après toi.
 
 940
 00:35:35,320 --> 00:35:37,440
-Bonsoir.
+Eh bien, j'ai posé une question...
 
 941
 00:35:37,519 --> 00:35:39,120
-Elle est toujours mignonne, cette fille.
+Ne sois pas timide, femme.
 
 942
 00:35:39,880 --> 00:35:42,720
-Je continue.
+Bon, eh bien je vais mettre un petit quelque chose.
 
 943
 00:35:42,800 --> 00:35:43,800
-Point premier.
+Oui.
 
 944
 00:35:43,880 --> 00:35:45,400
-Vote pour exercer l'action de cessation et demander formellement au propriétaire du troisième A de mettre fin à l'activité gênante, insalubre et nocive qu'il mène dans son logement.
+Vous voulez plus de glaçons, n'est-ce pas ?
 
 945
 00:35:45,480 --> 00:35:46,480
-et qui empêche le déroulement normal de la vie en communauté ici. Mais bon, nous n'étions pas venus pour parler des travaux. Eh bien, c'est ce qu'il a dit. Nous allons tous voter pour que les travaux s'arrêtent.
+Moi, oui.
 
 946
 00:35:46,559 --> 00:35:47,559
-Ton mari s'explique très mal.
+Oui.
 
 947
 00:35:49,400 --> 00:35:50,960
-Il le fait exprès.
+Et si on me mettait de la glace ?
 
 948
 00:35:51,039 --> 00:35:52,920
-Pour qu'on ne le comprenne pas.
+Nous sommes tous très nerveux.
 
 949
 00:35:53,000 --> 00:35:54,840
-Ça commence bien.
+Et depuis quand aimes-tu le whisky ?
 
 950
 00:35:54,920 --> 00:35:56,760
-Chers voisins, comme vous le savez,
+Depuis que tu aimes les femmes.
 
 951
 00:35:56,840 --> 00:35:59,760
-depuis une semaine, nous avons de nouveaux voisins
+Tu verras comme on va bien s'amuser.
 
 952
 00:35:59,840 --> 00:36:00,960
-qui ont décidé de défier notre communauté.
+Ils sont tous arrivés.
 
 953
 00:36:01,039 --> 00:36:02,039
-Sans prévenir personne, ils ont commencé des travaux de rénovation
+Il manque les œufs.
 
 954
 00:36:02,079 --> 00:36:03,079
-qui dérangent tout le monde et mettent en danger
+Vous avez peur ?
 
 955
 00:36:03,159 --> 00:36:05,159
-la sécurité de l'immeuble.
+Ils ont vu que tous les voisins me soutiennent
 
 956
 00:36:05,239 --> 00:36:06,239
-C'est un mensonge. Un peu de respect, c'est le président qui parle. Avec la loi de copropriété en main, si nous votons pour arrêter les travaux, les travaux s'arrêtent.
+et ils se sont rétractés.
 
 957
 00:36:06,320 --> 00:36:08,119
-Ou ça, ou nous allons au tribunal.
+Je ne voulais pas en arriver là.
 
 958
 00:36:08,199 --> 00:36:09,719
-Alors, procédons au vote.
+Paloma, tu ne devineras jamais. Oui.
 
 959
 00:36:09,800 --> 00:36:11,880
-Emilio, compte les votes, s'il te plaît.
+M'ont-ils forcé ? Oui, chéri.
 
 960
 00:36:11,960 --> 00:36:12,960
-Oui, monsieur le président.
+Allez !
 
 961
 00:36:13,039 --> 00:36:14,039
-Votes en faveur de l'arrêt des travaux.
+Allez !
 
 962
 00:36:14,119 --> 00:36:16,119
-Un.
+À la victoire !
 
 963
 00:36:16,199 --> 00:36:17,199
-Bon, allons voir, car je crois que vous ne m'avez pas bien compris.
+Courage !
 
 964
 00:36:17,279 --> 00:36:18,279
-J'ai dit ceux qui sont pour.
+À triompher !
 
 965
 00:36:18,360 --> 00:36:20,360
-Pour, hein ?
+Olé, mon président !
 
 966
 00:36:20,440 --> 00:36:21,440
-Que l'on arrête les travaux, levez la main.
+Quel pari audacieux !
 
 967
 00:36:24,199 --> 00:36:26,199
-Un, un. Oui, oui, oui, oui, je le vois déjà. Bon, vous vous êtes tous plaints. Personne ne va lever la main ? Merci Vicenta.
+Bonjour à tous, bienvenue à tous.
 
 968
 00:36:26,279 --> 00:36:29,079
-Deux votes en faveur.
+Nous allons commencer la réunion extraordinaire.
 
 969
 00:36:29,159 --> 00:36:30,159
-Merci, Vicenta.
+Il manque les œufs !
 
 970
 00:36:30,199 --> 00:36:31,199
-Deux votes en faveur.
+Les œufs ?
 
 971
 00:36:31,279 --> 00:36:33,799
-Non, non, où sont les toilettes ?
+Nous sommes propriétaires pour que le vote soit valable.
 
 972
 00:36:33,879 --> 00:36:35,199
-Les toilettes sont là-bas au fond, à droite.
+Alors, commençons.
 
 973
 00:36:35,279 --> 00:36:37,279
-C'est au cas où tu en aurais envie plus tard. Bon, voyons, des votes contre. J'ai deux votes, je le rappelle. Un, deux, trois, tous. Bon, je ne comprends rien.
+Veuillez éteindre votre téléphone portable et ne pas fumer.
 
 974
 00:36:37,359 --> 00:36:38,759
-Puis-je savoir ce qui se passe ici ?
+Pour parler, lève la main.
 
 975
 00:36:38,839 --> 00:36:41,000
-Les pauvres, ils ne dérangent pas tant que ça.
+Et pour insulter, ils me la lèvent aussi.
 
 976
 00:36:41,079 --> 00:36:42,079
-Je m'étais déjà habitué au bruit.
+Ordre du jour.
 
 977
 00:36:42,159 --> 00:36:43,159
-Pas moi, mais personne ne touche à ma parabole.
+Point premier.
 
 978
 00:36:43,239 --> 00:36:44,239
-Alors vous vous êtes vendus, hein ?
+Vote pour...
 
 979
 00:36:44,319 --> 00:36:45,319
-Vous avez cédé au chantage et aux menaces de cette femme. C’est honteux, c’est indigne. Ce qui est indigne, c’est qu'on accorde tant d'importance à nos travaux, alors qu’il me semble bien plus grave l’état du bâtiment ou la mauvaise gestion de la copropriété.
+Bonsoir.
 
 980
 00:36:45,399 --> 00:36:46,399
-C'est très bien, mais ça ressemble à de la démagogie, parce que ce n'est pas à l'ordre du jour. La fille a raison, les escaliers sont dans un état terrible. L'autre jour, j'ai failli me tuer. Et moi, l'interphone me donne des chocs électriques.
+Désolé pour le retard.
 
 981
 00:36:46,480 --> 00:36:47,480
-On nous a déjà dit qu'il fallait changer l'installation électrique.
+Bonsoir.
 
 982
 00:36:47,559 --> 00:36:48,559
-Si un jour, sans prévenir, le bâtiment prend feu et que nous mourons tous carbonisés, il faudra nous identifier par nos dents.
+Bonsoir.
 
 983
 00:36:48,639 --> 00:36:49,639
-Celle-ci n'en a pas. Bon, voyons, nous en avons déjà parlé, et c'est vrai qu'il faut faire des choses, mais pour l'instant, il n'y a pas d'argent. Où est-il ? Dans la nouvelle voiture qu'ils se sont achetée.
+Bonsoir.
 
 984
 00:36:49,719 --> 00:36:52,719
-Mais, écoutez, madame !
+Cette fille est toujours si mignonne.
 
 985
 00:36:52,799 --> 00:36:53,799
-Un instant, vous mettez en doute mon honnêteté ?
+Je continue.
 
 986
 00:36:53,879 --> 00:36:54,879
-Je crois que oui.
+Point premier.
 
 987
 00:36:54,960 --> 00:36:58,960
-On la remet en question, on la remet en question.
+Vote pour exercer l'action en cessation
 
 988
 00:36:59,400 --> 00:37:02,400
-Pourquoi ne pas engager un administrateur, hm ?
+et demander formellement au propriétaire du tiers A
 
 989
 00:37:02,480 --> 00:37:05,480
-Comme tout le monde. Peut-être que vous ne gérez pas bien vos comptes. Voleur ! En 12 ans de présidence, je n'avais jamais entendu quelque chose de pareil. 12 ans ?
+pour qu'elle cesse l'activité gênante, insalubre et nuisible
 
 990
 00:37:05,559 --> 00:37:07,559
-12 ans.
+qui est en cours de développement dans sa résidence
 
 991
 00:37:07,639 --> 00:37:09,639
-Mais ici, on n'élit pas un président chaque année.
+et qui empêche le déroulement normal
 
 992
 00:37:09,720 --> 00:37:11,720
-Oui, à vie.
+de la coexistence dans cette communauté.
 
 993
 00:37:11,800 --> 00:37:14,800
-Quoi ? Toute la vie, hein !
+Mais bon, nous n'étions pas venus pour parler des travaux.
 
 994
 00:37:14,880 --> 00:37:15,880
-Mon mari est le seul à se porter volontaire chaque année.
+Eh bien, c'est ce qu'il a dit.
 
 995
 00:37:15,960 --> 00:37:18,760
-Ah, eh bien, moi, je me porte volontaire.
+Qu'on va tous voter pour arrêter les travaux.
 
 996
 00:37:18,840 --> 00:37:20,360
-Mais bien sûr, oui !
+Il s'exprime vraiment mal, ton mari.
 
 997
 00:37:20,440 --> 00:37:21,440
-Peut-être que ce dont la communauté a besoin, c'est d'un changement.
+Il le fait exprès.
 
 998
 00:37:21,519 --> 00:37:22,920
-Je tiens à préciser que je n'ai pas l'intention de démissionner, hein.
+Pour que nous ne le comprenions pas.
 
 999
 00:37:23,000 --> 00:37:24,000
-Je crois sincèrement que mon travail a été...
+On commence déjà.
 
 1000
 00:37:24,079 --> 00:37:26,079
-Partez, monsieur Cuesta, partez !
+Chers concitoyens, comme vous le savez,
 
 1001
 00:37:26,159 --> 00:37:28,559
-Mais comment allons-nous voter pour cette fille si nous ne la connaissons pas du tout ?
+depuis une semaine, nous avons de nouveaux voisins
 
 1002
 00:37:28,559 --> 00:37:30,960
-Si on répare les escaliers, je vote pour toi !
+qui ont osé défier cette communauté.
 
 1003
 00:37:31,039 --> 00:37:34,039
-Bon, moi aussi.
+Sans prévenir personne, ils ont commencé des travaux de rénovation
 
 1004
 00:37:34,119 --> 00:37:36,719
-À condition que ma parabole reste là où elle est.
+qui nous dérangent tous et qui mettent en danger
 
 1005
 00:37:36,799 --> 00:37:38,320
-Mais ce qu'il faut faire, c'est en installer une pour tout le monde sur le toit, c'est moins cher, et j'appelle l'entreprise de mon père et ils nous peignent l'immeuble pour moitié prix. Voilà, c'est tout ! Voilà, c'est réglé !
+la sécurité du bâtiment.
 
 1006
 00:37:38,400 --> 00:37:39,400
-Ordre ! Ordre !
+C'est un mensonge.
 
 1007
 00:37:39,480 --> 00:37:41,480
-La séance est suspendue !
+Un respect, le président parle.
 
 1008
 00:37:41,559 --> 00:37:43,759
-Quoi ?
+Avec la loi de copropriété à la main,
 
 1009
 00:37:43,840 --> 00:37:45,840
-La séance est suspendue !
+si nous votons en faveur de l'arrêt des travaux,
 
 1010
 00:37:45,920 --> 00:37:46,920
-Pourquoi ne commençons-nous pas par voter pour la fille ?
+les travaux sont arrêtés.
 
 1011
 00:37:47,000 --> 00:37:48,480
-Parce qu'ils ne figurent pas à l'ordre du jour ! Maintenant !
+Ça ou nous allons au tribunal.
 
 1012
 00:37:48,559 --> 00:37:49,559
-La séance est suspendue !
+Alors, nous allons voter.
 
 1013
 00:37:49,639 --> 00:37:51,239
-Il n'y a ni demandes ni questions !
+Emilio, je compte les votes.
 
 1014
 00:37:51,320 --> 00:37:52,320
-Il n'y a ni demandes ni questions !
+Oui, monsieur le président.
 
 1015
 00:37:52,400 --> 00:37:54,400
-Tout le monde dehors !
+Votes en faveur de l'arrêt des travaux.
 
 1016
 00:37:54,440 --> 00:37:55,440
-Tu as terminé ton chorizo !
+Un.
 
 1017
 00:37:55,519 --> 00:37:59,519
-C'est toi qui l'as vraiment fini, allez, petit voleur !
+Bon, voyons voir, je pense que vous ne m'avez pas bien compris.
 
 1018
 00:37:59,599 --> 00:38:02,599
-Ne t'inquiète de rien, Juan.
+J'ai demandé ceux qui sont pour.
 
 1019
 00:38:02,680 --> 00:38:03,680
-Toi, ne t'inquiète de rien !
+Un service, hein ?
 
 1020
 00:38:03,760 --> 00:38:06,760
-Bon, ça s'est bien passé, n'est-ce pas, monsieur le président ?
+Que ceux qui s'opposent aux travaux lèvent la main.
 
 1021
 00:38:09,840 --> 00:38:10,840
-Ici, on ne peut pas vivre
+Un, un.
 
 1022
 00:38:10,920 --> 00:38:12,920
-Ici, on ne peut pas vivre, non
+Oui, oui, oui, oui, oui, je le vois.
 
 1023
 00:38:13,000 --> 00:38:14,519
-Ici, on ne...
+Bon, vous vous êtes tous plaints.
 
 1024
 00:38:14,599 --> 00:38:16,599
-C'est que le problème de Fernando avec les femmes
+Personne ne va lever la main ?
 
 1025
 00:38:16,680 --> 00:38:18,680
-c'est qu'il est très timide, tu sais ?
+Merci, Vicenta.
 
 1026
 00:38:18,760 --> 00:38:19,760
-Très incertain.
+Deux votes pour.
 
 1027
 00:38:20,760 --> 00:38:22,760
-Il ne sait pas vraiment ce qu'il veut, n'est-ce pas ?
+Homme Vicenta, merci.
 
 1028
 00:38:22,840 --> 00:38:23,840
-Peut-on arrêter de parler de moi, s'il vous plaît ?
+Deux votes pour.
 
 1029
 00:38:23,920 --> 00:38:25,920
-Non, ça m'arrive aussi.
+Non, non, où se trouve la salle de bain ?
 
 1030
 00:38:26,000 --> 00:38:28,000
-Mais c'est parce que je n'ai pas encore trouvé l'homme de ma vie.
+Les toilettes sont là-bas au fond, à droite.
 
 1031
 00:38:28,080 --> 00:38:30,080
-Regarde comme elle le cherche, hein ?
+C'est pour si tu as envie plus tard.
 
 1032
 00:38:30,160 --> 00:38:32,160
-Allez, tous les jours !
+Bon, voyons, votes contre.
 
 1033
 00:38:32,240 --> 00:38:35,240
-Non, mais tu vois, c'est que Fernando n'a pas le courage.
+J'ai deux voix, je me souviens.
 
 1034
 00:38:35,320 --> 00:38:39,320
-Enfin, il entend le mot engagement et il s'enfuit en courant.
+Un, deux, trois, tous.
 
 1035
 00:38:39,400 --> 00:38:40,800
-Et l'homme...
+Eh bien, je ne comprends rien.
 
 1036
 00:38:40,880 --> 00:38:42,880
-J'ai bien peur qu'il finisse très seul.
+Peut-on savoir ce qui se passe ici ?
 
 1037
 00:38:42,960 --> 00:38:44,960
-Tu es avec quelqu'un en ce moment ?
+Pauvres choux, ils ne dérangent pas tant que ça.
 
 1038
 00:38:45,040 --> 00:38:47,040
-Il y a quelque chose ?
+Je m'étais déjà habitué aux bruits.
 
 1039
 00:38:47,120 --> 00:38:49,120
-Oui, il y a quelque chose.
+Pas moi, mais personne ne touche à ma parabole.
 
 1040
 00:38:49,119 --> 00:38:51,119
-Ce qu'on ne sait pas, c'est combien de temps ça va durer.
+Alors, vous vous êtes vendus, hein ?
 
 1041
 00:38:51,199 --> 00:38:54,199
-Oui, parce que ça commence à me fatiguer un peu.
+Vous avez cédé au chantage et aux menaces de cette femme.
 
 1042
 00:38:54,279 --> 00:38:56,279
-Oh, ce sont les pires.
+Quelle honte, c'est indignant.
 
 1043
 00:38:56,359 --> 00:38:58,359
-Belén est toujours laissée pour ça.
+Ce qui est indignant, c'est qu'on lui accorde tant d'importance
 
 1044
 00:38:58,440 --> 00:39:00,440
-Je vais prendre une petite coupe, comme ça j'occupe mes mains.
+à nos œuvres, alors qu'il me semble bien plus grave
 
 1045
 00:39:00,519 --> 00:39:03,519
-Fernando, si elles te fatiguent, le mieux c'est de les laisser tomber.
+l'état du bâtiment ou la mauvaise gestion de la copropriété.
 
 1046
 00:39:03,599 --> 00:39:05,599
-Hé, écoute, désolé, mais ce n'est pas si facile de laisser tomber.
+C'est très bien, mais ça sonne comme de la démagogie,
 
 1047
 00:39:05,679 --> 00:39:07,679
-Écoute, laisse-la, laisse-la tranquille, ne...
+parce qu'il ne figure pas à l'ordre du jour.
 
 1048
 00:39:07,759 --> 00:39:10,759
-Tu es une fille géniale, ne...
+La fille a raison, les escaliers sont terribles.
 
 1049
 00:39:10,839 --> 00:39:11,839
-C'est que...
+L'autre jour, j'ai failli me tuer.
 
 1050
 00:39:11,920 --> 00:39:13,920
-Tu racontes seulement ce qui t'arrange, n'est-ce pas ?
+Et l'interphone me donne des décharges.
 
 1051
 00:39:14,000 --> 00:39:16,000
-Oui, mais je ne pense pas qu'elles s'intéressent à ma vie personnelle.
+Nous avons déjà été informés que dans l'installation électrique
 
 1052
 00:39:16,079 --> 00:39:17,079
-Si, si, ça nous intéresse, bien sûr que ça nous intéresse.
+il fallait la changer.
 
 1053
 00:39:17,119 --> 00:39:19,119
-Eh bien, à ce stade,
+Si un jour inattendu le bâtiment prend feu
 
 1054
 00:39:19,199 --> 00:39:21,199
-je n'ai pas d'autre choix que de vous dire...
+et nous mourons tous carbonisés,
 
 1055
 00:39:21,279 --> 00:39:24,279
-que nous sommes à court de glaçons.
+s’ils doivent nous identifier par les dents.
 
 1056
 00:39:24,360 --> 00:39:25,360
-Nous avons à la maison.
+Celle-ci n'en a pas.
 
 1057
 00:39:25,440 --> 00:39:27,440
-Est-ce à cause de la glace ?
+Bon, voyons, on en a déjà parlé,
 
 1058
 00:39:27,519 --> 00:39:30,519
-Le fait est qu'il est devenu un peu tard,
+et c'est vrai qu'il faut agir, mais actuellement, il n'y a pas d'argent.
 
 1059
 00:39:30,599 --> 00:39:31,599
-je travaille demain.
+Où est-il ?
 
 1060
 00:39:31,679 --> 00:39:33,679
-Mais qu'est-ce que tu racontes, mon amour.
+Dans la nouvelle voiture qu'ils ont achetée.
 
 1061
 00:39:33,759 --> 00:39:34,759
-S'ils ont de la glace, ils viennent juste de commencer. Allez, allons-y, monsieur ! Allons-y, allons-y ! Bon... Tatatata !
+Mais, écoutez, madame !
 
 1062
 00:39:34,840 --> 00:39:36,840
-Cette musique !
+Un instant, doute-t-on de mon honnêteté ?
 
 1063
 00:39:36,920 --> 00:39:37,920
-Quoi ?
+Je crois que oui.
 
 1064
 00:39:38,000 --> 00:39:40,000
-Ça n'arrivera jamais !
+On hésite, on hésite.
 
 1065
 00:39:40,079 --> 00:39:42,079
-Quoi ?
+Pourquoi ne pas engager un administrateur, hein ?
 
 1066
 00:39:42,159 --> 00:39:43,159
-Prenons l'ascenseur !
+Comme tout le monde.
 
 1067
 00:39:43,239 --> 00:39:45,239
-Non, attends, attends !
+Peut-être que vous ne gérez pas bien les comptes.
 
 1068
 00:39:45,319 --> 00:39:46,319
-Pourquoi allons-nous monter chercher de la glace ?
+Saucisson !
 
 1069
 00:39:46,360 --> 00:39:49,360
-On va la demander à celles-là, elles ont tout.
+En 12 ans en tant que président, je n'avais jamais entendu quelque chose de semblable.
 
 1070
 00:39:49,440 --> 00:39:50,440
-Non !
+12 ans ?
 
 1071
 00:39:50,519 --> 00:39:51,519
-Mec, il est déjà plus de minuit !
+12 ans.
 
 1072
 00:39:51,600 --> 00:39:53,600
-Mais qui peut bien être à cette heure-ci ?
+Mais ici, on ne choisit pas de président chaque année.
 
 1073
 00:39:53,680 --> 00:39:54,680
-Vicente, attention à la longue.
+Oui, à la vie.
 
 1074
 00:39:54,760 --> 00:39:55,760
-Allez, cours, cours !
+Quoi ? Toute la vie, hein !
 
 1075
 00:39:55,840 --> 00:39:58,840
-Tais-toi, vas-y, vas-y !
+Mon mari est le seul à se porter volontaire chaque année.
 
 1076
 00:39:58,920 --> 00:40:00,920
-Aïe !
+Ah, eh bien, je me porte volontaire.
 
 1077
 00:40:01,000 --> 00:40:02,000
-Aïe !
+Bien sûr, oui !
 
 1078
 00:40:02,080 --> 00:40:05,080
-Aïe !
+Peut-être que ce dont la communauté a besoin, c'est d'un changement.
 
 1079
 00:40:05,160 --> 00:40:07,160
-Tu vois ?
+Pour que ce soit clair, je n'ai pas l'intention de démissionner, hein.
 
 1080
 00:40:07,240 --> 00:40:09,240
-Il marque les numéros et ne se tait pas.
+Je crois sincèrement que mon travail a été...
 
 1081
 00:40:09,320 --> 00:40:11,320
-Ce monsieur me l'a mal noté.
+Allez-vous-en, Monsieur Cuesta, allez-vous-en !
 
 1082
 00:40:11,400 --> 00:40:14,400
-Laisse-moi faire.
+Mais comment allons-nous voter pour cette fille si nous ne la connaissons pas du tout ?
 
 1083
 00:40:14,599 --> 00:40:16,599
-Aïe !
+Répare les escaliers, je vote pour toi !
 
 1084
 00:40:16,680 --> 00:40:17,680
-Aïe !
+Eh bien, moi aussi.
 
 1085
 00:40:17,760 --> 00:40:19,760
-Au lit !
+À condition de laisser ma parabole là où elle est.
 
 1086
 00:40:19,840 --> 00:40:22,840
-Regarde comment tu l'as cassé !
+Mais ce qu'il faut faire, c'est en mettre une pour tout le monde sur le toit,
 
 1087
 00:40:22,920 --> 00:40:24,920
-On dirait qu'ils mettent du temps.
+ce qui est moins cher, et j'appelle l'entreprise de mon père
 
 1088
 00:40:25,000 --> 00:40:27,000
-Eh bien oui.
+et ils nous peignent le bâtiment pour la moitié du prix.
 
 1089
 00:40:27,079 --> 00:40:28,079
-Tu sais quoi ?
+Eh bien, c'est fait !
 
 1090
 00:40:28,160 --> 00:40:29,160
-Écoute, Alicia, j'ai passé un très bon moment.
+Ça y est !
 
 1091
 00:40:29,240 --> 00:40:31,240
-Tu m'as l'air d'être une fille géniale.
+Ordre ! Ordre !
 
 1092
 00:40:31,320 --> 00:40:32,320
-Mais en ce moment, je ne veux rien de sérieux.
+La réunion est suspendue !
 
 1093
 00:40:32,400 --> 00:40:33,400
-Je traverse une période personnelle un peu compliquée.
+Quoi ?
 
 1094
 00:40:33,480 --> 00:40:34,480
-Je pense que le mieux serait qu'on reste juste amis.
+La réunion est suspendue !
 
 1095
 00:40:34,559 --> 00:40:36,559
-Non, j'allais te dire que je sors dans ce magazine.
+Pourquoi ne commençons-nous pas par voter pour la fille ?
 
 1096
 00:40:36,639 --> 00:40:38,639
-Annonçant des barres de muesli.
+Parce qu'ils ne figurent pas à l'ordre du jour ! Oh là là !
 
 1097
 00:40:38,720 --> 00:40:39,720
-Celles énergétiques ?
+Réunion suspendue !
 
 1098
 00:40:39,800 --> 00:40:41,800
-Oui.
+Pas de supplications ni de questions !
 
 1099
 00:40:41,880 --> 00:40:42,880
-Elles sont délicieuses.
+Pas de supplications ni de questions !
 
 1100
 00:40:42,960 --> 00:40:43,960
-Moi, je ne les aime pas.
+Je vole partout dans le monde !
 
 1101
 00:40:44,440 --> 00:40:46,440
-Écoute, je vais y aller, tu voudras te coucher.
+Tu n'as plus de chorizo !
 
 1102
 00:40:47,320 --> 00:40:50,320
-Oui.
+Toi, ton tour est terminé, allez, voleur !
 
 1103
 00:40:51,720 --> 00:40:53,119
-Bon, eh bien...
+Ne t'inquiète de rien, Juan.
 
 1104
 00:40:53,199 --> 00:40:55,199
-Rien, je me suis bien amusé.
+Ne t'inquiète de rien !
 
 1105
 00:40:55,920 --> 00:40:57,920
-Quand tu veux, on peut se revoir.
+Eh bien, ça s'est bien passé, n'est-ce pas, monsieur le président ?
 
 1106
 00:40:58,000 --> 00:41:00,000
-Oui, tu me l'as déjà dit avant.
+Personne ne peut vivre ici
 
 1107
 00:41:00,079 --> 00:41:02,079
-D'accord. D'accord.
+Ici, personne ne peut vivre, non
 
 1108
 00:41:02,159 --> 00:41:03,159
-Surprise.
+Pas ici...
 
 1109
 00:41:03,240 --> 00:41:05,240
-On a amené une bouteille de tequila et on profite des succès de George et Darn.
+C'est le problème de Fernando avec les femmes
 
 1110
 00:41:05,320 --> 00:41:06,920
-Je n'ai pas eu le temps de le cacher.
+c'est qu'il est très timide, tu sais ?
 
 1111
 00:41:07,000 --> 00:41:08,000
-Bon, je vais dormir.
+Très incertain.
 
 1112
 00:41:08,079 --> 00:41:10,079
-Ne fais pas trop de bruit, s'il te plaît.
+Il ne sait pas vraiment ce qu'il veut, n'est-ce pas ?
 
 1113
 00:41:10,159 --> 00:41:12,159
-Bon, moi aussi je m'en vais, je suis très fatiguée.
+Pouvons-nous arrêter de parler de moi, s'il vous plaît ?
 
 1114
 00:41:12,240 --> 00:41:13,639
-Mais qu'est-ce que c'est que ça ? Le chemin des endormis.
+Non, ça m'arrive aussi.
 
 1115
 00:41:13,679 --> 00:41:16,679
-C'est la première fois qu'on va se coucher avant moi.
+Mais c'est parce que je n'ai pas encore trouvé l'homme de ma vie.
 
 1116
 00:41:16,759 --> 00:41:17,759
-Mais il faut le fêter.
+Regarde comme il le cherche, hein ?
 
 1117
 00:41:17,839 --> 00:41:18,839
-Et comment !
+Allons-y, tous les jours !
 
 1118
 00:41:18,920 --> 00:41:20,920
-Le bar de plage, le bar de plage.
+Non, voyez-vous, mais c'est que Fernando n'y met pas du sien.
 
 1119
 00:41:21,000 --> 00:41:24,000
-As-tu un mixeur pour les margaritas ?
+Je veux dire, il entend le mot engagement et il s'enfuit en courant.
 
 1120
 00:41:24,079 --> 00:41:25,079
-Non, mais on va le demander à la voisine.
+Et l'homme...
 
 1121
 00:41:25,159 --> 00:41:27,159
-Non, Fauny !
+Je crains qu'il finisse très seul.
 
 1122
 00:41:27,239 --> 00:41:29,239
-Qu'est-ce qui arrive à papa ?
+Es-tu avec quelqu'un maintenant ?
 
 1123
 00:41:29,319 --> 00:41:30,319
-Rien, ma chérie, il est contrarié. Il a eu une mauvaise journée.
+Y a-t-il quelque chose ?
 
 1124
 00:41:30,400 --> 00:41:31,400
-Pourquoi ne pas l'achever ? Pour qu'il arrête de souffrir.
+Oui, il y a quelque chose.
 
 1125
 00:41:31,480 --> 00:41:33,480
-Ne dis pas de bêtises. Allez, au lit.
+Ce que nous ne savons pas, c'est combien de temps cela va durer.
 
 1126
 00:41:33,559 --> 00:41:36,559
-Allez, retourne au lit ! Allez, vous deux !
+Oui, parce que ça commence à me stresser un peu.
 
 1127
 00:41:36,639 --> 00:41:37,639
-Juan, as-tu besoin de quelque chose ?
+Oh là là, ce sont les pires.
 
 1128
 00:41:37,719 --> 00:41:39,719
-J'ai été ridicule.
+On laisse toujours Belén à cause de ça.
 
 1129
 00:41:39,799 --> 00:41:42,799
-Non, mon amour. Allez, allons au lit.
+Je vais me servir un verre, si j'ai les mains occupées.
 
 1130
 00:41:43,039 --> 00:41:45,039
-Ils m'ont perdu le respect, Paloma.
+Fernando, si elles te submergent, le mieux c'est de les laisser.
 
 1131
 00:41:45,120 --> 00:41:48,120
-Quoi ? Mais si. Ici, tout le monde te respecte beaucoup, sauf tes enfants. J'aime être président. Mais tu vas continuer à l'être. Ah oui, comment ? Je m'en occupe. Ne t'inquiète pas.
+Hé, mon pote, désolé, mais ce n'est pas si simple de laisser tomber.
 
 1132
 00:41:48,200 --> 00:41:50,200
-Qu'est-ce que tu vas faire ? Eh bien.
+Hé, laisse-la, laisse-la, non...
 
 1133
 00:41:50,280 --> 00:41:52,280
-Tu ne sais pas de quoi je suis capable par amour.
+Tu es une fille superbe, non...
 
 1134
 00:41:52,360 --> 00:41:53,360
-Tu m'aimes, n'est-ce pas, Paloma ? Bien sûr que je t'aime.
+C'est que ce...
 
 1135
 00:41:53,440 --> 00:41:56,440
-Quoi ? Quoi ? Quoi ?
+Tu racontes juste ce que tu veux, n'est-ce pas ?
 
 1136
 00:41:56,519 --> 00:41:59,519
-Bien sûr que je t'aime. Je t'idolâtre, tu es l'homme de ma vie.
+Oui, mais je ne pense pas qu'elles soient intéressées par ma vie personnelle.
 
 1137
 00:41:59,600 --> 00:42:01,600
-Et moi, je t'adore et je te désire.
+Oui, oui, ça nous intéresse, bien sûr que oui.
 
 1138
 00:42:01,680 --> 00:42:03,680
-Et tu n'imagines pas tout ce à quoi j'ai pensé
+Eh bien, arrivés à ce point,
 
 1139
 00:42:03,760 --> 00:42:05,760
-pour continuer d'être président. Toi président, et moi présidente.
+je n'ai pas d'autre choix que de vous dire...
 
 1140
 00:42:08,800 --> 00:42:10,800
-Eh bien, moi, j'aimais bien l'idée d'avoir une alarme.
+qu'on a épuisé notre réserve de glace.
 
 1141
 00:42:11,800 --> 00:42:13,800
-Je me sentais en sécurité.
+Nous avons chez nous.
 
 1142
 00:42:13,880 --> 00:42:14,880
-Eh bien, dorénavant, si tu veux te sentir en sécurité,
+Serait-ce à cause de la glace ?
 
 1143
 00:42:14,960 --> 00:42:16,960
-mets une serviette avec des ailes.
+Le problème, c'est qu'il est devenu un peu tard,
 
 1144
 00:42:17,039 --> 00:42:18,039
-Et si des voleurs entrent chez nous ?
+moi, demain je travaille.
 
 1145
 00:42:18,120 --> 00:42:19,120
-Qu'ils ne tuent pas, mais en silence.
+Mais qu'est-ce que tu racontes, mon amour.
 
 1146
 00:42:19,200 --> 00:42:21,200
-Hé, je suis en train de lire.
+S'ils ont de la glace, ils viennent de commencer.
 
 1147
 00:42:21,280 --> 00:42:23,280
-Je peux faire quelque chose ?
+Allez, allons-y, mec !
 
 1148
 00:42:23,360 --> 00:42:25,360
-Je peux entrer ?
+Allez, on y va !
 
 1149
 00:42:27,960 --> 00:42:28,960
-Oh non, c'est que je lisais ça, tu sais ?
+Eh bien...
 
 1150
 00:42:29,039 --> 00:42:30,039
-Belén, je suis perdue.
+Ran, ran, ran !
 
 1151
 00:42:30,120 --> 00:42:32,120
-Écoute, demain on sort,
+Cette musique !
 
 1152
 00:42:32,200 --> 00:42:33,200
-tu trouves un autre mec et voilà, tu oublies.
+Quoi ?
 
 1153
 00:42:33,280 --> 00:42:34,280
-Facile.
+Jamais cela ne sera !
 
 1154
 00:42:34,360 --> 00:42:35,360
-Peut-être que je n'aurais pas dû l'embrasser.
+Quoi ?
 
 1155
 00:42:35,440 --> 00:42:36,440
-Tu l'as embrassé ?
+Allons par l'ascenseur !
 
 1156
 00:42:36,519 --> 00:42:37,519
-Et, est-ce qu'il t'a répondu ?
+Non, attends, attends !
 
 1157
 00:42:37,600 --> 00:42:39,600
-Pas encore.
+Pourquoi monter chercher de la glace ?
 
 1158
 00:42:39,639 --> 00:42:41,639
-Ma chérie.
+Nous le demandons à celles qui ont tout.
 
 1159
 00:42:41,719 --> 00:42:42,719
-Je pense qu'il faut juste lui donner du temps.
+Non !
 
 1160
 00:42:42,799 --> 00:42:44,799
-Oui, je pense que oui, ce sera une question de temps.
+Mon pote, il est déjà plus de minuit !
 
 1161
 00:42:44,880 --> 00:42:46,880
-C'est ce que... Oui, ça va être le moment.
+Mais qui cela peut-il être à cette heure-ci ?
 
 1162
 00:42:46,960 --> 00:42:48,960
-Ça va être ça.
+Vicente, fais attention à la longue.
 
 1163
 00:42:49,039 --> 00:42:51,039
-Bon, allez, à demain.
+Tire, cours, cours !
 
 1164
 00:42:51,119 --> 00:42:53,119
-Quel sourire il a.
+Tais-toi, allez, allez !
 
 1165
 00:42:53,199 --> 00:42:54,199
-Il est trop mignon.
+Aïe !
 
 1166
 00:42:54,279 --> 00:42:55,279
-Qu'il est mignon.
+Oh là là !
 
 1167
 00:42:55,360 --> 00:42:56,360
-Oui. Toi, tu l'aimes bien.
+Oh là là !
 
 1168
 00:42:56,440 --> 00:42:57,440
-Oui.
+Tu vois ?
 
 1169
 00:42:57,519 --> 00:42:59,519
-Oh.
+Marque les numéros et ne se tait pas.
 
 1170
 00:42:59,599 --> 00:43:01,599
-Comment s'est passée la réunion ? Qu'est-ce qui s'est passé ?
+Ce monsieur m'a mal noté.
 
 1171
 00:43:01,679 --> 00:43:03,679
-Qu'est-ce qui s'est passé ? Ils voulaient me faire président.
+Laisse-moi faire.
 
 1172
 00:43:03,759 --> 00:43:04,759
-Bien sûr, comme ils boivent, j'ai de l'intelligence.
+Oh là là !
 
 1173
 00:43:04,839 --> 00:43:05,839
-Et toi, qu'est-ce que tu leur as dit ?
+Oh là là !
 
 1174
 00:43:05,920 --> 00:43:06,920
-Que j'allais dire non, s'ils ne paient pas un sou.
+Oh là là !
 
 1175
 00:43:07,000 --> 00:43:09,000
-Tu sais qu'ici, il y a des machines, des jeux d'arcade ?
+Au lit !
 
 1176
 00:43:09,679 --> 00:43:11,679
-Je ne sais pas. C'est un vidéoclub.
+Regarde comme tu l'as cassé !
 
 1177
 00:43:20,039 --> 00:43:22,039
-Bon, eh bien, je ne sais pas, est-ce que j'ai un film ?
+On dirait qu'ils sont en retard.
 
 1178
 00:43:22,119 --> 00:43:23,119
-D'abord, tu dois devenir membre, en plus,
+Eh bien, oui.
 
 1179
 00:43:29,199 --> 00:43:30,800
-je suis en train de fermer, Emilio.
+Tu ne devineras jamais un truc.
 
 1180
 00:43:30,880 --> 00:43:32,880
-Mais qu'est-ce que c'est que ce vidéoclub ? Toutes les boîtes sont vides.
+Écoute, Alicia, j'ai passé un très bon moment.
 
 1181
 00:43:32,960 --> 00:43:34,960
-Les cassettes, je les ai ici, pour qu'on ne me les vole pas.
+Tu me sembles être une fille formidable.
 
 1182
 00:43:35,039 --> 00:43:36,559
-C'est un paravent pour vendre de l'eau de javel.
+Mais maintenant je ne veux rien.
 
 1183
 00:43:36,599 --> 00:43:39,599
-S'il te plaît, tu peux me laisser un peu tranquille ?
+Je traverse une période personnelle un peu compliquée.
 
 1184
 00:43:39,679 --> 00:43:42,679
-Je dois faire la caisse, vraiment.
+Je pense que le mieux serait que nous restions juste amis.
 
 1185
 00:43:42,759 --> 00:43:45,759
-Eh bien, pas besoin de réagir comme ça.
+Non, je voulais te dire que je fais une apparition dans ce magazine.
 
 1186
 00:43:45,840 --> 00:43:47,840
-Je te donne quelques conseils d'ami, parce que je vois que les vidéoclubs manquent de vie. Je suis ici depuis deux heures et personne n'est entré. Ne te fais pas d'illusions, Paquito, je suis ici depuis deux heures et pas une seule âme n'est entrée.
+Annonçant des barres de muesli.
 
 1187
 00:43:50,079 --> 00:43:52,079
-Et c'est parce qu'il leur manque un petit quelque chose dans leur vie.
+Ces boissons énergétiques ?
 
 1188
 00:43:52,159 --> 00:43:53,159
-Ici un billet, des jeux là-bas,
+Oui.
 
 1189
 00:43:54,880 --> 00:43:56,880
-je ne sais pas, un truc, une... Une piscine, non ?
+Elles sont délicieuses.
 
 1190
 00:43:56,960 --> 00:43:58,960
-Et des parasols. Non, non, pas une piscine,
+Je ne les aime pas.
 
 1191
 00:43:59,039 --> 00:44:02,039
-mais bon, ce que tu veux. Qu'est-ce que j'allais te dire ?
+Écoute, je vais monter, tu voudras sûrement te coucher.
 
 1192
 00:44:02,119 --> 00:44:03,119
-Et les films porno ?
+Oui.
 
 1193
 00:44:03,199 --> 00:44:05,199
+Eh bien, que...
+
+1194
+00:44:05,199 --> 00:44:07,199
+Rien, je me suis très bien amusé.
+
+1195
+00:44:07,279 --> 00:44:09,279
+Quand tu veux, nous pouvons nous revoir.
+
+1196
+00:44:09,359 --> 00:44:11,359
+Oui, tu me l'as déjà dit avant.
+
+1197
+00:44:11,439 --> 00:44:13,439
+D'accord. D'accord.
+
+1198
+00:44:15,519 --> 00:44:17,519
+Surprise.
+
+1199
+00:44:17,599 --> 00:44:20,599
+Nous apportons une bouteille de tequila et nous sommes partis avec les succès de George et Darn.
+
+1200
+00:44:20,679 --> 00:44:22,679
+Je n'ai pas eu le temps de le cacher.
+
+1201
+00:44:22,759 --> 00:44:24,759
+Bon, je vais dormir.
+
+1202
+00:44:24,839 --> 00:44:26,839
+Ne fais pas trop de bruit, s'il te plaît.
+
+1203
+00:44:26,919 --> 00:44:28,919
+Eh bien, moi aussi je m'en vais, je suis très fatiguée.
+
+1204
+00:44:29,000 --> 00:44:31,000
+Mais, qu'est-ce que c'est que ça ? La route de l'ennui.
+
+1205
+00:44:31,079 --> 00:44:33,079
+C'est la première fois qu'il va se coucher avant moi.
+
+1206
+00:44:33,159 --> 00:44:35,159
+Mais il faut le célébrer.
+
+1207
+00:44:35,239 --> 00:44:37,239
+Tellement.
+
+1208
+00:44:37,319 --> 00:44:39,319
+Le chiringuito, le chiringuito.
+
+1209
+00:44:39,399 --> 00:44:41,399
+As-tu un amant pour les margaritas ?
+
+1210
+00:44:41,480 --> 00:44:43,480
+Non, mais nous l'avons demandé à la voisine.
+
+1211
+00:44:43,559 --> 00:44:45,559
+Non, Fauny !
+
+1212
+00:44:45,639 --> 00:44:47,639
+Qu'est-ce qui arrive à papa ?
+
+1213
+00:44:47,719 --> 00:44:50,719
+Rien, mon chéri, il est contrarié. Il a eu une mauvaise journée.
+
+1214
+00:44:50,799 --> 00:44:53,799
+Pourquoi ne pas l'achever ? Pour qu'il ne souffre plus.
+
+1215
+00:44:53,879 --> 00:44:55,879
+Ne dis pas de bêtises. Allez, au lit.
+
+1216
+00:44:55,960 --> 00:44:57,960
+Allez, retourne au lit ! Allez, tous les deux !
+
+1217
+00:44:57,960 --> 00:44:59,960
+Juan, as-tu besoin de quelque chose ?
+
+1218
+00:45:00,039 --> 00:45:02,039
+J'ai été ridicule.
+
+1219
+00:45:02,119 --> 00:45:04,119
+Non, mon amour. Allez, allons au lit.
+
+1220
+00:45:04,199 --> 00:45:06,199
+Ils ont perdu le respect pour moi, Paloma.
+
+1221
+00:45:06,280 --> 00:45:08,280
+Quoi, non ? Mais si.
+
+1222
+00:45:08,360 --> 00:45:10,360
+Si ici, à part tes enfants, tout le monde te respecte beaucoup.
+
+1223
+00:45:10,440 --> 00:45:12,440
+J'aime être président.
+
+1224
+00:45:12,519 --> 00:45:14,519
+Mais tu vas le rester. Oui, comment ?
+
+1225
+00:45:14,599 --> 00:45:16,599
+Eh bien, je m'en charge. Ne t'inquiète pas.
+
+1226
+00:45:16,679 --> 00:45:18,679
+Que vas-tu faire ? Eh bien.
+
+1227
+00:45:18,760 --> 00:45:20,760
+Tu ne sais pas de quoi je suis capable par amour.
+
+1228
+00:45:20,840 --> 00:45:22,840
+Tu m'aimes, n'est-ce pas, Paloma ? Bien sûr que je t'aime.
+
+1229
+00:45:22,920 --> 00:45:24,920
+Quoi ? Quoi ? Quoi ?
+
+1230
+00:45:25,000 --> 00:45:27,000
+Quoi ? Quoi ? Quoi ?
+
+1231
+00:45:27,079 --> 00:45:29,079
+Bien sûr que je t'aime. Je t'idolâtre, tu es l'homme de ma vie.
+
+1232
+00:45:29,159 --> 00:45:31,159
+Et moi, je t'adore et te désire.
+
+1233
+00:45:31,239 --> 00:45:33,239
+Et tu ne sais pas combien de choses auxquelles j'ai pensé
+
+1234
+00:45:33,320 --> 00:45:35,320
+pour continuer à être président. Toi et présidente moi.
+
+1235
+00:45:39,400 --> 00:45:41,400
+Eh bien, moi, j'aimais bien avoir une alarme.
+
+1236
+00:45:41,480 --> 00:45:43,480
+Je me sentais en sécurité.
+
+1237
+00:45:43,559 --> 00:45:45,559
+Eh bien, à partir de maintenant, si tu veux te sentir en sécurité,
+
+1238
+00:45:45,639 --> 00:45:47,639
+tu mets une serviette avec des ailes.
+
+1239
+00:45:47,719 --> 00:45:49,719
+Et si les voleurs entraient ?
+
+1240
+00:45:49,800 --> 00:45:51,800
+Qu'ils ne tuent pas, mais en silence.
+
+1241
+00:45:51,880 --> 00:45:53,880
+Hé, je lisais.
+
+1242
+00:45:53,960 --> 00:45:55,960
+Puis-je faire quelque chose ?
+
+1243
+00:45:56,519 --> 00:45:58,519
+Puis-je entrer ?
+
+1244
+00:45:58,599 --> 00:46:00,599
+Oh, non, c'est que j'étais en train de lire ça, tu sais ?
+
+1245
+00:46:00,679 --> 00:46:02,679
+Belén, je suis coincée.
+
+1246
+00:46:02,760 --> 00:46:04,760
+Écoute, demain on sort,
+
+1247
+00:46:04,840 --> 00:46:06,840
+tu te trouves un autre mec et voilà, tu l'oublies.
+
+1248
+00:46:06,920 --> 00:46:08,920
+Facile.
+
+1249
+00:46:09,000 --> 00:46:11,000
+Je n'aurais pas dû embrasser la nonne.
+
+1250
+00:46:11,079 --> 00:46:13,079
+As-tu embrassé ?
+
+1251
+00:46:13,159 --> 00:46:15,159
+Et elle t'a répondu ?
+
+1252
+00:46:15,240 --> 00:46:17,240
+Pas encore.
+
+1253
+00:46:17,320 --> 00:46:19,320
+Amie.
+
+1254
+00:46:19,400 --> 00:46:21,400
+Je pense que c'est une question de temps.
+
+1255
+00:46:21,480 --> 00:46:23,480
+Oui, je pense que oui, ce sera le temps.
+
+1256
+00:46:23,559 --> 00:46:25,559
+C'est ce que... Oui, ce sera le moment.
+
+1257
+00:46:25,559 --> 00:46:27,559
+Ça doit être ça.
+
+1258
+00:46:27,639 --> 00:46:29,639
+Bon, allez, à demain.
+
+1259
+00:46:31,159 --> 00:46:33,159
+Quel sourire il a.
+
+1260
+00:46:33,239 --> 00:46:35,239
+C'est plus mignon.
+
+1261
+00:46:35,320 --> 00:46:37,320
+Qu'il est mignon.
+
+1262
+00:46:37,400 --> 00:46:39,400
+Oui. Ce qui te plaît.
+
+1263
+00:46:39,480 --> 00:46:41,480
+Oui.
+
+1264
+00:46:41,559 --> 00:46:43,559
+Aïe.
+
+1265
+00:46:43,639 --> 00:46:45,639
+Comment ça s'est passé à la réunion ? Qu'est-ce qui s'est passé ?
+
+1266
+00:46:45,719 --> 00:46:47,719
+Qu'est-ce qui s'est passé ? Ils voulaient me faire président.
+
+1267
+00:46:47,799 --> 00:46:49,799
+Bien sûr, comme ils boivent, que j'ai du coco.
+
+1268
+00:46:49,880 --> 00:46:51,880
+Et toi, qu'est-ce que tu leur as dit ?
+
+1269
+00:46:51,960 --> 00:46:53,960
+Que j'allais lui dire non ? Alors que tu ne paies même pas un centime.
+
+1270
+00:46:54,039 --> 00:46:56,039
+Tu sais qu'il y a des machines ici, des jeux d'arcade ?
+
+1271
+00:46:56,119 --> 00:46:58,119
+Je ne sais pas. C'est un vidéoclub.
+
+1272
+00:46:58,199 --> 00:47:00,199
+Eh bien, je ne sais pas, est-ce que j’ai un film ?
+
+1273
+00:47:00,280 --> 00:47:02,280
+D'abord, tu dois devenir membre, de plus,
+
+1274
+00:47:02,360 --> 00:47:04,360
+je ferme, Emilio.
+
+1275
+00:47:04,440 --> 00:47:06,440
+Mais quel vidéoclub est-ce? Toutes les boîtes sont vides.
+
+1276
+00:47:06,519 --> 00:47:08,519
+Les cassettes, je les ai ici, pour qu'on ne me les vole pas.
+
+1277
+00:47:08,599 --> 00:47:10,599
+C'est une façade pour vendre de l'eau de Javel.
+
+1278
+00:47:10,679 --> 00:47:12,679
+S'il te plaît, peux-tu me laisser un peu tranquille ?
+
+1279
+00:47:12,760 --> 00:47:14,760
+Que je dois faire la caisse, vraiment.
+
+1280
+00:47:14,840 --> 00:47:16,840
+Eh bien, pas besoin de réagir comme ça.
+
+1281
+00:47:16,920 --> 00:47:18,920
+Je te donne quelques conseils d'ami,
+
+1282
+00:47:19,000 --> 00:47:21,000
+parce que je vois que les vidéoclubs manquent de vie.
+
+1283
+00:47:21,079 --> 00:47:23,079
+Je suis ici depuis deux heures et personne n'est entré.
+
+1284
+00:47:23,159 --> 00:47:25,159
+Ne te fais pas d'illusions, Paquito, ça fait deux heures que je suis ici.
+
+1285
+00:47:25,239 --> 00:47:27,239
+et ici, personne n'est entré, pas même Dieu.
+
+1286
+00:47:27,319 --> 00:47:29,319
+Et c'est parce qu'il leur manque ça, un peu de vie.
+
+1287
+00:47:29,400 --> 00:47:31,400
+Voici un billet, des salles de jeux là-bas,
+
+1288
+00:47:31,480 --> 00:47:33,480
+je ne sais pas, un truc, une... Une piscine, non ?
+
+1289
+00:47:33,559 --> 00:47:35,559
+Et des parasols. Non, non, pas une piscine,
+
+1290
+00:47:35,639 --> 00:47:37,639
+mais bon, comme tu veux. Qu'est-ce que j'allais te dire ?
+
+1291
+00:47:37,719 --> 00:47:39,719
+Et les films porno ?
+
+1292
+00:47:39,799 --> 00:47:41,799
 Ici, ici, ici personne ne peut vivre, ici non, ici non.
 

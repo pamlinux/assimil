@@ -1,68 +1,127 @@
-<form id="media-form" enctype="multipart/form-data">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 600px; margin: auto;">
-        <label for="title">Titre :</label>
-        <input type="text" id="title" name="title">
-
-        <label for="disc_number">Numéro du disque :</label>
-        <input type="number" id="disc_number" name="disc_number">
-
-        <label for="video_filename">Fichier Vidéo :</label>
-        <input type="file" id="video_filename" name="video_filename" accept="video/*">
-
-        <label for="media_type">Type de Média :</label>
-        <select id="media_type" name="media_type" onchange="toggleSeriesFields()">
-            <option value="series" selected>Série</option>
-            <option value="movie">Film</option>
-        </select>
-
-        <!-- Conteneur des champs spécifiques aux séries -->
-        <div id="series-fields" style="display: contents;">
-            <label for="season">Saison :</label>
-            <input type="number" id="season" name="season">
-
-            <label for="episode_number">Numéro de l’épisode :</label>
-            <input type="number" id="episode_number" name="episode_number">
-
-            <label for="episode_title">Titre de L'épisode :</label>
-            <input type="text" id="episode_title" name="episode_title">
-        </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 20px;">
-        <button type="button" onclick="saveToDatabase()">Enregistrer dans la base de données</button>
-    </div>
-</form>
-
-<script>
-    function toggleSeriesFields() {
-        const mediaType = document.getElementById("media_type").value;
-        const seriesFields = document.getElementById("series-fields").children;
-
-        for (let field of seriesFields) {
-            field.style.display = (mediaType === "series") ? "block" : "none";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .suggestions-box {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 1000;
         }
-    }
+        .suggestions-box div {
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+        .suggestions-box div:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <form id="media-form" enctype="multipart/form-data">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 600px; margin: auto;">
+            <label for="title">Titre :</label>
+            <div style="position: relative;">
+                <input type="text" id="title" name="title" autocomplete="off" style="width: 100%;">
+                <div id="suggestions" class="suggestions-box"></div>
+            </div>
+            <label for="disc_number">Numéro du disque :</label>
+            <input type="number" id="disc_number" name="disc_number">
 
-    function saveToDatabase() {
-        let formData = new FormData();
-        formData.append("title", document.getElementById("title").value);
-        formData.append("media_type", document.getElementById("media_type").value);
-        formData.append("season", document.getElementById("season").value);
-        formData.append("disc_number", document.getElementById("disc_number").value);
-        formData.append("episode_number", document.getElementById("episode_number").value);
-        formData.append("episode_title", document.getElementById("episode_title").value);
-        formData.append("video_filename", document.getElementById("video_filename").files[0]?.name || ""); 
+            <label for="video_filename">Fichier Vidéo :</label>
+            <input type="file" id="video_filename" name="video_filename" accept="video/*,.mkv,.mp4,.webm,.avi,.mov">
 
-        fetch("http://127.0.0.1:8001/save-media", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(Object.fromEntries(formData))
-        })
-        .then(response => response.json())
-        .then(data => console.log("Résultat :", data))
-        .catch(error => console.error("Erreur :", error));
-    }
+            <label for="media_type">Type de Média :</label>
+            <select id="media_type" name="media_type" onchange="toggleSeriesFields()">
+                <option value="series" selected>Série</option>
+                <option value="movie">Film</option>
+            </select>
 
- </script>
+            <!-- Conteneur des champs spécifiques aux séries -->
+            <div id="series-fields" style="display: contents;">
+                <label for="season">Saison :</label>
+                <input type="number" id="season" name="season">
+
+                <label for="episode_number">Numéro de l’épisode :</label>
+                <input type="number" id="episode_number" name="episode_number">
+
+                <label for="episode_title">Titre de L'épisode :</label>
+                <input type="text" id="episode_title" name="episode_title">
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button type="button" onclick="saveToDatabase()">Enregistrer dans la base de données</button>
+        </div>
+    </form>
+
+    <script>
+        function toggleSeriesFields() {
+            const mediaType = document.getElementById("media_type").value;
+            const seriesFields = document.getElementById("series-fields").children;
+
+            for (let field of seriesFields) {
+                field.style.display = (mediaType === "series") ? "block" : "none";
+            }
+        }
+
+        function saveToDatabase() {
+            let formData = new FormData();
+            formData.append("title", document.getElementById("title").value);
+            formData.append("media_type", document.getElementById("media_type").value);
+            formData.append("season", document.getElementById("season").value);
+            formData.append("disc_number", document.getElementById("disc_number").value);
+            formData.append("episode_number", document.getElementById("episode_number").value);
+            formData.append("episode_title", document.getElementById("episode_title").value);
+            formData.append("video_filename", document.getElementById("video_filename").files[0]?.name || ""); 
+
+            fetch("http://127.0.0.1:8001/save-media", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            })
+            .then(response => response.json())
+            .then(data => console.log("Résultat :", data))
+            .catch(error => console.error("Erreur :", error));
+        }
+
+        document.getElementById("title").addEventListener("input", async function () {
+            const query = this.value;
+            const suggestionBox = document.getElementById("suggestions");
+
+            if (query.length < 2) {
+                suggestionBox.innerHTML = "";
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/titles?q=${encodeURIComponent(query)}`);
+                const suggestions = await response.json();
+                suggestionBox.innerHTML = "";
+
+                suggestions.forEach(title => {
+                    const div = document.createElement("div");
+                    div.textContent = title;
+                    div.addEventListener("click", () => {
+                        document.getElementById("title").value = title;
+                        suggestionBox.innerHTML = "";
+                    });
+                    suggestionBox.appendChild(div);
+                });
+
+            } catch (err) {
+                console.error("Erreur de chargement des suggestions :", err);
+            }
+        });
+    </script>
+</body>
+</html>

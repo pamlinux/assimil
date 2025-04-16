@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Choisir une vidéo</title>
+</head>
+<body>
+    <h1>Filtrer les vidéos</h1>
+    <form method="get">
+        <label>Titre : <input type="text" name="title" value="{{ filters.title }}"></label><br>
+        <label>Numéro du disque : <input type="number" name="disc_number" value="{{ filters.disc_number }}"></label><br>
+        <label>Type de média :
+            <select name="media_type">
+                <option value="" {% if not filters.media_type %}selected{% endif %}>--</option>
+                <option value="series" {% if filters.media_type == 'series' %}selected{% endif %}>Série</option>
+                <option value="movie" {% if filters.media_type == 'movie' %}selected{% endif %}>Film</option>
+            </select>
+        </label><br>
+        <label>Saison : <input type="number" name="season" value="{{ filters.season }}"></label><br>
+        <label>Numéro de l’épisode : <input type="number" name="episode_number" value="{{ filters.episode_number }}"></label><br>
+        <label>Titre de l’épisode : <input type="text" name="episode_title" value="{{ filters.episode_title }}"></label><br>
+        <button type="submit">Rechercher</button>
+    </form>
+
+<h2>Résultats</h2>
+{% if results %}
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Titre</th>
+        <th>Type</th>
+        <th>Disque</th>
+        <th>Saison</th>
+        <th>Épisode</th>
+        <th>Titre épisode</th>
+    </tr>
+    {% for media in results %}
+    <tr>
+        <td>
+            <a href="/media/{{ media.id }}">{{ media.title }}</a>
+        </td>
+        <td>{{ media.media_type }}</td>
+        <td>{{ media.disc_number }}</td>
+        <td>{{ media.season }}</td>
+        <td>{{ media.episode_number }}</td>
+        <td>{{ media.episode_title }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Aucun média trouvé.</p>
+{% endif %}
+</body>
+</html>

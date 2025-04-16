@@ -7,7 +7,7 @@ from datetime import date, datetime
 from dataclasses import dataclass
 from fastapi.responses import FileResponse
 from fastapi.responses import StreamingResponse
-from fastapi import HTTPException, Body
+from fastapi import HTTPException, Body, Query
 from fastapi import FastAPI, Request, Response, Depends, Form, File, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -30,9 +30,9 @@ from assimil import get_correct_paragraphs_page, ParagraphCorrectionItem, store_
 from assimil import get_paragraph_to_correct
 from paths import get_path
 from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
-from database import NoSuchLesson, update_subtitle, fetch_subtitles_from_db
-from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles
-from subtitles import get_subtitles_context, NoSuchTvSerie, store_media
+from database import NoSuchLesson, update_subtitle, fetch_subtitles_from_db, get_subtitles
+from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles, get_media_titles
+from subtitles import get_subtitles_context, NoSuchTvSerie, store_media, get_subtitle_vtt_path, get_video_path
 from schemas.media import MediaMetadata
 
 @dataclass
@@ -485,10 +485,6 @@ async def get_subtitles_of_television_serie(request: Request, dvd : int =1):
     return templates.TemplateResponse(
         request=request, name="subtitles.jinja", context=context)
 
-@app.get("/subtitles")
-def get_both_subtitles():
-    return get_es_and_fr_subtitles("long")
-
 @app.post("/subtitles/update")
 def update_subtitles_in_database(updates: List[SubtitleUpdate] = Body(...)):
     print(updates)
@@ -503,17 +499,15 @@ def update_subtitles_in_database(updates: List[SubtitleUpdate] = Body(...)):
     #raise HTTPException(status_code=404, detail="Subtitle not found")
     return {"status" : "ok", "message": "Subtitle updated successfully"}
 
-@app.get("/video_viewer")
-async def get_video_a1_t00(request: Request):
+@app.get("/video_viewer", response_class=HTMLResponse)
+async def get_video_from_media_id(request: Request, media_id: int):
     return templates.TemplateResponse(
-        request=request, name="video_viewer.jinja", context={"dummy" : 0})
+        request=request, name="video_viewer.jinja", context={"media_id" : media_id})
 
 videos_directory = get_path("videos_directory")
-#VIDEO_PATH = "Movies/Aquí No Hay Quien Viva 1/A1_t00.m4v" 
-VIDEO_PATH = os.path.join(videos_directory, "Aquí no hay quien viva 1/A1_t00.m4v" )
 
-def video_stream(start: int, end: int):
-    with open(VIDEO_PATH, "rb") as video:
+def video_stream(video_path: str, start: int, end: int):
+    with open(video_path, "rb") as video:
         video.seek(start)
         while start < end:
             chunk = video.read(min(4096, end - start))
@@ -524,8 +518,9 @@ def video_stream(start: int, end: int):
 
 
 @app.get("/simple-video.mp4")
-async def serve_video(request: Request):
-    file_size = os.path.getsize(VIDEO_PATH)
+async def serve_video(request: Request, media_id: int):
+    video_path = get_video_path(media_id)
+    file_size = os.path.getsize(video_path)
     
     range_header = request.headers.get("range")
     if range_header:
@@ -542,11 +537,13 @@ async def serve_video(request: Request):
         "Content-Type": "video/mp4",
     }
 
-    return StreamingResponse(video_stream(start, end + 1), headers=headers, status_code=206)
+    return StreamingResponse(video_stream(video_path, start, end + 1), headers=headers, status_code=206)
 
 @app.get("/subtitles.srt")
-def get_subtitles():
-    return FileResponse(os.path.join(videos_directory, "Aquí no hay quien viva 1/a1_t00_es.vtt"), media_type="text/vtt")
+def get_subtitles_vtt_file(request: Request, media_id: int):
+    print("request: ", request, "media_id: ", media_id)
+    subtitle_vtt_path = get_subtitle_vtt_path(media_id)
+    return FileResponse(subtitle_vtt_path, media_type="text/vtt")
 
 @app.get("/subtitles_es")
 def get_es_only_subtitles():
@@ -564,14 +561,16 @@ def get_es_only_long_subtitles():
 def get_fr_only_long_subtitles():
     return get_fr_subtitles("long")
 
-@app.get("/subtitles/{variant}")
-def get_subtitles_by_variant(variant: str):
+@app.get("/subtitles")
+def get_subtitles_by_media_id_and_variant(media_id: int, variant: str):
+    variant = variant.lower()
     print("variant received", variant)
     allowed_variants = ["es", "fr", "eslong", "frlong"]
     if variant not in allowed_variants:
         raise HTTPException(status_code=400, detail="Invalid subtitle variant")
 
-    subtitles = fetch_subtitles_from_db(variant)
+    print(media_id, variant)
+    subtitles =  get_subtitles(media_id, variant)
     return subtitles
     #return {"status": "ok", "variant": variant}
 
@@ -640,3 +639,9 @@ async def transcribe_audio(audio: UploadFile = File(...)):
 
     result = model.transcribe(tmp_path)
     return JSONResponse({"text": result["text"]})
+
+@app.get("/api/titles")
+def get_titles_from_database(q: str = Query(..., min_length=1)):
+    results = get_media_titles(q)
+    print(f"{type(results)}, results: {results}")
+    return JSONResponse(content=results)

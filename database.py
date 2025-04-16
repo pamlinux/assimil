@@ -410,6 +410,36 @@ def get_es_and_fr_subtitles(subtitle_type: str):
 
     return subtitles
 
+def get_subtitles(media_id: int, variant: str):
+    if variant in ["eslong", "frlong"]:
+        subtitle_type = "long"
+    else:
+        subtitle_type = "media"
+    
+    stmt = select(Subtitle).where(
+        and_(
+            Subtitle.media_id == media_id,
+            Subtitle.subtitle_type == subtitle_type
+        )
+    )
+    
+    subtitles = []
+
+    with Session(engine) as session:
+        for entry in session.scalars(stmt):
+            if variant in ["es", "eslong"]:
+                text = entry.spanish_text
+            else:
+                text = entry.french_text
+            subtitles.append({
+                "index": entry.index,
+                "start": time_to_seconds(entry.start_time), 
+                "end": time_to_seconds(entry.end_time),
+                "text": text
+            })
+
+    return subtitles
+
 def fetch_subtitles_from_db(variant: str):
     if variant in ["eslong", "frlong"]:
         subtitle_type = "long"
@@ -483,7 +513,7 @@ def update_or_store_media(media: MediaMetadata):
             Media.title == media.title,
             Media.episode_title == media.episode_title,
             Media.episode_number == media.episode_number,
-            Media.season == media.season
+            Media.season == media.season,
         )
     )
 
@@ -505,6 +535,7 @@ def update_or_store_media(media: MediaMetadata):
             session.add(entry)
             session.commit()
             print(f"Media Created : {entry}")
+        return entry.id
 
 def lookup_media(media : MediaMetadata):
     stmt = select(Media).where(
@@ -533,21 +564,25 @@ def lookup_media(media : MediaMetadata):
             )
             medias.append(media_data)
     return media_data
-   
-def store_subtitles(media_metadata: MediaMetadata, subtitle_type: str, es_subtitles: str, fr_subtitles: str):
-    stmt = select(Media).where(
-        and_(
-            Media.title == media_metadata.title,
-            Media.disc_number == media_metadata.disc_number,
-            Media.media_type == media_metadata.media_type,
-            Media.episode_title == media_metadata.episode_title,
-            Media.season == media_metadata.season,
-            Media.episode_number == media_metadata.episode_number
+
+def get_media_metadata(media_id: int):
+    with Session(engine) as session:
+        media = session.get(Media, media_id)
+        media_data = MediaMetadata(
+            title = media.title,
+            media_type = media.media_type,
+            disc_number = media.disc_number,
+            season = media.season,
+            episode_number = media.episode_number,
+            episode_title = media.episode_title,
+            video_filename = media.video_filename,
         )
-    )
+    return media_data
+  
+def store_subtitles(media_id: int, subtitle_type: str, es_subtitles, fr_subtitles):
 
     with Session(engine) as session:
-        media = session.scalars(stmt).one()
+        media = session.get(Media, media_id)
         print(media.title)
         print(media.id)
         print(media.media_type)
@@ -557,8 +592,6 @@ def store_subtitles(media_metadata: MediaMetadata, subtitle_type: str, es_subtit
         for index, es_subtitle in enumerate(es_subtitles):
             fr_subtitle = fr_subtitles[index]
             start_time, end_time = parse_srt_time_range(es_subtitle['timestamp'])
-
-            print(start_time, end_time, es_subtitle['text'], fr_subtitle['text'])
 
             entry = Subtitle(
                 index = index + 1,
@@ -573,3 +606,7 @@ def store_subtitles(media_metadata: MediaMetadata, subtitle_type: str, es_subtit
             
         session.commit()
 
+def get_media_titles(q: str):
+    stmt = select(Media.title).where(Media.title.ilike(f"%{q}%")).distinct().limit(10)
+    with Session(engine) as session:
+        return session.scalars(stmt).all()
