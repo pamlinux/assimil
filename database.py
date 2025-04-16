@@ -613,7 +613,7 @@ def get_media_titles(q: str):
 
 def search_media(p: MediaMetadata):
     
-    filters = []
+    filters = 
     media_list = []
 
     if p.title:

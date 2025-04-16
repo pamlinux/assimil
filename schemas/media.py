@@ -3,6 +3,7 @@ from typing import Optional, List
 import datetime
 
 class MediaMetadata(BaseModel):
+    id: int | None = None
     title: str = ""
     media_type: str = ""
     season: int | None = None
