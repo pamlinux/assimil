@@ -648,11 +648,19 @@ def video_viewer_partial(request: Request, media_id: int):
         "media_id": media_id
     })
 
-@app.get("/media_search", response_class=HTMLResponse)
-def search_media_in_db(request: Request):
-    params = dict(request.query_params)
-    meta_data = MediaMetadata(**params)
-    print(meta_data)
-    results = search_media(meta_data)
+@app.post("/media_search", response_class=HTMLResponse)
+def search_media_in_db(
+    request: Request,
+    media_metadata: MediaMetadata  # Pydantic model attendu
+):
+    print(media_metadata)
+    results = search_media(media_metadata)
     print("results", results)
-    return templates.TemplateResponse("media_results.jinja", { "request": request, "results" : results})
+    return templates.TemplateResponse(
+        "media_results.jinja",
+        { "request": request, "results": results }
+    )
+
+#    except Exception as e:
+#        raise HTTPException(status_code=500, detail=str(e))
+
