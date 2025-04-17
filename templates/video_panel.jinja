@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Panel Vidéo</title>
+   <title>Panel Vidéo</title>
     <style>
         .tabs {
             display: flex;
@@ -26,6 +26,7 @@
         .tab-content.active {
             display: block;
         }
+        #search-tab {background-color:  #36ad2c;}
     </style>
 </head>
 <body>
@@ -65,33 +66,51 @@
             if (tab) tab.classList.add('active');
         }
 
-        function onVideoSelected(mediaId, title) {
-            console.log("In onVideoSelected", mediaId, title)
-            // Vérifie si l'onglet existe déjà
-            if (!document.getElementById("viewer-tab")) {
-                // Crée l'onglet
-                const viewerButton = document.createElement("button");
-                viewerButton.textContent = "Visionneuse";
-                viewerButton.classList.add("tab-button");
-                viewerButton.onclick = () => showTab("viewer-tab");
-                document.querySelector(".tabs").appendChild(viewerButton);
+    function onVideoSelected(mediaId, title) {
+        // Vérifie si l'onglet "Visionneuse" existe déjà
+        let viewerTab = document.getElementById("viewer-tab");
+        if (!viewerTab) {
+            // Crée le bouton de l'onglet Visionneuse
+            const viewerButton = document.createElement("button");
+            viewerButton.textContent = "Visionneuse";
+            viewerButton.classList.add("tab-button");
+            viewerButton.onclick = () => showTab("viewer-tab");
+            document.querySelector(".tabs").appendChild(viewerButton);
 
-                // Crée le contenu
-                const viewerTab = document.createElement("div");
-                viewerTab.id = "viewer-tab";
-                viewerTab.classList.add("tab-content");
-                viewerTab.innerHTML = `<div id="viewer-container">Chargement...</div>`;
-                document.body.appendChild(viewerTab);
-            }
-
-            // Charge et affiche la visionneuse
-            fetch(`/video_viewer_partial?media_id=${mediaId}`)
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById("viewer-tab").innerHTML = html;
-                    showTab("viewer-tab");
-                });
+            // Crée le conteneur de l'onglet
+            viewerTab = document.createElement("div");
+            viewerTab.id = "viewer-tab";
+            viewerTab.classList.add("tab-content");
+            document.body.appendChild(viewerTab);
         }
+
+        // Vide le contenu précédent
+        viewerTab.innerHTML = "";
+
+        // Charge le HTML du viewer
+        fetch(`/video_viewer_partial?media_id=${mediaId}`)
+            .then(res => res.text())
+            .then(html => {
+                viewerTab.innerHTML = html;
+                showTab("viewer-tab");
+
+                // Charge et initialise le script si pas encore fait
+                if (typeof initializeVideoViewer === "function") {
+                    initializeVideoViewer();
+                } else {
+                    const script = document.createElement("script");
+                    script.src = "/static/js/video_viewer.js";
+                    script.onload = () => {
+                        initializeVideoViewer();
+                    };
+                    document.body.appendChild(script);
+                }
+            })
+            .catch(err => {
+                viewerTab.innerHTML = `<p>Erreur lors du chargement de la vidéo.</p>`;
+                console.error("Erreur dans onVideoSelected:", err);
+            });
+    }
     </script>
 </body>
 </html>

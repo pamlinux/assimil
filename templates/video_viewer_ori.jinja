@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur de sous-titres</title>
+    <style>
+        html, body { height: 100vh; margin: 0; overflow: hidden; }
+        #container { display: flex; width: 100%; margin-top: 40px; }
+        #video-container { width: 60%; display: flex; flex-direction: column; align-items: center; }
+        video { width: 100%; max-width: 720px; }
+        .subtitle { padding: 5px; cursor: pointer; border-bottom: 1px solid #ddd; }
+        .active { background-color: yellow; }
+        .controls { display: flex; gap: 10px; margin-top: 10px; }
+        .controls button { font-size: 16px; padding: 5px 10px; cursor: pointer; }
+        .controls img { width: 24px; height: 24px; }
+        #current-subtitle { margin-top: 10px; font-size: 18px; font-weight: bold; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 10px; }
+        .tab { padding: 5px 10px; cursor: pointer; border: 1px solid #ddd; }
+        .tab.active { background-color: lightgray; }
+        #top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px; /* Ajuste selon ta div */
+            background: white; /* Ajoute un fond si besoin */
+            z-index: 1000; /* Pour s'assurer qu'elle est au-dessus des autres éléments */
+            display: flex;
+            align-items: center; /* Centre verticalement les boutons */
+        } 
+
+        #subtitles {
+            width: 40%;
+            scroll-padding-top: 80px;
+            border-right: 2px solid #ccc;
+            text-align: center;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            width: 80%;
+        }
+
+        #subtitles {
+            max-height: calc(100vh - 80px); /* Ajuste la hauteur en soustrayant la barre du haut */
+            overflow-y: auto;
+        }
+
+        #video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+ 
+        #container {
+            overflow: hidden; /* Évite que le conteneur principal bouge */
+            display: flex;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        #subtitles-container {
+            width: 40%;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            border-right: 2px solid #ccc;
+        }
+
+        #video-container {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 40px; /* Même hauteur que la top-bar */
+            z-index: 999; /* Pour s'assurer qu'il reste au-dessus */
+            }
+
+        video {
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .subtitle {
+            padding: 5px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .active {
+            background-color: yellow;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #current-subtitle {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 30px;
+        }
+        #current-subtitle {
+            display: grid;
+            width: 90%; /* Important : La grille prend toute la largeur du parent */
+            grid-template-columns: repeat(var(--num-cols), calc((100% - var(--col-gap) * (var(--num-cols) - 1)) / var(--num-cols)));
+            gap: var(--col-gap);
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .sub-box {
+            width: 50%;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            min-height: 30px;
+        }
+        #es-sub, #fr-sub {
+            width: calc(100% - 20px);
+            width: 100%;
+            text-align: center;
+            padding-right: 20px;
+        }
+
+        #gridContainer {
+            display: none; /* Initialement caché */
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
+            gap: 10px;
+            justify-items: stretch;
+            align-items: stretch;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #gridContainer > div {
+            background-color: #eee;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        #divRegister {
+            grid-column: 1 / 2;
+        }
+
+        #divCancel {
+            grid-column: 2 / 3;
+        }
+
+        #changeDivsButton {
+            display: none; /* Initialement caché */
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="top-bar">
+        <button id="edit-all">Tout Sauver</button>
+        <input type="number" id="subtitle-number" placeholder="Numéro">
+        <button id="go-to-subtitle">Aller</button>
+    </div>
+
+    <div id="container">
+        <!-- Liste des sous-titres à gauche -->
+        <div id="subtitles-container">
+            <div id="subtitles"></div>
+        </div>
+
+        <!-- Vidéo + onglets sous la vidéo -->
+        <div id="video-container">
+            <video id="video" controls>
+                <source src="/simple-video.mp4?media_id={{ media_id}}" type="video/mp4">
+                <track src="subtitles.srt?media_id={{ media_id }}" kind="subtitles" srclang="fr" label="Français" default>
+            </video>
+            <div class="controls">
+                <button onclick="previousSubtitle()">
+                    <img src="{{ url_for('static', path='/icons/step-backward.svg') }}" alt="Backward">
+                </button>
+                <button onclick="video.pause()">
+                    <img src="{{ url_for('static', path='/icons/pause.svg') }}" alt="Pause">
+                </button>
+                <button onclick="playVideo()">
+                    <img src="{{ url_for('static', path='/icons/play.svg') }}" alt="Play">
+                </button>
+                <button onclick="replaySubtitle()">
+                    <img src="{{ url_for('static', path='/icons/replay.svg') }}" alt="Replay">
+                </button>
+                <button onclick="nextSubtitle()">
+                    <img src="{{ url_for('static', path='/icons/step-forward.svg') }}" alt="Forward">
+                </button>
+            </div>
+
+            <!-- Onglets sous la vidéo -->
+            <div class="tabs">
+                <div class="tab active" data-type="es">ES</div>
+                <div class="tab" data-type="fr">FR</div>
+                <div class="tab" data-type="esfr">ES + FR</div>
+                <div class="tab" data-type="eslong">ES Long</div>
+                <div class="tab" data-type="frlong">FR Long</div>
+                <div class="tab" data-type="esfrlong">ES + FR Long</div>
+            </div>
+
+                        <!-- Uniquement le sous-titre actif -->
+            <!-- Conteneur pour afficher les sous-titres actifs sous la vidéo -->
+            <div id="current-subtitle">
+                <div id="es-sub" class="sub-box"></div>
+                <div id="fr-sub" class="sub-box"></div>
+            </div>
+
+    </div>
+
+
+    <script>
+        const video = document.getElementById("video");
+        const subtitleContainer = document.getElementById("subtitles");
+        let subtitlesData = { es: [], fr: [], eslong: [], frlong: [] };
+        let activeTab = "es";
+        let currentIndex = -1;
+        let replayingSubtitleIndex = -1;
+        let displayedSubtitleIndex = -1
+        let replayingSubtitle = false;
+        let isEditingEs = false;
+        let isEditingFr = false;
+        const gap = 4;
+        const epsilon = 0.05;
+        let subtitles = [];
+
+        // Chargement des sous-titres
+        function loadSubtitles(variant) {
+            fetch(`/subtitles?media_id={{ media_id }}&variant=${variant}`)
+                .then(response => response.json())
+                .then(data => {
+                    subtitlesData[variant] = data;
+                    if (variant === "es") {
+                        subtitles = subtitlesData["es"];
+                        displaySubtitles(); // Afficher les sous-titres au démarrage
+                    }
+                })
+                .catch(error => console.error("Error loading subtitles:", error));
+        }
+
+        loadSubtitles("es");
+        loadSubtitles("fr");
+        loadSubtitles("eslong");
+        loadSubtitles("frlong");
+
+        const currentSubtitleDiv = document.getElementById("current-subtitle");
+        //currentSubtitleDiv.style.gridTemplateColumns = "20 20 20 20";
+        //currentSubtitleDiv.style.overflowWrap = "break-word"; 
+        updateCurrenrSubtitleColumns(4, gap);
+
+        function updateCurrenrSubtitleColumns(numberOfItems, gapInPercent) {
+            currentSubtitleDiv.style.setProperty('--num-cols', numberOfItems);
+            currentSubtitleDiv.style.setProperty('--col-gap', `${gapInPercent}%`);
+        }
+
+        function canSwitchSubtitle() {
+            if (isEditingEs || isEditingFr) {
+                abandon = window.confirm("Vous avez des modifications non enregistrées. Voulez-vous vraiment changer de sous-titre ?");
+                if (abandon) {
+                    isEditingEs = false;
+                    isEditingFr = false;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function findCurrentSubtitleIndex(currentTime) {
+            if (!subtitles || subtitles.length === 0) {
+                console.warn("Le tableau 'subtitles' est vide ou non défini.");
+                return -1;
+            }
+
+            for (let i = 0; i < subtitles.length; i++) {
+                const start = subtitles[i].start - epsilon;
+                const end = subtitles[i].end + epsilon;
+                const nextStart = (i + 1 < subtitles.length) ? subtitles[i + 1].start : Infinity;
+                const safeEnd = Math.min(end, nextStart - epsilon);
+                if (currentTime >= start && currentTime < safeEnd) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        function findClosestSubtitleIndex(currentTime) {
+            if (!subtitles || subtitles.length === 0) {
+                console.warn("Le tableau 'subtitles' est vide ou non défini.");
+                return 0;
+            }
+
+            let closestIndex = 0;
+            let smallestDiff = Math.abs(currentTime - subtitles[0].start);
+
+            for (let i = 1; i < subtitles.length; i++) {
+                const diff = Math.abs(currentTime - subtitles[i].start);
+                if (diff < smallestDiff) {
+                    smallestDiff = diff;
+                    closestIndex = i;
+                }
+            }
+
+            return closestIndex;
+        }
+
+        function findClosestPreviousSubtitleIndex(currentTime) {
+            if (!subtitles || subtitles.length === 0) {
+                console.warn("Le tableau 'subtitles' est vide ou non défini.");
+                return 0;
+            }
+            for (let i = subtitles.length - 1; i >= 0; i--) {
+                if (subtitles[i].end < currentTime - epsilon) {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+        function findClosestNextSubtitleIndex(currentTime) {
+            if (!subtitles || subtitles.length === 0) {
+                console.warn("Le tableau 'subtitles' est vide ou non défini.");
+                return 0;
+            }
+            for (let i = 0; i < subtitles.length; i++) {
+                if (subtitles[i].start > currentTime + epsilon) {
+                    return i;
+                }
+            }
+            return subtitles.length - 1;
+        }
+
+
+        function updateActiveSubtitle() {
+            if (["esfrlong", "eslong", "frlong"].includes(activeTab)) {
+                subtitles = subtitlesData["eslong"];
+            } else {
+                subtitles = subtitlesData["es"];
+            }
+            console.log("in updateActiveSubtitle 1", currentIndex, displayedSubtitleIndex)
+            currentIndex = findCurrentSubtitleIndex(video.currentTime)
+            console.log("in updateActiveSubtitle 2", currentIndex, displayedSubtitleIndex)
+            if (currentIndex == displayedSubtitleIndex) return;
+            console.log("in updateActiveSubtitle 3", currentIndex, displayedSubtitleIndex)
+            if (isEditingEs || isEditingFr) {
+                const confirmation = window.confirm("Vous avez des modifications non enregistrées. Voulez-vous vraiment changer de sous-titre ?");
+                if (!confirmation) {
+                    return; // Annule le changement de sous-titre
+                }
+            }
+            currentSubtitleDiv.innerHTML = ""; // Réinitialiser avant d'ajouter du contenu
+            // Trouver l'index correspondant pour les sous-titres longs
+            //console.log("In updateActiveSubtitle ", currentIndex, subtitles[currentIndex]);
+            // Cas où l'on affiche un seul sous-titre
+            if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
+                const subDiv = document.createElement("div");
+                currentSubtitleDiv.appendChild(subDiv);
+                subDiv.style.gridColumn = '1 / 5';
+                if (["es", "eslong"].includes(activeTab)) {
+                    subDiv.id = "es-sub";
+                } else {
+                    subDiv.id = "fr-sub";
+                }
+                const editButton = document.createElement("button");
+                editButton.textContent = "Editer";
+                editButton.style.gridColumn = '1 / 5';
+                editButton.id = `edit-button-${activeTab}`;
+                editButton.style.display = "block";
+                editButton.style.margin = "10px auto"; // Centrage du bouton
+                editButton.onclick = enterEditMode;
+                currentSubtitleDiv.appendChild(editButton);
+               if (currentIndex > -1) {
+                    subDiv.textContent = subtitlesData[activeTab][currentIndex].text || "";
+                } else {
+                    subDiv.textContent = "";
+                }
+            }
+            // Cas où l'on affiche ES + FR
+            else if (["esfr", "esfrlong"].includes(activeTab)) {
+                const esSubDiv = document.createElement("div");
+                esSubDiv.id = "es-sub";
+                esSubDiv.style.gridColumn = '1 / 3';
+                currentSubtitleDiv.appendChild(esSubDiv);
+
+                const frSubDiv = document.createElement("div");
+                frSubDiv.id = "fr-sub";
+                frSubDiv.style.gridColumn = '3 / 5';
+                currentSubtitleDiv.appendChild(frSubDiv);
+                if (currentIndex > -1) {
+                    if (activeTab == "esfr") {
+                        esSubDiv.textContent = subtitlesData["es"][currentIndex].text || "";
+                        frSubDiv.textContent = subtitlesData["fr"][currentIndex].text || "";
+                    } else {
+                        esSubDiv.textContent = subtitlesData["eslong"][currentIndex].text || "";
+                        frSubDiv.textContent = subtitlesData["frlong"][currentIndex].text || "";
+                    }
+
+                    const edit_es_Button = document.createElement("button");
+                    edit_es_Button.textContent = "Editer";
+                    edit_es_Button.style.gridColumn = '1 / 3';
+                    if (activeTab == "esfr") {
+                        edit_es_Button.id = "edit-button-es"
+                    } else {
+                        edit_es_Button.id = "edit-button-eslong"
+                    }
+                    edit_es_Button.style.display = "block";
+                    edit_es_Button.style.margin = "10px auto"; // Centrage du bouton
+                    edit_es_Button.onclick = enterEditMode;
+                    currentSubtitleDiv.appendChild(edit_es_Button);
+
+                    const edit_fr_Button = document.createElement("button");
+                    edit_fr_Button.textContent = "Editer";
+                    edit_fr_Button.style.gridColumn = '3 / 5';
+                    if (activeTab == "esfr") {
+                        edit_fr_Button.id = "edit-button-fr"
+                    } else {
+                        edit_fr_Button.id = "edit-button-frlong"
+                    }
+                    edit_fr_Button.style.display = "block";
+                    edit_fr_Button.style.margin = "10px auto"; // Centrage du bouton
+                    edit_fr_Button.onclick = enterEditMode;
+                    currentSubtitleDiv.appendChild(edit_fr_Button);
+                }
+            }
+            displayedSubtitleIndex = currentIndex
+        }
+
+        function findClosestSubtitle(lang, time) {
+            return subtitlesData[lang].reduce((closest, sub) => {
+                return Math.abs(sub.start - time) < Math.abs(closest.start - time) ? sub : closest;
+            }, subtitlesData[lang][0] || { text: "", start: 0 });
+        }
+
+        // Changement d'onglet pour afficher le bon sous-titre sous la vidéo
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.addEventListener("click", () => {
+                if (canSwitchSubtitle()) {
+                    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+                    activeTab = tab.dataset.type;
+                    displaySubtitles(); 
+                    console.log("Affichage des sous-titres:", activeTab);
+                    displayedSubtitleIndex = -1; //Force updateActiveSubtitle()
+                    updateActiveSubtitle();
+                 }
+            });
+        });
+
+
+        // Affichage de la liste des sous-titres à gauche
+        function displaySubtitles() {
+            subtitleContainer.innerHTML = "";
+
+            subtitlesData["es"].forEach((sub, index) => {
+                const div = document.createElement("div");
+                div.classList.add("subtitle");
+                div.innerText = sub.text;
+                div.dataset.start = sub.start;
+                div.dataset.index = index;
+                div.onclick = () => {
+                    video.currentTime = sub.start;
+                    if (!video.paused) video.play();
+                };
+                subtitleContainer.appendChild(div);
+            });
+        }
+
+        // Synchronisation des sous-titres avec la vidéo
+        video.addEventListener("timeupdate", () => {
+            //console.log("In anonymus hndler");
+            updateActiveSubtitle();
+            subtitlesData["es"].forEach((sub, index) => {
+                const div = subtitleContainer.children[index];
+                if (video.currentTime >= sub.start && video.currentTime < sub.end) {
+                    div.scrollIntoView({ behavior: "smooth", block: "center" });
+                    div.classList.add("active");
+                } else {
+                    div.classList.remove("active");
+                }
+            });
+        });
+
+        function playVideo() {
+            video.play();
+            replayingSubtitle = false;
+        }
+
+        function replaySubtitle() {
+            if (!replayingSubtitle) {
+                currentIndex = findClosestSubtitleIndex(video.currentTime);
+            }
+            if (!replayingSubtitle) {
+                replayingSubtitleIndex = currentIndex;
+                replayingSubtitle = true;
+            }
+            if (replayingSubtitleIndex >= 0) {
+                video.currentTime = subtitles[replayingSubtitleIndex].start - 1.0;
+                video.play();
+                setTimeout(() => {
+                    video.pause();
+                }, ((subtitles[replayingSubtitleIndex].end - subtitles[replayingSubtitleIndex].start) + 2.0) * 1000);
+            }
+        }
+
+        function nextSubtitle() {
+            currentIndex = findClosestNextSubtitleIndex(video.currentTime);
+            replayingSubtitle = false;
+            video.currentTime = subtitles[currentIndex].start + epsilon;
+            updateActiveSubtitle();
+            if (!video.paused) video.play();
+        }
+
+        function previousSubtitle() {
+            currentIndex = findClosestPreviousSubtitleIndex(video.currentTime);
+            replayingSubtitle = false;
+            video.currentTime = subtitles[currentIndex].start + epsilon;
+            updateActiveSubtitle();
+            if (!video.paused) video.play();
+        }
+
+        function enterEditMode(event) {
+            console.log("event", event);
+            clickedButton = event.target;
+            clickedButtonId = clickedButton.id;
+            console.log("clickedButtonId", clickedButtonId);
+            currentSubtitleDiv.removeChild(clickedButton)
+            const idSuffix = clickedButton.id.replace("edit-button-", "");
+
+            if (["es",  "eslong"].includes(idSuffix)) {
+                editDiv = document.getElementById("es-sub");
+                isEditingEs = true;
+            } else {
+                editDiv = document.getElementById("fr-sub");
+                isEditingFr = true;
+            }
+
+            editDiv.contentEditable = "true";
+
+            // Vérifie s'il y a déjà les champs d'édition pour éviter les doublons
+           // Création du bouton "Sauver"
+            const saveButton = document.createElement("button");
+            saveButton.textContent = "Sauver";
+            saveButton.id = `save-button-${idSuffix}`
+            saveButton.style.display = "block";
+            saveButton.style.margin = "10px auto"; // Centrage du bouton
+            saveButton.onclick = saveEdit;
+            
+            const cancelButton = document.createElement("button");
+            cancelButton.textContent = "Abandonner";
+            cancelButton.id = `cancel-button-${idSuffix}`;
+            cancelButton.style.display = "block";
+            cancelButton.style.margin = "10px auto"; // Centrage du bouton
+            cancelButton.onclick = cancelEdit;
+
+            if (["es", "fr", "eslong", "frlong"].includes(activeTab)) {
+                saveButton.style.gridColumn = '2 / 3';
+                cancelButton.style.gridColumn = '3 / 4';
+            } else if (activeTab == "esfr") {
+                if (idSuffix == "es") {
+                    saveButton.style.gridColumn = '1 / 2';
+                    cancelButton.style.gridColumn = '2 / 3';
+                    saveButton.style.gridRow = '2';
+                    cancelButton.style.gridRow = '2';
+                } else {
+                    saveButton.style.gridColumn = '3 / 4';
+                    cancelButton.style.gridColumn = '4 / 5';
+                }
+            } else {
+                if (idSuffix == 'eslong') {
+                    saveButton.style.gridColumn = '1 / 2';
+                    cancelButton.style.gridColumn = '2 / 3';
+                    saveButton.style.gridRow = '2';
+                    cancelButton.style.gridRow = '2';
+                } else {
+                    saveButton.style.gridColumn = '3 / 4';
+                    cancelButton.style.gridColumn = '4 / 5';
+                }
+            }
+
+            // Ajout des éléments à la div des sous-titres
+            currentSubtitleDiv.appendChild(saveButton);
+            currentSubtitleDiv.appendChild(cancelButton);
+        }
+
+
+        function saveEdit(event) {
+            console.log("event", event);
+            console.log("In saveEdits with edit button : ", event.target);
+            saveButton = event.target;
+            saveButtonId = saveButton.id;
+            console.log("saveButtonId", saveButtonId);
+            const idSuffix = saveButton.id.replace("save-button-", "");
+
+            if (["es",  "eslong"].includes(idSuffix)) {
+                editDiv = document.getElementById("es-sub");
+            } else {
+                editDiv = document.getElementById("fr-sub");
+            }
+
+            
+            subtitleToSave = subtitlesData[idSuffix][currentIndex]
+            console.log("subtitleToSave", subtitleToSave);
+  
+            // Envoyer les modifications au serveur
+            fetch("/update-subtitle", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ 
+                    languageVariant : idSuffix,
+                    id : subtitleToSave.id,
+                    text: editDiv.innerHTML
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erreur de mise à jour !");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Sous-titre mis à jour !");
+                if (["es",  "eslong"].includes(idSuffix)) {
+                    editDiv = document.getElementById("es-sub");
+                    isEditingEs = false;
+                } else {
+                    editDiv = document.getElementById("fr-sub");
+                    isEditingFr = false;
+                }
+                // Désactiver l'édition après sauvegarde
+                cancelButton = document.getElementById(`cancel-button-${idSuffix}`);
+                currentSubtitleDiv.removeChild(cancelButton);
+                currentSubtitleDiv.removeChild(saveButton);
+                editDiv.contentEditable = "false";
+                subtitlesData[idSuffix][currentIndex].text = editDiv.innerHTML;
+                if (!isEditingEs && !isEditingFr) {
+                    console.log("Just before updateActiveSubtitle in (!isEditingEs && !isEditingFr)")
+                    displayedSubtitleIndex = -1; //Force updateActiveSubtitle()
+                    updateActiveSubtitle();
+                }
+                console.log(data.message);           // "Sous-titre mis à jour"
+                console.log(data.languageVariant);   // Valeur de subtitle.languageVariant
+                console.log(data.text);              // Le texte retourné
+            })
+            .catch(error => {
+                console.error("Erreur lors de la requête :", error);
+            });
+        }
+
+        function cancelEdit(event) {
+            cancelButton = event.target;
+            cancelButtonId = cancelButton.id;
+            console.log("cancelButtonId", cancelButtonId);
+            currentSubtitleDiv.removeChild(cancelButton)
+            const idSuffix = cancelButton.id.replace("cancel-button-", "");
+            console.log("In cancelEdit with event ", event);
+            if (["es",  "eslong"].includes(idSuffix)) {
+                editDiv = document.getElementById("es-sub");
+                isEditingEs = false;
+            } else {
+                editDiv = document.getElementById("fr-sub");
+                isEditingFr = false;
+            }
+            // Désactiver l'édition après sauvegarde
+            editDiv.contentEditable = "false";
+            if (!isEditingEs && !isEditingFr) {
+                updateActiveSubtitle();
+            }
+
+        }
+
+        function initializeVideoViewer() {
+            setupReplayButtons();
+            loadSubtitles();
+            startSubtitleSync();
+            // ... toute autre logique que tu veux exécuter une fois le HTML injecté
+        }
+
+    </script>
+</body>
+</html>
