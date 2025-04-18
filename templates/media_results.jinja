@@ -1,27 +1,31 @@
 {% if results %}
-<table border="1" cellpadding="5">
-    <tr>
-        <th>Titre</th>
-        <th>Type</th>
-        <th>Disque</th>
-        <th>Saison</th>
-        <th>Épisode</th>
-        <th>Titre épisode</th>
-    </tr>
-    {% for media in results %}
-    <tr>
-        <td>
-            <a href="/media/{{ media.id }}" class="media-link" data-media-id="{{ media.id }}" data-title="{{ media.title }}">
-                {{ media.title }}
-            </a>
-        </td>
-        <td>{{ media.media_type }}</td>
-        <td>{{ media.disc_number }}</td>
-        <td>{{ media.season }}</td>
-        <td>{{ media.episode_number }}</td>
-        <td>{{ media.episode_title }}</td>
-    </tr>
-    {% endfor %}
+<table class="results-table" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Type</th>
+            <th>Disque</th>
+            <th>Saison</th>
+            <th>Épisode</th>
+            <th>Titre épisode</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for media in results %}
+        <tr>
+            <td data-label="Titre">
+                <a href="/media/{{ media.id }}" class="media-link" data-media-id="{{ media.id }}" data-title="{{ media.title }}">
+                    {{ media.title }}
+                </a>
+            </td>
+            <td data-label="Type">{{ media.media_type }}</td>
+            <td data-label="Disque">{{ media.disc_number }}</td>
+            <td data-label="Saison">{{ media.season }}</td>
+            <td data-label="Épisode">{{ media.episode_number }}</td>
+            <td data-label="Titre épisode">{{ media.episode_title }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 {% else %}
 <p>Aucun média trouvé.</p>

@@ -391,7 +391,7 @@ function saveEdit(event) {
     
     subtitleToSave = subtitlesData[idSuffix][currentIndex]
     console.log("subtitleToSave", subtitleToSave);
-
+    console.log("idSuffix", idSuffix);
     // Envoyer les modifications au serveur
     fetch("/update-subtitle", {
         method: "POST",
@@ -399,8 +399,9 @@ function saveEdit(event) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({ 
-            languageVariant : idSuffix,
-            id : subtitleToSave.id,
+            media_id: mediaId,
+            subtitle_variant: idSuffix,
+            index : subtitleToSave.index,
             text: editDiv.innerHTML
         })
     })
@@ -431,7 +432,7 @@ function saveEdit(event) {
             updateActiveSubtitle();
         }
         console.log(data.message);           // "Sous-titre mis à jour"
-        console.log(data.languageVariant);   // Valeur de subtitle.languageVariant
+        console.log(data.subtitle_variant);   // Valeur de subtitle.subtitle_variant
         console.log(data.text);              // Le texte retourné
     })
     .catch(error => {

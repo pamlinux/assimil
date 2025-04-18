@@ -33,7 +33,7 @@ from maintenance.grammar import get_html_with_grammar_number, GrammarNoteItem
 from database import NoSuchLesson, update_subtitle, fetch_subtitles_from_db, get_subtitles, search_media
 from database import get_fr_subtitles, get_es_subtitles, get_es_and_fr_subtitles, get_media_titles
 from subtitles import get_subtitles_context, NoSuchTvSerie, store_media, get_subtitle_vtt_path, get_video_path
-from schemas.media import MediaMetadata
+from schemas.media import SubtitleUpdate, MediaMetadata
 
 @dataclass
 class SimpleModel:
@@ -56,11 +56,6 @@ class ErrorItem(BaseModel):
         lastLesson : str
         mostRecentLesson : str
         oldestLesson : str
-
-class SubtitleUpdate(BaseModel):
-    languageVariant: str
-    id: int
-    text: str
 
 app = FastAPI()
 
@@ -489,8 +484,8 @@ async def get_subtitles_of_television_serie(request: Request, dvd : int =1):
 def update_subtitles_in_database(updates: List[SubtitleUpdate] = Body(...)):
     print(updates)
     for update in updates:
-        update_subtitle(update.id, update.languageVariant, update.text)
-        print(update.id, update.languageVariant, update.text)
+        update_subtitle(update.media_id, update.index, update.subtitle_variant, update.text)
+        print(update.media_id, update.index, update.subtitle_variant, update.text)
 
 
     #for update in updates:
@@ -593,9 +588,9 @@ async def save_media_in_db(media_metadata: MediaMetadata):
 @app.post("/update-subtitle")
 async def update_subtitle_text(subtitle: SubtitleUpdate):
     print(f"subtitle : {subtitle}")
-    update_subtitle(subtitle.id, subtitle.languageVariant, subtitle.text)
+    update_subtitle(subtitle.media_id, subtitle.index, subtitle.subtitle_variant, subtitle.text)
 
-    return {"message": "Sous-titre mis à jour", "languageVariant": subtitle.languageVariant,  "text": subtitle.text}
+    return {"message": "Sous-titre mis à jour", "subtitle_variant": subtitle.subtitle_variant,  "text": subtitle.text}
 
 @app.get("/test-audio/")
 async def test_audio(request: Request):

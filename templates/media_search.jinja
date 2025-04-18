@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choisir une vidéo</title>
     <style>
-        h1, h2 {
+        h1, h2 #results-table {
             text-align: center;
         }
         .suggestions-box {
@@ -27,7 +27,7 @@
             background-color: #f0f0f0;
         }
         #search-tab {background-color:  #ffffff;}
-
+        
     </style>
 </head>
 <body>
@@ -43,7 +43,8 @@
             <input type="number" id="disc_number" name="disc_number">
             <label for="media_type">Type de Média :</label>
             <select id="media_type" name="media_type" onchange="toggleSeriesFields()">
-                <option value="series" selected>Série</option>
+                <option value="" selected>Film ou Série</option>
+                <option value="series">Série</option>
                 <option value="movie">Film</option>
             </select>
             <div id="series-fields" style="display: contents;">
@@ -73,8 +74,10 @@
             const mediaType = document.getElementById("media_type").value;
             const seriesFields = document.getElementById("series-fields").children;
 
+            const show = (mediaType !== "movie");  // ✅ garder visibles pour "series" ou ""
+
             for (let field of seriesFields) {
-                field.style.display = (mediaType === "series") ? "block" : "none";
+                field.style.display = show ? "block" : "none";
             }
         }
 
